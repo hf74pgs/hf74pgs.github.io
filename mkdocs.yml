@@ -1,0 +1,9 @@
+
+（※Markdownエディタやメモ帳でOK）
+
+---
+
+## 4. ローカルで確認
+
+```sh
+mkdocs serve
