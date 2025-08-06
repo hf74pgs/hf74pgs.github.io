@@ -1,12 +1,39 @@
+
+**ポイント：**  
+- ```csharp で囲むと、自動でC#の色分けがされます。
+- 普通に`.md`ファイルに貼るだけでGitHub Pages/Jekyllがきちんと変換してくれます。
+- ブラウザで表示すると見やすいコードブロックになります。
+
+---
+
+## 2. もう少しリッチにしたい場合： [Prism.js](https://prismjs.com/) や [highlight.js](https://highlightjs.org/) を使う
+
+**htmlファイルで表示したい場合**  
+→ これらのライブラリを使うと、より多彩な色分けやテーマ変更ができます。
+
+### 例：Prism.js を使ったC#ハイライト
+
+1. 下記のコードをHTMLファイルにそのまま貼るだけでOKです（難しい設定不要）。
+
+```html
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Static Site</title>
+  <meta charset="UTF-8">
+  <title>C#コード例</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
 </head>
 <body>
-    <h1>Welcome to My Static Site</h1>
-    <p>Hello World!</p>
+<pre><code class="language-csharp">
+public class HelloWorld
+{
+    public static void Main()
+    {
+        Console.WriteLine("Hello, world!");
+    }
+}
+</code></pre>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
 </body>
 </html>
