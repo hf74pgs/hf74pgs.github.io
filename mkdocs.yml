@@ -1,9 +1,5 @@
-
-（※Markdownエディタやメモ帳でOK）
-
----
-
-## 4. ローカルで確認
-
-```sh
-mkdocs serve
+site_name: C# Programming Guide
+theme:
+  name: material
+  palette:
+    scheme: slate   # これでダークモードに
