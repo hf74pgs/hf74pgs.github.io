@@ -2,4 +2,9 @@ site_name: C# Programming Guide
 theme:
   name: material
   palette:
-    scheme: slate   # これでダークモードに
+    scheme: slate
+
+nav:
+  - HOME: index.md
+  - MD: samples.md
+
