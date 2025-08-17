@@ -1,3 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://www.codesnippet.blog/</loc>
+         <lastmod>2025-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://www.codesnippet.blog/csharp-1-basics/</loc>
+         <lastmod>2025-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://www.codesnippet.blog/csharp-2-intermediate/</loc>
+         <lastmod>2025-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://www.codesnippet.blog/csharp-3-advanced/</loc>
+         <lastmod>2025-08-17</lastmod>
+    </url>
 </urlset>
