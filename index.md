@@ -1,6 +1,6 @@
 ---
 layout: home
-title: ホーム
+title: Home
 ---
 
 # C# プログラミングガイド
