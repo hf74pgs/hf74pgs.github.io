@@ -12,7 +12,7 @@
       
       
       
-        <link rel="next" href="csharp-1-basics/">
+        <link rel="next" href="golang-1/">
       
       
       <link rel="icon" href="assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>C# Programming Guide</title>
+        <title>Programming Guide</title>
       
     
     
@@ -88,7 +88,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="C# Programming Guide" class="md-header__button md-logo" aria-label="C# Programming Guide" data-md-component="logo">
+    <a href="." title="Programming Guide" class="md-header__button md-logo" aria-label="Programming Guide" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -102,7 +102,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            C# Programming Guide
+            Programming Guide
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -214,13 +214,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="C# Programming Guide" class="md-nav__button md-logo" aria-label="C# Programming Guide" data-md-component="logo">
+    <a href="." title="Programming Guide" class="md-nav__button md-logo" aria-label="Programming Guide" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    C# Programming Guide
+    Programming Guide
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -286,24 +286,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#usage-examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Usage Examples
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#technology-stack" class="md-nav__link">
-    <span class="md-ellipsis">
-      Technology Stack
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -340,7 +322,7 @@
   
   
   <span class="md-ellipsis">
-    C# Guide
+    Guide
     
   </span>
   
@@ -351,9 +333,32 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            C# Guide
+            Guide
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="golang-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Go
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -427,26 +432,7 @@
   <h1>Home</h1>
 
 <h2 id="overview">overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>This is an industrial image processing sample that uses a GigE Vision compatible camera and the MVTec Halcon library to acquire, connect, and save line scan images at high speed and high precision. Images are acquired line by line in synchronization with an external trigger signal, and multiple lines are combined vertically or horizontally to create a scanned image of the entire object.
-</code></pre></div></td></tr></table></div>
-<h2 id="usage-examples">Usage Examples<a class="headerlink" href="#usage-examples" title="Permanent link">&para;</a></h2>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>Product inspection on production lines (e.g., plates, pipes, fabric)
-Full-surface scanning of transported items (surface defect detection)
-Image merging for high-resolution overall images
-Compatible with line sensor cameras from Omron, Keyence, and other manufacturers
-</code></pre></div></td></tr></table></div>
-<h2 id="technology-stack">Technology Stack<a class="headerlink" href="#technology-stack" title="Permanent link">&para;</a></h2>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>Language: C# (.NET 6.0 or later)
-Image Processing: MVTec Halcon 20.11 or later
-Supported Cameras: GigE Vision (line scan compatible models)
-Input/Output: External trigger input, PNG/JPEG output, CSV configuration file
-</code></pre></div></td></tr></table></div>
+<p>Introducing basic code for various programs.</p>
 
 
 
