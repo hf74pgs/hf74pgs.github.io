@@ -8,13 +8,11 @@
       
       
       
-        <link rel="canonical" href="https://www.codesnippet.blog/csharp-1-basics/">
+        <link rel="canonical" href="https://www.codesnippet.blog/csharp-2-advanced/">
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../csharp-1-basics/">
       
-      
-        <link rel="next" href="../csharp-2-advanced/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -22,7 +20,7 @@
     
     
       
-        <title>CSV - C# Programming Guide</title>
+        <title>Halcon - C# Programming Guide</title>
       
     
     
@@ -74,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#csv-parameter-settings" class="md-skip">
+        <a href="#halcon" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              CSV
+              Halcon
             
           </span>
         </div>
@@ -322,6 +320,29 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../csharp-1-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CSV
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -337,7 +358,7 @@
   
   
   <span class="md-ellipsis">
-    CSV
+    Halcon
     
   </span>
   
@@ -350,7 +371,7 @@
   
   
   <span class="md-ellipsis">
-    CSV
+    Halcon
     
   </span>
   
@@ -371,9 +392,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#csv-parameter-settings" class="md-nav__link">
+  <a href="#halcon" class="md-nav__link">
     <span class="md-ellipsis">
-      csv Parameter Settings
+      Halcon
     </span>
   </a>
   
@@ -383,29 +404,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../csharp-2-advanced/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Halcon
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -434,143 +432,412 @@
 
 
 
-  <h1>CSV</h1>
+  <h1>Halcon</h1>
 
-<h2 id="csv-parameter-settings">csv Parameter Settings<a class="headerlink" href="#csv-parameter-settings" title="Permanent link">&para;</a></h2>
+<h2 id="halcon">Halcon<a class="headerlink" href="#halcon" title="Permanent link">&para;</a></h2>
+<p>A simple line scan experiment using Halcon to acquire images one line at a time from a GigE Vision-compatible line scan camera in response to an external trigger, and then combine them vertically and save them as an image.</p>
 <p>```csharp</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span></pre></div></td><td class="code"><div><pre><span></span><code>using System;
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span></pre></div></td><td class="code"><div><pre><span></span><code>using System;
 using System.Collections.Generic;
 using System.IO;
 using HalconDotNet;
 
-public static class HalconCameraConfig
+namespace HalconLineScanTriggerSample
 {
-    /// &lt;summary&gt;
-    /// Set camera parameters from a 2-row CSV file (header + values)
-    /// &lt;/summary&gt;
-    public static void ApplyCameraParamsFromCsv2Row(HTuple acqHandle, string csvFilePath)
+    class Program
     {
-        if (!File.Exists(csvFilePath))
-            throw new FileNotFoundException(&quot;CSV file not found&quot;, csvFilePath);
-
-        var lines = File.ReadAllLines(csvFilePath);
-        if (lines.Length &lt; 2)
-            throw new FormatException(&quot;CSV file must contain two rows: header and values&quot;);
-
-        var headers = lines[0].Split(&#39;,&#39;);
-        var values = lines[1].Split(&#39;,&#39;);
-
-        if (headers.Length != values.Length)
-            throw new FormatException(&quot;The number of headers and values do not match&quot;);
-
-        for (int i = 0; i &lt; headers.Length; i++)
+        static void Main(string[] args)
         {
-            string key = headers[i].Trim();
-            string valStr = values[i].Trim();
+            // === Settings (modify as needed) ===
+            int numLinesToGrab = 2000;                        // Number of lines to acquire (N)
+            string savePath = @&quot;C:\Images\linescan_result.png&quot;;
+            string deviceUserID = &quot;0&quot;;                        // First found device or Camera UserID
+            string triggerSource = &quot;Line1&quot;;                   // External trigger input line
+            string triggerActivation = &quot;RisingEdge&quot;;          // Rising/Falling edge
+            int grabTimeoutMs = -1;                           // -1: Wait indefinitely (depending on model, &quot;grab_timeout&quot; may also be used)
+            bool enforceSameWidth = true;                     // Ensure same width for safety (should be same width basically)
 
-            if (string.IsNullOrEmpty(key))
-                continue;
-
-            HTuple val;
-            if (double.TryParse(valStr, out double d))
-                val = d;
-            else if (int.TryParse(valStr, out int n))
-                val = n;
-            else
-                val = valStr;
+            HTuple acqHandle = null;
+            var lineImages = new List&lt;HObject&gt;(capacity: numLinesToGrab);
 
             try
             {
-                HOperatorSet.SetFramegrabberParam(acqHandle, key, val);
-                Console.WriteLine($&quot;Set: {key} = {val}&quot;);
+                acqHandle = OpenGigEVision(deviceUserID);
+
+                // LineStart (1 pulse = 1 line acquisition)
+                ConfigureLineTrigger(acqHandle, triggerSource, triggerActivation);
+
+                // Specify pixel format if needed (e.g., monochrome)
+                // HOperatorSet.SetFramegrabberParam(acqHandle, &quot;PixelFormat&quot;, &quot;Mono8&quot;);
+
+                HOperatorSet.GrabImageStart(acqHandle, -1);
+
+                // Acquire N lines (returns one line per external trigger)
+                for (int i = 0; i &lt; numLinesToGrab; i++)
+                {
+                    HObject oneLine = GrabOneLine(acqHandle, grabTimeoutMs);
+                    lineImages.Add(oneLine);
+                    if ((i + 1) % 100 == 0) Console.WriteLine($&quot;Grabbed lines: {i + 1}/{numLinesToGrab}&quot;);
+                }
+
+                // Option to align widths for safety (should be same width basically)
+                if (enforceSameWidth) EqualizeWidthsInPlace(lineImages);
+
+                // Combine vertically (N rows x 1 column) to create 2D image
+                HObject fullImage = TileImagesVertically(lineImages);
+
+                Directory.CreateDirectory(Path.GetDirectoryName(savePath) ?? &quot;.&quot;);
+                HOperatorSet.WriteImage(fullImage, GetExtAsHalconType(savePath), 0, savePath);
+                Console.WriteLine($&quot;Saved: {savePath}&quot;);
+
+                fullImage.Dispose();
+            }
+            catch (HalconException hex)
+            {
+                Console.Error.WriteLine($&quot;HALCON ERROR: #{hex.GetErrorCode()} {hex.GetErrorMessage()}&quot;);
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($&quot;ERROR: {ex.Message}&quot;);
+            }
+            finally
+            {
+                foreach (var img in lineImages) img?.Dispose();
+                if (acqHandle != null &amp;&amp; acqHandle.IsInitialized())
+                {
+                    try { HOperatorSet.CloseFramegrabber(acqHandle); } catch { /* ignore */ }
+                }
+            }
+        }
+
+        // Open GigE Vision frame grabber
+        static HTuple OpenGigEVision(string deviceUserID)
+        {
+            HOperatorSet.OpenFramegrabber(
+                &quot;GigEVision&quot;,
+                0, 0, 0, 0, 0, 0,
+                &quot;progressive&quot;,
+                -1,
+                &quot;default&quot;,
+                -1,
+                &quot;false&quot;,      // External trigger details set below
+                &quot;default&quot;,
+                deviceUserID, // &quot;0&quot; or Camera UserID
+                0,
+                -1,
+                out HTuple acqHandle);
+
+            // Set bandwidth etc. here if needed (model dependent)
+            // HOperatorSet.SetFramegrabberParam(acqHandle, &quot;GevSCPSPacketSize&quot;, 9000);
+
+            return acqHandle;
+        }
+
+        // Set line trigger (GenICam keys are model dependent. General example)
+        static void ConfigureLineTrigger(HTuple acqHandle, string triggerSource, string triggerActivation)
+        {
+            // Which event to trigger on: line unit
+            HOperatorSet.SetFramegrabberParam(acqHandle, &quot;TriggerSelector&quot;, &quot;LineStart&quot;);
+
+            // Enable trigger
+            HOperatorSet.SetFramegrabberParam(acqHandle, &quot;TriggerMode&quot;, &quot;On&quot;);
+
+            // External input line or encoder etc. (e.g., Line1)
+            HOperatorSet.SetFramegrabberParam(acqHandle, &quot;TriggerSource&quot;, triggerSource);
+
+            // Rising/Falling edge
+            HOperatorSet.SetFramegrabberParam(acqHandle, &quot;TriggerActivation&quot;, triggerActivation);
+
+            // Set exposure or gain if needed
+            // HOperatorSet.SetFramegrabberParam(acqHandle, &quot;ExposureTime&quot;, 20_000.0); // Example: 20,000 us
+            // For encoder synchronization, set model-specific features (e.g., LineTriggerSource=&quot;Encoder&quot; etc.)
+        }
+
+        // Acquire one line (blocks until external trigger arrives)
+        static HObject GrabOneLine(HTuple acqHandle, int timeoutMs)
+        {
+            // The third argument of GrabImageAsync is -1 for infinite wait. If you want to use timeout, set &quot;grab_timeout&quot; if supported by the model
+            HOperatorSet.GrabImageAsync(out HObject lineImg, acqHandle, -1);
+            return lineImg;
+        }
+
+        static HObject GrabOneLineOrBlack(HTuple acqHandle, int timeoutMs, int fallbackWidth = 4096, string pixelType = &quot;byte&quot;)
+        {
+            try
+            {
+                // Normal 1-line acquisition (wait for external trigger)
+                HOperatorSet.GrabImageAsync(out HObject lineImg, acqHandle, -1);
+                return lineImg;
             }
             catch (HalconException ex)
             {
-                Console.WriteLine($&quot;Failed to set parameter: {key} = {val} → {ex.Message}&quot;);
+                Console.WriteLine($&quot;Grab failed: {ex.Message}  Fill with black line&quot;);
+
+                // Generate a black image with a height of 1px (width can be specified as needed)
+                HOperatorSet.GenImageConst(out HObject blankLine, pixelType, fallbackWidth, 1);
+                return blankLine;
             }
         }
+
+
+        // Combine images vertically (N rows x 1 column)
+        static HObject TileImagesVertically(List&lt;HObject&gt; imageList)
+        {
+            if (imageList == null || imageList.Count == 0)
+                throw new ArgumentException(&quot;imageList is empty.&quot;);
+
+            HOperatorSet.GenEmptyObj(out HObject all);
+            foreach (var img in imageList)
+            {
+                HOperatorSet.ConcatObj(all, img, out all);
+            }
+
+            HOperatorSet.TileImages(all, out HObject tiled, imageList.Count, 1);
+            all.Dispose();
+            return tiled;
+        }
+
+        // Align widths to the maximum (should be same width basically, but for safety)
+        static void EqualizeWidthsInPlace(List&lt;HObject&gt; imageList)
+        {
+            int maxWidth = 0;
+            var sizes = new List&lt;(int w, int h)&gt;(imageList.Count);
+
+            foreach (var img in imageList)
+            {
+                HOperatorSet.GetImageSize(img, out HTuple w, out HTuple h);
+                int wi = w.I, hi = h.I;         // For line, h is usually 1
+                sizes.Add((wi, hi));
+                if (wi &gt; maxWidth) maxWidth = wi;
+            }
+
+            for (int i = 0; i &lt; imageList.Count; i++)
+            {
+                var (w, h) = sizes[i];
+                if (w == maxWidth) continue;
+
+                double scale = (double)maxWidth / Math.Max(1, w);
+                int newH = Math.Max(1, (int)Math.Round(h * scale)); // h=1 is usual
+                HOperatorSet.ZoomImageSize(imageList[i], out HObject resized, maxWidth, newH, &quot;constant&quot;);
+                imageList[i].Dispose();
+                imageList[i] = resized;
+            }
+        }
+
+        // Extension -&gt; HALCON write type
+        static string GetExtAsHalconType(string path)
+        {
+            var ext = Path.GetExtension(path)?.ToLowerInvariant();
+            return ext switch
+            {
+                &quot;.png&quot; =&gt; &quot;png&quot;,
+                &quot;.jpg&quot; or &quot;.jpeg&quot; =&gt; &quot;jpeg&quot;,
+                &quot;.bmp&quot; =&gt; &quot;bmp&quot;,
+                &quot;.tif&quot; or &quot;.tiff&quot; =&gt; &quot;tiff&quot;,
+                _ =&gt; &quot;png&quot;
+            };
+        }
     }
-
-    /// &lt;summary&gt;
-    /// Save parameters as 2-row CSV (header + values) from a dictionary
-    /// &lt;/summary&gt;
-    public static void SaveCameraParamsToCsv2Row(string csvFilePath, Dictionary&lt;string, string&gt; paramDict)
-    {
-        if (paramDict == null || paramDict.Count == 0)
-            throw new ArgumentException(&quot;Parameter dictionary is empty&quot;, nameof(paramDict));
-
-        var headers = string.Join(&quot;,&quot;, paramDict.Keys);
-        var values = string.Join(&quot;,&quot;, paramDict.Values);
-
-        File.WriteAllLines(csvFilePath, new[] { headers, values });
-    }
-}
 </code></pre></div></td></tr></table></div>
 
 
