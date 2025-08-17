@@ -1,0 +1,21 @@
+title: C# Programming Guide
+description: C# のコードスニペットとメモ
+# GitHub のビルドだけで使えるリモートテーマ方式
+remote_theme: jekyll/minima
+plugins:
+  - jekyll-remote-theme
+
+# ダークスキンを明示
+minima:
+  skin: dark
+
+# ヘッダーナビに出すページ（下のファイル名と一致させる）
+header_pages:
+  - syntax.md
+  - samples.md
+
+# コードハイライト（明示しておくと安心）
+highlighter: rouge
+markdown: kramdown
+kramdown:
+  input: GFM

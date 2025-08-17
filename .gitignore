@@ -1,1 +1,7 @@
 venv/
+
+# Jekyll の生成物
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
