@@ -599,11 +599,17 @@ git add .               # 全部まとめて追加 <br></p>
 --tags：すべてのタグを取得します<br></p>
 <blockquote>
 <p>git log --oneline --graph --decorate --all <br></p>
-<p>git diff origin/main <br></p>
 </blockquote>
+<p><br>
+「hogeブランチ が main にマージ済みかどうか」の判定方法 <br>
+その中に「Merge branch 'feature/hoge'」といったメッセージがあれば、マージ済み<br></p>
+<blockquote>
+<p>git log main --merges --oneline</p>
+</blockquote>
+<hr />
 <p>「現在いるローカルブランチ」と「origin/main」のファイル差分を表示 <br></p>
 <blockquote>
-<p><br></p>
+<p>git diff origin/main <br></p>
 </blockquote>
 <hr />
 <h4 id="_8">リモートにプッシュ（アップロード）<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
@@ -660,17 +666,41 @@ git merge feature<br>
 git pull は「現在のブランチ」しか更新しない <br></p>
 </blockquote>
 <h2 id="_11">まとめ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>git fetch --prune --tags
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code># 1. 最新のリモート情報を取る
+git fetch --prune --tags
+
+# 2. main を最新化
 git switch main
-git pull --rebase
+git pull --rebase   # main を origin/main に追従
+
+# 3. 再び hoge ブランチに戻る
 git switch feature/hoge
+
+# 4. main の最新を取り込む（リベース推奨）
 git rebase main
-git push --force-with-lease
+# or マージする場合は: git merge main
+
+# 5. リモートに更新を反映
+git push --force-with-lease   # rebase したなら必須
+# or
+git push                      # merge したならこれでOK
 </code></pre></div></td></tr></table></div>
 
 
