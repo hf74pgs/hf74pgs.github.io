@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://www.codesnippet.blog/golang-1/">
+        <link rel="canonical" href="https://www.codesnippet.blog/git/">
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../golang-1/">
       
       
-        <link rel="next" href="../git/">
+        <link rel="next" href="../csharp-1-basics/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Go - Programming Guide</title>
+        <title>Git - Programming Guide</title>
       
     
     
@@ -73,6 +73,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#git" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -105,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Go
+              Git
             
           </span>
         </div>
@@ -293,17 +298,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../golang-1/" class="md-nav__link">
         
   
   
@@ -314,7 +312,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -324,10 +321,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../git/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Git
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -338,6 +357,158 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      クローン（リモートからコピーを作る）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      既存のブランチを見る
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      既存のリモートブランチに切り替える場合
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      変更を確認
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ステージに追加（追跡対象に）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      コミット（ローカル履歴に記録）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      最新の情報だけ反映（安全）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      リモートにプッシュ（アップロード）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="リモートにプッシュ（アップロード）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2回目以降
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      他の人の更新を取り込む（プル）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      マージ
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-fetch" class="md-nav__link">
+    <span class="md-ellipsis">
+      git fetch
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-pull" class="md-nav__link">
+    <span class="md-ellipsis">
+      git pull
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      まとめ
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -389,146 +560,117 @@
 
 
 
-  <h1>Go</h1>
-
-<p>Here is a basic code example for implementing the server side in Go. In this example, we will create a simple web server with the following functions.</p>
-<p>GET / : Returns “Hello, World!”</p>
-<p>GET /users : Returns a list of users in JSON format</p>
-<p>POST /users : Adds a user (accepts JSON)</p>
-<p>```go</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span></pre></div></td><td class="code"><div><pre><span></span><code>package main
-
-import (
-    &quot;encoding/json&quot;
-    &quot;fmt&quot;
-    &quot;log&quot;
-    &quot;net/http&quot;
-)
-
-// User model
-type User struct {
-    ID   int    `json:&quot;id&quot;`
-    Name string `json:&quot;name&quot;`
-}
-
-var users = []User{
-    {ID: 1, Name: &quot;Alice&quot;},
-    {ID: 2, Name: &quot;Bob&quot;},
-}
-
-// Handler: &quot;/&quot; → return Hello, World!
-func helloHandler(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintln(w, &quot;Hello, World!&quot;)
-}
-
-// Handler: &quot;/users&quot; (GET) → return user list
-func getUsersHandler(w http.ResponseWriter, r *http.Request) {
-    w.Header().Set(&quot;Content-Type&quot;, &quot;application/json&quot;)
-    json.NewEncoder(w).Encode(users)
-}
-
-// Handler: &quot;/users&quot; (POST) → add a new user
-func createUserHandler(w http.ResponseWriter, r *http.Request) {
-    if r.Method != http.MethodPost {
-        http.Error(w, &quot;Method Not Allowed&quot;, http.StatusMethodNotAllowed)
-        return
-    }
-
-    var newUser User
-    if err := json.NewDecoder(r.Body).Decode(&amp;newUser); err != nil {
-        http.Error(w, &quot;Bad Request&quot;, http.StatusBadRequest)
-        return
-    }
-
-    newUser.ID = len(users) + 1
-    users = append(users, newUser)
-
-    w.Header().Set(&quot;Content-Type&quot;, &quot;application/json&quot;)
-    w.WriteHeader(http.StatusCreated)
-    json.NewEncoder(w).Encode(newUser)
-}
-
-func main() {
-    http.HandleFunc(&quot;/&quot;, helloHandler)
-    http.HandleFunc(&quot;/users&quot;, func(w http.ResponseWriter, r *http.Request) {
-        if r.Method == http.MethodGet {
-            getUsersHandler(w, r)
-        } else if r.Method == http.MethodPost {
-            createUserHandler(w, r)
-        } else {
-            http.Error(w, &quot;Method Not Allowed&quot;, http.StatusMethodNotAllowed)
-        }
-    })
-
-    fmt.Println(&quot;🚀 Server is running at http://localhost:8080&quot;)
-    log.Fatal(http.ListenAndServe(&quot;:8080&quot;, nil))
-}
+<h1 id="git">Git基本操作<a class="headerlink" href="#git" title="Permanent link">&para;</a></h1>
+<h4 id="_1">クローン（リモートからコピーを作る）<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>git clone git@server:/path/to/repo.git<br></p>
+</blockquote>
+<p>実行後、repo というフォルダが作成され、その中にリポジトリの内容がコピーされます</p>
+<hr />
+<h4 id="_2">既存のブランチを見る<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>git branch        # ローカルのブランチ<br>
+git branch -r     # リモートのブランチ<br></p>
+</blockquote>
+<h4 id="_3">既存のリモートブランチに切り替える場合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>git checkout -b your-branch-name origin/your-branch-name<br></p>
+</blockquote>
+<hr />
+<h4 id="_4">変更を確認<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>git status <br></p>
+</blockquote>
+<h4 id="_5">ステージに追加（追跡対象に）<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>git add main.cpp        # 個別に追加 <br>
+git add .               # 全部まとめて追加 <br></p>
+</blockquote>
+<h4 id="_6">コミット（ローカル履歴に記録）<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>git commit -m "機能追加: メイン処理を実装"<br></p>
+</blockquote>
+<hr />
+<h4 id="_7">最新の情報だけ反映（安全）<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>git fetch --prune --tags<br></p>
+</blockquote>
+<p>--prune：リモートで削除されたブランチの追跡ブランチ（例：origin/old-feature）をローカルからも掃除します<br>
+--tags：すべてのタグを取得します<br></p>
+<blockquote>
+<p>git log --oneline --graph --decorate --all <br></p>
+<p>git diff origin/main <br></p>
+</blockquote>
+<p>「現在いるローカルブランチ」と「origin/main」のファイル差分を表示 <br></p>
+<blockquote>
+<p><br></p>
+</blockquote>
+<hr />
+<h4 id="_8">リモートにプッシュ（アップロード）<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>git push origin your-branch-name<br>
+origin：リモートリポジトリの名前（通常は origin のまま）<br></p>
+</blockquote>
+<p><br>
+上流（upstream）が未設定の場合<br></p>
+<blockquote>
+<p>The current branch hoge has no upstream branch.<br></p>
+</blockquote>
+<p>のようなエラーが出る<br>
+→  一度でも上流設定を済ませれば、その後は git push だけでOK<br></p>
+<blockquote>
+<p>git push -u origin your-branch-name         <br></p>
+</blockquote>
+<p>あるいは<br></p>
+<blockquote>
+<p>git push -u origin HEAD           # 今いるブランチ名を自動で使う<br></p>
+</blockquote>
+<p><br></p>
+<h5 id="2">2回目以降<a class="headerlink" href="#2" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p>git push          # もう -u は不要。普通に通る <br>
+git pull --rebase # 追従時 <br></p>
+</blockquote>
+<h4 id="_9">他の人の更新を取り込む（プル）<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>git pull origin your-branch-name <br></p>
+</blockquote>
+<h4 id="_10">マージ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>例: feature ブランチを main に取り込む(featureが消えてmainが残る)<br>
+git checkout main<br>
+git merge feature<br>
+<br></p>
+</blockquote>
+<hr />
+<p>※リモートの最新状態を知りたいなら、まず git fetch が必要</p>
+<h4 id="git-fetch">git fetch<a class="headerlink" href="#git-fetch" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>リモートの最新状況を取得してローカルに記録するだけ（作業中ブランチは一切触らない）<br>
+リモート追跡ブランチ（例：origin/main, origin/feature/hoge）が更新される<br>
+ワーキングツリー/現在のブランチは変化なし<br>
+安全に「最新を観察」できる<br></p>
+</blockquote>
+<h4 id="git-pull">git pull<a class="headerlink" href="#git-pull" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>= git fetch ＋ 現在のブランチを更新（マージ or リベース）<br>
+デフォルトは fetch後に「マージ」<br>
+設定しだいで fetch後に「リベース」 へ変更可能<br>
+作業中のブランチに変更が入りうる（コンフリクトも起きうる）<br>
+git pull は「現在のブランチ」しか更新しない <br></p>
+</blockquote>
+<h2 id="_11">まとめ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>git fetch --prune --tags
+git switch main
+git pull --rebase
+git switch feature/hoge
+git rebase main
+git push --force-with-lease
 </code></pre></div></td></tr></table></div>
 
 
