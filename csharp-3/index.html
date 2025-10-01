@@ -8,9 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://www.codesnippet.blog/csharp-2-advanced/">
+        <link rel="canonical" href="https://www.codesnippet.blog/csharp-3/">
       
       
+        <link rel="prev" href="../csharp-2/">
+      
+      
+        <link rel="next" href="../csharp-4/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -18,7 +22,7 @@
     
     
       
-        <title>Csharp 2 advanced - Programming Guide</title>
+        <title>C# - Programming Guide</title>
       
     
     
@@ -70,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#halcon" class="md-skip">
+        <a href="#c-3" class="md-skip">
           Skip to content
         </a>
       
@@ -106,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Csharp 2 advanced
+              C#
             
           </span>
         </div>
@@ -249,8 +253,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -261,11 +267,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -281,7 +287,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Guide
@@ -341,12 +347,128 @@
   
   
     <li class="md-nav__item">
-      <a href="../csharp-1-basics/" class="md-nav__link">
+      <a href="../csharp-1/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    CSV
+    C#
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csharp-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    C#
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    C#
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    C#
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#c-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      C# 3
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csharp-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    C#
     
   </span>
   
@@ -380,16 +502,25 @@
 
 
 
-  <h1>Csharp 2 advanced</h1>
+  <h1>C#</h1>
 
-<h2 id="halcon">Halcon<a class="headerlink" href="#halcon" title="Permanent link">&para;</a></h2>
-<p>This is an industrial image processing sample that uses a GigE Vision compatible camera and the MVTec Halcon library to acquire, connect, and save line scan images at high speed and high precision. Images are acquired line by line in synchronization with an external trigger signal, and multiple lines are combined vertically or horizontally to create a scanned image of the entire object.</p>
-<p>A simple line scan experiment using Halcon to acquire images one line at a time from a GigE Vision-compatible line scan camera in response to an external trigger, and then combine them vertically and save them as an image.</p>
-<h2 id="technology-stack">Technology Stack<a class="headerlink" href="#technology-stack" title="Permanent link">&para;</a></h2>
-<p>Language: C# (.NET 6.0 or later)
-Image Processing: MVTec Halcon 20.11 or later
-Supported Cameras: GigE Vision (line scan compatible models)
-Input/Output: External trigger input, PNG/JPEG output, CSV configuration file</p>
+<h2 id="c-3">C# 3<a class="headerlink" href="#c-3" title="Permanent link">&para;</a></h2>
+<p>Usage and Important Notes</p>
+<p>Channel order (AccessChannel number) is environment-dependent.</p>
+<p>First, grab just one frame and determine which is Range/Intensity based on the size and bit depth.
+(For example, Range is 16-bit, Intensity is 8-bit, etc. This also depends on the Stream Setup settings.)</p>
+<p>This code assumes 1 Grab = 1 line (height = 1px).</p>
+<p>If your setup is for a 2D image containing multiple lines in 1 Grab, tile_images is unnecessary and the image will be used as a "height map" as is.</p>
+<p>Bit Depth: If aiming for a few microns, Mono12/16 equivalent is strongly recommended (to ensure quantization fineness).</p>
+<p>Match the PixelFormat to your camera settings and save as a 16-bit TIFF.</p>
+<p>Converting Z to mm: Apply Z_mm = scale * DN + offset in a post-process (scale/offset are camera/stream setup values).
+Removing the tilt of the reference plane using plane fitting will result in tiny steps (scratches).</p>
+<p>Reason for choosing asynchronous:
+At high line rates, acquisition and post-processing (linking/saving) can be separated, making it easier to avoid missing data.
+This asynchronous version is fine to start with. If you need even higher throughput, you can gradually improve it by saving and processing in a separate thread.</p>
+<p>To switch to software trigger:
+Set TriggerMode="On", TriggerSource="Software", and execute
+SetFramegrabberParam(acq,"TriggerSoftware","execute") → GrabDataAsync(...) for each line.</p>
 <p>```csharp</p>
 <div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
 <span class="normal">  2</span>
@@ -501,297 +632,117 @@ Input/Output: External trigger input, PNG/JPEG output, CSV configuration file</p
 <span class="normal">108</span>
 <span class="normal">109</span>
 <span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span>
-<span class="normal">145</span>
-<span class="normal">146</span>
-<span class="normal">147</span>
-<span class="normal">148</span>
-<span class="normal">149</span>
-<span class="normal">150</span>
-<span class="normal">151</span>
-<span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span>
-<span class="normal">174</span>
-<span class="normal">175</span>
-<span class="normal">176</span>
-<span class="normal">177</span>
-<span class="normal">178</span>
-<span class="normal">179</span>
-<span class="normal">180</span>
-<span class="normal">181</span>
-<span class="normal">182</span>
-<span class="normal">183</span>
-<span class="normal">184</span>
-<span class="normal">185</span>
-<span class="normal">186</span>
-<span class="normal">187</span>
-<span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span>
-<span class="normal">194</span>
-<span class="normal">195</span>
-<span class="normal">196</span>
-<span class="normal">197</span>
-<span class="normal">198</span>
-<span class="normal">199</span>
-<span class="normal">200</span>
-<span class="normal">201</span></pre></div></td><td class="code"><div><pre><span></span><code>using System;
-using System.Collections.Generic;
-using System.IO;
+<span class="normal">111</span></pre></div></td><td class="code"><div><pre><span></span><code>using System;
 using HalconDotNet;
 
-namespace HalconLineScanTriggerSample
+class GrabRangeIntensity_AsyncStack
 {
-    class Program
+    static void Main()
     {
-        static void Main(string[] args)
+        // === Adjust to your environment ===
+        const string IFace    = &quot;GigEVision2&quot;;            // e.g., &quot;GigEVision2&quot;
+        const string Device   = &quot;RULER3000_01&quot;;           // DeviceUserID or &quot;169.254.x.x&quot;
+        const int    NumLines = 100;                      // Number of lines to acquire (assumes 1 grab = 1 line)
+        const string SaveDir  = @&quot;C:\temp\ruler_async&quot;;   // Save destination
+        const string PixelFmt = &quot;Mono16&quot;;                 // 12/16bit is recommended for micron-level precision (must match the camera)
+
+        HTuple acq = null;
+        HObject[] rangeLines = new HObject[NumLines];
+        HObject[] intenLines = new HObject[NumLines];
+        HObject rangeConcat = null, intenConcat = null;
+        HObject rangeStack  = null, intenStack  = null;
+
+        try
         {
-            // === Settings (modify as needed) ===
-            int numLinesToGrab = 2000;                        // Number of lines to acquire (N)
-            string savePath = @&quot;C:\Images\linescan_result.png&quot;;
-            string deviceUserID = &quot;0&quot;;                        // First found device or Camera UserID
-            string triggerSource = &quot;Line1&quot;;                   // External trigger input line
-            string triggerActivation = &quot;RisingEdge&quot;;          // Rising/Falling edge
-            int grabTimeoutMs = -1;                           // -1: Wait indefinitely (depending on model, &quot;grab_timeout&quot; may also be used)
-            bool enforceSameWidth = true;                     // Ensure same width for safety (should be same width basically)
+            System.IO.Directory.CreateDirectory(SaveDir);
 
-            HTuple acqHandle = null;
-            var lineImages = new List&lt;HObject&gt;(capacity: numLinesToGrab);
-
-            try
-            {
-                acqHandle = OpenGigEVision(deviceUserID);
-
-                // LineStart (1 pulse = 1 line acquisition)
-                ConfigureLineTrigger(acqHandle, triggerSource, triggerActivation);
-
-                // Specify pixel format if needed (e.g., monochrome)
-                // HOperatorSet.SetFramegrabberParam(acqHandle, &quot;PixelFormat&quot;, &quot;Mono8&quot;);
-
-                HOperatorSet.GrabImageStart(acqHandle, -1);
-
-                // Acquire N lines (returns one line per external trigger)
-                for (int i = 0; i &lt; numLinesToGrab; i++)
-                {
-                    HObject oneLine = GrabOneLine(acqHandle, grabTimeoutMs);
-                    lineImages.Add(oneLine);
-                    if ((i + 1) % 100 == 0) Console.WriteLine($&quot;Grabbed lines: {i + 1}/{numLinesToGrab}&quot;);
-                }
-
-                // Option to align widths for safety (should be same width basically)
-                if (enforceSameWidth) EqualizeWidthsInPlace(lineImages);
-
-                // Combine vertically (N rows x 1 column) to create 2D image
-                HObject fullImage = TileImagesVertically(lineImages);
-
-                Directory.CreateDirectory(Path.GetDirectoryName(savePath) ?? &quot;.&quot;);
-                HOperatorSet.WriteImage(fullImage, GetExtAsHalconType(savePath), 0, savePath);
-                Console.WriteLine($&quot;Saved: {savePath}&quot;);
-
-                fullImage.Dispose();
-            }
-            catch (HalconException hex)
-            {
-                Console.Error.WriteLine($&quot;HALCON ERROR: #{hex.GetErrorCode()} {hex.GetErrorMessage()}&quot;);
-            }
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine($&quot;ERROR: {ex.Message}&quot;);
-            }
-            finally
-            {
-                foreach (var img in lineImages) img?.Dispose();
-                if (acqHandle != null &amp;&amp; acqHandle.IsInitialized())
-                {
-                    try { HOperatorSet.CloseFramegrabber(acqHandle); } catch { /* ignore */ }
-                }
-            }
-        }
-
-        // Open GigE Vision frame grabber
-        static HTuple OpenGigEVision(string deviceUserID)
-        {
+            // 1) Open the frame grabber
             HOperatorSet.OpenFramegrabber(
-                &quot;GigEVision&quot;,
-                0, 0, 0, 0, 0, 0,
-                &quot;progressive&quot;,
-                -1,
+                IFace,
+                0,0,0,0,0,0,
                 &quot;default&quot;,
-                -1,
-                &quot;false&quot;,      // External trigger details set below
+                -1, &quot;default&quot;, -1, &quot;false&quot;,
                 &quot;default&quot;,
-                deviceUserID, // &quot;0&quot; or Camera UserID
-                0,
-                -1,
-                out HTuple acqHandle);
+                Device,
+                0, -1,
+                out acq);
 
-            // Set bandwidth etc. here if needed (model dependent)
-            // HOperatorSet.SetFramegrabberParam(acqHandle, &quot;GevSCPSPacketSize&quot;, 9000);
+            // 2) Enable chunks &amp; free run (can be changed to software trigger later if needed)
+            TrySet(acq, &quot;ChunkModeActive&quot;, &quot;true&quot;);  // Receive Range+Intensity as a simultaneous payload
+            TrySet(acq, &quot;PixelFormat&quot;, PixelFmt);    // Must match the camera settings
+            TrySet(acq, &quot;TriggerMode&quot;, &quot;Off&quot;);       // Start with free run
 
-            return acqHandle;
-        }
+            // 3) Start asynchronous acquisition
+            //    grab_data_start -&gt; grab_data_async in a loop
+            HOperatorSet.GrabDataStart(acq, -1);
 
-        // Set line trigger (GenICam keys are model dependent. General example)
-        static void ConfigureLineTrigger(HTuple acqHandle, string triggerSource, string triggerActivation)
-        {
-            // Which event to trigger on: line unit
-            HOperatorSet.SetFramegrabberParam(acqHandle, &quot;TriggerSelector&quot;, &quot;LineStart&quot;);
-
-            // Enable trigger
-            HOperatorSet.SetFramegrabberParam(acqHandle, &quot;TriggerMode&quot;, &quot;On&quot;);
-
-            // External input line or encoder etc. (e.g., Line1)
-            HOperatorSet.SetFramegrabberParam(acqHandle, &quot;TriggerSource&quot;, triggerSource);
-
-            // Rising/Falling edge
-            HOperatorSet.SetFramegrabberParam(acqHandle, &quot;TriggerActivation&quot;, triggerActivation);
-
-            // Set exposure or gain if needed
-            // HOperatorSet.SetFramegrabberParam(acqHandle, &quot;ExposureTime&quot;, 20_000.0); // Example: 20,000 us
-            // For encoder synchronization, set model-specific features (e.g., LineTriggerSource=&quot;Encoder&quot; etc.)
-        }
-
-        // Acquire one line (blocks until external trigger arrives)
-        static HObject GrabOneLine(HTuple acqHandle, int timeoutMs)
-        {
-            // The third argument of GrabImageAsync is -1 for infinite wait. If you want to use timeout, set &quot;grab_timeout&quot; if supported by the model
-            HOperatorSet.GrabImageAsync(out HObject lineImg, acqHandle, -1);
-            return lineImg;
-        }
-
-        static HObject GrabOneLineOrBlack(HTuple acqHandle, int timeoutMs, int fallbackWidth = 4096, string pixelType = &quot;byte&quot;)
-        {
-            try
+            // 4) Acquisition loop: just acquire data here. Concatenation and tiling will be done later.
+            for (int i = 0; i &lt; NumLines; i++)
             {
-                // Normal 1-line acquisition (wait for external trigger)
-                HOperatorSet.GrabImageAsync(out HObject lineImg, acqHandle, -1);
-                return lineImg;
-            }
-            catch (HalconException ex)
-            {
-                Console.WriteLine($&quot;Grab failed: {ex.Message}  Fill with black line&quot;);
+                // -1 means &quot;wait&quot; for an indefinite period. Adjust to an appropriate value like milliseconds if needed.
+                HObject imagesTuple;    // Contains (Range, Intensity, ...)
+                HTuple  metaTuple;      // Metadata like &#39;mark&#39;. Can be ignored if not used.
+                HOperatorSet.GrabDataAsync(out imagesTuple, out metaTuple, acq, -1);
 
-                // Generate a black image with a height of 1px (width can be specified as needed)
-                HOperatorSet.GenImageConst(out HObject blankLine, pixelType, fallbackWidth, 1);
-                return blankLine;
-            }
-        }
+                // Extract Range / Intensity from the image tuple
+                // * The channel order depends on the settings.
+                //   Typically, [1]=Range and [2]=Intensity (1-based index), but verify if needed.
+                HObject rangeImg, intenImg;
+                HOperatorSet.AccessChannel(imagesTuple, out rangeImg, 1);  // 1st channel -&gt; Range (assumed)
+                HOperatorSet.AccessChannel(imagesTuple, out intenImg, 2);  // 2nd channel -&gt; Intensity (assumed)
 
+                // This assumes 1 Grab = 1 line (height = 1px)
+                rangeLines[i] = rangeImg;
+                intenLines[i] = intenImg;
 
-        // Combine images vertically (N rows x 1 column)
-        static HObject TileImagesVertically(List&lt;HObject&gt; imageList)
-        {
-            if (imageList == null || imageList.Count == 0)
-                throw new ArgumentException(&quot;imageList is empty.&quot;);
-
-            HOperatorSet.GenEmptyObj(out HObject all);
-            foreach (var img in imageList)
-            {
-                HOperatorSet.ConcatObj(all, img, out all);
+                imagesTuple.Dispose(); // Release the tuple itself when no longer needed
+                // metaTuple is HTuple, so no explicit release is needed
             }
 
-            HOperatorSet.TileImages(all, out HObject tiled, imageList.Count, 1);
-            all.Dispose();
-            return tiled;
-        }
+            // 5) Concatenate -&gt; tile in one go (vertical stack: Rows=NumLines, Cols=1)
+            HOperatorSet.GenEmptyObj(out rangeConcat);
+            HOperatorSet.GenEmptyObj(out intenConcat);
 
-        // Align widths to the maximum (should be same width basically, but for safety)
-        static void EqualizeWidthsInPlace(List&lt;HObject&gt; imageList)
-        {
-            int maxWidth = 0;
-            var sizes = new List&lt;(int w, int h)&gt;(imageList.Count);
-
-            foreach (var img in imageList)
+            for (int i = 0; i &lt; NumLines; i++)
             {
-                HOperatorSet.GetImageSize(img, out HTuple w, out HTuple h);
-                int wi = w.I, hi = h.I;         // For line, h is usually 1
-                sizes.Add((wi, hi));
-                if (wi &gt; maxWidth) maxWidth = wi;
+                HObject tmp;
+                HOperatorSet.ConcatObj(rangeConcat, rangeLines[i], out tmp);
+                rangeConcat.Dispose(); rangeConcat = tmp;
+                rangeLines[i].Dispose();
+
+                HOperatorSet.ConcatObj(intenConcat, intenLines[i], out tmp);
+                intenConcat.Dispose(); intenConcat = tmp;
+                intenLines[i].Dispose();
             }
 
-            for (int i = 0; i &lt; imageList.Count; i++)
-            {
-                var (w, h) = sizes[i];
-                if (w == maxWidth) continue;
+            HOperatorSet.TileImages(rangeConcat, out rangeStack, NumLines, 1);
+            HOperatorSet.TileImages(intenConcat, out intenStack, NumLines, 1);
 
-                double scale = (double)maxWidth / Math.Max(1, w);
-                int newH = Math.Max(1, (int)Math.Round(h * scale)); // h=1 is usual
-                HOperatorSet.ZoomImageSize(imageList[i], out HObject resized, maxWidth, newH, &quot;constant&quot;);
-                imageList[i].Dispose();
-                imageList[i] = resized;
-            }
+            // 6) Save as 16bit TIFF (PNG is also possible, but TIFF is safer for preserving 16bit data)
+            string pathRange = System.IO.Path.Combine(SaveDir, &quot;range_stack_async.tiff&quot;);
+            string pathInten = System.IO.Path.Combine(SaveDir, &quot;intensity_stack_async.tiff&quot;);
+
+            HOperatorSet.WriteImage(rangeStack, &quot;tiff&quot;, 0, pathRange);
+            HOperatorSet.WriteImage(intenStack, &quot;tiff&quot;, 0, pathInten);
+
+            Console.WriteLine($&quot;saved:\n  {pathRange}\n  {pathInten}&quot;);
         }
-
-        // Extension -&gt; HALCON write type
-        static string GetExtAsHalconType(string path)
+        finally
         {
-            var ext = Path.GetExtension(path)?.ToLowerInvariant();
-            return ext switch
-            {
-                &quot;.png&quot; =&gt; &quot;png&quot;,
-                &quot;.jpg&quot; or &quot;.jpeg&quot; =&gt; &quot;jpeg&quot;,
-                &quot;.bmp&quot; =&gt; &quot;bmp&quot;,
-                &quot;.tif&quot; or &quot;.tiff&quot; =&gt; &quot;tiff&quot;,
-                _ =&gt; &quot;png&quot;
-            };
+            if (rangeStack  != null) rangeStack.Dispose();
+            if (intenStack  != null) intenStack.Dispose();
+            if (rangeConcat != null) rangeConcat.Dispose();
+            if (intenConcat != null) intenConcat.Dispose();
+            if (acq         != null) HOperatorSet.CloseFramegrabber(acq);
         }
     }
+
+    // Utility to suppress errors if the interface doesn&#39;t support a parameter
+    static void TrySet(HTuple acq, string name, string val)
+    {
+        try { HOperatorSet.SetFramegrabberParam(acq, name, val); } catch {}
+    }
+}
 </code></pre></div></td></tr></table></div>
 
 

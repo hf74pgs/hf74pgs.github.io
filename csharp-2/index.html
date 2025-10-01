@@ -8,11 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://www.codesnippet.blog/csharp-1-basics/">
+        <link rel="canonical" href="https://www.codesnippet.blog/csharp-2/">
       
       
-        <link rel="prev" href="../git/">
+        <link rel="prev" href="../csharp-1/">
       
+      
+        <link rel="next" href="../csharp-3/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +22,7 @@
     
     
       
-        <title>CSV - Programming Guide</title>
+        <title>C# - Programming Guide</title>
       
     
     
@@ -72,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#csv-parameter-settings" class="md-skip">
+        <a href="#c-2" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              CSV
+              C#
             
           </span>
         </div>
@@ -342,6 +344,29 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../csharp-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    C#
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -357,7 +382,7 @@
   
   
   <span class="md-ellipsis">
-    CSV
+    C#
     
   </span>
   
@@ -370,7 +395,7 @@
   
   
   <span class="md-ellipsis">
-    CSV
+    C#
     
   </span>
   
@@ -391,9 +416,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#csv-parameter-settings" class="md-nav__link">
+  <a href="#c-2" class="md-nav__link">
     <span class="md-ellipsis">
-      csv Parameter Settings
+      C# 2
     </span>
   </a>
   
@@ -403,6 +428,52 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csharp-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    C#
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csharp-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    C#
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -431,128 +502,222 @@
 
 
 
-  <h1>CSV</h1>
+  <h1>C#</h1>
 
-<h2 id="csv-parameter-settings">csv Parameter Settings<a class="headerlink" href="#csv-parameter-settings" title="Permanent link">&para;</a></h2>
+<h2 id="c-2">C# 2<a class="headerlink" href="#c-2" title="Permanent link">&para;</a></h2>
+<p>The N (starting at 1) and role (Range/Intensity order) in AccessChannel(imagesTuple, out img, N) depend on your camera settings (Stream Setup / GenICam node). First, check the size and type with imagesTuple.CountChannels() or GetImagePointer1 to see which is the Range.</p>
+<p>This assumes a 1Grab = 1 line (height 1px) setting. If your configuration already includes multiple lines with 1Grab, you don't need tile_images and you can get a 2D "height map" as is.</p>
 <p>```csharp</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span></pre></div></td><td class="code"><div><pre><span></span><code>using System;
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span></pre></div></td><td class="code"><div><pre><span></span><code>using System;
 using HalconDotNet;
 
-class FreeRunLineGrabber2Phase
+class GrabRangeIntensity_StackLines
 {
     static void Main()
     {
-        const string IFace = &quot;GigEVision2&quot;;
-        const string Device = &quot;RULER3200_01&quot;;    // &lt;- Name/ID/IP obtained from enumeration
-        const int    NumLines = 100;
-        const string SavePath = @&quot;C:\temp\stacked.tiff&quot;;
+        // --- ★ Points to adjust according to your environment ★ ---
+        const string IFace    = &quot;GigEVision2&quot;;            // e.g., &quot;GigEVision2&quot;
+        const string Device   = &quot;RULER3000_01&quot;;           // DeviceUserID or &quot;169.254.x.x&quot;
+        const int    NumLines = 100;                      // Number of lines to acquire (assumes height is 1px per grab)
+        const string SaveDir  = @&quot;C:\temp\ruler_out&quot;;     // Destination folder for saving
+        const string PixelFmt = &quot;Mono16&quot;;                 // 12/16bit recommended for micrometer-level precision (must match camera settings)
 
         HTuple acq = null;
-        HObject[] lines = new HObject[NumLines];
-        HObject concatenated = null;
-        HObject tiled = null;
+        HObject[] rangeLines = new HObject[NumLines];
+        HObject[] intenLines = new HObject[NumLines];
+        HObject rangeConcat = null, intenConcat = null;
+        HObject rangeStack = null,  intenStack = null;
 
         try
         {
-            // --- open &amp; free-run ---
-            HOperatorSet.OpenFramegrabber(
-                IFace, 0,0,0,0,0,0, &quot;default&quot;, -1, &quot;default&quot;, -1, &quot;false&quot;,
-                &quot;default&quot;, Device, 0, -1, out acq);
-            HOperatorSet.SetFramegrabberParam(acq, &quot;TriggerMode&quot;, &quot;Off&quot;);
-            HOperatorSet.GrabImageStart(acq, -1);
+            System.IO.Directory.CreateDirectory(SaveDir);
 
-            // --- Phase 1: Acquisition only (held in an array) ---
+            // 1) Open framegrabber
+            HOperatorSet.OpenFramegrabber(
+                IFace,
+                0, 0, 0, 0, 0, 0,
+                &quot;default&quot;,
+                -1, &quot;default&quot;, -1, &quot;false&quot;,
+                &quot;default&quot;,
+                Device,
+                0, -1,
+                out acq);
+
+            // 2) Recommended basic settings
+            //    - Enable chunks (for simultaneous payload of Range+Intensity)
+            //    - Pixel format (must match camera settings)
+            try { HOperatorSet.SetFramegrabberParam(acq, &quot;ChunkModeActive&quot;, &quot;true&quot;); } catch {}
+            try { HOperatorSet.SetFramegrabberParam(acq, &quot;PixelFormat&quot;, PixelFmt); } catch {}
+            //    - Free run is OK for a start (see notes below if you need a software trigger)
+            HOperatorSet.SetFramegrabberParam(acq, &quot;TriggerMode&quot;, &quot;Off&quot;);
+
+            // 3) Acquisition loop (synchronous: grab_data)
+            //    This part only performs the acquisition; concatenation and tiling are done in a later step.
             for (int i = 0; i &lt; NumLines; i++)
             {
-                HObject img;
-                HOperatorSet.GrabImageAsync(out img, acq, -1);  // Assumes a 1-line image
-                lines[i] = img; // Just hold it here without processing
+                // grab_data returns a &quot;tuple of images&quot; and &quot;metadata&quot;
+                HObject imagesTuple;    // Contains (Range, Intensity, ...)
+                HTuple  metaTuple;      // Contains metadata like &#39;mark&#39; (can be discarded if not used)
+
+                HOperatorSet.GrabData(out imagesTuple, out metaTuple, acq);
+
+                // Extract Range / Intensity from the image tuple
+                // * The order may vary depending on the camera/settings.
+                //   Typically, imagesTuple[0]=Range and imagesTuple[1]=Intensity.
+                HObject rangeImg, intenImg;
+                HOperatorSet.AccessChannel(imagesTuple, out rangeImg, 1);  // 1st channel (=index 0)
+                HOperatorSet.AccessChannel(imagesTuple, out intenImg, 2);  // 2nd channel (=index 1)
+
+                // This assumes 1 Grab = 1 line (height = 1px)
+                rangeLines[i] = rangeImg;
+                intenLines[i] = intenImg;
+
+                imagesTuple.Dispose(); // Release the tuple itself
+                // metaTuple is HTuple (managed) so explicit release is not needed
             }
 
-            // --- Phase 2: Concat &amp; tile in a batch ---
-            // 2-1) Concatenate into a multi-object with concat_obj
-            HOperatorSet.GenEmptyObj(out concatenated);
+            // 4) Concatenate -&gt; tile in one go (vertical stack: Rows=NumLines, Cols=1)
+            HOperatorSet.GenEmptyObj(out rangeConcat);
+            HOperatorSet.GenEmptyObj(out intenConcat);
+
             for (int i = 0; i &lt; NumLines; i++)
             {
                 HObject tmp;
-                HOperatorSet.ConcatObj(concatenated, lines[i], out tmp);
-                concatenated.Dispose();
-                concatenated = tmp;
-                lines[i].Dispose(); // Release each time
+                HOperatorSet.ConcatObj(rangeConcat, rangeLines[i], out tmp);
+                rangeConcat.Dispose(); rangeConcat = tmp;
+                rangeLines[i].Dispose();
+
+                HOperatorSet.ConcatObj(intenConcat, intenLines[i], out tmp);
+                intenConcat.Dispose(); intenConcat = tmp;
+                intenLines[i].Dispose();
             }
 
-            // 2-2) Stack vertically with tile_images (Rows=NumLines, Cols=1)
-            HOperatorSet.TileImages(concatenated, out tiled, NumLines, 1);
+            HOperatorSet.TileImages(rangeConcat, out rangeStack, NumLines, 1);
+            HOperatorSet.TileImages(intenConcat, out intenStack, NumLines, 1);
 
-            // --- Save ---
-            HOperatorSet.WriteImage(tiled, &quot;tiff&quot;, 0, SavePath);
-            Console.WriteLine($&quot;saved: {SavePath}&quot;);
+            // 5) Save (16bit TIFF is recommended. PNG is also an option, but TIFF is safer for 16bit data)
+            string pathRange = System.IO.Path.Combine(SaveDir, &quot;range_stack.tiff&quot;);
+            string pathInten = System.IO.Path.Combine(SaveDir, &quot;intensity_stack.tiff&quot;);
+
+            HOperatorSet.WriteImage(rangeStack, &quot;tiff&quot;, 0, pathRange);
+            HOperatorSet.WriteImage(intenStack, &quot;tiff&quot;, 0, pathInten);
+
+            Console.WriteLine($&quot;saved:\n  {pathRange}\n  {pathInten}&quot;);
         }
         finally
         {
-            if (tiled != null) tiled.Dispose();
-            if (concatenated != null) concatenated.Dispose();
-            if (acq != null) HOperatorSet.CloseFramegrabber(acq);
+            // Cleanup
+            if (rangeStack    != null) rangeStack.Dispose();
+            if (intenStack    != null) intenStack.Dispose();
+            if (rangeConcat   != null) rangeConcat.Dispose();
+            if (intenConcat   != null) intenConcat.Dispose();
+            if (acq           != null) HOperatorSet.CloseFramegrabber(acq);
         }
     }
 }
