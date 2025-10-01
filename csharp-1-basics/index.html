@@ -495,77 +495,65 @@
 <span class="normal">58</span>
 <span class="normal">59</span>
 <span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span></pre></div></td><td class="code"><div><pre><span></span><code>using System;
-using System.Collections.Generic;
-using System.IO;
+<span class="normal">61</span></pre></div></td><td class="code"><div><pre><span></span><code>using System;
 using HalconDotNet;
 
-public static class HalconCameraConfig
+class FreeRunLineGrabber2Phase
 {
-    /// &lt;summary&gt;
-    /// Set camera parameters from a 2-row CSV file (header + values)
-    /// &lt;/summary&gt;
-    public static void ApplyCameraParamsFromCsv2Row(HTuple acqHandle, string csvFilePath)
+    static void Main()
     {
-        if (!File.Exists(csvFilePath))
-            throw new FileNotFoundException(&quot;CSV file not found&quot;, csvFilePath);
+        const string IFace = &quot;GigEVision2&quot;;
+        const string Device = &quot;RULER3200_01&quot;;    // &lt;- Name/ID/IP obtained from enumeration
+        const int    NumLines = 100;
+        const string SavePath = @&quot;C:\temp\stacked.tiff&quot;;
 
-        var lines = File.ReadAllLines(csvFilePath);
-        if (lines.Length &lt; 2)
-            throw new FormatException(&quot;CSV file must contain two rows: header and values&quot;);
+        HTuple acq = null;
+        HObject[] lines = new HObject[NumLines];
+        HObject concatenated = null;
+        HObject tiled = null;
 
-        var headers = lines[0].Split(&#39;,&#39;);
-        var values = lines[1].Split(&#39;,&#39;);
-
-        if (headers.Length != values.Length)
-            throw new FormatException(&quot;The number of headers and values do not match&quot;);
-
-        for (int i = 0; i &lt; headers.Length; i++)
+        try
         {
-            string key = headers[i].Trim();
-            string valStr = values[i].Trim();
+            // --- open &amp; free-run ---
+            HOperatorSet.OpenFramegrabber(
+                IFace, 0,0,0,0,0,0, &quot;default&quot;, -1, &quot;default&quot;, -1, &quot;false&quot;,
+                &quot;default&quot;, Device, 0, -1, out acq);
+            HOperatorSet.SetFramegrabberParam(acq, &quot;TriggerMode&quot;, &quot;Off&quot;);
+            HOperatorSet.GrabImageStart(acq, -1);
 
-            if (string.IsNullOrEmpty(key))
-                continue;
-
-            HTuple val;
-            if (double.TryParse(valStr, out double d))
-                val = d;
-            else if (int.TryParse(valStr, out int n))
-                val = n;
-            else
-                val = valStr;
-
-            try
+            // --- Phase 1: Acquisition only (held in an array) ---
+            for (int i = 0; i &lt; NumLines; i++)
             {
-                HOperatorSet.SetFramegrabberParam(acqHandle, key, val);
-                Console.WriteLine($&quot;Set: {key} = {val}&quot;);
+                HObject img;
+                HOperatorSet.GrabImageAsync(out img, acq, -1);  // Assumes a 1-line image
+                lines[i] = img; // Just hold it here without processing
             }
-            catch (HalconException ex)
+
+            // --- Phase 2: Concat &amp; tile in a batch ---
+            // 2-1) Concatenate into a multi-object with concat_obj
+            HOperatorSet.GenEmptyObj(out concatenated);
+            for (int i = 0; i &lt; NumLines; i++)
             {
-                Console.WriteLine($&quot;Failed to set parameter: {key} = {val} → {ex.Message}&quot;);
+                HObject tmp;
+                HOperatorSet.ConcatObj(concatenated, lines[i], out tmp);
+                concatenated.Dispose();
+                concatenated = tmp;
+                lines[i].Dispose(); // Release each time
             }
+
+            // 2-2) Stack vertically with tile_images (Rows=NumLines, Cols=1)
+            HOperatorSet.TileImages(concatenated, out tiled, NumLines, 1);
+
+            // --- Save ---
+            HOperatorSet.WriteImage(tiled, &quot;tiff&quot;, 0, SavePath);
+            Console.WriteLine($&quot;saved: {SavePath}&quot;);
         }
-    }
-
-    /// &lt;summary&gt;
-    /// Save parameters as 2-row CSV (header + values) from a dictionary
-    /// &lt;/summary&gt;
-    public static void SaveCameraParamsToCsv2Row(string csvFilePath, Dictionary&lt;string, string&gt; paramDict)
-    {
-        if (paramDict == null || paramDict.Count == 0)
-            throw new ArgumentException(&quot;Parameter dictionary is empty&quot;, nameof(paramDict));
-
-        var headers = string.Join(&quot;,&quot;, paramDict.Keys);
-        var values = string.Join(&quot;,&quot;, paramDict.Values);
-
-        File.WriteAllLines(csvFilePath, new[] { headers, values });
+        finally
+        {
+            if (tiled != null) tiled.Dispose();
+            if (concatenated != null) concatenated.Dispose();
+            if (acq != null) HOperatorSet.CloseFramegrabber(acq);
+        }
     }
 }
 </code></pre></div></td></tr></table></div>
