@@ -505,9 +505,12 @@
   <h1>C#</h1>
 
 <h2 id="c-2">C# 2<a class="headerlink" href="#c-2" title="Permanent link">&para;</a></h2>
-<p>The N (starting at 1) and role (Range/Intensity order) in AccessChannel(imagesTuple, out img, N) depend on your camera settings (Stream Setup / GenICam node). First, check the size and type with imagesTuple.CountChannels() or GetImagePointer1 to see which is the Range.</p>
-<p>This assumes a 1Grab = 1 line (height 1px) setting. If your configuration already includes multiple lines with 1Grab, you don't need tile_images and you can get a 2D "height map" as is.</p>
-<p>```csharp</p>
+<p>```csharp
+    using System;
+    using System.Drawing;
+    using System.Drawing.Imaging;
+    using System.Runtime.InteropServices;
+    using System.Windows.Forms;</p>
 <div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
 <span class="normal">  2</span>
 <span class="normal">  3</span>
@@ -614,113 +617,213 @@
 <span class="normal">104</span>
 <span class="normal">105</span>
 <span class="normal">106</span>
-<span class="normal">107</span></pre></div></td><td class="code"><div><pre><span></span><code>using System;
-using HalconDotNet;
-
-class GrabRangeIntensity_StackLines
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span></pre></div></td><td class="code"><div><pre><span></span><code>public static class ImageUtilSafe
 {
-    static void Main()
+    // Common: Create 8bpp grayscale Bitmap and set palette
+    // Generates an 8-bit grayscale Bitmap of the specified size and initializes the palette to grayscale
+    private static Bitmap CreateGray8(int w, int h)
     {
-        // --- ★ Points to adjust according to your environment ★ ---
-        const string IFace    = &quot;GigEVision2&quot;;            // e.g., &quot;GigEVision2&quot;
-        const string Device   = &quot;RULER3000_01&quot;;           // DeviceUserID or &quot;169.254.x.x&quot;
-        const int    NumLines = 100;                      // Number of lines to acquire (assumes height is 1px per grab)
-        const string SaveDir  = @&quot;C:\temp\ruler_out&quot;;     // Destination folder for saving
-        const string PixelFmt = &quot;Mono16&quot;;                 // 12/16bit recommended for micrometer-level precision (must match camera settings)
+        var bmp = new Bitmap(w, h, PixelFormat.Format8bppIndexed);
+        var pal = bmp.Palette;
+        for (int i = 0; i &lt; 256; i++) pal.Entries[i] = Color.FromArgb(i, i, i); // Grayscale with R=G=B=i
+        bmp.Palette = pal;
+        return bmp;
+    }
 
-        HTuple acq = null;
-        HObject[] rangeLines = new HObject[NumLines];
-        HObject[] intenLines = new HObject[NumLines];
-        HObject rangeConcat = null, intenConcat = null;
-        HObject rangeStack = null,  intenStack = null;
+    // Common: Linear map to 0..255 (Robust even if min == max)
+    // Normalizes value v from the range min to max into 0 to 255 and converts to byte. Avoids division by zero even if min == max
+    private static byte MapToByte(float v, float min, float max)
+    {
+        float range = Math.Max(1e-6f, max - min); // Prevent division by zero
+        int g = (int)((v - min) / range * 255f + 0.5f); // Linear transformation
+        if (g &lt; 0) g = 0; if (g &gt; 255) g = 255; // Clip out-of-range values
+        return (byte)g;
+    }
 
+    // -------- float[,] → 8bpp Bitmap --------
+    /// &lt;summary&gt;
+    /// Converts a 2D float array to an 8-bit grayscale Bitmap (min/max can be specified)
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;src&quot;&gt;The float array, such as a height map&lt;/param&gt;
+    /// &lt;param name=&quot;minOverride&quot;&gt;Minimum display limit (automatically calculated if omitted)&lt;/param&gt;
+    /// &lt;param name=&quot;maxOverride&quot;&gt;Maximum display limit (automatically calculated if omitted)&lt;/param&gt;
+    /// &lt;returns&gt;The 8-bit grayscale Bitmap&lt;/returns&gt;
+    public static Bitmap FloatToBitmap(float[,] src, float? minOverride = null, float? maxOverride = null)
+    {
+        int h = src.GetLength(0), w = src.GetLength(1); // Array size
+        // Automatic min/max calculation (Scan the entire array if not specified)
+        float mn = minOverride ?? float.MaxValue, mx = maxOverride ?? float.MinValue;
+        if (!minOverride.HasValue || !maxOverride.HasValue)
+        {
+            for (int y = 0; y &lt; h; y++)
+                for (int x = 0; x &lt; w; x++)
+                {
+                    float v = src[y, x];
+                    if (!minOverride.HasValue &amp;&amp; v &lt; mn) mn = v;
+                    if (!maxOverride.HasValue &amp;&amp; v &gt; mx) mx = v;
+                }
+        }
+        var bmp = CreateGray8(w, h); // Create Bitmap
+        var bd = bmp.LockBits(new Rectangle(0, 0, w, h), ImageLockMode.WriteOnly, PixelFormat.Format8bppIndexed); // Lock pixel area
         try
         {
-            System.IO.Directory.CreateDirectory(SaveDir);
-
-            // 1) Open framegrabber
-            HOperatorSet.OpenFramegrabber(
-                IFace,
-                0, 0, 0, 0, 0, 0,
-                &quot;default&quot;,
-                -1, &quot;default&quot;, -1, &quot;false&quot;,
-                &quot;default&quot;,
-                Device,
-                0, -1,
-                out acq);
-
-            // 2) Recommended basic settings
-            //    - Enable chunks (for simultaneous payload of Range+Intensity)
-            //    - Pixel format (must match camera settings)
-            try { HOperatorSet.SetFramegrabberParam(acq, &quot;ChunkModeActive&quot;, &quot;true&quot;); } catch {}
-            try { HOperatorSet.SetFramegrabberParam(acq, &quot;PixelFormat&quot;, PixelFmt); } catch {}
-            //    - Free run is OK for a start (see notes below if you need a software trigger)
-            HOperatorSet.SetFramegrabberParam(acq, &quot;TriggerMode&quot;, &quot;Off&quot;);
-
-            // 3) Acquisition loop (synchronous: grab_data)
-            //    This part only performs the acquisition; concatenation and tiling are done in a later step.
-            for (int i = 0; i &lt; NumLines; i++)
+            int stride = bd.Stride; // Bytes per row (including padding)
+            byte[] buf = new byte[stride * h]; // Working buffer
+            for (int y = 0; y &lt; h; y++)
             {
-                // grab_data returns a &quot;tuple of images&quot; and &quot;metadata&quot;
-                HObject imagesTuple;    // Contains (Range, Intensity, ...)
-                HTuple  metaTuple;      // Contains metadata like &#39;mark&#39; (can be discarded if not used)
-
-                HOperatorSet.GrabData(out imagesTuple, out metaTuple, acq);
-
-                // Extract Range / Intensity from the image tuple
-                // * The order may vary depending on the camera/settings.
-                //   Typically, imagesTuple[0]=Range and imagesTuple[1]=Intensity.
-                HObject rangeImg, intenImg;
-                HOperatorSet.AccessChannel(imagesTuple, out rangeImg, 1);  // 1st channel (=index 0)
-                HOperatorSet.AccessChannel(imagesTuple, out intenImg, 2);  // 2nd channel (=index 1)
-
-                // This assumes 1 Grab = 1 line (height = 1px)
-                rangeLines[i] = rangeImg;
-                intenLines[i] = intenImg;
-
-                imagesTuple.Dispose(); // Release the tuple itself
-                // metaTuple is HTuple (managed) so explicit release is not needed
+                int row = y * stride;
+                for (int x = 0; x &lt; w; x++)
+                    buf[row + x] = MapToByte(src[y, x], mn, mx); // Convert to 0-255
             }
-
-            // 4) Concatenate -&gt; tile in one go (vertical stack: Rows=NumLines, Cols=1)
-            HOperatorSet.GenEmptyObj(out rangeConcat);
-            HOperatorSet.GenEmptyObj(out intenConcat);
-
-            for (int i = 0; i &lt; NumLines; i++)
-            {
-                HObject tmp;
-                HOperatorSet.ConcatObj(rangeConcat, rangeLines[i], out tmp);
-                rangeConcat.Dispose(); rangeConcat = tmp;
-                rangeLines[i].Dispose();
-
-                HOperatorSet.ConcatObj(intenConcat, intenLines[i], out tmp);
-                intenConcat.Dispose(); intenConcat = tmp;
-                intenLines[i].Dispose();
-            }
-
-            HOperatorSet.TileImages(rangeConcat, out rangeStack, NumLines, 1);
-            HOperatorSet.TileImages(intenConcat, out intenStack, NumLines, 1);
-
-            // 5) Save (16bit TIFF is recommended. PNG is also an option, but TIFF is safer for 16bit data)
-            string pathRange = System.IO.Path.Combine(SaveDir, &quot;range_stack.tiff&quot;);
-            string pathInten = System.IO.Path.Combine(SaveDir, &quot;intensity_stack.tiff&quot;);
-
-            HOperatorSet.WriteImage(rangeStack, &quot;tiff&quot;, 0, pathRange);
-            HOperatorSet.WriteImage(intenStack, &quot;tiff&quot;, 0, pathInten);
-
-            Console.WriteLine($&quot;saved:\n  {pathRange}\n  {pathInten}&quot;);
+            Marshal.Copy(buf, 0, bd.Scan0, buf.Length); // Copy buffer to Bitmap
         }
-        finally
+        finally { bmp.UnlockBits(bd); } // Unlock
+        return bmp;
+    }
+
+    // -------- ushort[,] → 8bpp Bitmap --------
+    /// &lt;summary&gt;
+    /// Converts a 2D ushort array to an 8-bit grayscale Bitmap (min/max can be specified)
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;src&quot;&gt;The ushort array, such as a U16 image&lt;/param&gt;
+    /// &lt;param name=&quot;minOverride&quot;&gt;Minimum display limit (automatically calculated if omitted)&lt;/param&gt;
+    /// &lt;param name=&quot;maxOverride&quot;&gt;Maximum display limit (automatically calculated if omitted)&lt;/param&gt;
+    /// &lt;returns&gt;The 8-bit grayscale Bitmap&lt;/returns&gt;
+    public static Bitmap U16ToBitmap(ushort[,] src, ushort? minOverride = null, ushort? maxOverride = null)
+    {
+        int h = src.GetLength(0), w = src.GetLength(1); // Array size
+        int mnI = minOverride.HasValue ? minOverride.Value : int.MaxValue;
+        int mxI = maxOverride.HasValue ? maxOverride.Value : int.MinValue;
+        // Automatic min/max calculation
+        if (!minOverride.HasValue || !maxOverride.HasValue)
         {
-            // Cleanup
-            if (rangeStack    != null) rangeStack.Dispose();
-            if (intenStack    != null) intenStack.Dispose();
-            if (rangeConcat   != null) rangeConcat.Dispose();
-            if (intenConcat   != null) intenConcat.Dispose();
-            if (acq           != null) HOperatorSet.CloseFramegrabber(acq);
+            for (int y = 0; y &lt; h; y++)
+                for (int x = 0; x &lt; w; x++)
+                {
+                    int v = src[y, x];
+                    if (!minOverride.HasValue &amp;&amp; v &lt; mnI) mnI = v;
+                    if (!maxOverride.HasValue &amp;&amp; v &gt; mxI) mxI = v;
+                }
         }
+        float mn = mnI, mx = mxI; // Convert to float
+        var bmp = CreateGray8(w, h);
+        var bd = bmp.LockBits(new Rectangle(0, 0, w, h), ImageLockMode.WriteOnly, PixelFormat.Format8bppIndexed);
+        try
+        {
+            int stride = bd.Stride;
+            byte[] buf = new byte[stride * h];
+            for (int y = 0; y &lt; h; y++)
+            {
+                int row = y * stride;
+                for (int x = 0; x &lt; w; x++)
+                    buf[row + x] = MapToByte(src[y, x], mn, mx); // Convert to 0-255
+            }
+            Marshal.Copy(buf, 0, bd.Scan0, buf.Length);
+        }
+        finally { bmp.UnlockBits(bd); }
+        return bmp;
+    }
+
+    // -------- double[,] (e.g., mm) → 8bpp Bitmap --------
+    /// &lt;summary&gt;
+    /// Converts a 2D double array (e.g., height map [mm]) to an 8-bit grayscale Bitmap (min/max can be specified)
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;src&quot;&gt;The double array (e.g., Z value [mm])&lt;/param&gt;
+    /// &lt;param name=&quot;minOverride&quot;&gt;Minimum display limit (automatically calculated if omitted)&lt;/param&gt;
+    /// &lt;param name=&quot;maxOverride&quot;&gt;Maximum display limit (automatically calculated if omitted)&lt;/param&gt;
+    /// &lt;returns&gt;The 8-bit grayscale Bitmap&lt;/returns&gt;
+    public static Bitmap DoubleToBitmap(double[,] src, double? minOverride = null, double? maxOverride = null)
+    {
+        int h = src.GetLength(0), w = src.GetLength(1); // Array size
+        double mnD = minOverride ?? double.MaxValue, mxD = maxOverride ?? double.MinValue;
+        // Automatic min/max calculation
+        if (!minOverride.HasValue || !maxOverride.HasValue)
+        {
+            for (int y = 0; y &lt; h; y++)
+                for (int x = 0; x &lt; w; x++)
+                {
+                    double v = src[y, x];
+                    if (!minOverride.HasValue &amp;&amp; v &lt; mnD) mnD = v;
+                    if (!maxOverride.HasValue &amp;&amp; v &gt; mxD) mxD = v;
+                }
+        }
+        float mn = (float)mnD, mx = (float)mxD; // Convert to float
+        var bmp = CreateGray8(w, h);
+        var bd = bmp.LockBits(new Rectangle(0, 0, w, h), ImageLockMode.WriteOnly, PixelFormat.Format8bppIndexed);
+        try
+        {
+            int stride = bd.Stride;
+            byte[] buf = new byte[stride * h];
+            for (int y = 0; y &lt; h; y++)
+            {
+                int row = y * stride;
+                for (int x = 0; x &lt; w; x++)
+                    buf[row + x] = MapToByte((float)src[y, x], mn, mx); // Convert double-&gt;float and then to 0-255
+            }
+            Marshal.Copy(buf, 0, bd.Scan0, buf.Length);
+        }
+        finally { bmp.UnlockBits(bd); }
+        return bmp;
     }
 }
+
+
+// Usage example
+// float[,] hm = _ctl.CaptureLinesTiled(...);
+// var bmp = ImageUtilSafe.FloatToBitmap(hm); // Auto range
+// // var bmp = ImageUtilSafe.FloatToBitmap(hm, minOverride: 0f, maxOverride: 50f); // Fixed range
+// pictureBox1.Image = bmp;
+```
 </code></pre></div></td></tr></table></div>
 
 
