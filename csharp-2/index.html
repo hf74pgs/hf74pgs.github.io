@@ -505,12 +505,7 @@
   <h1>C#</h1>
 
 <h2 id="c-2">C# 2<a class="headerlink" href="#c-2" title="Permanent link">&para;</a></h2>
-<p>```csharp
-    using System;
-    using System.Drawing;
-    using System.Drawing.Imaging;
-    using System.Runtime.InteropServices;
-    using System.Windows.Forms;</p>
+<p>```csharp</p>
 <div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
 <span class="normal">  2</span>
 <span class="normal">  3</span>
@@ -667,7 +662,19 @@
 <span class="normal">154</span>
 <span class="normal">155</span>
 <span class="normal">156</span>
-<span class="normal">157</span></pre></div></td><td class="code"><div><pre><span></span><code>public static class ImageUtilSafe
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span></pre></div></td><td class="code"><div><pre><span></span><code>using System;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
+
+public static class ImageUtilSafe
 {
     // Common: Create 8bpp grayscale Bitmap and set palette
     // Generates an 8-bit grayscale Bitmap of the specified size and initializes the palette to grayscale

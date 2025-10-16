@@ -503,294 +503,86 @@
   <h1>C#</h1>
 
 <h2 id="c-4">C# 4<a class="headerlink" href="#c-4" title="Permanent link">&para;</a></h2>
-<p>Usage &amp; Notes</p>
-<p>Assuming 1 Trigger = 1 line (height = 1px, width = W).
-If your setup uses "Multiple Lines (2D) per 1 Trigger," tile_images is not necessary.</p>
-<p>The payload order (Range/Intensity) may change depending on your setup.
-The above code assumes #1 = Range, #2 = Intensity. First, check the log (GetImagePointer1) and replace SelectObj(..., 1/2) if necessary.
-(Since this is a multi-object image, use SelectObj instead of AccessChannel.)</p>
-<p>Timeout: Adjust TimeoutMs (this will vary depending on the line rate and exposure).</p>
-<p>PixelFormat/BitDepth: Mono12/16 is recommended for µm-level resolution. Save as 16-bit TIFF.</p>
-<p>The standard procedure is to convert to mm and remove surface tilt at a later stage: Z_mm = scale * DN + offset, and then create a small step by fitting the reference surface to a plane.</p>
-<p>```csharp</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
-<span class="normal">  2</span>
-<span class="normal">  3</span>
-<span class="normal">  4</span>
-<span class="normal">  5</span>
-<span class="normal">  6</span>
-<span class="normal">  7</span>
-<span class="normal">  8</span>
-<span class="normal">  9</span>
-<span class="normal"> 10</span>
-<span class="normal"> 11</span>
-<span class="normal"> 12</span>
-<span class="normal"> 13</span>
-<span class="normal"> 14</span>
-<span class="normal"> 15</span>
-<span class="normal"> 16</span>
-<span class="normal"> 17</span>
-<span class="normal"> 18</span>
-<span class="normal"> 19</span>
-<span class="normal"> 20</span>
-<span class="normal"> 21</span>
-<span class="normal"> 22</span>
-<span class="normal"> 23</span>
-<span class="normal"> 24</span>
-<span class="normal"> 25</span>
-<span class="normal"> 26</span>
-<span class="normal"> 27</span>
-<span class="normal"> 28</span>
-<span class="normal"> 29</span>
-<span class="normal"> 30</span>
-<span class="normal"> 31</span>
-<span class="normal"> 32</span>
-<span class="normal"> 33</span>
-<span class="normal"> 34</span>
-<span class="normal"> 35</span>
-<span class="normal"> 36</span>
-<span class="normal"> 37</span>
-<span class="normal"> 38</span>
-<span class="normal"> 39</span>
-<span class="normal"> 40</span>
-<span class="normal"> 41</span>
-<span class="normal"> 42</span>
-<span class="normal"> 43</span>
-<span class="normal"> 44</span>
-<span class="normal"> 45</span>
-<span class="normal"> 46</span>
-<span class="normal"> 47</span>
-<span class="normal"> 48</span>
-<span class="normal"> 49</span>
-<span class="normal"> 50</span>
-<span class="normal"> 51</span>
-<span class="normal"> 52</span>
-<span class="normal"> 53</span>
-<span class="normal"> 54</span>
-<span class="normal"> 55</span>
-<span class="normal"> 56</span>
-<span class="normal"> 57</span>
-<span class="normal"> 58</span>
-<span class="normal"> 59</span>
-<span class="normal"> 60</span>
-<span class="normal"> 61</span>
-<span class="normal"> 62</span>
-<span class="normal"> 63</span>
-<span class="normal"> 64</span>
-<span class="normal"> 65</span>
-<span class="normal"> 66</span>
-<span class="normal"> 67</span>
-<span class="normal"> 68</span>
-<span class="normal"> 69</span>
-<span class="normal"> 70</span>
-<span class="normal"> 71</span>
-<span class="normal"> 72</span>
-<span class="normal"> 73</span>
-<span class="normal"> 74</span>
-<span class="normal"> 75</span>
-<span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span></pre></div></td><td class="code"><div><pre><span></span><code>using System;
-using HalconDotNet;
-
-class GrabRI_SoftwareTrigger_Async
+<p>```planetext</p>
+<p>① プラットフォームを x64 に固定（最重要）</p>
+<p>Sick.GenIStreamDotNet は内部で x64 ネイティブ DLL を P/Invoke します。
+→ 新規プロジェクトが Any CPU + Prefer 32-bit = ON だと 32bitプロセスで起動し、BadImageFormatException になります。</p>
+<p>プロジェクトのプロパティ → Build</p>
+<p>Platform target = x64 を選択</p>
+<p>Prefer 32-bit のチェックを外す</p>
+<p>ソリューション構成マネージャでも Active solution platform = x64 に揃える</p>
+<p>もし x86 構成が残っていたらビルド対象から外す</p>
+<p>サンプルプロジェクトの構成（x64）と同じにしてください。</p>
+<p>② .NET の種類を合わせる（.NET Framework を使う）</p>
+<p>Sick.GenIStreamDotNet.dll は多くの場合 .NET Framework 向け（C++/CLI混在）。
+→ 新規プロジェクトを .NET 6/7 の Windows Forms で作ると不一致になりやすいです。</p>
+<p>Windows Forms App (.NET Framework) で作り直す（.NET Framework 4.7.2〜4.8 を推奨）</p>
+<p>既存が .NET Core/5+/6+ なら、4.8 の WinForms プロジェクトに変更して DLL を参照し直す</p>
+<p>③ ネイティブ依存 DLL が見えるようにする</p>
+<p>Sick.GenIStreamDotNet.dll 本体だけでなく、同梱のネイティブ DLL 群（x64） がロードパスに必要です。
+（例：genistream*.dll など）</p>
+<p>対処いずれか：</p>
+<p>サンプルが使っている 出力フォルダコピーの仕組みを真似する</p>
+<p>参照設定の Copy Local = True</p>
+<p>あるいは ポストビルドイベントで SICK SDK の bin\x64\ を $(TargetDir) にコピー</p>
+<p>または起動時に SetDllDirectory／PATH 追加でネイティブの場所を通す：</p>
+<p>// Program.Main の先頭で
+[System.Runtime.InteropServices.DllImport("kernel32.dll", SetLastError = true)]
+static extern bool SetDllDirectory(string lpPathName);</p>
+<p>static void Main()
 {
-    static void Main()
-    {
-        // ====== Adjust to your environment ======
-        const string IFace    = &quot;GigEVision2&quot;;            // Usually &quot;GigEVision2&quot;
-        const string Device   = &quot;RULER3000_01&quot;;           // DeviceUserID or &quot;169.254.x.x&quot;
-        const int    NumLines = 100;                      // Number of lines to acquire (assumes 1 trigger = 1 line)
-        const string SaveDir  = @&quot;C:\temp\ruler_swtrg&quot;;   // Save destination
-        const string PixelFmt = &quot;Mono16&quot;;                 // 12/16bit recommended for micron-level precision (must match camera)
-        const int    TimeoutMs = 2000;                    // Timeout for GrabDataAsync (ms)
-        const bool   Verbose  = true;                     // Log for checking channel order
-
-        HTuple acq = null;
-        HObject[] rangeLines = new HObject[NumLines];
-        HObject[] intenLines = new HObject[NumLines];
-        HObject imagesMO = null; // Temporary: container for multi-object
-        HObject rangeConcat = null, intenConcat = null;
-        HObject rangeStack  = null, intenStack  = null;
-
-        try
-        {
-            System.IO.Directory.CreateDirectory(SaveDir);
-
-            // 1) Open framegrabber
-            HOperatorSet.OpenFramegrabber(
-                IFace,
-                0,0,0,0,0,0,
-                &quot;default&quot;,
-                -1, &quot;default&quot;, -1, &quot;false&quot;,
-                &quot;default&quot;,
-                Device,
-                0, -1,
-                out acq);
-
-            // 2) Parameters (software trigger &amp; simultaneous chunk acquisition)
-            TrySet(acq, &quot;ChunkModeActive&quot;, &quot;true&quot;);        // Range+Intensity as simultaneous payload
-            TrySet(acq, &quot;PixelFormat&quot;, PixelFmt);         // Must match camera settings (e.g., Mono16)
-            TrySet(acq, &quot;AcquisitionMode&quot;, &quot;SingleFrame&quot;); // Assumes 1 Trigger = 1 Frame (ignore if not available)
-            TrySet(acq, &quot;TriggerSelector&quot;, &quot;FrameStart&quot;);   // Select FrameStart trigger (ignore if not available)
-            TrySet(acq, &quot;TriggerMode&quot;, &quot;On&quot;);
-            TrySet(acq, &quot;TriggerSource&quot;, &quot;Software&quot;);       // Use software trigger
-
-            // 3) Start asynchronous acquisition (buffer rotation)
-            HOperatorSet.GrabDataStart(acq, -1);
-
-            // 4) Loop: Trigger -&gt; Asynchronous acquisition (only acquire. Concatenate &amp; tile later)
-            for (int i = 0; i &lt; NumLines; i++)
-            {
-                // 4-1) Issue a software trigger
-                HOperatorSet.SetFramegrabberParam(acq, &quot;TriggerSoftware&quot;, &quot;execute&quot;);
-
-                // 4-2) Receive (Range+Intensity simultaneously)
-                HObject imagesTuple; // multi-object (a tuple of multiple objects)
-                HTuple  metaTuple;   // Metadata like &#39;mark&#39; (can be ignored if not used)
-
-                HOperatorSet.GrabDataAsync(out imagesTuple, out metaTuple, acq, TimeoutMs);
-
-                // 4-3) Extraction: Extract Range / Intensity from the multi-object
-                //      ★IMPORTANT★ grab_data returns a &quot;multi-object of images&quot;.
-                //      -&gt; The correct way to extract is using SelectObj, NOT AccessChannel.
-                //      (The channel order is environment-dependent. Check with the initial log.)
-                int nObj;
-                HOperatorSet.CountObj(imagesTuple, out nObj);
-
-                if (nObj &lt; 2)
-                    throw new Exception($&quot;Expected at least 2 payloads (Range &amp; Intensity), but got {nObj}&quot;);
-
-                // Check: Log size and type only on the first run
-                if (Verbose &amp;&amp; i == 0)
-                {
-                    for (int k = 1; k &lt;= nObj; k++)
-                    {
-                        HObject ch; HOperatorSet.SelectObj(imagesTuple, out ch, k);
-                        HTuple type, w, h;
-                        HOperatorSet.GetImagePointer1(ch, out _, out type, out w, out h);
-                        Console.WriteLine($&quot;[DBG] payload #{k}: {type.S} {w}x{h}&quot;);
-                        ch.Dispose();
-                    }
-                }
-
-                // Here we assume #1 is Range and #2 is Intensity (*swap if necessary)
-                HOperatorSet.SelectObj(imagesTuple, out HObject rangeImg, 1);
-                HOperatorSet.SelectObj(imagesTuple, out HObject intenImg, 2);
-
-                // Assuming 1 Trigger = 1 line (height = 1px)
-                rangeLines[i] = rangeImg;
-                intenLines[i] = intenImg;
-
-                imagesTuple.Dispose(); // Dispose of the main multi-object when no longer needed
-            }
-
-            // 5) Concatenate -&gt; tile in one go (vertical stack)
-            HOperatorSet.GenEmptyObj(out rangeConcat);
-            HOperatorSet.GenEmptyObj(out intenConcat);
-
-            for (int i = 0; i &lt; NumLines; i++)
-            {
-                HOperatorSet.ConcatObj(rangeConcat, rangeLines[i], out HObject tmpR);
-                rangeConcat.Dispose(); rangeConcat = tmpR;
-                rangeLines[i].Dispose();
-
-                HOperatorSet.ConcatObj(intenConcat, intenLines[i], out HObject tmpI);
-                intenConcat.Dispose(); intenConcat = tmpI;
-                intenLines[i].Dispose();
-            }
-
-            HOperatorSet.TileImages(rangeConcat, out rangeStack, NumLines, 1);
-            HOperatorSet.TileImages(intenConcat, out intenStack, NumLines, 1);
-
-            // 6) Save as 16bit TIFF
-            string pathRange = System.IO.Path.Combine(SaveDir, &quot;range_stack_swtrg_async.tiff&quot;);
-            string pathInten = System.IO.Path.Combine(SaveDir, &quot;intensity_stack_swtrg_async.tiff&quot;);
-
-            HOperatorSet.WriteImage(rangeStack, &quot;tiff&quot;, 0, pathRange);
-            HOperatorSet.WriteImage(intenStack, &quot;tiff&quot;, 0, pathInten);
-
-            Console.WriteLine($&quot;saved:\n  {pathRange}\n  {pathInten}&quot;);
-        }
-        finally
-        {
-            imagesMO?.Dispose();
-            rangeStack?.Dispose();
-            intenStack?.Dispose();
-            rangeConcat?.Dispose();
-            intenConcat?.Dispose();
-            if (acq != null) HOperatorSet.CloseFramegrabber(acq);
-        }
-    }
-
-    static void TrySet(HTuple acq, string name, string val)
-    {
-        try { HOperatorSet.SetFramegrabberParam(acq, name, val); }
-        catch { /* Ignore if the I/F doesn&#39;t support it */ }
-    }
+    // SICK の x64 ネイティブ DLL があるフォルダに置き換えてください
+    SetDllDirectory(@"C:\SICK\StreamSDK\bin\x64");
+    // …通常の Application.Run へ
+}</p>
+<p>④ .cti のパスはフルパスで</p>
+<p>相対 "SICKGigEVisionTL.cti" だと作業フォルダ次第で見つかりません。
+サンプル同様の フルパスを渡してください：</p>
+<p>var discovery = CameraDiscovery.CreateFromProducerFile(
+    @"C:\SICK\TL\SICKGigEVisionTL.cti"
+);</p>
+<p>（環境変数 GENICAM_GENTL64_PATH でディレクトリを通しておく方法でも可）</p>
+<p>⑤ それでもダメなときの切り分け</p>
+<p>Environment.Is64BitProcess を確認（Trueであること）</p>
+<p>例外が BadImageFormat のまま → ビット数不一致が残存</p>
+<p>例外が DllNotFoundException に変わった → ネイティブ DLL のパス問題</p>
+<p>サンプルと 同じ参照 DLL を使っているか（誤って x86 版や別ディレクトリを参照していないか）</p>
+<p>// Program.Main の先頭など、CameraDiscovery を触る前に
+[System.Runtime.InteropServices.DllImport("kernel32.dll", SetLastError = true)]
+static extern bool SetDllDirectory(string lpPathName);</p>
+<p>static void AddDllPath(string path)
+{
+    if (!System.IO.Directory.Exists(path)) return;
+    // 1) DLL検索ディレクトリとして追加
+    SetDllDirectory(path);
+    // 2) ついでに PATH にも追加（子プロセス等にも有効）
+    var current = Environment.GetEnvironmentVariable("PATH") ?? "";
+    if (!current.Contains(path, StringComparison.OrdinalIgnoreCase))
+        Environment.SetEnvironmentVariable("PATH", current + ";" + path);
+}</p>
+<p>static void Main()
+{
+    // ★あなたの環境に合わせて正しいフォルダを指定してください
+    AddDllPath(@"C:\SICK\StreamSDK\bin\x64");     // GenIStream のネイティブDLL
+    AddDllPath(@"C:\SICK\GigEVisionTL\bin\x64");  // SICK GigE Vision Producer のネイティブDLL
+    // （サンプルが参照している実フォルダを確認して同じにするのが一番確実）</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>if (!Environment.Is64BitProcess)
+{
+    System.Windows.Forms.MessageBox.Show(&quot;x64 ビルドにしてください。&quot;);
+    return;
 }
+
+// ここから Form1 など起動
+System.Windows.Forms.Application.Run(new Form1());
 </code></pre></div></td></tr></table></div>
+<p>}</p>
 
 
 
