@@ -11,8 +11,6 @@
         <link rel="canonical" href="https://www.codesnippet.blog/csharp-4/">
       
       
-        <link rel="prev" href="../csharp-3/">
-      
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +18,7 @@
     
     
       
-        <title>C# - Programming Guide</title>
+        <title>Csharp 4 - Programming Guide</title>
       
     
     
@@ -71,11 +69,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#c-4" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -108,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              C#
+              Csharp 4
             
           </span>
         </div>
@@ -251,8 +244,6 @@
       
   
   
-    
-  
   
   
     
@@ -265,11 +256,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -285,7 +276,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Guide
@@ -407,76 +398,6 @@
 
               
             
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    C#
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    C#
-    
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#c-4" class="md-nav__link">
-    <span class="md-ellipsis">
-      C# 4
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -500,89 +421,9 @@
 
 
 
-  <h1>C#</h1>
+  <h1>Csharp 4</h1>
 
-<h2 id="c-4">C# 4<a class="headerlink" href="#c-4" title="Permanent link">&para;</a></h2>
-<p>```planetext</p>
-<p>① プラットフォームを x64 に固定（最重要）</p>
-<p>Sick.GenIStreamDotNet は内部で x64 ネイティブ DLL を P/Invoke します。
-→ 新規プロジェクトが Any CPU + Prefer 32-bit = ON だと 32bitプロセスで起動し、BadImageFormatException になります。</p>
-<p>プロジェクトのプロパティ → Build</p>
-<p>Platform target = x64 を選択</p>
-<p>Prefer 32-bit のチェックを外す</p>
-<p>ソリューション構成マネージャでも Active solution platform = x64 に揃える</p>
-<p>もし x86 構成が残っていたらビルド対象から外す</p>
-<p>サンプルプロジェクトの構成（x64）と同じにしてください。</p>
-<p>② .NET の種類を合わせる（.NET Framework を使う）</p>
-<p>Sick.GenIStreamDotNet.dll は多くの場合 .NET Framework 向け（C++/CLI混在）。
-→ 新規プロジェクトを .NET 6/7 の Windows Forms で作ると不一致になりやすいです。</p>
-<p>Windows Forms App (.NET Framework) で作り直す（.NET Framework 4.7.2〜4.8 を推奨）</p>
-<p>既存が .NET Core/5+/6+ なら、4.8 の WinForms プロジェクトに変更して DLL を参照し直す</p>
-<p>③ ネイティブ依存 DLL が見えるようにする</p>
-<p>Sick.GenIStreamDotNet.dll 本体だけでなく、同梱のネイティブ DLL 群（x64） がロードパスに必要です。
-（例：genistream*.dll など）</p>
-<p>対処いずれか：</p>
-<p>サンプルが使っている 出力フォルダコピーの仕組みを真似する</p>
-<p>参照設定の Copy Local = True</p>
-<p>あるいは ポストビルドイベントで SICK SDK の bin\x64\ を $(TargetDir) にコピー</p>
-<p>または起動時に SetDllDirectory／PATH 追加でネイティブの場所を通す：</p>
-<p>// Program.Main の先頭で
-[System.Runtime.InteropServices.DllImport("kernel32.dll", SetLastError = true)]
-static extern bool SetDllDirectory(string lpPathName);</p>
-<p>static void Main()
-{
-    // SICK の x64 ネイティブ DLL があるフォルダに置き換えてください
-    SetDllDirectory(@"C:\SICK\StreamSDK\bin\x64");
-    // …通常の Application.Run へ
-}</p>
-<p>④ .cti のパスはフルパスで</p>
-<p>相対 "SICKGigEVisionTL.cti" だと作業フォルダ次第で見つかりません。
-サンプル同様の フルパスを渡してください：</p>
-<p>var discovery = CameraDiscovery.CreateFromProducerFile(
-    @"C:\SICK\TL\SICKGigEVisionTL.cti"
-);</p>
-<p>（環境変数 GENICAM_GENTL64_PATH でディレクトリを通しておく方法でも可）</p>
-<p>⑤ それでもダメなときの切り分け</p>
-<p>Environment.Is64BitProcess を確認（Trueであること）</p>
-<p>例外が BadImageFormat のまま → ビット数不一致が残存</p>
-<p>例外が DllNotFoundException に変わった → ネイティブ DLL のパス問題</p>
-<p>サンプルと 同じ参照 DLL を使っているか（誤って x86 版や別ディレクトリを参照していないか）</p>
-<p>// Program.Main の先頭など、CameraDiscovery を触る前に
-[System.Runtime.InteropServices.DllImport("kernel32.dll", SetLastError = true)]
-static extern bool SetDllDirectory(string lpPathName);</p>
-<p>static void AddDllPath(string path)
-{
-    if (!System.IO.Directory.Exists(path)) return;
-    // 1) DLL検索ディレクトリとして追加
-    SetDllDirectory(path);
-    // 2) ついでに PATH にも追加（子プロセス等にも有効）
-    var current = Environment.GetEnvironmentVariable("PATH") ?? "";
-    if (!current.Contains(path, StringComparison.OrdinalIgnoreCase))
-        Environment.SetEnvironmentVariable("PATH", current + ";" + path);
-}</p>
-<p>static void Main()
-{
-    // ★あなたの環境に合わせて正しいフォルダを指定してください
-    AddDllPath(@"C:\SICK\StreamSDK\bin\x64");     // GenIStream のネイティブDLL
-    AddDllPath(@"C:\SICK\GigEVisionTL\bin\x64");  // SICK GigE Vision Producer のネイティブDLL
-    // （サンプルが参照している実フォルダを確認して同じにするのが一番確実）</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>if (!Environment.Is64BitProcess)
-{
-    System.Windows.Forms.MessageBox.Show(&quot;x64 ビルドにしてください。&quot;);
-    return;
-}
 
-// ここから Form1 など起動
-System.Windows.Forms.Application.Run(new Form1());
-</code></pre></div></td></tr></table></div>
-<p>}</p>
 
 
 
