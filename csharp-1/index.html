@@ -780,7 +780,10 @@
 <span class="normal">313</span>
 <span class="normal">314</span>
 <span class="normal">315</span>
-<span class="normal">316</span></pre></div></td><td class="code"><div><pre><span></span><code>public sealed class Ruler3000Lines : IDisposable
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span></pre></div></td><td class="code"><div><pre><span></span><code>public sealed class Ruler3000Lines : IDisposable
 {
     private CameraDiscovery _discovery;
     private ICamera _camera;
@@ -1071,6 +1074,9 @@
     // _p.SetEnum(&quot;TriggerSelector&quot;, &quot;FrameStart&quot;);  // or &quot;LineStart&quot;
     // _p.SetEnum(&quot;TriggerMode&quot;, &quot;On&quot;);
     // _p.SetEnum(&quot;TriggerSource&quot;, &quot;Software&quot;);
+
+    //capture
+    // _p.ExecuteCommand(&quot;TriggerSoftware&quot;);
 
     // Example Usage
     Ruler3000Lines _ctl;
