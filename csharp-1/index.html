@@ -773,7 +773,14 @@
 <span class="normal">306</span>
 <span class="normal">307</span>
 <span class="normal">308</span>
-<span class="normal">309</span></pre></div></td><td class="code"><div><pre><span></span><code>public sealed class Ruler3000Lines : IDisposable
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span></pre></div></td><td class="code"><div><pre><span></span><code>public sealed class Ruler3000Lines : IDisposable
 {
     private CameraDiscovery _discovery;
     private ICamera _camera;
@@ -798,6 +805,7 @@
     // * Do not call during acquisition
     public void ConfigureForExternalTrigger(double exposureUs = 3000.0, string triggerLine = &quot;Line1&quot;)
     {
+        //TriggerSelector=LineStart、TriggerMode=On、TriggerSource=Line1
         TryExec(&quot;AcquisitionStop&quot;);
 
         // Parent -&gt; Child (Must is exception, Optional is suppressed)
@@ -838,7 +846,7 @@
         int lineCount,
         int timeoutMsPerFrame = 200,
         bool useTransformed = false,
-        Action&lt;int, IFrame&gt; onSaveIconPerFrame = null // e.g.: (i, f) =&gt; f.Save($@&quot;C:\cap\frame_{i}&quot;)
+        out FrameList frames    
     )
     {
         if (_grabber == null) throw new InvalidOperationException(&quot;Call ConfigureForExternalTrigger() first.&quot;);
@@ -871,9 +879,10 @@
                             useTransformed: useTransformed,
                             hm: hm,
                             yWrite: ref yWrite,
-                            lineCount: lineCount,
-                            onSaveIconPerFrame: onSaveIconPerFrame
+                            lineCount: lineCount,                                
                         );
+                        var copy = frame.Copy();  //copy save
+                        localFrames.Add(copy);
                     }
                     finally
                     {
@@ -888,7 +897,7 @@
         {
             _grabber.Stop();
         }
-
+        frames = localFrames;
         return hm;
     }
 
@@ -1057,6 +1066,11 @@
             if (startedHere) _grabber.Stop();
         }
     }
+
+
+    // _p.SetEnum(&quot;TriggerSelector&quot;, &quot;FrameStart&quot;);  // or &quot;LineStart&quot;
+    // _p.SetEnum(&quot;TriggerMode&quot;, &quot;On&quot;);
+    // _p.SetEnum(&quot;TriggerSource&quot;, &quot;Software&quot;);
 
     // Example Usage
     Ruler3000Lines _ctl;
