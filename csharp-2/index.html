@@ -459,331 +459,78 @@
   <h1>C#</h1>
 
 <h2 id="c-2">C# 2<a class="headerlink" href="#c-2" title="Permanent link">&para;</a></h2>
-<p>```csharp</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
-<span class="normal">  2</span>
-<span class="normal">  3</span>
-<span class="normal">  4</span>
-<span class="normal">  5</span>
-<span class="normal">  6</span>
-<span class="normal">  7</span>
-<span class="normal">  8</span>
-<span class="normal">  9</span>
-<span class="normal"> 10</span>
-<span class="normal"> 11</span>
-<span class="normal"> 12</span>
-<span class="normal"> 13</span>
-<span class="normal"> 14</span>
-<span class="normal"> 15</span>
-<span class="normal"> 16</span>
-<span class="normal"> 17</span>
-<span class="normal"> 18</span>
-<span class="normal"> 19</span>
-<span class="normal"> 20</span>
-<span class="normal"> 21</span>
-<span class="normal"> 22</span>
-<span class="normal"> 23</span>
-<span class="normal"> 24</span>
-<span class="normal"> 25</span>
-<span class="normal"> 26</span>
-<span class="normal"> 27</span>
-<span class="normal"> 28</span>
-<span class="normal"> 29</span>
-<span class="normal"> 30</span>
-<span class="normal"> 31</span>
-<span class="normal"> 32</span>
-<span class="normal"> 33</span>
-<span class="normal"> 34</span>
-<span class="normal"> 35</span>
-<span class="normal"> 36</span>
-<span class="normal"> 37</span>
-<span class="normal"> 38</span>
-<span class="normal"> 39</span>
-<span class="normal"> 40</span>
-<span class="normal"> 41</span>
-<span class="normal"> 42</span>
-<span class="normal"> 43</span>
-<span class="normal"> 44</span>
-<span class="normal"> 45</span>
-<span class="normal"> 46</span>
-<span class="normal"> 47</span>
-<span class="normal"> 48</span>
-<span class="normal"> 49</span>
-<span class="normal"> 50</span>
-<span class="normal"> 51</span>
-<span class="normal"> 52</span>
-<span class="normal"> 53</span>
-<span class="normal"> 54</span>
-<span class="normal"> 55</span>
-<span class="normal"> 56</span>
-<span class="normal"> 57</span>
-<span class="normal"> 58</span>
-<span class="normal"> 59</span>
-<span class="normal"> 60</span>
-<span class="normal"> 61</span>
-<span class="normal"> 62</span>
-<span class="normal"> 63</span>
-<span class="normal"> 64</span>
-<span class="normal"> 65</span>
-<span class="normal"> 66</span>
-<span class="normal"> 67</span>
-<span class="normal"> 68</span>
-<span class="normal"> 69</span>
-<span class="normal"> 70</span>
-<span class="normal"> 71</span>
-<span class="normal"> 72</span>
-<span class="normal"> 73</span>
-<span class="normal"> 74</span>
-<span class="normal"> 75</span>
-<span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span>
-<span class="normal">145</span>
-<span class="normal">146</span>
-<span class="normal">147</span>
-<span class="normal">148</span>
-<span class="normal">149</span>
-<span class="normal">150</span>
-<span class="normal">151</span>
-<span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span></pre></div></td><td class="code"><div><pre><span></span><code>using System;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-
-public static class ImageUtilSafe
+<p>//Be sure to specify thread.SetApartmentState(ApartmentState.STA) before starting</p>
+<p>```csharp  </p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code>private Bitmap GetBitmap(IFrame frame, string path /* ← OK to remove if unused */)
 {
-    // Common: Create 8bpp grayscale Bitmap and set palette
-    // Generates an 8-bit grayscale Bitmap of the specified size and initializes the palette to grayscale
-    private static Bitmap CreateGray8(int w, int h)
+    Bitmap bitmap = null;
+    var range = frame.GetRange();
+    try
     {
-        var bmp = new Bitmap(w, h, PixelFormat.Format8bppIndexed);
-        var pal = bmp.Palette;
-        for (int i = 0; i &lt; 256; i++) pal.Entries[i] = Color.FromArgb(i, i, i); // Grayscale with R=G=B=i
-        bmp.Palette = pal;
-        return bmp;
-    }
+        var bs = BitmapSource.Create(
+            (int)range.GetWidth(),
+            (int)range.GetDeliveredHeight(),
+            96, 96,
+            GetWindowsPixelFormat(range.GetBitsPerPixel()),
+            null,
+            range.GetData(),
+            (int)range.GetDeliveredDataSize(),
+            (int)range.GetStride());
 
-    // Common: Linear map to 0..255 (Robust even if min == max)
-    // Normalizes value v from the range min to max into 0 to 255 and converts to byte. Avoids division by zero even if min == max
-    private static byte MapToByte(float v, float min, float max)
-    {
-        float range = Math.Max(1e-6f, max - min); // Prevent division by zero
-        int g = (int)((v - min) / range * 255f + 0.5f); // Linear transformation
-        if (g &lt; 0) g = 0; if (g &gt; 255) g = 255; // Clip out-of-range values
-        return (byte)g;
-    }
+        using (var stream = new MemoryStream())
+        {
+            var encoder = new PngBitmapEncoder();      // Supports 16-bit Gray as well
+            encoder.Frames.Add(BitmapFrame.Create(bs));
+            encoder.Save(stream);
+            stream.Position = 0;                       // ★ Rewind
 
-    // -------- float[,] → 8bpp Bitmap --------
-    /// &lt;summary&gt;
-    /// Converts a 2D float array to an 8-bit grayscale Bitmap (min/max can be specified)
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;src&quot;&gt;The float array, such as a height map&lt;/param&gt;
-    /// &lt;param name=&quot;minOverride&quot;&gt;Minimum display limit (automatically calculated if omitted)&lt;/param&gt;
-    /// &lt;param name=&quot;maxOverride&quot;&gt;Maximum display limit (automatically calculated if omitted)&lt;/param&gt;
-    /// &lt;returns&gt;The 8-bit grayscale Bitmap&lt;/returns&gt;
-    public static Bitmap FloatToBitmap(float[,] src, float? minOverride = null, float? maxOverride = null)
-    {
-        int h = src.GetLength(0), w = src.GetLength(1); // Array size
-        // Automatic min/max calculation (Scan the entire array if not specified)
-        float mn = minOverride ?? float.MaxValue, mx = maxOverride ?? float.MinValue;
-        if (!minOverride.HasValue || !maxOverride.HasValue)
-        {
-            for (int y = 0; y &lt; h; y++)
-                for (int x = 0; x &lt; w; x++)
-                {
-                    float v = src[y, x];
-                    if (!minOverride.HasValue &amp;&amp; v &lt; mn) mn = v;
-                    if (!maxOverride.HasValue &amp;&amp; v &gt; mx) mx = v;
-                }
-        }
-        var bmp = CreateGray8(w, h); // Create Bitmap
-        var bd = bmp.LockBits(new Rectangle(0, 0, w, h), ImageLockMode.WriteOnly, PixelFormat.Format8bppIndexed); // Lock pixel area
-        try
-        {
-            int stride = bd.Stride; // Bytes per row (including padding)
-            byte[] buf = new byte[stride * h]; // Working buffer
-            for (int y = 0; y &lt; h; y++)
+            using (var temp = new Bitmap(stream))
             {
-                int row = y * stride;
-                for (int x = 0; x &lt; w; x++)
-                    buf[row + x] = MapToByte(src[y, x], mn, mx); // Convert to 0-255
+                bitmap = new Bitmap(temp);             // Clone to decouple from stream&#39;s lifetime
             }
-            Marshal.Copy(buf, 0, bd.Scan0, buf.Length); // Copy buffer to Bitmap
         }
-        finally { bmp.UnlockBits(bd); } // Unlock
-        return bmp;
+        return bitmap;
     }
-
-    // -------- ushort[,] → 8bpp Bitmap --------
-    /// &lt;summary&gt;
-    /// Converts a 2D ushort array to an 8-bit grayscale Bitmap (min/max can be specified)
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;src&quot;&gt;The ushort array, such as a U16 image&lt;/param&gt;
-    /// &lt;param name=&quot;minOverride&quot;&gt;Minimum display limit (automatically calculated if omitted)&lt;/param&gt;
-    /// &lt;param name=&quot;maxOverride&quot;&gt;Maximum display limit (automatically calculated if omitted)&lt;/param&gt;
-    /// &lt;returns&gt;The 8-bit grayscale Bitmap&lt;/returns&gt;
-    public static Bitmap U16ToBitmap(ushort[,] src, ushort? minOverride = null, ushort? maxOverride = null)
+    finally
     {
-        int h = src.GetLength(0), w = src.GetLength(1); // Array size
-        int mnI = minOverride.HasValue ? minOverride.Value : int.MaxValue;
-        int mxI = maxOverride.HasValue ? maxOverride.Value : int.MinValue;
-        // Automatic min/max calculation
-        if (!minOverride.HasValue || !maxOverride.HasValue)
-        {
-            for (int y = 0; y &lt; h; y++)
-                for (int x = 0; x &lt; w; x++)
-                {
-                    int v = src[y, x];
-                    if (!minOverride.HasValue &amp;&amp; v &lt; mnI) mnI = v;
-                    if (!maxOverride.HasValue &amp;&amp; v &gt; mxI) mxI = v;
-                }
-        }
-        float mn = mnI, mx = mxI; // Convert to float
-        var bmp = CreateGray8(w, h);
-        var bd = bmp.LockBits(new Rectangle(0, 0, w, h), ImageLockMode.WriteOnly, PixelFormat.Format8bppIndexed);
-        try
-        {
-            int stride = bd.Stride;
-            byte[] buf = new byte[stride * h];
-            for (int y = 0; y &lt; h; y++)
-            {
-                int row = y * stride;
-                for (int x = 0; x &lt; w; x++)
-                    buf[row + x] = MapToByte(src[y, x], mn, mx); // Convert to 0-255
-            }
-            Marshal.Copy(buf, 0, bd.Scan0, buf.Length);
-        }
-        finally { bmp.UnlockBits(bd); }
-        return bmp;
-    }
-
-    // -------- double[,] (e.g., mm) → 8bpp Bitmap --------
-    /// &lt;summary&gt;
-    /// Converts a 2D double array (e.g., height map [mm]) to an 8-bit grayscale Bitmap (min/max can be specified)
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;src&quot;&gt;The double array (e.g., Z value [mm])&lt;/param&gt;
-    /// &lt;param name=&quot;minOverride&quot;&gt;Minimum display limit (automatically calculated if omitted)&lt;/param&gt;
-    /// &lt;param name=&quot;maxOverride&quot;&gt;Maximum display limit (automatically calculated if omitted)&lt;/param&gt;
-    /// &lt;returns&gt;The 8-bit grayscale Bitmap&lt;/returns&gt;
-    public static Bitmap DoubleToBitmap(double[,] src, double? minOverride = null, double? maxOverride = null)
-    {
-        int h = src.GetLength(0), w = src.GetLength(1); // Array size
-        double mnD = minOverride ?? double.MaxValue, mxD = maxOverride ?? double.MinValue;
-        // Automatic min/max calculation
-        if (!minOverride.HasValue || !maxOverride.HasValue)
-        {
-            for (int y = 0; y &lt; h; y++)
-                for (int x = 0; x &lt; w; x++)
-                {
-                    double v = src[y, x];
-                    if (!minOverride.HasValue &amp;&amp; v &lt; mnD) mnD = v;
-                    if (!maxOverride.HasValue &amp;&amp; v &gt; mxD) mxD = v;
-                }
-        }
-        float mn = (float)mnD, mx = (float)mxD; // Convert to float
-        var bmp = CreateGray8(w, h);
-        var bd = bmp.LockBits(new Rectangle(0, 0, w, h), ImageLockMode.WriteOnly, PixelFormat.Format8bppIndexed);
-        try
-        {
-            int stride = bd.Stride;
-            byte[] buf = new byte[stride * h];
-            for (int y = 0; y &lt; h; y++)
-            {
-                int row = y * stride;
-                for (int x = 0; x &lt; w; x++)
-                    buf[row + x] = MapToByte((float)src[y, x], mn, mx); // Convert double-&gt;float and then to 0-255
-            }
-            Marshal.Copy(buf, 0, bd.Scan0, buf.Length);
-        }
-        finally { bmp.UnlockBits(bd); }
-        return bmp;
+        frame.Release();                               // ★ Must be released
     }
 }
-
-
-// Usage example
-// float[,] hm = _ctl.CaptureLinesTiled(...);
-// var bmp = ImageUtilSafe.FloatToBitmap(hm); // Auto range
-// // var bmp = ImageUtilSafe.FloatToBitmap(hm, minOverride: 0f, maxOverride: 50f); // Fixed range
-// pictureBox1.Image = bmp;
 ```
 </code></pre></div></td></tr></table></div>
 
