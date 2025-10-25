@@ -299,29 +299,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../golang-1/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Go
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../csharp-1/" class="md-nav__link">
         
   
@@ -457,22 +434,7 @@
   <h1>C#</h1>
 
 <h2 id="c-3">C# 3<a class="headerlink" href="#c-3" title="Permanent link">&para;</a></h2>
-<p>Usage and Important Notes</p>
-<p>Channel order (AccessChannel number) is environment-dependent.</p>
-<p>First, grab just one frame and determine which is Range/Intensity based on the size and bit depth.
-(For example, Range is 16-bit, Intensity is 8-bit, etc. This also depends on the Stream Setup settings.)</p>
-<p>This code assumes 1 Grab = 1 line (height = 1px).</p>
-<p>If your setup is for a 2D image containing multiple lines in 1 Grab, tile_images is unnecessary and the image will be used as a "height map" as is.</p>
-<p>Bit Depth: If aiming for a few microns, Mono12/16 equivalent is strongly recommended (to ensure quantization fineness).</p>
-<p>Match the PixelFormat to your camera settings and save as a 16-bit TIFF.</p>
-<p>Converting Z to mm: Apply Z_mm = scale * DN + offset in a post-process (scale/offset are camera/stream setup values).
-Removing the tilt of the reference plane using plane fitting will result in tiny steps (scratches).</p>
-<p>Reason for choosing asynchronous:
-At high line rates, acquisition and post-processing (linking/saving) can be separated, making it easier to avoid missing data.
-This asynchronous version is fine to start with. If you need even higher throughput, you can gradually improve it by saving and processing in a separate thread.</p>
-<p>To switch to software trigger:
-Set TriggerMode="On", TriggerSource="Software", and execute
-SetFramegrabberParam(acq,"TriggerSoftware","execute") → GrabDataAsync(...) for each line.</p>
+<p>Usage</p>
 <p>```csharp</p>
 <div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
 <span class="normal">  2</span>
