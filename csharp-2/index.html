@@ -436,9 +436,14 @@
   <h1>C#</h1>
 
 <h2 id="c-2">C# 2<a class="headerlink" href="#c-2" title="Permanent link">&para;</a></h2>
-<p>The UI side uses a WinForms Timer, replacing it with thread-safety.</p>
-<p>Changed to System.Windows.Forms.Timer (ticks on the UI thread).</p>
-<p>When replacing a PictureBox, first save the old Image, then replace it with the new one, then dispose of the old one (to prevent GDI+ leaks and maintain drawing integrity).</p>
+<p>1.
+Bitmap Lifespan and Concurrent Access
+If a Bitmap passed to a PictureBox is replaced or Disposed in the background, or rewritten in parallel, it will fail.
+The standard practice is to clone it to create a "UI-only instance" before passing it to the UI.</p>
+<p>2.
+The UI side uses a WinForms Timer, replacing it with thread-safety.
+Changed to System.Windows.Forms.Timer (ticks on the UI thread).
+When replacing a PictureBox, first save the old Image, then replace it with the new one, then dispose of the old one (to prevent GDI+ leaks and maintain drawing integrity).</p>
 <p>```csharp  </p>
 <div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
 <span class="normal">  2</span>
