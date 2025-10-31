@@ -434,228 +434,130 @@
   <h1>C#</h1>
 
 <h2 id="c-3">C# 3<a class="headerlink" href="#c-3" title="Permanent link">&para;</a></h2>
-<p>Usage</p>
+<p>SizeMode = Zoom</p>
 <p>```csharp</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
-<span class="normal">  2</span>
-<span class="normal">  3</span>
-<span class="normal">  4</span>
-<span class="normal">  5</span>
-<span class="normal">  6</span>
-<span class="normal">  7</span>
-<span class="normal">  8</span>
-<span class="normal">  9</span>
-<span class="normal"> 10</span>
-<span class="normal"> 11</span>
-<span class="normal"> 12</span>
-<span class="normal"> 13</span>
-<span class="normal"> 14</span>
-<span class="normal"> 15</span>
-<span class="normal"> 16</span>
-<span class="normal"> 17</span>
-<span class="normal"> 18</span>
-<span class="normal"> 19</span>
-<span class="normal"> 20</span>
-<span class="normal"> 21</span>
-<span class="normal"> 22</span>
-<span class="normal"> 23</span>
-<span class="normal"> 24</span>
-<span class="normal"> 25</span>
-<span class="normal"> 26</span>
-<span class="normal"> 27</span>
-<span class="normal"> 28</span>
-<span class="normal"> 29</span>
-<span class="normal"> 30</span>
-<span class="normal"> 31</span>
-<span class="normal"> 32</span>
-<span class="normal"> 33</span>
-<span class="normal"> 34</span>
-<span class="normal"> 35</span>
-<span class="normal"> 36</span>
-<span class="normal"> 37</span>
-<span class="normal"> 38</span>
-<span class="normal"> 39</span>
-<span class="normal"> 40</span>
-<span class="normal"> 41</span>
-<span class="normal"> 42</span>
-<span class="normal"> 43</span>
-<span class="normal"> 44</span>
-<span class="normal"> 45</span>
-<span class="normal"> 46</span>
-<span class="normal"> 47</span>
-<span class="normal"> 48</span>
-<span class="normal"> 49</span>
-<span class="normal"> 50</span>
-<span class="normal"> 51</span>
-<span class="normal"> 52</span>
-<span class="normal"> 53</span>
-<span class="normal"> 54</span>
-<span class="normal"> 55</span>
-<span class="normal"> 56</span>
-<span class="normal"> 57</span>
-<span class="normal"> 58</span>
-<span class="normal"> 59</span>
-<span class="normal"> 60</span>
-<span class="normal"> 61</span>
-<span class="normal"> 62</span>
-<span class="normal"> 63</span>
-<span class="normal"> 64</span>
-<span class="normal"> 65</span>
-<span class="normal"> 66</span>
-<span class="normal"> 67</span>
-<span class="normal"> 68</span>
-<span class="normal"> 69</span>
-<span class="normal"> 70</span>
-<span class="normal"> 71</span>
-<span class="normal"> 72</span>
-<span class="normal"> 73</span>
-<span class="normal"> 74</span>
-<span class="normal"> 75</span>
-<span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span></pre></div></td><td class="code"><div><pre><span></span><code>using System;
-using HalconDotNet;
-
-class GrabRangeIntensity_AsyncStack
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span></pre></div></td><td class="code"><div><pre><span></span><code>private System.Drawing.Bitmap CreateTestBitmap24()
 {
-    static void Main()
+    int w = 320, h = 240;
+    var bmp = new System.Drawing.Bitmap(w, h, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+    var rect = new System.Drawing.Rectangle(0, 0, w, h);
+    var data = bmp.LockBits(rect, System.Drawing.Imaging.ImageLockMode.WriteOnly, bmp.PixelFormat);
+    try
     {
-        // === Adjust to your environment ===
-        const string IFace    = &quot;GigEVision2&quot;;            // e.g., &quot;GigEVision2&quot;
-        const string Device   = &quot;RULER3000_01&quot;;           // DeviceUserID or &quot;169.254.x.x&quot;
-        const int    NumLines = 100;                      // Number of lines to acquire (assumes 1 grab = 1 line)
-        const string SaveDir  = @&quot;C:\temp\ruler_async&quot;;   // Save destination
-        const string PixelFmt = &quot;Mono16&quot;;                 // 12/16bit is recommended for micron-level precision (must match the camera)
-
-        HTuple acq = null;
-        HObject[] rangeLines = new HObject[NumLines];
-        HObject[] intenLines = new HObject[NumLines];
-        HObject rangeConcat = null, intenConcat = null;
-        HObject rangeStack  = null, intenStack  = null;
-
-        try
+        int stride = data.Stride;
+        unsafe
         {
-            System.IO.Directory.CreateDirectory(SaveDir);
-
-            // 1) Open the frame grabber
-            HOperatorSet.OpenFramegrabber(
-                IFace,
-                0,0,0,0,0,0,
-                &quot;default&quot;,
-                -1, &quot;default&quot;, -1, &quot;false&quot;,
-                &quot;default&quot;,
-                Device,
-                0, -1,
-                out acq);
-
-            // 2) Enable chunks &amp; free run (can be changed to software trigger later if needed)
-            TrySet(acq, &quot;ChunkModeActive&quot;, &quot;true&quot;);  // Receive Range+Intensity as a simultaneous payload
-            TrySet(acq, &quot;PixelFormat&quot;, PixelFmt);    // Must match the camera settings
-            TrySet(acq, &quot;TriggerMode&quot;, &quot;Off&quot;);       // Start with free run
-
-            // 3) Start asynchronous acquisition
-            //    grab_data_start -&gt; grab_data_async in a loop
-            HOperatorSet.GrabDataStart(acq, -1);
-
-            // 4) Acquisition loop: just acquire data here. Concatenation and tiling will be done later.
-            for (int i = 0; i &lt; NumLines; i++)
+            byte* basePtr = (byte*)data.Scan0;
+            for (int y = 0; y &lt; h; y++)
             {
-                // -1 means &quot;wait&quot; for an indefinite period. Adjust to an appropriate value like milliseconds if needed.
-                HObject imagesTuple;    // Contains (Range, Intensity, ...)
-                HTuple  metaTuple;      // Metadata like &#39;mark&#39;. Can be ignored if not used.
-                HOperatorSet.GrabDataAsync(out imagesTuple, out metaTuple, acq, -1);
-
-                // Extract Range / Intensity from the image tuple
-                // * The channel order depends on the settings.
-                //   Typically, [1]=Range and [2]=Intensity (1-based index), but verify if needed.
-                HObject rangeImg, intenImg;
-                HOperatorSet.AccessChannel(imagesTuple, out rangeImg, 1);  // 1st channel -&gt; Range (assumed)
-                HOperatorSet.AccessChannel(imagesTuple, out intenImg, 2);  // 2nd channel -&gt; Intensity (assumed)
-
-                // This assumes 1 Grab = 1 line (height = 1px)
-                rangeLines[i] = rangeImg;
-                intenLines[i] = intenImg;
-
-                imagesTuple.Dispose(); // Release the tuple itself when no longer needed
-                // metaTuple is HTuple, so no explicit release is needed
+                byte* row = basePtr + y * stride;
+                for (int x = 0; x &lt; w; x++)
+                {
+                    byte g = (byte)(x * 255 / (w - 1)); // 横グラデ
+                    // B,G,R の順
+                    row[x * 3 + 0] = g;
+                    row[x * 3 + 1] = g;
+                    row[x * 3 + 2] = g;
+                }
             }
-
-            // 5) Concatenate -&gt; tile in one go (vertical stack: Rows=NumLines, Cols=1)
-            HOperatorSet.GenEmptyObj(out rangeConcat);
-            HOperatorSet.GenEmptyObj(out intenConcat);
-
-            for (int i = 0; i &lt; NumLines; i++)
-            {
-                HObject tmp;
-                HOperatorSet.ConcatObj(rangeConcat, rangeLines[i], out tmp);
-                rangeConcat.Dispose(); rangeConcat = tmp;
-                rangeLines[i].Dispose();
-
-                HOperatorSet.ConcatObj(intenConcat, intenLines[i], out tmp);
-                intenConcat.Dispose(); intenConcat = tmp;
-                intenLines[i].Dispose();
-            }
-
-            HOperatorSet.TileImages(rangeConcat, out rangeStack, NumLines, 1);
-            HOperatorSet.TileImages(intenConcat, out intenStack, NumLines, 1);
-
-            // 6) Save as 16bit TIFF (PNG is also possible, but TIFF is safer for preserving 16bit data)
-            string pathRange = System.IO.Path.Combine(SaveDir, &quot;range_stack_async.tiff&quot;);
-            string pathInten = System.IO.Path.Combine(SaveDir, &quot;intensity_stack_async.tiff&quot;);
-
-            HOperatorSet.WriteImage(rangeStack, &quot;tiff&quot;, 0, pathRange);
-            HOperatorSet.WriteImage(intenStack, &quot;tiff&quot;, 0, pathInten);
-
-            Console.WriteLine($&quot;saved:\n  {pathRange}\n  {pathInten}&quot;);
-        }
-        finally
-        {
-            if (rangeStack  != null) rangeStack.Dispose();
-            if (intenStack  != null) intenStack.Dispose();
-            if (rangeConcat != null) rangeConcat.Dispose();
-            if (intenConcat != null) intenConcat.Dispose();
-            if (acq         != null) HOperatorSet.CloseFramegrabber(acq);
         }
     }
+    finally { bmp.UnlockBits(data); }
+    return bmp;
+}
 
-    // Utility to suppress errors if the interface doesn&#39;t support a parameter
-    static void TrySet(HTuple acq, string name, string val)
+
+private System.Drawing.Bitmap CreateTestBitmap8()
+{
+    int w = 320, h = 240;
+    var bmp = new System.Drawing.Bitmap(w, h, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
+
+    // グレーパレット
+    var pal = bmp.Palette;
+    for (int i = 0; i &lt; 256; i++) pal.Entries[i] = System.Drawing.Color.FromArgb(i, i, i);
+    bmp.Palette = pal;
+
+    var rect = new System.Drawing.Rectangle(0, 0, w, h);
+    var data = bmp.LockBits(rect, System.Drawing.Imaging.ImageLockMode.WriteOnly, bmp.PixelFormat);
+    try
     {
-        try { HOperatorSet.SetFramegrabberParam(acq, name, val); } catch {}
+        int stride = data.Stride;
+        unsafe
+        {
+            byte* basePtr = (byte*)data.Scan0;
+            for (int y = 0; y &lt; h; y++)
+            {
+                byte* row = basePtr + y * stride;
+                for (int x = 0; x &lt; w; x++)
+                {
+                    row[x] = (byte)(x * 255 / (w - 1)); // 横グラデ
+                }
+            }
+        }
     }
+    finally { bmp.UnlockBits(data); }
+    return bmp;
 }
 </code></pre></div></td></tr></table></div>
 
