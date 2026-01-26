@@ -1,0 +1,9 @@
+/* ヘッダー全体を非表示にする */
+header.md-header {
+  display: none;
+}
+
+/* ヘッダーを消した分、コンテンツが上に詰まりすぎるのを防ぐ調整（必要に応じて） */
+.md-main__inner {
+  margin-top: 0;
+}
