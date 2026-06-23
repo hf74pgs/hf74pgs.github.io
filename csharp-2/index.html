@@ -11,6 +11,8 @@
         <link rel="canonical" href="https://www.codesnippet.blog/csharp-2/">
       
       
+        <link rel="prev" href="../csharp-1/">
+      
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -18,7 +20,7 @@
     
     
       
-        <title>Csharp 2 - Programming Guide</title>
+        <title>C# - Programming Guide</title>
       
     
     
@@ -103,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Csharp 2
+              C#
             
           </span>
         </div>
@@ -258,8 +260,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -270,11 +274,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -290,7 +294,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Guide
@@ -320,6 +324,37 @@
 
               
             
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    C#
+    
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -343,9 +378,1395 @@
 
 
 
-  <h1>Csharp 2</h1>
+  <h1>C#</h1>
 
-<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">  1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">  2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">  3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">  4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">  5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">  6</a></span>
+<span class="normal"><a href="#__codelineno-0-7">  7</a></span>
+<span class="normal"><a href="#__codelineno-0-8">  8</a></span>
+<span class="normal"><a href="#__codelineno-0-9">  9</a></span>
+<span class="normal"><a href="#__codelineno-0-10"> 10</a></span>
+<span class="normal"><a href="#__codelineno-0-11"> 11</a></span>
+<span class="normal"><a href="#__codelineno-0-12"> 12</a></span>
+<span class="normal"><a href="#__codelineno-0-13"> 13</a></span>
+<span class="normal"><a href="#__codelineno-0-14"> 14</a></span>
+<span class="normal"><a href="#__codelineno-0-15"> 15</a></span>
+<span class="normal"><a href="#__codelineno-0-16"> 16</a></span>
+<span class="normal"><a href="#__codelineno-0-17"> 17</a></span>
+<span class="normal"><a href="#__codelineno-0-18"> 18</a></span>
+<span class="normal"><a href="#__codelineno-0-19"> 19</a></span>
+<span class="normal"><a href="#__codelineno-0-20"> 20</a></span>
+<span class="normal"><a href="#__codelineno-0-21"> 21</a></span>
+<span class="normal"><a href="#__codelineno-0-22"> 22</a></span>
+<span class="normal"><a href="#__codelineno-0-23"> 23</a></span>
+<span class="normal"><a href="#__codelineno-0-24"> 24</a></span>
+<span class="normal"><a href="#__codelineno-0-25"> 25</a></span>
+<span class="normal"><a href="#__codelineno-0-26"> 26</a></span>
+<span class="normal"><a href="#__codelineno-0-27"> 27</a></span>
+<span class="normal"><a href="#__codelineno-0-28"> 28</a></span>
+<span class="normal"><a href="#__codelineno-0-29"> 29</a></span>
+<span class="normal"><a href="#__codelineno-0-30"> 30</a></span>
+<span class="normal"><a href="#__codelineno-0-31"> 31</a></span>
+<span class="normal"><a href="#__codelineno-0-32"> 32</a></span>
+<span class="normal"><a href="#__codelineno-0-33"> 33</a></span>
+<span class="normal"><a href="#__codelineno-0-34"> 34</a></span>
+<span class="normal"><a href="#__codelineno-0-35"> 35</a></span>
+<span class="normal"><a href="#__codelineno-0-36"> 36</a></span>
+<span class="normal"><a href="#__codelineno-0-37"> 37</a></span>
+<span class="normal"><a href="#__codelineno-0-38"> 38</a></span>
+<span class="normal"><a href="#__codelineno-0-39"> 39</a></span>
+<span class="normal"><a href="#__codelineno-0-40"> 40</a></span>
+<span class="normal"><a href="#__codelineno-0-41"> 41</a></span>
+<span class="normal"><a href="#__codelineno-0-42"> 42</a></span>
+<span class="normal"><a href="#__codelineno-0-43"> 43</a></span>
+<span class="normal"><a href="#__codelineno-0-44"> 44</a></span>
+<span class="normal"><a href="#__codelineno-0-45"> 45</a></span>
+<span class="normal"><a href="#__codelineno-0-46"> 46</a></span>
+<span class="normal"><a href="#__codelineno-0-47"> 47</a></span>
+<span class="normal"><a href="#__codelineno-0-48"> 48</a></span>
+<span class="normal"><a href="#__codelineno-0-49"> 49</a></span>
+<span class="normal"><a href="#__codelineno-0-50"> 50</a></span>
+<span class="normal"><a href="#__codelineno-0-51"> 51</a></span>
+<span class="normal"><a href="#__codelineno-0-52"> 52</a></span>
+<span class="normal"><a href="#__codelineno-0-53"> 53</a></span>
+<span class="normal"><a href="#__codelineno-0-54"> 54</a></span>
+<span class="normal"><a href="#__codelineno-0-55"> 55</a></span>
+<span class="normal"><a href="#__codelineno-0-56"> 56</a></span>
+<span class="normal"><a href="#__codelineno-0-57"> 57</a></span>
+<span class="normal"><a href="#__codelineno-0-58"> 58</a></span>
+<span class="normal"><a href="#__codelineno-0-59"> 59</a></span>
+<span class="normal"><a href="#__codelineno-0-60"> 60</a></span>
+<span class="normal"><a href="#__codelineno-0-61"> 61</a></span>
+<span class="normal"><a href="#__codelineno-0-62"> 62</a></span>
+<span class="normal"><a href="#__codelineno-0-63"> 63</a></span>
+<span class="normal"><a href="#__codelineno-0-64"> 64</a></span>
+<span class="normal"><a href="#__codelineno-0-65"> 65</a></span>
+<span class="normal"><a href="#__codelineno-0-66"> 66</a></span>
+<span class="normal"><a href="#__codelineno-0-67"> 67</a></span>
+<span class="normal"><a href="#__codelineno-0-68"> 68</a></span>
+<span class="normal"><a href="#__codelineno-0-69"> 69</a></span>
+<span class="normal"><a href="#__codelineno-0-70"> 70</a></span>
+<span class="normal"><a href="#__codelineno-0-71"> 71</a></span>
+<span class="normal"><a href="#__codelineno-0-72"> 72</a></span>
+<span class="normal"><a href="#__codelineno-0-73"> 73</a></span>
+<span class="normal"><a href="#__codelineno-0-74"> 74</a></span>
+<span class="normal"><a href="#__codelineno-0-75"> 75</a></span>
+<span class="normal"><a href="#__codelineno-0-76"> 76</a></span>
+<span class="normal"><a href="#__codelineno-0-77"> 77</a></span>
+<span class="normal"><a href="#__codelineno-0-78"> 78</a></span>
+<span class="normal"><a href="#__codelineno-0-79"> 79</a></span>
+<span class="normal"><a href="#__codelineno-0-80"> 80</a></span>
+<span class="normal"><a href="#__codelineno-0-81"> 81</a></span>
+<span class="normal"><a href="#__codelineno-0-82"> 82</a></span>
+<span class="normal"><a href="#__codelineno-0-83"> 83</a></span>
+<span class="normal"><a href="#__codelineno-0-84"> 84</a></span>
+<span class="normal"><a href="#__codelineno-0-85"> 85</a></span>
+<span class="normal"><a href="#__codelineno-0-86"> 86</a></span>
+<span class="normal"><a href="#__codelineno-0-87"> 87</a></span>
+<span class="normal"><a href="#__codelineno-0-88"> 88</a></span>
+<span class="normal"><a href="#__codelineno-0-89"> 89</a></span>
+<span class="normal"><a href="#__codelineno-0-90"> 90</a></span>
+<span class="normal"><a href="#__codelineno-0-91"> 91</a></span>
+<span class="normal"><a href="#__codelineno-0-92"> 92</a></span>
+<span class="normal"><a href="#__codelineno-0-93"> 93</a></span>
+<span class="normal"><a href="#__codelineno-0-94"> 94</a></span>
+<span class="normal"><a href="#__codelineno-0-95"> 95</a></span>
+<span class="normal"><a href="#__codelineno-0-96"> 96</a></span>
+<span class="normal"><a href="#__codelineno-0-97"> 97</a></span>
+<span class="normal"><a href="#__codelineno-0-98"> 98</a></span>
+<span class="normal"><a href="#__codelineno-0-99"> 99</a></span>
+<span class="normal"><a href="#__codelineno-0-100">100</a></span>
+<span class="normal"><a href="#__codelineno-0-101">101</a></span>
+<span class="normal"><a href="#__codelineno-0-102">102</a></span>
+<span class="normal"><a href="#__codelineno-0-103">103</a></span>
+<span class="normal"><a href="#__codelineno-0-104">104</a></span>
+<span class="normal"><a href="#__codelineno-0-105">105</a></span>
+<span class="normal"><a href="#__codelineno-0-106">106</a></span>
+<span class="normal"><a href="#__codelineno-0-107">107</a></span>
+<span class="normal"><a href="#__codelineno-0-108">108</a></span>
+<span class="normal"><a href="#__codelineno-0-109">109</a></span>
+<span class="normal"><a href="#__codelineno-0-110">110</a></span>
+<span class="normal"><a href="#__codelineno-0-111">111</a></span>
+<span class="normal"><a href="#__codelineno-0-112">112</a></span>
+<span class="normal"><a href="#__codelineno-0-113">113</a></span>
+<span class="normal"><a href="#__codelineno-0-114">114</a></span>
+<span class="normal"><a href="#__codelineno-0-115">115</a></span>
+<span class="normal"><a href="#__codelineno-0-116">116</a></span>
+<span class="normal"><a href="#__codelineno-0-117">117</a></span>
+<span class="normal"><a href="#__codelineno-0-118">118</a></span>
+<span class="normal"><a href="#__codelineno-0-119">119</a></span>
+<span class="normal"><a href="#__codelineno-0-120">120</a></span>
+<span class="normal"><a href="#__codelineno-0-121">121</a></span>
+<span class="normal"><a href="#__codelineno-0-122">122</a></span>
+<span class="normal"><a href="#__codelineno-0-123">123</a></span>
+<span class="normal"><a href="#__codelineno-0-124">124</a></span>
+<span class="normal"><a href="#__codelineno-0-125">125</a></span>
+<span class="normal"><a href="#__codelineno-0-126">126</a></span>
+<span class="normal"><a href="#__codelineno-0-127">127</a></span>
+<span class="normal"><a href="#__codelineno-0-128">128</a></span>
+<span class="normal"><a href="#__codelineno-0-129">129</a></span>
+<span class="normal"><a href="#__codelineno-0-130">130</a></span>
+<span class="normal"><a href="#__codelineno-0-131">131</a></span>
+<span class="normal"><a href="#__codelineno-0-132">132</a></span>
+<span class="normal"><a href="#__codelineno-0-133">133</a></span>
+<span class="normal"><a href="#__codelineno-0-134">134</a></span>
+<span class="normal"><a href="#__codelineno-0-135">135</a></span>
+<span class="normal"><a href="#__codelineno-0-136">136</a></span>
+<span class="normal"><a href="#__codelineno-0-137">137</a></span>
+<span class="normal"><a href="#__codelineno-0-138">138</a></span>
+<span class="normal"><a href="#__codelineno-0-139">139</a></span>
+<span class="normal"><a href="#__codelineno-0-140">140</a></span>
+<span class="normal"><a href="#__codelineno-0-141">141</a></span>
+<span class="normal"><a href="#__codelineno-0-142">142</a></span>
+<span class="normal"><a href="#__codelineno-0-143">143</a></span>
+<span class="normal"><a href="#__codelineno-0-144">144</a></span>
+<span class="normal"><a href="#__codelineno-0-145">145</a></span>
+<span class="normal"><a href="#__codelineno-0-146">146</a></span>
+<span class="normal"><a href="#__codelineno-0-147">147</a></span>
+<span class="normal"><a href="#__codelineno-0-148">148</a></span>
+<span class="normal"><a href="#__codelineno-0-149">149</a></span>
+<span class="normal"><a href="#__codelineno-0-150">150</a></span>
+<span class="normal"><a href="#__codelineno-0-151">151</a></span>
+<span class="normal"><a href="#__codelineno-0-152">152</a></span>
+<span class="normal"><a href="#__codelineno-0-153">153</a></span>
+<span class="normal"><a href="#__codelineno-0-154">154</a></span>
+<span class="normal"><a href="#__codelineno-0-155">155</a></span>
+<span class="normal"><a href="#__codelineno-0-156">156</a></span>
+<span class="normal"><a href="#__codelineno-0-157">157</a></span>
+<span class="normal"><a href="#__codelineno-0-158">158</a></span>
+<span class="normal"><a href="#__codelineno-0-159">159</a></span>
+<span class="normal"><a href="#__codelineno-0-160">160</a></span>
+<span class="normal"><a href="#__codelineno-0-161">161</a></span>
+<span class="normal"><a href="#__codelineno-0-162">162</a></span>
+<span class="normal"><a href="#__codelineno-0-163">163</a></span>
+<span class="normal"><a href="#__codelineno-0-164">164</a></span>
+<span class="normal"><a href="#__codelineno-0-165">165</a></span>
+<span class="normal"><a href="#__codelineno-0-166">166</a></span>
+<span class="normal"><a href="#__codelineno-0-167">167</a></span>
+<span class="normal"><a href="#__codelineno-0-168">168</a></span>
+<span class="normal"><a href="#__codelineno-0-169">169</a></span>
+<span class="normal"><a href="#__codelineno-0-170">170</a></span>
+<span class="normal"><a href="#__codelineno-0-171">171</a></span>
+<span class="normal"><a href="#__codelineno-0-172">172</a></span>
+<span class="normal"><a href="#__codelineno-0-173">173</a></span>
+<span class="normal"><a href="#__codelineno-0-174">174</a></span>
+<span class="normal"><a href="#__codelineno-0-175">175</a></span>
+<span class="normal"><a href="#__codelineno-0-176">176</a></span>
+<span class="normal"><a href="#__codelineno-0-177">177</a></span>
+<span class="normal"><a href="#__codelineno-0-178">178</a></span>
+<span class="normal"><a href="#__codelineno-0-179">179</a></span>
+<span class="normal"><a href="#__codelineno-0-180">180</a></span>
+<span class="normal"><a href="#__codelineno-0-181">181</a></span>
+<span class="normal"><a href="#__codelineno-0-182">182</a></span>
+<span class="normal"><a href="#__codelineno-0-183">183</a></span>
+<span class="normal"><a href="#__codelineno-0-184">184</a></span>
+<span class="normal"><a href="#__codelineno-0-185">185</a></span>
+<span class="normal"><a href="#__codelineno-0-186">186</a></span>
+<span class="normal"><a href="#__codelineno-0-187">187</a></span>
+<span class="normal"><a href="#__codelineno-0-188">188</a></span>
+<span class="normal"><a href="#__codelineno-0-189">189</a></span>
+<span class="normal"><a href="#__codelineno-0-190">190</a></span>
+<span class="normal"><a href="#__codelineno-0-191">191</a></span>
+<span class="normal"><a href="#__codelineno-0-192">192</a></span>
+<span class="normal"><a href="#__codelineno-0-193">193</a></span>
+<span class="normal"><a href="#__codelineno-0-194">194</a></span>
+<span class="normal"><a href="#__codelineno-0-195">195</a></span>
+<span class="normal"><a href="#__codelineno-0-196">196</a></span>
+<span class="normal"><a href="#__codelineno-0-197">197</a></span>
+<span class="normal"><a href="#__codelineno-0-198">198</a></span>
+<span class="normal"><a href="#__codelineno-0-199">199</a></span>
+<span class="normal"><a href="#__codelineno-0-200">200</a></span>
+<span class="normal"><a href="#__codelineno-0-201">201</a></span>
+<span class="normal"><a href="#__codelineno-0-202">202</a></span>
+<span class="normal"><a href="#__codelineno-0-203">203</a></span>
+<span class="normal"><a href="#__codelineno-0-204">204</a></span>
+<span class="normal"><a href="#__codelineno-0-205">205</a></span>
+<span class="normal"><a href="#__codelineno-0-206">206</a></span>
+<span class="normal"><a href="#__codelineno-0-207">207</a></span>
+<span class="normal"><a href="#__codelineno-0-208">208</a></span>
+<span class="normal"><a href="#__codelineno-0-209">209</a></span>
+<span class="normal"><a href="#__codelineno-0-210">210</a></span>
+<span class="normal"><a href="#__codelineno-0-211">211</a></span>
+<span class="normal"><a href="#__codelineno-0-212">212</a></span>
+<span class="normal"><a href="#__codelineno-0-213">213</a></span>
+<span class="normal"><a href="#__codelineno-0-214">214</a></span>
+<span class="normal"><a href="#__codelineno-0-215">215</a></span>
+<span class="normal"><a href="#__codelineno-0-216">216</a></span>
+<span class="normal"><a href="#__codelineno-0-217">217</a></span>
+<span class="normal"><a href="#__codelineno-0-218">218</a></span>
+<span class="normal"><a href="#__codelineno-0-219">219</a></span>
+<span class="normal"><a href="#__codelineno-0-220">220</a></span>
+<span class="normal"><a href="#__codelineno-0-221">221</a></span>
+<span class="normal"><a href="#__codelineno-0-222">222</a></span>
+<span class="normal"><a href="#__codelineno-0-223">223</a></span>
+<span class="normal"><a href="#__codelineno-0-224">224</a></span>
+<span class="normal"><a href="#__codelineno-0-225">225</a></span>
+<span class="normal"><a href="#__codelineno-0-226">226</a></span>
+<span class="normal"><a href="#__codelineno-0-227">227</a></span>
+<span class="normal"><a href="#__codelineno-0-228">228</a></span>
+<span class="normal"><a href="#__codelineno-0-229">229</a></span>
+<span class="normal"><a href="#__codelineno-0-230">230</a></span>
+<span class="normal"><a href="#__codelineno-0-231">231</a></span>
+<span class="normal"><a href="#__codelineno-0-232">232</a></span>
+<span class="normal"><a href="#__codelineno-0-233">233</a></span>
+<span class="normal"><a href="#__codelineno-0-234">234</a></span>
+<span class="normal"><a href="#__codelineno-0-235">235</a></span>
+<span class="normal"><a href="#__codelineno-0-236">236</a></span>
+<span class="normal"><a href="#__codelineno-0-237">237</a></span>
+<span class="normal"><a href="#__codelineno-0-238">238</a></span>
+<span class="normal"><a href="#__codelineno-0-239">239</a></span>
+<span class="normal"><a href="#__codelineno-0-240">240</a></span>
+<span class="normal"><a href="#__codelineno-0-241">241</a></span>
+<span class="normal"><a href="#__codelineno-0-242">242</a></span>
+<span class="normal"><a href="#__codelineno-0-243">243</a></span>
+<span class="normal"><a href="#__codelineno-0-244">244</a></span>
+<span class="normal"><a href="#__codelineno-0-245">245</a></span>
+<span class="normal"><a href="#__codelineno-0-246">246</a></span>
+<span class="normal"><a href="#__codelineno-0-247">247</a></span>
+<span class="normal"><a href="#__codelineno-0-248">248</a></span>
+<span class="normal"><a href="#__codelineno-0-249">249</a></span>
+<span class="normal"><a href="#__codelineno-0-250">250</a></span>
+<span class="normal"><a href="#__codelineno-0-251">251</a></span>
+<span class="normal"><a href="#__codelineno-0-252">252</a></span>
+<span class="normal"><a href="#__codelineno-0-253">253</a></span>
+<span class="normal"><a href="#__codelineno-0-254">254</a></span>
+<span class="normal"><a href="#__codelineno-0-255">255</a></span>
+<span class="normal"><a href="#__codelineno-0-256">256</a></span>
+<span class="normal"><a href="#__codelineno-0-257">257</a></span>
+<span class="normal"><a href="#__codelineno-0-258">258</a></span>
+<span class="normal"><a href="#__codelineno-0-259">259</a></span>
+<span class="normal"><a href="#__codelineno-0-260">260</a></span>
+<span class="normal"><a href="#__codelineno-0-261">261</a></span>
+<span class="normal"><a href="#__codelineno-0-262">262</a></span>
+<span class="normal"><a href="#__codelineno-0-263">263</a></span>
+<span class="normal"><a href="#__codelineno-0-264">264</a></span>
+<span class="normal"><a href="#__codelineno-0-265">265</a></span>
+<span class="normal"><a href="#__codelineno-0-266">266</a></span>
+<span class="normal"><a href="#__codelineno-0-267">267</a></span>
+<span class="normal"><a href="#__codelineno-0-268">268</a></span>
+<span class="normal"><a href="#__codelineno-0-269">269</a></span>
+<span class="normal"><a href="#__codelineno-0-270">270</a></span>
+<span class="normal"><a href="#__codelineno-0-271">271</a></span>
+<span class="normal"><a href="#__codelineno-0-272">272</a></span>
+<span class="normal"><a href="#__codelineno-0-273">273</a></span>
+<span class="normal"><a href="#__codelineno-0-274">274</a></span>
+<span class="normal"><a href="#__codelineno-0-275">275</a></span>
+<span class="normal"><a href="#__codelineno-0-276">276</a></span>
+<span class="normal"><a href="#__codelineno-0-277">277</a></span>
+<span class="normal"><a href="#__codelineno-0-278">278</a></span>
+<span class="normal"><a href="#__codelineno-0-279">279</a></span>
+<span class="normal"><a href="#__codelineno-0-280">280</a></span>
+<span class="normal"><a href="#__codelineno-0-281">281</a></span>
+<span class="normal"><a href="#__codelineno-0-282">282</a></span>
+<span class="normal"><a href="#__codelineno-0-283">283</a></span>
+<span class="normal"><a href="#__codelineno-0-284">284</a></span>
+<span class="normal"><a href="#__codelineno-0-285">285</a></span>
+<span class="normal"><a href="#__codelineno-0-286">286</a></span>
+<span class="normal"><a href="#__codelineno-0-287">287</a></span>
+<span class="normal"><a href="#__codelineno-0-288">288</a></span>
+<span class="normal"><a href="#__codelineno-0-289">289</a></span>
+<span class="normal"><a href="#__codelineno-0-290">290</a></span>
+<span class="normal"><a href="#__codelineno-0-291">291</a></span>
+<span class="normal"><a href="#__codelineno-0-292">292</a></span>
+<span class="normal"><a href="#__codelineno-0-293">293</a></span>
+<span class="normal"><a href="#__codelineno-0-294">294</a></span>
+<span class="normal"><a href="#__codelineno-0-295">295</a></span>
+<span class="normal"><a href="#__codelineno-0-296">296</a></span>
+<span class="normal"><a href="#__codelineno-0-297">297</a></span>
+<span class="normal"><a href="#__codelineno-0-298">298</a></span>
+<span class="normal"><a href="#__codelineno-0-299">299</a></span>
+<span class="normal"><a href="#__codelineno-0-300">300</a></span>
+<span class="normal"><a href="#__codelineno-0-301">301</a></span>
+<span class="normal"><a href="#__codelineno-0-302">302</a></span>
+<span class="normal"><a href="#__codelineno-0-303">303</a></span>
+<span class="normal"><a href="#__codelineno-0-304">304</a></span>
+<span class="normal"><a href="#__codelineno-0-305">305</a></span>
+<span class="normal"><a href="#__codelineno-0-306">306</a></span>
+<span class="normal"><a href="#__codelineno-0-307">307</a></span>
+<span class="normal"><a href="#__codelineno-0-308">308</a></span>
+<span class="normal"><a href="#__codelineno-0-309">309</a></span>
+<span class="normal"><a href="#__codelineno-0-310">310</a></span>
+<span class="normal"><a href="#__codelineno-0-311">311</a></span>
+<span class="normal"><a href="#__codelineno-0-312">312</a></span>
+<span class="normal"><a href="#__codelineno-0-313">313</a></span>
+<span class="normal"><a href="#__codelineno-0-314">314</a></span>
+<span class="normal"><a href="#__codelineno-0-315">315</a></span>
+<span class="normal"><a href="#__codelineno-0-316">316</a></span>
+<span class="normal"><a href="#__codelineno-0-317">317</a></span>
+<span class="normal"><a href="#__codelineno-0-318">318</a></span>
+<span class="normal"><a href="#__codelineno-0-319">319</a></span>
+<span class="normal"><a href="#__codelineno-0-320">320</a></span>
+<span class="normal"><a href="#__codelineno-0-321">321</a></span>
+<span class="normal"><a href="#__codelineno-0-322">322</a></span>
+<span class="normal"><a href="#__codelineno-0-323">323</a></span>
+<span class="normal"><a href="#__codelineno-0-324">324</a></span>
+<span class="normal"><a href="#__codelineno-0-325">325</a></span>
+<span class="normal"><a href="#__codelineno-0-326">326</a></span>
+<span class="normal"><a href="#__codelineno-0-327">327</a></span>
+<span class="normal"><a href="#__codelineno-0-328">328</a></span>
+<span class="normal"><a href="#__codelineno-0-329">329</a></span>
+<span class="normal"><a href="#__codelineno-0-330">330</a></span>
+<span class="normal"><a href="#__codelineno-0-331">331</a></span>
+<span class="normal"><a href="#__codelineno-0-332">332</a></span>
+<span class="normal"><a href="#__codelineno-0-333">333</a></span>
+<span class="normal"><a href="#__codelineno-0-334">334</a></span>
+<span class="normal"><a href="#__codelineno-0-335">335</a></span>
+<span class="normal"><a href="#__codelineno-0-336">336</a></span>
+<span class="normal"><a href="#__codelineno-0-337">337</a></span>
+<span class="normal"><a href="#__codelineno-0-338">338</a></span>
+<span class="normal"><a href="#__codelineno-0-339">339</a></span>
+<span class="normal"><a href="#__codelineno-0-340">340</a></span>
+<span class="normal"><a href="#__codelineno-0-341">341</a></span>
+<span class="normal"><a href="#__codelineno-0-342">342</a></span>
+<span class="normal"><a href="#__codelineno-0-343">343</a></span>
+<span class="normal"><a href="#__codelineno-0-344">344</a></span>
+<span class="normal"><a href="#__codelineno-0-345">345</a></span>
+<span class="normal"><a href="#__codelineno-0-346">346</a></span>
+<span class="normal"><a href="#__codelineno-0-347">347</a></span>
+<span class="normal"><a href="#__codelineno-0-348">348</a></span>
+<span class="normal"><a href="#__codelineno-0-349">349</a></span>
+<span class="normal"><a href="#__codelineno-0-350">350</a></span>
+<span class="normal"><a href="#__codelineno-0-351">351</a></span>
+<span class="normal"><a href="#__codelineno-0-352">352</a></span>
+<span class="normal"><a href="#__codelineno-0-353">353</a></span>
+<span class="normal"><a href="#__codelineno-0-354">354</a></span>
+<span class="normal"><a href="#__codelineno-0-355">355</a></span>
+<span class="normal"><a href="#__codelineno-0-356">356</a></span>
+<span class="normal"><a href="#__codelineno-0-357">357</a></span>
+<span class="normal"><a href="#__codelineno-0-358">358</a></span>
+<span class="normal"><a href="#__codelineno-0-359">359</a></span>
+<span class="normal"><a href="#__codelineno-0-360">360</a></span>
+<span class="normal"><a href="#__codelineno-0-361">361</a></span>
+<span class="normal"><a href="#__codelineno-0-362">362</a></span>
+<span class="normal"><a href="#__codelineno-0-363">363</a></span>
+<span class="normal"><a href="#__codelineno-0-364">364</a></span>
+<span class="normal"><a href="#__codelineno-0-365">365</a></span>
+<span class="normal"><a href="#__codelineno-0-366">366</a></span>
+<span class="normal"><a href="#__codelineno-0-367">367</a></span>
+<span class="normal"><a href="#__codelineno-0-368">368</a></span>
+<span class="normal"><a href="#__codelineno-0-369">369</a></span>
+<span class="normal"><a href="#__codelineno-0-370">370</a></span>
+<span class="normal"><a href="#__codelineno-0-371">371</a></span>
+<span class="normal"><a href="#__codelineno-0-372">372</a></span>
+<span class="normal"><a href="#__codelineno-0-373">373</a></span>
+<span class="normal"><a href="#__codelineno-0-374">374</a></span>
+<span class="normal"><a href="#__codelineno-0-375">375</a></span>
+<span class="normal"><a href="#__codelineno-0-376">376</a></span>
+<span class="normal"><a href="#__codelineno-0-377">377</a></span>
+<span class="normal"><a href="#__codelineno-0-378">378</a></span>
+<span class="normal"><a href="#__codelineno-0-379">379</a></span>
+<span class="normal"><a href="#__codelineno-0-380">380</a></span>
+<span class="normal"><a href="#__codelineno-0-381">381</a></span>
+<span class="normal"><a href="#__codelineno-0-382">382</a></span>
+<span class="normal"><a href="#__codelineno-0-383">383</a></span>
+<span class="normal"><a href="#__codelineno-0-384">384</a></span>
+<span class="normal"><a href="#__codelineno-0-385">385</a></span>
+<span class="normal"><a href="#__codelineno-0-386">386</a></span>
+<span class="normal"><a href="#__codelineno-0-387">387</a></span>
+<span class="normal"><a href="#__codelineno-0-388">388</a></span>
+<span class="normal"><a href="#__codelineno-0-389">389</a></span>
+<span class="normal"><a href="#__codelineno-0-390">390</a></span>
+<span class="normal"><a href="#__codelineno-0-391">391</a></span>
+<span class="normal"><a href="#__codelineno-0-392">392</a></span>
+<span class="normal"><a href="#__codelineno-0-393">393</a></span>
+<span class="normal"><a href="#__codelineno-0-394">394</a></span>
+<span class="normal"><a href="#__codelineno-0-395">395</a></span>
+<span class="normal"><a href="#__codelineno-0-396">396</a></span>
+<span class="normal"><a href="#__codelineno-0-397">397</a></span>
+<span class="normal"><a href="#__codelineno-0-398">398</a></span>
+<span class="normal"><a href="#__codelineno-0-399">399</a></span>
+<span class="normal"><a href="#__codelineno-0-400">400</a></span>
+<span class="normal"><a href="#__codelineno-0-401">401</a></span>
+<span class="normal"><a href="#__codelineno-0-402">402</a></span>
+<span class="normal"><a href="#__codelineno-0-403">403</a></span>
+<span class="normal"><a href="#__codelineno-0-404">404</a></span>
+<span class="normal"><a href="#__codelineno-0-405">405</a></span>
+<span class="normal"><a href="#__codelineno-0-406">406</a></span>
+<span class="normal"><a href="#__codelineno-0-407">407</a></span>
+<span class="normal"><a href="#__codelineno-0-408">408</a></span>
+<span class="normal"><a href="#__codelineno-0-409">409</a></span>
+<span class="normal"><a href="#__codelineno-0-410">410</a></span>
+<span class="normal"><a href="#__codelineno-0-411">411</a></span>
+<span class="normal"><a href="#__codelineno-0-412">412</a></span>
+<span class="normal"><a href="#__codelineno-0-413">413</a></span>
+<span class="normal"><a href="#__codelineno-0-414">414</a></span>
+<span class="normal"><a href="#__codelineno-0-415">415</a></span>
+<span class="normal"><a href="#__codelineno-0-416">416</a></span>
+<span class="normal"><a href="#__codelineno-0-417">417</a></span>
+<span class="normal"><a href="#__codelineno-0-418">418</a></span>
+<span class="normal"><a href="#__codelineno-0-419">419</a></span>
+<span class="normal"><a href="#__codelineno-0-420">420</a></span>
+<span class="normal"><a href="#__codelineno-0-421">421</a></span>
+<span class="normal"><a href="#__codelineno-0-422">422</a></span>
+<span class="normal"><a href="#__codelineno-0-423">423</a></span>
+<span class="normal"><a href="#__codelineno-0-424">424</a></span>
+<span class="normal"><a href="#__codelineno-0-425">425</a></span>
+<span class="normal"><a href="#__codelineno-0-426">426</a></span>
+<span class="normal"><a href="#__codelineno-0-427">427</a></span>
+<span class="normal"><a href="#__codelineno-0-428">428</a></span>
+<span class="normal"><a href="#__codelineno-0-429">429</a></span>
+<span class="normal"><a href="#__codelineno-0-430">430</a></span>
+<span class="normal"><a href="#__codelineno-0-431">431</a></span>
+<span class="normal"><a href="#__codelineno-0-432">432</a></span>
+<span class="normal"><a href="#__codelineno-0-433">433</a></span>
+<span class="normal"><a href="#__codelineno-0-434">434</a></span>
+<span class="normal"><a href="#__codelineno-0-435">435</a></span>
+<span class="normal"><a href="#__codelineno-0-436">436</a></span>
+<span class="normal"><a href="#__codelineno-0-437">437</a></span>
+<span class="normal"><a href="#__codelineno-0-438">438</a></span>
+<span class="normal"><a href="#__codelineno-0-439">439</a></span>
+<span class="normal"><a href="#__codelineno-0-440">440</a></span>
+<span class="normal"><a href="#__codelineno-0-441">441</a></span>
+<span class="normal"><a href="#__codelineno-0-442">442</a></span>
+<span class="normal"><a href="#__codelineno-0-443">443</a></span>
+<span class="normal"><a href="#__codelineno-0-444">444</a></span>
+<span class="normal"><a href="#__codelineno-0-445">445</a></span>
+<span class="normal"><a href="#__codelineno-0-446">446</a></span>
+<span class="normal"><a href="#__codelineno-0-447">447</a></span>
+<span class="normal"><a href="#__codelineno-0-448">448</a></span>
+<span class="normal"><a href="#__codelineno-0-449">449</a></span>
+<span class="normal"><a href="#__codelineno-0-450">450</a></span>
+<span class="normal"><a href="#__codelineno-0-451">451</a></span>
+<span class="normal"><a href="#__codelineno-0-452">452</a></span>
+<span class="normal"><a href="#__codelineno-0-453">453</a></span>
+<span class="normal"><a href="#__codelineno-0-454">454</a></span>
+<span class="normal"><a href="#__codelineno-0-455">455</a></span>
+<span class="normal"><a href="#__codelineno-0-456">456</a></span>
+<span class="normal"><a href="#__codelineno-0-457">457</a></span>
+<span class="normal"><a href="#__codelineno-0-458">458</a></span>
+<span class="normal"><a href="#__codelineno-0-459">459</a></span>
+<span class="normal"><a href="#__codelineno-0-460">460</a></span>
+<span class="normal"><a href="#__codelineno-0-461">461</a></span>
+<span class="normal"><a href="#__codelineno-0-462">462</a></span>
+<span class="normal"><a href="#__codelineno-0-463">463</a></span>
+<span class="normal"><a href="#__codelineno-0-464">464</a></span>
+<span class="normal"><a href="#__codelineno-0-465">465</a></span>
+<span class="normal"><a href="#__codelineno-0-466">466</a></span>
+<span class="normal"><a href="#__codelineno-0-467">467</a></span>
+<span class="normal"><a href="#__codelineno-0-468">468</a></span>
+<span class="normal"><a href="#__codelineno-0-469">469</a></span>
+<span class="normal"><a href="#__codelineno-0-470">470</a></span>
+<span class="normal"><a href="#__codelineno-0-471">471</a></span>
+<span class="normal"><a href="#__codelineno-0-472">472</a></span>
+<span class="normal"><a href="#__codelineno-0-473">473</a></span>
+<span class="normal"><a href="#__codelineno-0-474">474</a></span>
+<span class="normal"><a href="#__codelineno-0-475">475</a></span>
+<span class="normal"><a href="#__codelineno-0-476">476</a></span>
+<span class="normal"><a href="#__codelineno-0-477">477</a></span>
+<span class="normal"><a href="#__codelineno-0-478">478</a></span>
+<span class="normal"><a href="#__codelineno-0-479">479</a></span>
+<span class="normal"><a href="#__codelineno-0-480">480</a></span>
+<span class="normal"><a href="#__codelineno-0-481">481</a></span>
+<span class="normal"><a href="#__codelineno-0-482">482</a></span>
+<span class="normal"><a href="#__codelineno-0-483">483</a></span>
+<span class="normal"><a href="#__codelineno-0-484">484</a></span>
+<span class="normal"><a href="#__codelineno-0-485">485</a></span>
+<span class="normal"><a href="#__codelineno-0-486">486</a></span>
+<span class="normal"><a href="#__codelineno-0-487">487</a></span>
+<span class="normal"><a href="#__codelineno-0-488">488</a></span>
+<span class="normal"><a href="#__codelineno-0-489">489</a></span>
+<span class="normal"><a href="#__codelineno-0-490">490</a></span>
+<span class="normal"><a href="#__codelineno-0-491">491</a></span>
+<span class="normal"><a href="#__codelineno-0-492">492</a></span>
+<span class="normal"><a href="#__codelineno-0-493">493</a></span>
+<span class="normal"><a href="#__codelineno-0-494">494</a></span>
+<span class="normal"><a href="#__codelineno-0-495">495</a></span>
+<span class="normal"><a href="#__codelineno-0-496">496</a></span>
+<span class="normal"><a href="#__codelineno-0-497">497</a></span>
+<span class="normal"><a href="#__codelineno-0-498">498</a></span>
+<span class="normal"><a href="#__codelineno-0-499">499</a></span>
+<span class="normal"><a href="#__codelineno-0-500">500</a></span>
+<span class="normal"><a href="#__codelineno-0-501">501</a></span>
+<span class="normal"><a href="#__codelineno-0-502">502</a></span>
+<span class="normal"><a href="#__codelineno-0-503">503</a></span>
+<span class="normal"><a href="#__codelineno-0-504">504</a></span>
+<span class="normal"><a href="#__codelineno-0-505">505</a></span>
+<span class="normal"><a href="#__codelineno-0-506">506</a></span>
+<span class="normal"><a href="#__codelineno-0-507">507</a></span>
+<span class="normal"><a href="#__codelineno-0-508">508</a></span>
+<span class="normal"><a href="#__codelineno-0-509">509</a></span>
+<span class="normal"><a href="#__codelineno-0-510">510</a></span>
+<span class="normal"><a href="#__codelineno-0-511">511</a></span>
+<span class="normal"><a href="#__codelineno-0-512">512</a></span>
+<span class="normal"><a href="#__codelineno-0-513">513</a></span>
+<span class="normal"><a href="#__codelineno-0-514">514</a></span>
+<span class="normal"><a href="#__codelineno-0-515">515</a></span>
+<span class="normal"><a href="#__codelineno-0-516">516</a></span>
+<span class="normal"><a href="#__codelineno-0-517">517</a></span>
+<span class="normal"><a href="#__codelineno-0-518">518</a></span>
+<span class="normal"><a href="#__codelineno-0-519">519</a></span>
+<span class="normal"><a href="#__codelineno-0-520">520</a></span>
+<span class="normal"><a href="#__codelineno-0-521">521</a></span>
+<span class="normal"><a href="#__codelineno-0-522">522</a></span>
+<span class="normal"><a href="#__codelineno-0-523">523</a></span>
+<span class="normal"><a href="#__codelineno-0-524">524</a></span>
+<span class="normal"><a href="#__codelineno-0-525">525</a></span>
+<span class="normal"><a href="#__codelineno-0-526">526</a></span>
+<span class="normal"><a href="#__codelineno-0-527">527</a></span>
+<span class="normal"><a href="#__codelineno-0-528">528</a></span>
+<span class="normal"><a href="#__codelineno-0-529">529</a></span>
+<span class="normal"><a href="#__codelineno-0-530">530</a></span>
+<span class="normal"><a href="#__codelineno-0-531">531</a></span>
+<span class="normal"><a href="#__codelineno-0-532">532</a></span>
+<span class="normal"><a href="#__codelineno-0-533">533</a></span>
+<span class="normal"><a href="#__codelineno-0-534">534</a></span>
+<span class="normal"><a href="#__codelineno-0-535">535</a></span>
+<span class="normal"><a href="#__codelineno-0-536">536</a></span>
+<span class="normal"><a href="#__codelineno-0-537">537</a></span>
+<span class="normal"><a href="#__codelineno-0-538">538</a></span>
+<span class="normal"><a href="#__codelineno-0-539">539</a></span>
+<span class="normal"><a href="#__codelineno-0-540">540</a></span>
+<span class="normal"><a href="#__codelineno-0-541">541</a></span>
+<span class="normal"><a href="#__codelineno-0-542">542</a></span>
+<span class="normal"><a href="#__codelineno-0-543">543</a></span>
+<span class="normal"><a href="#__codelineno-0-544">544</a></span>
+<span class="normal"><a href="#__codelineno-0-545">545</a></span>
+<span class="normal"><a href="#__codelineno-0-546">546</a></span>
+<span class="normal"><a href="#__codelineno-0-547">547</a></span>
+<span class="normal"><a href="#__codelineno-0-548">548</a></span>
+<span class="normal"><a href="#__codelineno-0-549">549</a></span>
+<span class="normal"><a href="#__codelineno-0-550">550</a></span>
+<span class="normal"><a href="#__codelineno-0-551">551</a></span>
+<span class="normal"><a href="#__codelineno-0-552">552</a></span>
+<span class="normal"><a href="#__codelineno-0-553">553</a></span>
+<span class="normal"><a href="#__codelineno-0-554">554</a></span>
+<span class="normal"><a href="#__codelineno-0-555">555</a></span>
+<span class="normal"><a href="#__codelineno-0-556">556</a></span>
+<span class="normal"><a href="#__codelineno-0-557">557</a></span>
+<span class="normal"><a href="#__codelineno-0-558">558</a></span>
+<span class="normal"><a href="#__codelineno-0-559">559</a></span>
+<span class="normal"><a href="#__codelineno-0-560">560</a></span>
+<span class="normal"><a href="#__codelineno-0-561">561</a></span>
+<span class="normal"><a href="#__codelineno-0-562">562</a></span>
+<span class="normal"><a href="#__codelineno-0-563">563</a></span>
+<span class="normal"><a href="#__codelineno-0-564">564</a></span>
+<span class="normal"><a href="#__codelineno-0-565">565</a></span>
+<span class="normal"><a href="#__codelineno-0-566">566</a></span>
+<span class="normal"><a href="#__codelineno-0-567">567</a></span>
+<span class="normal"><a href="#__codelineno-0-568">568</a></span>
+<span class="normal"><a href="#__codelineno-0-569">569</a></span>
+<span class="normal"><a href="#__codelineno-0-570">570</a></span>
+<span class="normal"><a href="#__codelineno-0-571">571</a></span>
+<span class="normal"><a href="#__codelineno-0-572">572</a></span>
+<span class="normal"><a href="#__codelineno-0-573">573</a></span>
+<span class="normal"><a href="#__codelineno-0-574">574</a></span>
+<span class="normal"><a href="#__codelineno-0-575">575</a></span>
+<span class="normal"><a href="#__codelineno-0-576">576</a></span>
+<span class="normal"><a href="#__codelineno-0-577">577</a></span>
+<span class="normal"><a href="#__codelineno-0-578">578</a></span>
+<span class="normal"><a href="#__codelineno-0-579">579</a></span>
+<span class="normal"><a href="#__codelineno-0-580">580</a></span>
+<span class="normal"><a href="#__codelineno-0-581">581</a></span>
+<span class="normal"><a href="#__codelineno-0-582">582</a></span>
+<span class="normal"><a href="#__codelineno-0-583">583</a></span>
+<span class="normal"><a href="#__codelineno-0-584">584</a></span>
+<span class="normal"><a href="#__codelineno-0-585">585</a></span>
+<span class="normal"><a href="#__codelineno-0-586">586</a></span>
+<span class="normal"><a href="#__codelineno-0-587">587</a></span>
+<span class="normal"><a href="#__codelineno-0-588">588</a></span>
+<span class="normal"><a href="#__codelineno-0-589">589</a></span>
+<span class="normal"><a href="#__codelineno-0-590">590</a></span>
+<span class="normal"><a href="#__codelineno-0-591">591</a></span>
+<span class="normal"><a href="#__codelineno-0-592">592</a></span>
+<span class="normal"><a href="#__codelineno-0-593">593</a></span>
+<span class="normal"><a href="#__codelineno-0-594">594</a></span>
+<span class="normal"><a href="#__codelineno-0-595">595</a></span>
+<span class="normal"><a href="#__codelineno-0-596">596</a></span>
+<span class="normal"><a href="#__codelineno-0-597">597</a></span>
+<span class="normal"><a href="#__codelineno-0-598">598</a></span>
+<span class="normal"><a href="#__codelineno-0-599">599</a></span>
+<span class="normal"><a href="#__codelineno-0-600">600</a></span>
+<span class="normal"><a href="#__codelineno-0-601">601</a></span>
+<span class="normal"><a href="#__codelineno-0-602">602</a></span>
+<span class="normal"><a href="#__codelineno-0-603">603</a></span>
+<span class="normal"><a href="#__codelineno-0-604">604</a></span>
+<span class="normal"><a href="#__codelineno-0-605">605</a></span>
+<span class="normal"><a href="#__codelineno-0-606">606</a></span>
+<span class="normal"><a href="#__codelineno-0-607">607</a></span>
+<span class="normal"><a href="#__codelineno-0-608">608</a></span>
+<span class="normal"><a href="#__codelineno-0-609">609</a></span>
+<span class="normal"><a href="#__codelineno-0-610">610</a></span>
+<span class="normal"><a href="#__codelineno-0-611">611</a></span>
+<span class="normal"><a href="#__codelineno-0-612">612</a></span>
+<span class="normal"><a href="#__codelineno-0-613">613</a></span>
+<span class="normal"><a href="#__codelineno-0-614">614</a></span>
+<span class="normal"><a href="#__codelineno-0-615">615</a></span>
+<span class="normal"><a href="#__codelineno-0-616">616</a></span>
+<span class="normal"><a href="#__codelineno-0-617">617</a></span>
+<span class="normal"><a href="#__codelineno-0-618">618</a></span>
+<span class="normal"><a href="#__codelineno-0-619">619</a></span>
+<span class="normal"><a href="#__codelineno-0-620">620</a></span>
+<span class="normal"><a href="#__codelineno-0-621">621</a></span>
+<span class="normal"><a href="#__codelineno-0-622">622</a></span>
+<span class="normal"><a href="#__codelineno-0-623">623</a></span>
+<span class="normal"><a href="#__codelineno-0-624">624</a></span>
+<span class="normal"><a href="#__codelineno-0-625">625</a></span>
+<span class="normal"><a href="#__codelineno-0-626">626</a></span>
+<span class="normal"><a href="#__codelineno-0-627">627</a></span>
+<span class="normal"><a href="#__codelineno-0-628">628</a></span>
+<span class="normal"><a href="#__codelineno-0-629">629</a></span>
+<span class="normal"><a href="#__codelineno-0-630">630</a></span>
+<span class="normal"><a href="#__codelineno-0-631">631</a></span>
+<span class="normal"><a href="#__codelineno-0-632">632</a></span>
+<span class="normal"><a href="#__codelineno-0-633">633</a></span>
+<span class="normal"><a href="#__codelineno-0-634">634</a></span>
+<span class="normal"><a href="#__codelineno-0-635">635</a></span>
+<span class="normal"><a href="#__codelineno-0-636">636</a></span>
+<span class="normal"><a href="#__codelineno-0-637">637</a></span>
+<span class="normal"><a href="#__codelineno-0-638">638</a></span>
+<span class="normal"><a href="#__codelineno-0-639">639</a></span>
+<span class="normal"><a href="#__codelineno-0-640">640</a></span>
+<span class="normal"><a href="#__codelineno-0-641">641</a></span>
+<span class="normal"><a href="#__codelineno-0-642">642</a></span>
+<span class="normal"><a href="#__codelineno-0-643">643</a></span>
+<span class="normal"><a href="#__codelineno-0-644">644</a></span>
+<span class="normal"><a href="#__codelineno-0-645">645</a></span>
+<span class="normal"><a href="#__codelineno-0-646">646</a></span>
+<span class="normal"><a href="#__codelineno-0-647">647</a></span>
+<span class="normal"><a href="#__codelineno-0-648">648</a></span>
+<span class="normal"><a href="#__codelineno-0-649">649</a></span>
+<span class="normal"><a href="#__codelineno-0-650">650</a></span>
+<span class="normal"><a href="#__codelineno-0-651">651</a></span>
+<span class="normal"><a href="#__codelineno-0-652">652</a></span>
+<span class="normal"><a href="#__codelineno-0-653">653</a></span>
+<span class="normal"><a href="#__codelineno-0-654">654</a></span>
+<span class="normal"><a href="#__codelineno-0-655">655</a></span>
+<span class="normal"><a href="#__codelineno-0-656">656</a></span>
+<span class="normal"><a href="#__codelineno-0-657">657</a></span>
+<span class="normal"><a href="#__codelineno-0-658">658</a></span>
+<span class="normal"><a href="#__codelineno-0-659">659</a></span>
+<span class="normal"><a href="#__codelineno-0-660">660</a></span>
+<span class="normal"><a href="#__codelineno-0-661">661</a></span>
+<span class="normal"><a href="#__codelineno-0-662">662</a></span>
+<span class="normal"><a href="#__codelineno-0-663">663</a></span>
+<span class="normal"><a href="#__codelineno-0-664">664</a></span>
+<span class="normal"><a href="#__codelineno-0-665">665</a></span>
+<span class="normal"><a href="#__codelineno-0-666">666</a></span>
+<span class="normal"><a href="#__codelineno-0-667">667</a></span>
+<span class="normal"><a href="#__codelineno-0-668">668</a></span>
+<span class="normal"><a href="#__codelineno-0-669">669</a></span>
+<span class="normal"><a href="#__codelineno-0-670">670</a></span>
+<span class="normal"><a href="#__codelineno-0-671">671</a></span>
+<span class="normal"><a href="#__codelineno-0-672">672</a></span>
+<span class="normal"><a href="#__codelineno-0-673">673</a></span>
+<span class="normal"><a href="#__codelineno-0-674">674</a></span>
+<span class="normal"><a href="#__codelineno-0-675">675</a></span>
+<span class="normal"><a href="#__codelineno-0-676">676</a></span>
+<span class="normal"><a href="#__codelineno-0-677">677</a></span>
+<span class="normal"><a href="#__codelineno-0-678">678</a></span>
+<span class="normal"><a href="#__codelineno-0-679">679</a></span>
+<span class="normal"><a href="#__codelineno-0-680">680</a></span>
+<span class="normal"><a href="#__codelineno-0-681">681</a></span>
+<span class="normal"><a href="#__codelineno-0-682">682</a></span>
+<span class="normal"><a href="#__codelineno-0-683">683</a></span>
+<span class="normal"><a href="#__codelineno-0-684">684</a></span>
+<span class="normal"><a href="#__codelineno-0-685">685</a></span>
+<span class="normal"><a href="#__codelineno-0-686">686</a></span>
+<span class="normal"><a href="#__codelineno-0-687">687</a></span>
+<span class="normal"><a href="#__codelineno-0-688">688</a></span>
+<span class="normal"><a href="#__codelineno-0-689">689</a></span>
+<span class="normal"><a href="#__codelineno-0-690">690</a></span>
+<span class="normal"><a href="#__codelineno-0-691">691</a></span>
+<span class="normal"><a href="#__codelineno-0-692">692</a></span>
+<span class="normal"><a href="#__codelineno-0-693">693</a></span>
+<span class="normal"><a href="#__codelineno-0-694">694</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>    「Pythonのlist[dict]をC#へそのまま渡したい」という意味なら、通信よりもPythonをC#プロセス内に組み込む方式が候補です。NuGetで最も近いのはPython.NETですが、画像は最終的にC#側の型へ変換する必要があります。
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>    思考時間: 5s
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>    あります。今回の目的に最も近いNuGetは Python.NET（pythonnet） です。
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>    Python.NETを使うと、Pythonを別プロセスとして起動して通信するのではなく、C#プロセス内にCPythonを組み込み、Python関数を直接呼び出せます。Pythonのlistやdict、PIL Image、NumPy配列もPyObjectとして受け取れます。
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>    ただし重要なのは、
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>    Pythonのlist[dict]が、自動的にList&lt;Dictionary&lt;string, object&gt;&gt;へ完全変換されるわけではない
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>    という点です。
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>    基本的には次のように受け取ります。
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a>    Python list     → PyObject / PyList
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a>    Python dict     → PyObject / PyDict
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a>    numpy.ndarray   → PyObject
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a>    PIL Image       → PyObject
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a>    その後、C#側で各要素を読み出し、画像をbyte[]やBitmapへ変換します。
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a>    1. Python.NETを使った構成
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a>    これまでのHTTP方式は次でした。
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a>
+<a id="__codelineno-0-28" name="__codelineno-0-28"></a>    C#プロセス
+<a id="__codelineno-0-29" name="__codelineno-0-29"></a>        ↓ HTTP
+<a id="__codelineno-0-30" name="__codelineno-0-30"></a>    Pythonプロセス
+<a id="__codelineno-0-31" name="__codelineno-0-31"></a>
+<a id="__codelineno-0-32" name="__codelineno-0-32"></a>    Python.NETでは次になります。
+<a id="__codelineno-0-33" name="__codelineno-0-33"></a>
+<a id="__codelineno-0-34" name="__codelineno-0-34"></a>    C# WinFormsプロセス
+<a id="__codelineno-0-35" name="__codelineno-0-35"></a>        ├─ HALCON
+<a id="__codelineno-0-36" name="__codelineno-0-36"></a>        └─ 組み込まれたPythonランタイム
+<a id="__codelineno-0-37" name="__codelineno-0-37"></a>            ├─ NumPy
+<a id="__codelineno-0-38" name="__codelineno-0-38"></a>            ├─ PIL
+<a id="__codelineno-0-39" name="__codelineno-0-39"></a>            ├─ ONNX Runtime
+<a id="__codelineno-0-40" name="__codelineno-0-40"></a>            └─ Python画像処理関数
+<a id="__codelineno-0-41" name="__codelineno-0-41"></a>
+<a id="__codelineno-0-42" name="__codelineno-0-42"></a>    C#からPython関数を直接呼びます。
+<a id="__codelineno-0-43" name="__codelineno-0-43"></a>
+<a id="__codelineno-0-44" name="__codelineno-0-44"></a>    C#
+<a id="__codelineno-0-45" name="__codelineno-0-45"></a>    ↓
+<a id="__codelineno-0-46" name="__codelineno-0-46"></a>    module.process_image(...)
+<a id="__codelineno-0-47" name="__codelineno-0-47"></a>    ↓
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a>    Python list[dict]
+<a id="__codelineno-0-49" name="__codelineno-0-49"></a>    ↓
+<a id="__codelineno-0-50" name="__codelineno-0-50"></a>    C#がlistとdictを読み出す
+<a id="__codelineno-0-51" name="__codelineno-0-51"></a>
+<a id="__codelineno-0-52" name="__codelineno-0-52"></a>    つまり、HTTPサーバー、ポート、ZIPレスポンスなどは不要です。
+<a id="__codelineno-0-53" name="__codelineno-0-53"></a>
+<a id="__codelineno-0-54" name="__codelineno-0-54"></a>    2. NuGetパッケージ
+<a id="__codelineno-0-55" name="__codelineno-0-55"></a>
+<a id="__codelineno-0-56" name="__codelineno-0-56"></a>    NuGetでは現在、pythonnetパッケージが提供されています。
+<a id="__codelineno-0-57" name="__codelineno-0-57"></a>
+<a id="__codelineno-0-58" name="__codelineno-0-58"></a>    Visual Studioのパッケージマネージャーコンソールなら、例えば次です。
+<a id="__codelineno-0-59" name="__codelineno-0-59"></a>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a>    Install-Package pythonnet
+<a id="__codelineno-0-61" name="__codelineno-0-61"></a>
+<a id="__codelineno-0-62" name="__codelineno-0-62"></a>    またはプロジェクトフォルダーで、
+<a id="__codelineno-0-63" name="__codelineno-0-63"></a>
+<a id="__codelineno-0-64" name="__codelineno-0-64"></a>    dotnet add package pythonnet
+<a id="__codelineno-0-65" name="__codelineno-0-65"></a>
+<a id="__codelineno-0-66" name="__codelineno-0-66"></a>    ただし、Python本体やNumPy、Pillow、ONNX Runtimeまで、すべてNuGetだけで自動的に揃うとは限りません。
+<a id="__codelineno-0-67" name="__codelineno-0-67"></a>
+<a id="__codelineno-0-68" name="__codelineno-0-68"></a>    基本的には次が必要です。
+<a id="__codelineno-0-69" name="__codelineno-0-69"></a>
+<a id="__codelineno-0-70" name="__codelineno-0-70"></a>    C#側
+<a id="__codelineno-0-71" name="__codelineno-0-71"></a>    - pythonnet NuGet
+<a id="__codelineno-0-72" name="__codelineno-0-72"></a>
+<a id="__codelineno-0-73" name="__codelineno-0-73"></a>    PC上
+<a id="__codelineno-0-74" name="__codelineno-0-74"></a>    - 対応するCPython
+<a id="__codelineno-0-75" name="__codelineno-0-75"></a>    - numpy
+<a id="__codelineno-0-76" name="__codelineno-0-76"></a>    - pillow
+<a id="__codelineno-0-77" name="__codelineno-0-77"></a>    - onnxruntime
+<a id="__codelineno-0-78" name="__codelineno-0-78"></a>    - Python担当者のモジュール
+<a id="__codelineno-0-79" name="__codelineno-0-79"></a>
+<a id="__codelineno-0-80" name="__codelineno-0-80"></a>    Python自体もアプリへ同梱したい場合はPython.Includedという選択肢もありますが、Python環境とネイティブライブラリの配布管理が増えるため、最初は通常のPython仮想環境を指定する方が分かりやすいです。
+<a id="__codelineno-0-81" name="__codelineno-0-81"></a>
+<a id="__codelineno-0-82" name="__codelineno-0-82"></a>    3. Python側の関数例
+<a id="__codelineno-0-83" name="__codelineno-0-83"></a>
+<a id="__codelineno-0-84" name="__codelineno-0-84"></a>    Python担当者の出力が次の形式だとします。
+<a id="__codelineno-0-85" name="__codelineno-0-85"></a>
+<a id="__codelineno-0-86" name="__codelineno-0-86"></a>    output = [
+<a id="__codelineno-0-87" name="__codelineno-0-87"></a>        {
+<a id="__codelineno-0-88" name="__codelineno-0-88"></a>            &quot;image&quot;: image_array,
+<a id="__codelineno-0-89" name="__codelineno-0-89"></a>            &quot;class_name&quot;: class_name,
+<a id="__codelineno-0-90" name="__codelineno-0-90"></a>            &quot;score&quot;: score
+<a id="__codelineno-0-91" name="__codelineno-0-91"></a>        }
+<a id="__codelineno-0-92" name="__codelineno-0-92"></a>    ]
+<a id="__codelineno-0-93" name="__codelineno-0-93"></a>
+<a id="__codelineno-0-94" name="__codelineno-0-94"></a>    例としてimage_processor.pyを作ります。
+<a id="__codelineno-0-95" name="__codelineno-0-95"></a>
+<a id="__codelineno-0-96" name="__codelineno-0-96"></a>    import numpy as np
+<a id="__codelineno-0-97" name="__codelineno-0-97"></a>    from PIL import Image
+<a id="__codelineno-0-98" name="__codelineno-0-98"></a>
+<a id="__codelineno-0-99" name="__codelineno-0-99"></a>
+<a id="__codelineno-0-100" name="__codelineno-0-100"></a>    def process_image(input_image: np.ndarray) -&gt; list[dict]:
+<a id="__codelineno-0-101" name="__codelineno-0-101"></a>        &quot;&quot;&quot;
+<a id="__codelineno-0-102" name="__codelineno-0-102"></a>        input_image:
+<a id="__codelineno-0-103" name="__codelineno-0-103"></a>            C#から渡されたNumPy配列
+<a id="__codelineno-0-104" name="__codelineno-0-104"></a>            shape = (height, width, 3)
+<a id="__codelineno-0-105" name="__codelineno-0-105"></a>            dtype = uint8
+<a id="__codelineno-0-106" name="__codelineno-0-106"></a>
+<a id="__codelineno-0-107" name="__codelineno-0-107"></a>        return:
+<a id="__codelineno-0-108" name="__codelineno-0-108"></a>            加工画像、分類名、スコアを持つdictのlist
+<a id="__codelineno-0-109" name="__codelineno-0-109"></a>        &quot;&quot;&quot;
+<a id="__codelineno-0-110" name="__codelineno-0-110"></a>
+<a id="__codelineno-0-111" name="__codelineno-0-111"></a>        height, width, channels = input_image.shape
+<a id="__codelineno-0-112" name="__codelineno-0-112"></a>
+<a id="__codelineno-0-113" name="__codelineno-0-113"></a>        half_width = width // 2
+<a id="__codelineno-0-114" name="__codelineno-0-114"></a>        half_height = height // 2
+<a id="__codelineno-0-115" name="__codelineno-0-115"></a>
+<a id="__codelineno-0-116" name="__codelineno-0-116"></a>        regions = [
+<a id="__codelineno-0-117" name="__codelineno-0-117"></a>            input_image[0:half_height, 0:half_width],
+<a id="__codelineno-0-118" name="__codelineno-0-118"></a>            input_image[0:half_height, half_width:width],
+<a id="__codelineno-0-119" name="__codelineno-0-119"></a>            input_image[half_height:height, 0:half_width],
+<a id="__codelineno-0-120" name="__codelineno-0-120"></a>            input_image[half_height:height, half_width:width],
+<a id="__codelineno-0-121" name="__codelineno-0-121"></a>        ]
+<a id="__codelineno-0-122" name="__codelineno-0-122"></a>
+<a id="__codelineno-0-123" name="__codelineno-0-123"></a>        output = []
+<a id="__codelineno-0-124" name="__codelineno-0-124"></a>
+<a id="__codelineno-0-125" name="__codelineno-0-125"></a>        for index, region in enumerate(regions):
+<a id="__codelineno-0-126" name="__codelineno-0-126"></a>            processed = np.ascontiguousarray(region)
+<a id="__codelineno-0-127" name="__codelineno-0-127"></a>
+<a id="__codelineno-0-128" name="__codelineno-0-128"></a>            # 実際にはONNX推論結果を設定する
+<a id="__codelineno-0-129" name="__codelineno-0-129"></a>            class_name = &quot;OK&quot; if index % 2 == 0 else &quot;NG&quot;
+<a id="__codelineno-0-130" name="__codelineno-0-130"></a>            score = 0.95 - index * 0.01
+<a id="__codelineno-0-131" name="__codelineno-0-131"></a>
+<a id="__codelineno-0-132" name="__codelineno-0-132"></a>            output.append(
+<a id="__codelineno-0-133" name="__codelineno-0-133"></a>                {
+<a id="__codelineno-0-134" name="__codelineno-0-134"></a>                    &quot;image&quot;: processed,
+<a id="__codelineno-0-135" name="__codelineno-0-135"></a>                    &quot;class_name&quot;: class_name,
+<a id="__codelineno-0-136" name="__codelineno-0-136"></a>                    &quot;score&quot;: float(score),
+<a id="__codelineno-0-137" name="__codelineno-0-137"></a>                    &quot;region_index&quot;: index,
+<a id="__codelineno-0-138" name="__codelineno-0-138"></a>                }
+<a id="__codelineno-0-139" name="__codelineno-0-139"></a>            )
+<a id="__codelineno-0-140" name="__codelineno-0-140"></a>
+<a id="__codelineno-0-141" name="__codelineno-0-141"></a>        return output
+<a id="__codelineno-0-142" name="__codelineno-0-142"></a>
+<a id="__codelineno-0-143" name="__codelineno-0-143"></a>    この場合、画像はPNGへ変換せず、Python内部のnumpy.ndarrayのまま返せます。
+<a id="__codelineno-0-144" name="__codelineno-0-144"></a>
+<a id="__codelineno-0-145" name="__codelineno-0-145"></a>    ただしC#側で最終的に表示・保存するには、NumPy配列から画素データを取り出す必要があります。
+<a id="__codelineno-0-146" name="__codelineno-0-146"></a>
+<a id="__codelineno-0-147" name="__codelineno-0-147"></a>    4. C#からPythonを初期化する
+<a id="__codelineno-0-148" name="__codelineno-0-148"></a>
+<a id="__codelineno-0-149" name="__codelineno-0-149"></a>    以下は概念的な初期化例です。
+<a id="__codelineno-0-150" name="__codelineno-0-150"></a>
+<a id="__codelineno-0-151" name="__codelineno-0-151"></a>    using Python.Runtime;
+<a id="__codelineno-0-152" name="__codelineno-0-152"></a>
+<a id="__codelineno-0-153" name="__codelineno-0-153"></a>    public sealed class PythonRuntimeManager : IDisposable
+<a id="__codelineno-0-154" name="__codelineno-0-154"></a>    {
+<a id="__codelineno-0-155" name="__codelineno-0-155"></a>        private bool _initialized;
+<a id="__codelineno-0-156" name="__codelineno-0-156"></a>
+<a id="__codelineno-0-157" name="__codelineno-0-157"></a>        public void Initialize()
+<a id="__codelineno-0-158" name="__codelineno-0-158"></a>        {
+<a id="__codelineno-0-159" name="__codelineno-0-159"></a>            if (_initialized)
+<a id="__codelineno-0-160" name="__codelineno-0-160"></a>            {
+<a id="__codelineno-0-161" name="__codelineno-0-161"></a>                return;
+<a id="__codelineno-0-162" name="__codelineno-0-162"></a>            }
+<a id="__codelineno-0-163" name="__codelineno-0-163"></a>
+<a id="__codelineno-0-164" name="__codelineno-0-164"></a>            string pythonHome =
+<a id="__codelineno-0-165" name="__codelineno-0-165"></a>                @&quot;C:\PythonImageServer\.venv&quot;;
+<a id="__codelineno-0-166" name="__codelineno-0-166"></a>
+<a id="__codelineno-0-167" name="__codelineno-0-167"></a>            string pythonDll =
+<a id="__codelineno-0-168" name="__codelineno-0-168"></a>                @&quot;C:\Users\User\AppData\Local\Programs\Python\Python311\python311.dll&quot;;
+<a id="__codelineno-0-169" name="__codelineno-0-169"></a>
+<a id="__codelineno-0-170" name="__codelineno-0-170"></a>            Runtime.PythonDLL = pythonDll;
+<a id="__codelineno-0-171" name="__codelineno-0-171"></a>
+<a id="__codelineno-0-172" name="__codelineno-0-172"></a>            PythonEngine.PythonHome = pythonHome;
+<a id="__codelineno-0-173" name="__codelineno-0-173"></a>
+<a id="__codelineno-0-174" name="__codelineno-0-174"></a>            PythonEngine.PythonPath = string.Join(
+<a id="__codelineno-0-175" name="__codelineno-0-175"></a>                Path.PathSeparator,
+<a id="__codelineno-0-176" name="__codelineno-0-176"></a>                new[]
+<a id="__codelineno-0-177" name="__codelineno-0-177"></a>                {
+<a id="__codelineno-0-178" name="__codelineno-0-178"></a>                    Path.Combine(pythonHome, &quot;Lib&quot;),
+<a id="__codelineno-0-179" name="__codelineno-0-179"></a>                    Path.Combine(pythonHome, &quot;Lib&quot;, &quot;site-packages&quot;),
+<a id="__codelineno-0-180" name="__codelineno-0-180"></a>                    @&quot;C:\PythonImageServer&quot;
+<a id="__codelineno-0-181" name="__codelineno-0-181"></a>                });
+<a id="__codelineno-0-182" name="__codelineno-0-182"></a>
+<a id="__codelineno-0-183" name="__codelineno-0-183"></a>            PythonEngine.Initialize();
+<a id="__codelineno-0-184" name="__codelineno-0-184"></a>
+<a id="__codelineno-0-185" name="__codelineno-0-185"></a>            /*
+<a id="__codelineno-0-186" name="__codelineno-0-186"></a>            * 別スレッドからPythonを呼び出す可能性がある場合に必要。
+<a id="__codelineno-0-187" name="__codelineno-0-187"></a>            */
+<a id="__codelineno-0-188" name="__codelineno-0-188"></a>            PythonEngine.BeginAllowThreads();
+<a id="__codelineno-0-189" name="__codelineno-0-189"></a>
+<a id="__codelineno-0-190" name="__codelineno-0-190"></a>            _initialized = true;
+<a id="__codelineno-0-191" name="__codelineno-0-191"></a>        }
+<a id="__codelineno-0-192" name="__codelineno-0-192"></a>
+<a id="__codelineno-0-193" name="__codelineno-0-193"></a>        public void Dispose()
+<a id="__codelineno-0-194" name="__codelineno-0-194"></a>        {
+<a id="__codelineno-0-195" name="__codelineno-0-195"></a>            if (!_initialized)
+<a id="__codelineno-0-196" name="__codelineno-0-196"></a>            {
+<a id="__codelineno-0-197" name="__codelineno-0-197"></a>                return;
+<a id="__codelineno-0-198" name="__codelineno-0-198"></a>            }
+<a id="__codelineno-0-199" name="__codelineno-0-199"></a>
+<a id="__codelineno-0-200" name="__codelineno-0-200"></a>            PythonEngine.Shutdown();
+<a id="__codelineno-0-201" name="__codelineno-0-201"></a>            _initialized = false;
+<a id="__codelineno-0-202" name="__codelineno-0-202"></a>        }
+<a id="__codelineno-0-203" name="__codelineno-0-203"></a>    }
+<a id="__codelineno-0-204" name="__codelineno-0-204"></a>
+<a id="__codelineno-0-205" name="__codelineno-0-205"></a>    ただし、仮想環境の構成によってPythonHomeやPythonPathの指定方法は変わります。
+<a id="__codelineno-0-206" name="__codelineno-0-206"></a>
+<a id="__codelineno-0-207" name="__codelineno-0-207"></a>    特に次を合わせる必要があります。
+<a id="__codelineno-0-208" name="__codelineno-0-208"></a>
+<a id="__codelineno-0-209" name="__codelineno-0-209"></a>    C#アプリが64bitならPythonも64bit
+<a id="__codelineno-0-210" name="__codelineno-0-210"></a>    Python.NETが対応するPythonバージョン
+<a id="__codelineno-0-211" name="__codelineno-0-211"></a>    python311.dllなどの場所
+<a id="__codelineno-0-212" name="__codelineno-0-212"></a>    NumPyやONNX Runtimeが入っているsite-packages
+<a id="__codelineno-0-213" name="__codelineno-0-213"></a>    Pythonモジュールの場所
+<a id="__codelineno-0-214" name="__codelineno-0-214"></a>    5. PythonのlistとdictをC#から読む
+<a id="__codelineno-0-215" name="__codelineno-0-215"></a>
+<a id="__codelineno-0-216" name="__codelineno-0-216"></a>    Python関数を呼び、戻り値を読む基本例です。
+<a id="__codelineno-0-217" name="__codelineno-0-217"></a>
+<a id="__codelineno-0-218" name="__codelineno-0-218"></a>    using Python.Runtime;
+<a id="__codelineno-0-219" name="__codelineno-0-219"></a>
+<a id="__codelineno-0-220" name="__codelineno-0-220"></a>    public sealed class PythonClassificationResult
+<a id="__codelineno-0-221" name="__codelineno-0-221"></a>    {
+<a id="__codelineno-0-222" name="__codelineno-0-222"></a>        public required int RegionIndex { get; init; }
+<a id="__codelineno-0-223" name="__codelineno-0-223"></a>
+<a id="__codelineno-0-224" name="__codelineno-0-224"></a>        public required string ClassName { get; init; }
+<a id="__codelineno-0-225" name="__codelineno-0-225"></a>
+<a id="__codelineno-0-226" name="__codelineno-0-226"></a>        public required double Score { get; init; }
+<a id="__codelineno-0-227" name="__codelineno-0-227"></a>
+<a id="__codelineno-0-228" name="__codelineno-0-228"></a>        public required byte[] PixelBytes { get; init; }
+<a id="__codelineno-0-229" name="__codelineno-0-229"></a>
+<a id="__codelineno-0-230" name="__codelineno-0-230"></a>        public required int Width { get; init; }
+<a id="__codelineno-0-231" name="__codelineno-0-231"></a>
+<a id="__codelineno-0-232" name="__codelineno-0-232"></a>        public required int Height { get; init; }
+<a id="__codelineno-0-233" name="__codelineno-0-233"></a>
+<a id="__codelineno-0-234" name="__codelineno-0-234"></a>        public required int Channels { get; init; }
+<a id="__codelineno-0-235" name="__codelineno-0-235"></a>    }
+<a id="__codelineno-0-236" name="__codelineno-0-236"></a>
+<a id="__codelineno-0-237" name="__codelineno-0-237"></a>    呼び出し部分です。
+<a id="__codelineno-0-238" name="__codelineno-0-238"></a>
+<a id="__codelineno-0-239" name="__codelineno-0-239"></a>    public static List&lt;PythonClassificationResult&gt; CallPython()
+<a id="__codelineno-0-240" name="__codelineno-0-240"></a>    {
+<a id="__codelineno-0-241" name="__codelineno-0-241"></a>        var results = new List&lt;PythonClassificationResult&gt;();
+<a id="__codelineno-0-242" name="__codelineno-0-242"></a>
+<a id="__codelineno-0-243" name="__codelineno-0-243"></a>        using (Py.GIL())
+<a id="__codelineno-0-244" name="__codelineno-0-244"></a>        {
+<a id="__codelineno-0-245" name="__codelineno-0-245"></a>            dynamic module = Py.Import(&quot;image_processor&quot;);
+<a id="__codelineno-0-246" name="__codelineno-0-246"></a>
+<a id="__codelineno-0-247" name="__codelineno-0-247"></a>            /*
+<a id="__codelineno-0-248" name="__codelineno-0-248"></a>            * ここでは説明簡略化のため、
+<a id="__codelineno-0-249" name="__codelineno-0-249"></a>            * Python側でテスト画像を作る関数があると仮定。
+<a id="__codelineno-0-250" name="__codelineno-0-250"></a>            */
+<a id="__codelineno-0-251" name="__codelineno-0-251"></a>            using PyObject outputObject =
+<a id="__codelineno-0-252" name="__codelineno-0-252"></a>                module.create_test_results();
+<a id="__codelineno-0-253" name="__codelineno-0-253"></a>
+<a id="__codelineno-0-254" name="__codelineno-0-254"></a>            using var outputList = new PyList(outputObject);
+<a id="__codelineno-0-255" name="__codelineno-0-255"></a>
+<a id="__codelineno-0-256" name="__codelineno-0-256"></a>            int resultCount = outputList.Length();
+<a id="__codelineno-0-257" name="__codelineno-0-257"></a>
+<a id="__codelineno-0-258" name="__codelineno-0-258"></a>            for (int index = 0; index &lt; resultCount; index++)
+<a id="__codelineno-0-259" name="__codelineno-0-259"></a>            {
+<a id="__codelineno-0-260" name="__codelineno-0-260"></a>                using PyObject itemObject = outputList[index];
+<a id="__codelineno-0-261" name="__codelineno-0-261"></a>                using var itemDict = new PyDict(itemObject);
+<a id="__codelineno-0-262" name="__codelineno-0-262"></a>
+<a id="__codelineno-0-263" name="__codelineno-0-263"></a>                using PyObject classNameObject =
+<a id="__codelineno-0-264" name="__codelineno-0-264"></a>                    itemDict.GetItem(&quot;class_name&quot;.ToPython());
+<a id="__codelineno-0-265" name="__codelineno-0-265"></a>
+<a id="__codelineno-0-266" name="__codelineno-0-266"></a>                using PyObject scoreObject =
+<a id="__codelineno-0-267" name="__codelineno-0-267"></a>                    itemDict.GetItem(&quot;score&quot;.ToPython());
+<a id="__codelineno-0-268" name="__codelineno-0-268"></a>
+<a id="__codelineno-0-269" name="__codelineno-0-269"></a>                using PyObject regionIndexObject =
+<a id="__codelineno-0-270" name="__codelineno-0-270"></a>                    itemDict.GetItem(&quot;region_index&quot;.ToPython());
+<a id="__codelineno-0-271" name="__codelineno-0-271"></a>
+<a id="__codelineno-0-272" name="__codelineno-0-272"></a>                using PyObject imageObject =
+<a id="__codelineno-0-273" name="__codelineno-0-273"></a>                    itemDict.GetItem(&quot;image&quot;.ToPython());
+<a id="__codelineno-0-274" name="__codelineno-0-274"></a>
+<a id="__codelineno-0-275" name="__codelineno-0-275"></a>                string className =
+<a id="__codelineno-0-276" name="__codelineno-0-276"></a>                    classNameObject.As&lt;string&gt;();
+<a id="__codelineno-0-277" name="__codelineno-0-277"></a>
+<a id="__codelineno-0-278" name="__codelineno-0-278"></a>                double score =
+<a id="__codelineno-0-279" name="__codelineno-0-279"></a>                    scoreObject.As&lt;double&gt;();
+<a id="__codelineno-0-280" name="__codelineno-0-280"></a>
+<a id="__codelineno-0-281" name="__codelineno-0-281"></a>                int regionIndex =
+<a id="__codelineno-0-282" name="__codelineno-0-282"></a>                    regionIndexObject.As&lt;int&gt;();
+<a id="__codelineno-0-283" name="__codelineno-0-283"></a>
+<a id="__codelineno-0-284" name="__codelineno-0-284"></a>                PythonClassificationResult result =
+<a id="__codelineno-0-285" name="__codelineno-0-285"></a>                    ConvertNumpyImage(
+<a id="__codelineno-0-286" name="__codelineno-0-286"></a>                        imageObject,
+<a id="__codelineno-0-287" name="__codelineno-0-287"></a>                        regionIndex,
+<a id="__codelineno-0-288" name="__codelineno-0-288"></a>                        className,
+<a id="__codelineno-0-289" name="__codelineno-0-289"></a>                        score);
+<a id="__codelineno-0-290" name="__codelineno-0-290"></a>
+<a id="__codelineno-0-291" name="__codelineno-0-291"></a>                results.Add(result);
+<a id="__codelineno-0-292" name="__codelineno-0-292"></a>            }
+<a id="__codelineno-0-293" name="__codelineno-0-293"></a>        }
+<a id="__codelineno-0-294" name="__codelineno-0-294"></a>
+<a id="__codelineno-0-295" name="__codelineno-0-295"></a>        return results;
+<a id="__codelineno-0-296" name="__codelineno-0-296"></a>    }
+<a id="__codelineno-0-297" name="__codelineno-0-297"></a>
+<a id="__codelineno-0-298" name="__codelineno-0-298"></a>    実際のPython.NET APIではバージョンによって細かなメソッド名や変換方法に差が出る可能性がありますが、基本構造は、
+<a id="__codelineno-0-299" name="__codelineno-0-299"></a>
+<a id="__codelineno-0-300" name="__codelineno-0-300"></a>    Py.GIL()
+<a id="__codelineno-0-301" name="__codelineno-0-301"></a>    ↓
+<a id="__codelineno-0-302" name="__codelineno-0-302"></a>    Py.Import()
+<a id="__codelineno-0-303" name="__codelineno-0-303"></a>    ↓
+<a id="__codelineno-0-304" name="__codelineno-0-304"></a>    Python関数を呼ぶ
+<a id="__codelineno-0-305" name="__codelineno-0-305"></a>    ↓
+<a id="__codelineno-0-306" name="__codelineno-0-306"></a>    PyListとして読む
+<a id="__codelineno-0-307" name="__codelineno-0-307"></a>    ↓
+<a id="__codelineno-0-308" name="__codelineno-0-308"></a>    各要素をPyDictとして読む
+<a id="__codelineno-0-309" name="__codelineno-0-309"></a>    ↓
+<a id="__codelineno-0-310" name="__codelineno-0-310"></a>    dictからimage/class_name/scoreを取得
+<a id="__codelineno-0-311" name="__codelineno-0-311"></a>
+<a id="__codelineno-0-312" name="__codelineno-0-312"></a>    です。
+<a id="__codelineno-0-313" name="__codelineno-0-313"></a>
+<a id="__codelineno-0-314" name="__codelineno-0-314"></a>    6. NumPy配列をC#で取り出す方法
+<a id="__codelineno-0-315" name="__codelineno-0-315"></a>
+<a id="__codelineno-0-316" name="__codelineno-0-316"></a>    Python.NETだけでもNumPyの属性を読み出せます。
+<a id="__codelineno-0-317" name="__codelineno-0-317"></a>
+<a id="__codelineno-0-318" name="__codelineno-0-318"></a>    例えばPython側のimageが、
+<a id="__codelineno-0-319" name="__codelineno-0-319"></a>
+<a id="__codelineno-0-320" name="__codelineno-0-320"></a>    shape = (480, 640, 3)
+<a id="__codelineno-0-321" name="__codelineno-0-321"></a>    dtype = uint8
+<a id="__codelineno-0-322" name="__codelineno-0-322"></a>
+<a id="__codelineno-0-323" name="__codelineno-0-323"></a>    だとします。
+<a id="__codelineno-0-324" name="__codelineno-0-324"></a>
+<a id="__codelineno-0-325" name="__codelineno-0-325"></a>    最も理解しやすい方法は、Python側でNumPy配列をbytesへ変換して返す方法です。
+<a id="__codelineno-0-326" name="__codelineno-0-326"></a>
+<a id="__codelineno-0-327" name="__codelineno-0-327"></a>    Python側のdictを次のようにします。
+<a id="__codelineno-0-328" name="__codelineno-0-328"></a>
+<a id="__codelineno-0-329" name="__codelineno-0-329"></a>    output.append(
+<a id="__codelineno-0-330" name="__codelineno-0-330"></a>        {
+<a id="__codelineno-0-331" name="__codelineno-0-331"></a>            &quot;image_bytes&quot;: processed.tobytes(),
+<a id="__codelineno-0-332" name="__codelineno-0-332"></a>            &quot;width&quot;: int(processed.shape[1]),
+<a id="__codelineno-0-333" name="__codelineno-0-333"></a>            &quot;height&quot;: int(processed.shape[0]),
+<a id="__codelineno-0-334" name="__codelineno-0-334"></a>            &quot;channels&quot;: int(processed.shape[2]),
+<a id="__codelineno-0-335" name="__codelineno-0-335"></a>            &quot;dtype&quot;: str(processed.dtype),
+<a id="__codelineno-0-336" name="__codelineno-0-336"></a>            &quot;class_name&quot;: class_name,
+<a id="__codelineno-0-337" name="__codelineno-0-337"></a>            &quot;score&quot;: float(score),
+<a id="__codelineno-0-338" name="__codelineno-0-338"></a>            &quot;region_index&quot;: index,
+<a id="__codelineno-0-339" name="__codelineno-0-339"></a>        }
+<a id="__codelineno-0-340" name="__codelineno-0-340"></a>    )
+<a id="__codelineno-0-341" name="__codelineno-0-341"></a>
+<a id="__codelineno-0-342" name="__codelineno-0-342"></a>    Python.NETを使っていても、これはPNG変換ではありません。
+<a id="__codelineno-0-343" name="__codelineno-0-343"></a>
+<a id="__codelineno-0-344" name="__codelineno-0-344"></a>    NumPy ndarray
+<a id="__codelineno-0-345" name="__codelineno-0-345"></a>    ↓
+<a id="__codelineno-0-346" name="__codelineno-0-346"></a>    非圧縮の画素バイト列
+<a id="__codelineno-0-347" name="__codelineno-0-347"></a>    ↓
+<a id="__codelineno-0-348" name="__codelineno-0-348"></a>    Python bytes
+<a id="__codelineno-0-349" name="__codelineno-0-349"></a>    ↓
+<a id="__codelineno-0-350" name="__codelineno-0-350"></a>    C# byte[]
+<a id="__codelineno-0-351" name="__codelineno-0-351"></a>
+<a id="__codelineno-0-352" name="__codelineno-0-352"></a>    画像をPNGへエンコードする処理は不要です。
+<a id="__codelineno-0-353" name="__codelineno-0-353"></a>
+<a id="__codelineno-0-354" name="__codelineno-0-354"></a>    C#側では次を取得します。
+<a id="__codelineno-0-355" name="__codelineno-0-355"></a>
+<a id="__codelineno-0-356" name="__codelineno-0-356"></a>    using PyObject imageBytesObject =
+<a id="__codelineno-0-357" name="__codelineno-0-357"></a>        itemDict.GetItem(&quot;image_bytes&quot;.ToPython());
+<a id="__codelineno-0-358" name="__codelineno-0-358"></a>
+<a id="__codelineno-0-359" name="__codelineno-0-359"></a>    using PyObject widthObject =
+<a id="__codelineno-0-360" name="__codelineno-0-360"></a>        itemDict.GetItem(&quot;width&quot;.ToPython());
+<a id="__codelineno-0-361" name="__codelineno-0-361"></a>
+<a id="__codelineno-0-362" name="__codelineno-0-362"></a>    using PyObject heightObject =
+<a id="__codelineno-0-363" name="__codelineno-0-363"></a>        itemDict.GetItem(&quot;height&quot;.ToPython());
+<a id="__codelineno-0-364" name="__codelineno-0-364"></a>
+<a id="__codelineno-0-365" name="__codelineno-0-365"></a>    using PyObject channelsObject =
+<a id="__codelineno-0-366" name="__codelineno-0-366"></a>        itemDict.GetItem(&quot;channels&quot;.ToPython());
+<a id="__codelineno-0-367" name="__codelineno-0-367"></a>
+<a id="__codelineno-0-368" name="__codelineno-0-368"></a>    byte[] pixelBytes =
+<a id="__codelineno-0-369" name="__codelineno-0-369"></a>        imageBytesObject.As&lt;byte[]&gt;();
+<a id="__codelineno-0-370" name="__codelineno-0-370"></a>
+<a id="__codelineno-0-371" name="__codelineno-0-371"></a>    int width = widthObject.As&lt;int&gt;();
+<a id="__codelineno-0-372" name="__codelineno-0-372"></a>    int height = heightObject.As&lt;int&gt;();
+<a id="__codelineno-0-373" name="__codelineno-0-373"></a>    int channels = channelsObject.As&lt;int&gt;();
+<a id="__codelineno-0-374" name="__codelineno-0-374"></a>
+<a id="__codelineno-0-375" name="__codelineno-0-375"></a>    この形が、NumPy配列そのものをC#側から細かく操作するより簡単です。
+<a id="__codelineno-0-376" name="__codelineno-0-376"></a>
+<a id="__codelineno-0-377" name="__codelineno-0-377"></a>    7. 推奨するPython内部の戻り値
+<a id="__codelineno-0-378" name="__codelineno-0-378"></a>
+<a id="__codelineno-0-379" name="__codelineno-0-379"></a>    Python.NETを採用する場合、担当者には次の形式を提案できます。
+<a id="__codelineno-0-380" name="__codelineno-0-380"></a>
+<a id="__codelineno-0-381" name="__codelineno-0-381"></a>    output = [
+<a id="__codelineno-0-382" name="__codelineno-0-382"></a>        {
+<a id="__codelineno-0-383" name="__codelineno-0-383"></a>            &quot;image_bytes&quot;: image_array.tobytes(),
+<a id="__codelineno-0-384" name="__codelineno-0-384"></a>            &quot;width&quot;: int(image_array.shape[1]),
+<a id="__codelineno-0-385" name="__codelineno-0-385"></a>            &quot;height&quot;: int(image_array.shape[0]),
+<a id="__codelineno-0-386" name="__codelineno-0-386"></a>            &quot;channels&quot;: int(image_array.shape[2]),
+<a id="__codelineno-0-387" name="__codelineno-0-387"></a>            &quot;dtype&quot;: str(image_array.dtype),
+<a id="__codelineno-0-388" name="__codelineno-0-388"></a>            &quot;color_order&quot;: &quot;RGB&quot;,
+<a id="__codelineno-0-389" name="__codelineno-0-389"></a>            &quot;class_name&quot;: class_name,
+<a id="__codelineno-0-390" name="__codelineno-0-390"></a>            &quot;score&quot;: float(score),
+<a id="__codelineno-0-391" name="__codelineno-0-391"></a>            &quot;region_index&quot;: int(region_index),
+<a id="__codelineno-0-392" name="__codelineno-0-392"></a>        }
+<a id="__codelineno-0-393" name="__codelineno-0-393"></a>    ]
+<a id="__codelineno-0-394" name="__codelineno-0-394"></a>
+<a id="__codelineno-0-395" name="__codelineno-0-395"></a>    これはJSONではありません。
+<a id="__codelineno-0-396" name="__codelineno-0-396"></a>
+<a id="__codelineno-0-397" name="__codelineno-0-397"></a>    Pythonのlist[dict]のままですが、各値はC#へ変換しやすい型です。
+<a id="__codelineno-0-398" name="__codelineno-0-398"></a>
+<a id="__codelineno-0-399" name="__codelineno-0-399"></a>    Python  C#
+<a id="__codelineno-0-400" name="__codelineno-0-400"></a>    list    PyList
+<a id="__codelineno-0-401" name="__codelineno-0-401"></a>    dict    PyDict
+<a id="__codelineno-0-402" name="__codelineno-0-402"></a>    str string
+<a id="__codelineno-0-403" name="__codelineno-0-403"></a>    float   double
+<a id="__codelineno-0-404" name="__codelineno-0-404"></a>    int int
+<a id="__codelineno-0-405" name="__codelineno-0-405"></a>    bytes   byte[]
+<a id="__codelineno-0-406" name="__codelineno-0-406"></a>
+<a id="__codelineno-0-407" name="__codelineno-0-407"></a>    これなら、PIL ImageやNumPyオブジェクト自体をC#が深く理解する必要がありません。
+<a id="__codelineno-0-408" name="__codelineno-0-408"></a>
+<a id="__codelineno-0-409" name="__codelineno-0-409"></a>    8. NumPy配列をそのままPyObjectで受けることもできる
+<a id="__codelineno-0-410" name="__codelineno-0-410"></a>
+<a id="__codelineno-0-411" name="__codelineno-0-411"></a>    もちろん、元の形式を変更せず、
+<a id="__codelineno-0-412" name="__codelineno-0-412"></a>
+<a id="__codelineno-0-413" name="__codelineno-0-413"></a>    {
+<a id="__codelineno-0-414" name="__codelineno-0-414"></a>        &quot;image&quot;: numpy_array,
+<a id="__codelineno-0-415" name="__codelineno-0-415"></a>        &quot;class_name&quot;: class_name,
+<a id="__codelineno-0-416" name="__codelineno-0-416"></a>        &quot;score&quot;: score
+<a id="__codelineno-0-417" name="__codelineno-0-417"></a>    }
+<a id="__codelineno-0-418" name="__codelineno-0-418"></a>
+<a id="__codelineno-0-419" name="__codelineno-0-419"></a>    でも受け取れます。
+<a id="__codelineno-0-420" name="__codelineno-0-420"></a>
+<a id="__codelineno-0-421" name="__codelineno-0-421"></a>    C#側から、
+<a id="__codelineno-0-422" name="__codelineno-0-422"></a>
+<a id="__codelineno-0-423" name="__codelineno-0-423"></a>    using PyObject shape = imageObject.GetAttr(&quot;shape&quot;);
+<a id="__codelineno-0-424" name="__codelineno-0-424"></a>    using PyObject dtype = imageObject.GetAttr(&quot;dtype&quot;);
+<a id="__codelineno-0-425" name="__codelineno-0-425"></a>    using PyObject bytes = imageObject.InvokeMethod(&quot;tobytes&quot;);
+<a id="__codelineno-0-426" name="__codelineno-0-426"></a>
+<a id="__codelineno-0-427" name="__codelineno-0-427"></a>    のように呼び出せます。
+<a id="__codelineno-0-428" name="__codelineno-0-428"></a>
+<a id="__codelineno-0-429" name="__codelineno-0-429"></a>    概念例です。
+<a id="__codelineno-0-430" name="__codelineno-0-430"></a>
+<a id="__codelineno-0-431" name="__codelineno-0-431"></a>    using PyObject shapeObject =
+<a id="__codelineno-0-432" name="__codelineno-0-432"></a>        imageObject.GetAttr(&quot;shape&quot;);
+<a id="__codelineno-0-433" name="__codelineno-0-433"></a>
+<a id="__codelineno-0-434" name="__codelineno-0-434"></a>    using PyObject toBytesMethod =
+<a id="__codelineno-0-435" name="__codelineno-0-435"></a>        imageObject.GetAttr(&quot;tobytes&quot;);
+<a id="__codelineno-0-436" name="__codelineno-0-436"></a>
+<a id="__codelineno-0-437" name="__codelineno-0-437"></a>    using PyObject imageBytesObject =
+<a id="__codelineno-0-438" name="__codelineno-0-438"></a>        toBytesMethod.Invoke();
+<a id="__codelineno-0-439" name="__codelineno-0-439"></a>
+<a id="__codelineno-0-440" name="__codelineno-0-440"></a>    byte[] pixelBytes =
+<a id="__codelineno-0-441" name="__codelineno-0-441"></a>        imageBytesObject.As&lt;byte[]&gt;();
+<a id="__codelineno-0-442" name="__codelineno-0-442"></a>
+<a id="__codelineno-0-443" name="__codelineno-0-443"></a>    ただし、C#側でPythonオブジェクト操作が増えるため、責任分界を考えるとPython側で次まで行う方が簡単です。
+<a id="__codelineno-0-444" name="__codelineno-0-444"></a>
+<a id="__codelineno-0-445" name="__codelineno-0-445"></a>    image_array.tobytes()
+<a id="__codelineno-0-446" name="__codelineno-0-446"></a>
+<a id="__codelineno-0-447" name="__codelineno-0-447"></a>
+<a id="__codelineno-0-448" name="__codelineno-0-448"></a>
+<a id="__codelineno-0-449" name="__codelineno-0-449"></a>
+<a id="__codelineno-0-450" name="__codelineno-0-450"></a>
+<a id="__codelineno-0-451" name="__codelineno-0-451"></a>
+<a id="__codelineno-0-452" name="__codelineno-0-452"></a>
+<a id="__codelineno-0-453" name="__codelineno-0-453"></a>
+<a id="__codelineno-0-454" name="__codelineno-0-454"></a>
+<a id="__codelineno-0-455" name="__codelineno-0-455"></a>
+<a id="__codelineno-0-456" name="__codelineno-0-456"></a>
+<a id="__codelineno-0-457" name="__codelineno-0-457"></a>
+<a id="__codelineno-0-458" name="__codelineno-0-458"></a>
+<a id="__codelineno-0-459" name="__codelineno-0-459"></a>
+<a id="__codelineno-0-460" name="__codelineno-0-460"></a>
+<a id="__codelineno-0-461" name="__codelineno-0-461"></a>
+<a id="__codelineno-0-462" name="__codelineno-0-462"></a>
+<a id="__codelineno-0-463" name="__codelineno-0-463"></a>    、最終的にはプロセス間や言語間で渡せる形、通常はbyte[]などにする必要があるという点は共通です。
+<a id="__codelineno-0-464" name="__codelineno-0-464"></a>
+<a id="__codelineno-0-465" name="__codelineno-0-465"></a>    ただし、PNG/JPEGのバイト列と、NumPy配列をtobytes()した生画素バイト列は別物です。
+<a id="__codelineno-0-466" name="__codelineno-0-466"></a>
+<a id="__codelineno-0-467" name="__codelineno-0-467"></a>    PNG/JPEGを渡す場合
+<a id="__codelineno-0-468" name="__codelineno-0-468"></a>
+<a id="__codelineno-0-469" name="__codelineno-0-469"></a>    PNGやJPEGは、もともと画像ファイル形式です。
+<a id="__codelineno-0-470" name="__codelineno-0-470"></a>
+<a id="__codelineno-0-471" name="__codelineno-0-471"></a>    PNG画像
+<a id="__codelineno-0-472" name="__codelineno-0-472"></a>    ↓
+<a id="__codelineno-0-473" name="__codelineno-0-473"></a>    ファイル内容を読み込む
+<a id="__codelineno-0-474" name="__codelineno-0-474"></a>    ↓
+<a id="__codelineno-0-475" name="__codelineno-0-475"></a>    byte[]
+<a id="__codelineno-0-476" name="__codelineno-0-476"></a>
+<a id="__codelineno-0-477" name="__codelineno-0-477"></a>    C#では例えば、
+<a id="__codelineno-0-478" name="__codelineno-0-478"></a>
+<a id="__codelineno-0-479" name="__codelineno-0-479"></a>    byte[] pngBytes = File.ReadAllBytes(&quot;image.png&quot;);
+<a id="__codelineno-0-480" name="__codelineno-0-480"></a>
+<a id="__codelineno-0-481" name="__codelineno-0-481"></a>    で取得できます。
+<a id="__codelineno-0-482" name="__codelineno-0-482"></a>
+<a id="__codelineno-0-483" name="__codelineno-0-483"></a>    Pythonなら、
+<a id="__codelineno-0-484" name="__codelineno-0-484"></a>
+<a id="__codelineno-0-485" name="__codelineno-0-485"></a>    with open(&quot;image.png&quot;, &quot;rb&quot;) as f:
+<a id="__codelineno-0-486" name="__codelineno-0-486"></a>        png_bytes = f.read()
+<a id="__codelineno-0-487" name="__codelineno-0-487"></a>
+<a id="__codelineno-0-488" name="__codelineno-0-488"></a>    です。
+<a id="__codelineno-0-489" name="__codelineno-0-489"></a>
+<a id="__codelineno-0-490" name="__codelineno-0-490"></a>    このpng_bytesは、PNG形式のヘッダーや画像サイズ、圧縮データなどを含む、PNGファイル全体のバイト列です。
+<a id="__codelineno-0-491" name="__codelineno-0-491"></a>
+<a id="__codelineno-0-492" name="__codelineno-0-492"></a>    つまり、
+<a id="__codelineno-0-493" name="__codelineno-0-493"></a>
+<a id="__codelineno-0-494" name="__codelineno-0-494"></a>    PNG/JPEGは、そのまま返せないのでNumPy配列に変換する必要がある
+<a id="__codelineno-0-495" name="__codelineno-0-495"></a>
+<a id="__codelineno-0-496" name="__codelineno-0-496"></a>    という意味ではありません。
+<a id="__codelineno-0-497" name="__codelineno-0-497"></a>
+<a id="__codelineno-0-498" name="__codelineno-0-498"></a>    むしろ逆で、PNG/JPEGファイルは、そのファイル内容をbytesとして読めば、そのまま送れます。
+<a id="__codelineno-0-499" name="__codelineno-0-499"></a>
+<a id="__codelineno-0-500" name="__codelineno-0-500"></a>    PNGファイル
+<a id="__codelineno-0-501" name="__codelineno-0-501"></a>    → PNG形式のbytes
+<a id="__codelineno-0-502" name="__codelineno-0-502"></a>    → C#のbyte[]
+<a id="__codelineno-0-503" name="__codelineno-0-503"></a>
+<a id="__codelineno-0-504" name="__codelineno-0-504"></a>    NumPy配列に変換する必要はありません。
+<a id="__codelineno-0-505" name="__codelineno-0-505"></a>
+<a id="__codelineno-0-506" name="__codelineno-0-506"></a>    NumPy配列をbytesへ変換する場合
+<a id="__codelineno-0-507" name="__codelineno-0-507"></a>
+<a id="__codelineno-0-508" name="__codelineno-0-508"></a>    こちらは、
+<a id="__codelineno-0-509" name="__codelineno-0-509"></a>
+<a id="__codelineno-0-510" name="__codelineno-0-510"></a>    image_bytes = image_array.tobytes()
+<a id="__codelineno-0-511" name="__codelineno-0-511"></a>
+<a id="__codelineno-0-512" name="__codelineno-0-512"></a>    です。
+<a id="__codelineno-0-513" name="__codelineno-0-513"></a>
+<a id="__codelineno-0-514" name="__codelineno-0-514"></a>    これはPNGでもJPEGでもありません。
+<a id="__codelineno-0-515" name="__codelineno-0-515"></a>
+<a id="__codelineno-0-516" name="__codelineno-0-516"></a>    例えばNumPy配列が、
+<a id="__codelineno-0-517" name="__codelineno-0-517"></a>
+<a id="__codelineno-0-518" name="__codelineno-0-518"></a>    shape = (480, 640, 3)
+<a id="__codelineno-0-519" name="__codelineno-0-519"></a>    dtype = np.uint8
+<a id="__codelineno-0-520" name="__codelineno-0-520"></a>
+<a id="__codelineno-0-521" name="__codelineno-0-521"></a>    なら、単純に次の画素データだけが並びます。
+<a id="__codelineno-0-522" name="__codelineno-0-522"></a>
+<a id="__codelineno-0-523" name="__codelineno-0-523"></a>    R,G,B,R,G,B,R,G,B,...
+<a id="__codelineno-0-524" name="__codelineno-0-524"></a>
+<a id="__codelineno-0-525" name="__codelineno-0-525"></a>    C#側では、バイト列だけ受け取っても画像サイズなどが分からないため、別途以下が必要です。
+<a id="__codelineno-0-526" name="__codelineno-0-526"></a>
+<a id="__codelineno-0-527" name="__codelineno-0-527"></a>    width = 640
+<a id="__codelineno-0-528" name="__codelineno-0-528"></a>    height = 480
+<a id="__codelineno-0-529" name="__codelineno-0-529"></a>    channels = 3
+<a id="__codelineno-0-530" name="__codelineno-0-530"></a>    dtype = uint8
+<a id="__codelineno-0-531" name="__codelineno-0-531"></a>    color_order = RGB
+<a id="__codelineno-0-532" name="__codelineno-0-532"></a>
+<a id="__codelineno-0-533" name="__codelineno-0-533"></a>    したがって、Python側の戻り値は例えば次です。
+<a id="__codelineno-0-534" name="__codelineno-0-534"></a>
+<a id="__codelineno-0-535" name="__codelineno-0-535"></a>    {
+<a id="__codelineno-0-536" name="__codelineno-0-536"></a>        &quot;image_bytes&quot;: image_array.tobytes(),
+<a id="__codelineno-0-537" name="__codelineno-0-537"></a>        &quot;width&quot;: int(image_array.shape[1]),
+<a id="__codelineno-0-538" name="__codelineno-0-538"></a>        &quot;height&quot;: int(image_array.shape[0]),
+<a id="__codelineno-0-539" name="__codelineno-0-539"></a>        &quot;channels&quot;: int(image_array.shape[2]),
+<a id="__codelineno-0-540" name="__codelineno-0-540"></a>        &quot;dtype&quot;: str(image_array.dtype),
+<a id="__codelineno-0-541" name="__codelineno-0-541"></a>        &quot;color_order&quot;: &quot;RGB&quot;
+<a id="__codelineno-0-542" name="__codelineno-0-542"></a>    }
+<a id="__codelineno-0-543" name="__codelineno-0-543"></a>    3種類を比較すると
+<a id="__codelineno-0-544" name="__codelineno-0-544"></a>    1. PNG/JPEGバイト列
+<a id="__codelineno-0-545" name="__codelineno-0-545"></a>    NumPy配列
+<a id="__codelineno-0-546" name="__codelineno-0-546"></a>    ↓
+<a id="__codelineno-0-547" name="__codelineno-0-547"></a>    PNG/JPEGとしてエンコード
+<a id="__codelineno-0-548" name="__codelineno-0-548"></a>    ↓
+<a id="__codelineno-0-549" name="__codelineno-0-549"></a>    byte[]
+<a id="__codelineno-0-550" name="__codelineno-0-550"></a>
+<a id="__codelineno-0-551" name="__codelineno-0-551"></a>    Python例：
+<a id="__codelineno-0-552" name="__codelineno-0-552"></a>
+<a id="__codelineno-0-553" name="__codelineno-0-553"></a>    import io
+<a id="__codelineno-0-554" name="__codelineno-0-554"></a>    from PIL import Image
+<a id="__codelineno-0-555" name="__codelineno-0-555"></a>
+<a id="__codelineno-0-556" name="__codelineno-0-556"></a>    buffer = io.BytesIO()
+<a id="__codelineno-0-557" name="__codelineno-0-557"></a>    Image.fromarray(image_array).save(buffer, format=&quot;PNG&quot;)
+<a id="__codelineno-0-558" name="__codelineno-0-558"></a>    png_bytes = buffer.getvalue()
+<a id="__codelineno-0-559" name="__codelineno-0-559"></a>
+<a id="__codelineno-0-560" name="__codelineno-0-560"></a>    特徴：
+<a id="__codelineno-0-561" name="__codelineno-0-561"></a>
+<a id="__codelineno-0-562" name="__codelineno-0-562"></a>    画像サイズなどがファイル内部に入っている
+<a id="__codelineno-0-563" name="__codelineno-0-563"></a>    C#でBitmapとして読みやすい
+<a id="__codelineno-0-564" name="__codelineno-0-564"></a>    PNGは可逆
+<a id="__codelineno-0-565" name="__codelineno-0-565"></a>    JPEGは非可逆
+<a id="__codelineno-0-566" name="__codelineno-0-566"></a>    エンコード・デコード時間が必要
+<a id="__codelineno-0-567" name="__codelineno-0-567"></a>    2. 生画素バイト列
+<a id="__codelineno-0-568" name="__codelineno-0-568"></a>    NumPy配列
+<a id="__codelineno-0-569" name="__codelineno-0-569"></a>    ↓
+<a id="__codelineno-0-570" name="__codelineno-0-570"></a>    tobytes()
+<a id="__codelineno-0-571" name="__codelineno-0-571"></a>    ↓
+<a id="__codelineno-0-572" name="__codelineno-0-572"></a>    byte[]
+<a id="__codelineno-0-573" name="__codelineno-0-573"></a>
+<a id="__codelineno-0-574" name="__codelineno-0-574"></a>    Python例：
+<a id="__codelineno-0-575" name="__codelineno-0-575"></a>
+<a id="__codelineno-0-576" name="__codelineno-0-576"></a>    raw_bytes = image_array.tobytes()
+<a id="__codelineno-0-577" name="__codelineno-0-577"></a>
+<a id="__codelineno-0-578" name="__codelineno-0-578"></a>    特徴：
+<a id="__codelineno-0-579" name="__codelineno-0-579"></a>
+<a id="__codelineno-0-580" name="__codelineno-0-580"></a>    PNG/JPEGではない
+<a id="__codelineno-0-581" name="__codelineno-0-581"></a>    圧縮されていない
+<a id="__codelineno-0-582" name="__codelineno-0-582"></a>    変換が軽い
+<a id="__codelineno-0-583" name="__codelineno-0-583"></a>    データ量は大きい
+<a id="__codelineno-0-584" name="__codelineno-0-584"></a>    幅、高さ、型などを別途渡す必要がある
+<a id="__codelineno-0-585" name="__codelineno-0-585"></a>    3. Base64文字列
+<a id="__codelineno-0-586" name="__codelineno-0-586"></a>    PNGバイト列または生画素バイト列
+<a id="__codelineno-0-587" name="__codelineno-0-587"></a>    ↓
+<a id="__codelineno-0-588" name="__codelineno-0-588"></a>    Base64変換
+<a id="__codelineno-0-589" name="__codelineno-0-589"></a>    ↓
+<a id="__codelineno-0-590" name="__codelineno-0-590"></a>    文字列
+<a id="__codelineno-0-591" name="__codelineno-0-591"></a>
+<a id="__codelineno-0-592" name="__codelineno-0-592"></a>    Python例：
+<a id="__codelineno-0-593" name="__codelineno-0-593"></a>
+<a id="__codelineno-0-594" name="__codelineno-0-594"></a>    import base64
+<a id="__codelineno-0-595" name="__codelineno-0-595"></a>
+<a id="__codelineno-0-596" name="__codelineno-0-596"></a>    base64_text = base64.b64encode(png_bytes).decode(&quot;ascii&quot;)
+<a id="__codelineno-0-597" name="__codelineno-0-597"></a>
+<a id="__codelineno-0-598" name="__codelineno-0-598"></a>    Base64は画像形式ではありません。
+<a id="__codelineno-0-599" name="__codelineno-0-599"></a>
+<a id="__codelineno-0-600" name="__codelineno-0-600"></a>    バイナリ
+<a id="__codelineno-0-601" name="__codelineno-0-601"></a>    → JSONに入れられる文字列
+<a id="__codelineno-0-602" name="__codelineno-0-602"></a>
+<a id="__codelineno-0-603" name="__codelineno-0-603"></a>    へ変換するための表現です。
+<a id="__codelineno-0-604" name="__codelineno-0-604"></a>
+<a id="__codelineno-0-605" name="__codelineno-0-605"></a>    Base64にするとデータ量が約4/3に増えるので、Python.NETやバイナリ通信なら通常は不要です。
+<a id="__codelineno-0-606" name="__codelineno-0-606"></a>
+<a id="__codelineno-0-607" name="__codelineno-0-607"></a>    Python.NETの場合
+<a id="__codelineno-0-608" name="__codelineno-0-608"></a>
+<a id="__codelineno-0-609" name="__codelineno-0-609"></a>    Python.NETではPythonのbytesをC#のbyte[]に変換できるため、Base64にする必要はありません。
+<a id="__codelineno-0-610" name="__codelineno-0-610"></a>
+<a id="__codelineno-0-611" name="__codelineno-0-611"></a>    次のどちらでも渡せます。
+<a id="__codelineno-0-612" name="__codelineno-0-612"></a>
+<a id="__codelineno-0-613" name="__codelineno-0-613"></a>    PNGバイト列を返す
+<a id="__codelineno-0-614" name="__codelineno-0-614"></a>
+<a id="__codelineno-0-615" name="__codelineno-0-615"></a>    Python：
+<a id="__codelineno-0-616" name="__codelineno-0-616"></a>
+<a id="__codelineno-0-617" name="__codelineno-0-617"></a>    {
+<a id="__codelineno-0-618" name="__codelineno-0-618"></a>        &quot;image_bytes&quot;: png_bytes,
+<a id="__codelineno-0-619" name="__codelineno-0-619"></a>        &quot;image_format&quot;: &quot;png&quot;,
+<a id="__codelineno-0-620" name="__codelineno-0-620"></a>        &quot;class_name&quot;: class_name,
+<a id="__codelineno-0-621" name="__codelineno-0-621"></a>        &quot;score&quot;: float(score)
+<a id="__codelineno-0-622" name="__codelineno-0-622"></a>    }
+<a id="__codelineno-0-623" name="__codelineno-0-623"></a>
+<a id="__codelineno-0-624" name="__codelineno-0-624"></a>    C#：
+<a id="__codelineno-0-625" name="__codelineno-0-625"></a>
+<a id="__codelineno-0-626" name="__codelineno-0-626"></a>    byte[] pngBytes = imageBytesObject.As&lt;byte[]&gt;();
+<a id="__codelineno-0-627" name="__codelineno-0-627"></a>
+<a id="__codelineno-0-628" name="__codelineno-0-628"></a>    C#ではそのままBitmapへ変換できます。
+<a id="__codelineno-0-629" name="__codelineno-0-629"></a>
+<a id="__codelineno-0-630" name="__codelineno-0-630"></a>    using var stream = new MemoryStream(pngBytes);
+<a id="__codelineno-0-631" name="__codelineno-0-631"></a>    using var temporaryBitmap = new Bitmap(stream);
+<a id="__codelineno-0-632" name="__codelineno-0-632"></a>    Bitmap bitmap = new Bitmap(temporaryBitmap);
+<a id="__codelineno-0-633" name="__codelineno-0-633"></a>    生画素バイト列を返す
+<a id="__codelineno-0-634" name="__codelineno-0-634"></a>
+<a id="__codelineno-0-635" name="__codelineno-0-635"></a>    Python：
+<a id="__codelineno-0-636" name="__codelineno-0-636"></a>
+<a id="__codelineno-0-637" name="__codelineno-0-637"></a>    {
+<a id="__codelineno-0-638" name="__codelineno-0-638"></a>        &quot;image_bytes&quot;: image_array.tobytes(),
+<a id="__codelineno-0-639" name="__codelineno-0-639"></a>        &quot;width&quot;: int(image_array.shape[1]),
+<a id="__codelineno-0-640" name="__codelineno-0-640"></a>        &quot;height&quot;: int(image_array.shape[0]),
+<a id="__codelineno-0-641" name="__codelineno-0-641"></a>        &quot;channels&quot;: int(image_array.shape[2]),
+<a id="__codelineno-0-642" name="__codelineno-0-642"></a>        &quot;dtype&quot;: &quot;uint8&quot;,
+<a id="__codelineno-0-643" name="__codelineno-0-643"></a>        &quot;color_order&quot;: &quot;RGB&quot;
+<a id="__codelineno-0-644" name="__codelineno-0-644"></a>    }
+<a id="__codelineno-0-645" name="__codelineno-0-645"></a>
+<a id="__codelineno-0-646" name="__codelineno-0-646"></a>    C#では、幅・高さ・チャンネル数を使ってBitmapへ再構築します。
+<a id="__codelineno-0-647" name="__codelineno-0-647"></a>
+<a id="__codelineno-0-648" name="__codelineno-0-648"></a>    こちらの方が変換は速くなりやすいですが、実装は少し複雑です。
+<a id="__codelineno-0-649" name="__codelineno-0-649"></a>
+<a id="__codelineno-0-650" name="__codelineno-0-650"></a>    今回の理解として正しい表現
+<a id="__codelineno-0-651" name="__codelineno-0-651"></a>
+<a id="__codelineno-0-652" name="__codelineno-0-652"></a>    次の理解が正確です。
+<a id="__codelineno-0-653" name="__codelineno-0-653"></a>
+<a id="__codelineno-0-654" name="__codelineno-0-654"></a>    PIL ImageやNumPy ndarrayなどの
+<a id="__codelineno-0-655" name="__codelineno-0-655"></a>    Pythonオブジェクトそのものは、
+<a id="__codelineno-0-656" name="__codelineno-0-656"></a>    C#の通常の型として直接扱えない。
+<a id="__codelineno-0-657" name="__codelineno-0-657"></a>
+<a id="__codelineno-0-658" name="__codelineno-0-658"></a>    そのため、
+<a id="__codelineno-0-659" name="__codelineno-0-659"></a>
+<a id="__codelineno-0-660" name="__codelineno-0-660"></a>    ・PNG/JPEG形式のbytes
+<a id="__codelineno-0-661" name="__codelineno-0-661"></a>    ・生画素のbytes
+<a id="__codelineno-0-662" name="__codelineno-0-662"></a>    ・Base64文字列
+<a id="__codelineno-0-663" name="__codelineno-0-663"></a>
+<a id="__codelineno-0-664" name="__codelineno-0-664"></a>    などへ変換して渡す。
+<a id="__codelineno-0-665" name="__codelineno-0-665"></a>
+<a id="__codelineno-0-666" name="__codelineno-0-666"></a>    ただしPython.NETでは、NumPy配列自体をPyObjectとして受け取ることはできます。
+<a id="__codelineno-0-667" name="__codelineno-0-667"></a>
+<a id="__codelineno-0-668" name="__codelineno-0-668"></a>    numpy.ndarray
+<a id="__codelineno-0-669" name="__codelineno-0-669"></a>    ↓
+<a id="__codelineno-0-670" name="__codelineno-0-670"></a>    Python.NET
+<a id="__codelineno-0-671" name="__codelineno-0-671"></a>    ↓
+<a id="__codelineno-0-672" name="__codelineno-0-672"></a>    PyObject
+<a id="__codelineno-0-673" name="__codelineno-0-673"></a>
+<a id="__codelineno-0-674" name="__codelineno-0-674"></a>    その後、C#側から、
+<a id="__codelineno-0-675" name="__codelineno-0-675"></a>
+<a id="__codelineno-0-676" name="__codelineno-0-676"></a>    imageObject.InvokeMethod(&quot;tobytes&quot;);
+<a id="__codelineno-0-677" name="__codelineno-0-677"></a>
+<a id="__codelineno-0-678" name="__codelineno-0-678"></a>    のようにPythonのtobytes()を呼ぶことも可能です。
+<a id="__codelineno-0-679" name="__codelineno-0-679"></a>
+<a id="__codelineno-0-680" name="__codelineno-0-680"></a>    そのためPython.NETでは、
+<a id="__codelineno-0-681" name="__codelineno-0-681"></a>
+<a id="__codelineno-0-682" name="__codelineno-0-682"></a>    必ずPython側でbytesに変換しなければならない
+<a id="__codelineno-0-683" name="__codelineno-0-683"></a>
+<a id="__codelineno-0-684" name="__codelineno-0-684"></a>    わけではありません。
+<a id="__codelineno-0-685" name="__codelineno-0-685"></a>
+<a id="__codelineno-0-686" name="__codelineno-0-686"></a>    ただ、Python担当者とC#担当者の責任範囲を明確にするなら、Python側でbytesと画像情報に変換して返す方が分かりやすいです。
+<a id="__codelineno-0-687" name="__codelineno-0-687"></a>
+<a id="__codelineno-0-688" name="__codelineno-0-688"></a>    まとめ
+<a id="__codelineno-0-689" name="__codelineno-0-689"></a>    PNG/JPEGは、NumPy配列に変換しなくても、そのファイル内容をbytesとして送れます。
+<a id="__codelineno-0-690" name="__codelineno-0-690"></a>    NumPyのtobytes()は、PNG/JPEGではなく非圧縮の生画素データです。
+<a id="__codelineno-0-691" name="__codelineno-0-691"></a>    Base64は、バイト列を文字列へ変換する方法です。
+<a id="__codelineno-0-692" name="__codelineno-0-692"></a>    Python.NETならBase64は通常不要です。
+<a id="__codelineno-0-693" name="__codelineno-0-693"></a>    表示の簡単さ重視ならPNGバイト列。
+<a id="__codelineno-0-694" name="__codelineno-0-694"></a>    速度重視なら生画素バイト列が候補です。
 </code></pre></div></td></tr></table></div>
 
 
