@@ -365,6 +365,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#halcon" class="md-nav__link">
+    <span class="md-ellipsis">
+      HALCON内部のパラメータ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HALCON内部のパラメータ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#genicam" class="md-nav__link">
+    <span class="md-ellipsis">
+      カメラ本体のGenICamパラメータ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gentl-producer" class="md-nav__link">
+    <span class="md-ellipsis">
+      GenTL Producerの各モジュール
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -609,6 +648,587 @@
 <a id="__codelineno-7-44" name="__codelineno-7-44"></a><span class="w">        </span><span class="p">{</span>
 <a id="__codelineno-7-45" name="__codelineno-7-45"></a><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">S</span><span class="p">);</span>
 <a id="__codelineno-7-46" name="__codelineno-7-46"></a><span class="w">        </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div></p>
+<table>
+<thead>
+<tr>
+<th>パラメータ例</th>
+<th>所属</th>
+<th>意味</th>
+<th style="text-align: right;">ラインカメラでの典型値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Width</code></td>
+<td>カメラ</td>
+<td>1ライン当たりの画素数</td>
+<td style="text-align: right;">8192など</td>
+</tr>
+<tr>
+<td><code>Height</code></td>
+<td>カメラ</td>
+<td>カメラが1フレームとして送るライン数</td>
+<td style="text-align: right;"><strong>1固定の場合が多い</strong></td>
+</tr>
+<tr>
+<td><code>[Stream]BufferHeight</code></td>
+<td>Euresys Data Stream</td>
+<td>何ラインをHALCONの1画像にまとめるか</td>
+<td style="text-align: right;">1000、5000など</td>
+</tr>
+<tr>
+<td><code>image_width</code></td>
+<td>HALCON Consumer</td>
+<td>HALCONが出力する画像幅</td>
+<td style="text-align: right;">最終的に8192など</td>
+</tr>
+<tr>
+<td><code>image_height</code></td>
+<td>HALCON Consumer</td>
+<td>HALCONが出力する画像高さ</td>
+<td style="text-align: right;">最終的に5000など</td>
+</tr>
+<tr>
+<td><code>[Stream]ScanLength</code></td>
+<td>Euresys Data Stream</td>
+<td>1回のスキャンとして扱うライン数</td>
+<td style="text-align: right;">撮像方式による</td>
+</tr>
+</tbody>
+</table>
+<p>カメラ Width     = 8192
+カメラ Height    = 1
+Stream BufferHeight = 5000      ←これを設定(?)</p>
+<p>HALCON取得画像   = 8192 × 5000</p>
+<hr />
+<h3 id="halcon">HALCON内部のパラメータ<a class="headerlink" href="#halcon" title="Permanent link">&para;</a></h3>
+<p>小文字＋アンダースコア形式</p>
+<h4 id="genicam">カメラ本体のGenICamパラメータ<a class="headerlink" href="#genicam" title="Permanent link">&para;</a></h4>
+<p>CamelCase形式</p>
+<h3 id="gentl-producer">GenTL Producerの各モジュール<a class="headerlink" href="#gentl-producer" title="Permanent link">&para;</a></h3>
+<p>モジュール名が角括弧</p>
+<hr />
+<p>最初に試す設定</p>
+<p>撮像開始前に、次のような設定を試すのがよいです。
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span>
+<span class="normal"><a href="#__codelineno-8-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>HOperatorSet.SetFramegrabberParam(
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a>    acqHandle,
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a>    &quot;[Stream]BufferHeight&quot;,
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a>    5000);
+</code></pre></div></td></tr></table></div>
+その後で取得を開始します。
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span>
+<span class="normal"><a href="#__codelineno-9-4">4</a></span>
+<span class="normal"><a href="#__codelineno-9-5">5</a></span>
+<span class="normal"><a href="#__codelineno-9-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>HOperatorSet.GrabImageStart(acqHandle, -1);
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a>HOperatorSet.GrabImageAsync(
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a>    out HObject image,
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a>    acqHandle,
+<a id="__codelineno-9-6" name="__codelineno-9-6"></a>    -1);
+</code></pre></div></td></tr></table></div>
+取得後に実際の画像サイズを確認します。
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span>
+<span class="normal"><a href="#__codelineno-10-4">4</a></span>
+<span class="normal"><a href="#__codelineno-10-5">5</a></span>
+<span class="normal"><a href="#__codelineno-10-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>HOperatorSet.GetImageSize(
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a>    image,
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a>    out HTuple width,
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a>    out HTuple height);
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a>
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a>Console.WriteLine($&quot;Width={width.I}, Height={height.I}&quot;);
+</code></pre></div></td></tr></table></div></p>
+<p>取得可能なパラメータ名を表示
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span>
+<span class="normal"><a href="#__codelineno-11-3">3</a></span>
+<span class="normal"><a href="#__codelineno-11-4">4</a></span>
+<span class="normal"><a href="#__codelineno-11-5">5</a></span>
+<span class="normal"><a href="#__codelineno-11-6">6</a></span>
+<span class="normal"><a href="#__codelineno-11-7">7</a></span>
+<span class="normal"><a href="#__codelineno-11-8">8</a></span>
+<span class="normal"><a href="#__codelineno-11-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>HOperatorSet.GetFramegrabberParam(
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a>    acqHandle,
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a>    &quot;available_param_names&quot;,
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a>    out HTuple paramNames);
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a>for (int i = 0; i &lt; paramNames.Length; i++)
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a>{
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a>    Console.WriteLine(paramNames[i].S);
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a>}
+</code></pre></div></td></tr></table></div></p>
+<p>現在値を個別に取得する
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-12-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-12-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-12-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-12-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-12-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-12-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-12-10">10</a></span>
+<span class="normal"><a href="#__codelineno-12-11">11</a></span>
+<span class="normal"><a href="#__codelineno-12-12">12</a></span>
+<span class="normal"><a href="#__codelineno-12-13">13</a></span>
+<span class="normal"><a href="#__codelineno-12-14">14</a></span>
+<span class="normal"><a href="#__codelineno-12-15">15</a></span>
+<span class="normal"><a href="#__codelineno-12-16">16</a></span>
+<span class="normal"><a href="#__codelineno-12-17">17</a></span>
+<span class="normal"><a href="#__codelineno-12-18">18</a></span>
+<span class="normal"><a href="#__codelineno-12-19">19</a></span>
+<span class="normal"><a href="#__codelineno-12-20">20</a></span>
+<span class="normal"><a href="#__codelineno-12-21">21</a></span>
+<span class="normal"><a href="#__codelineno-12-22">22</a></span>
+<span class="normal"><a href="#__codelineno-12-23">23</a></span>
+<span class="normal"><a href="#__codelineno-12-24">24</a></span>
+<span class="normal"><a href="#__codelineno-12-25">25</a></span>
+<span class="normal"><a href="#__codelineno-12-26">26</a></span>
+<span class="normal"><a href="#__codelineno-12-27">27</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>string[] names =
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a>{
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a>    &quot;Width&quot;,
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a>    &quot;Height&quot;,
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a>    &quot;image_width&quot;,
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a>    &quot;image_height&quot;,
+<a id="__codelineno-12-7" name="__codelineno-12-7"></a>    &quot;[Stream]BufferHeight&quot;,
+<a id="__codelineno-12-8" name="__codelineno-12-8"></a>    &quot;[Stream]ScanLength&quot;
+<a id="__codelineno-12-9" name="__codelineno-12-9"></a>};
+<a id="__codelineno-12-10" name="__codelineno-12-10"></a>
+<a id="__codelineno-12-11" name="__codelineno-12-11"></a>foreach (string name in names)
+<a id="__codelineno-12-12" name="__codelineno-12-12"></a>{
+<a id="__codelineno-12-13" name="__codelineno-12-13"></a>    try
+<a id="__codelineno-12-14" name="__codelineno-12-14"></a>    {
+<a id="__codelineno-12-15" name="__codelineno-12-15"></a>        HOperatorSet.GetFramegrabberParam(
+<a id="__codelineno-12-16" name="__codelineno-12-16"></a>            acqHandle,
+<a id="__codelineno-12-17" name="__codelineno-12-17"></a>            name,
+<a id="__codelineno-12-18" name="__codelineno-12-18"></a>            out HTuple value);
+<a id="__codelineno-12-19" name="__codelineno-12-19"></a>
+<a id="__codelineno-12-20" name="__codelineno-12-20"></a>        Console.WriteLine($&quot;{name} = {value}&quot;);
+<a id="__codelineno-12-21" name="__codelineno-12-21"></a>    }
+<a id="__codelineno-12-22" name="__codelineno-12-22"></a>    catch (HOperatorException ex)
+<a id="__codelineno-12-23" name="__codelineno-12-23"></a>    {
+<a id="__codelineno-12-24" name="__codelineno-12-24"></a>        Console.WriteLine(
+<a id="__codelineno-12-25" name="__codelineno-12-25"></a>            $&quot;{name}: 取得不可 / ErrorCode={ex.GetErrorCode()}, Message={ex.Message}&quot;);
+<a id="__codelineno-12-26" name="__codelineno-12-26"></a>    }
+<a id="__codelineno-12-27" name="__codelineno-12-27"></a>}
+</code></pre></div></td></tr></table></div></p>
+<p>例
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">  1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">  2</a></span>
+<span class="normal"><a href="#__codelineno-13-3">  3</a></span>
+<span class="normal"><a href="#__codelineno-13-4">  4</a></span>
+<span class="normal"><a href="#__codelineno-13-5">  5</a></span>
+<span class="normal"><a href="#__codelineno-13-6">  6</a></span>
+<span class="normal"><a href="#__codelineno-13-7">  7</a></span>
+<span class="normal"><a href="#__codelineno-13-8">  8</a></span>
+<span class="normal"><a href="#__codelineno-13-9">  9</a></span>
+<span class="normal"><a href="#__codelineno-13-10"> 10</a></span>
+<span class="normal"><a href="#__codelineno-13-11"> 11</a></span>
+<span class="normal"><a href="#__codelineno-13-12"> 12</a></span>
+<span class="normal"><a href="#__codelineno-13-13"> 13</a></span>
+<span class="normal"><a href="#__codelineno-13-14"> 14</a></span>
+<span class="normal"><a href="#__codelineno-13-15"> 15</a></span>
+<span class="normal"><a href="#__codelineno-13-16"> 16</a></span>
+<span class="normal"><a href="#__codelineno-13-17"> 17</a></span>
+<span class="normal"><a href="#__codelineno-13-18"> 18</a></span>
+<span class="normal"><a href="#__codelineno-13-19"> 19</a></span>
+<span class="normal"><a href="#__codelineno-13-20"> 20</a></span>
+<span class="normal"><a href="#__codelineno-13-21"> 21</a></span>
+<span class="normal"><a href="#__codelineno-13-22"> 22</a></span>
+<span class="normal"><a href="#__codelineno-13-23"> 23</a></span>
+<span class="normal"><a href="#__codelineno-13-24"> 24</a></span>
+<span class="normal"><a href="#__codelineno-13-25"> 25</a></span>
+<span class="normal"><a href="#__codelineno-13-26"> 26</a></span>
+<span class="normal"><a href="#__codelineno-13-27"> 27</a></span>
+<span class="normal"><a href="#__codelineno-13-28"> 28</a></span>
+<span class="normal"><a href="#__codelineno-13-29"> 29</a></span>
+<span class="normal"><a href="#__codelineno-13-30"> 30</a></span>
+<span class="normal"><a href="#__codelineno-13-31"> 31</a></span>
+<span class="normal"><a href="#__codelineno-13-32"> 32</a></span>
+<span class="normal"><a href="#__codelineno-13-33"> 33</a></span>
+<span class="normal"><a href="#__codelineno-13-34"> 34</a></span>
+<span class="normal"><a href="#__codelineno-13-35"> 35</a></span>
+<span class="normal"><a href="#__codelineno-13-36"> 36</a></span>
+<span class="normal"><a href="#__codelineno-13-37"> 37</a></span>
+<span class="normal"><a href="#__codelineno-13-38"> 38</a></span>
+<span class="normal"><a href="#__codelineno-13-39"> 39</a></span>
+<span class="normal"><a href="#__codelineno-13-40"> 40</a></span>
+<span class="normal"><a href="#__codelineno-13-41"> 41</a></span>
+<span class="normal"><a href="#__codelineno-13-42"> 42</a></span>
+<span class="normal"><a href="#__codelineno-13-43"> 43</a></span>
+<span class="normal"><a href="#__codelineno-13-44"> 44</a></span>
+<span class="normal"><a href="#__codelineno-13-45"> 45</a></span>
+<span class="normal"><a href="#__codelineno-13-46"> 46</a></span>
+<span class="normal"><a href="#__codelineno-13-47"> 47</a></span>
+<span class="normal"><a href="#__codelineno-13-48"> 48</a></span>
+<span class="normal"><a href="#__codelineno-13-49"> 49</a></span>
+<span class="normal"><a href="#__codelineno-13-50"> 50</a></span>
+<span class="normal"><a href="#__codelineno-13-51"> 51</a></span>
+<span class="normal"><a href="#__codelineno-13-52"> 52</a></span>
+<span class="normal"><a href="#__codelineno-13-53"> 53</a></span>
+<span class="normal"><a href="#__codelineno-13-54"> 54</a></span>
+<span class="normal"><a href="#__codelineno-13-55"> 55</a></span>
+<span class="normal"><a href="#__codelineno-13-56"> 56</a></span>
+<span class="normal"><a href="#__codelineno-13-57"> 57</a></span>
+<span class="normal"><a href="#__codelineno-13-58"> 58</a></span>
+<span class="normal"><a href="#__codelineno-13-59"> 59</a></span>
+<span class="normal"><a href="#__codelineno-13-60"> 60</a></span>
+<span class="normal"><a href="#__codelineno-13-61"> 61</a></span>
+<span class="normal"><a href="#__codelineno-13-62"> 62</a></span>
+<span class="normal"><a href="#__codelineno-13-63"> 63</a></span>
+<span class="normal"><a href="#__codelineno-13-64"> 64</a></span>
+<span class="normal"><a href="#__codelineno-13-65"> 65</a></span>
+<span class="normal"><a href="#__codelineno-13-66"> 66</a></span>
+<span class="normal"><a href="#__codelineno-13-67"> 67</a></span>
+<span class="normal"><a href="#__codelineno-13-68"> 68</a></span>
+<span class="normal"><a href="#__codelineno-13-69"> 69</a></span>
+<span class="normal"><a href="#__codelineno-13-70"> 70</a></span>
+<span class="normal"><a href="#__codelineno-13-71"> 71</a></span>
+<span class="normal"><a href="#__codelineno-13-72"> 72</a></span>
+<span class="normal"><a href="#__codelineno-13-73"> 73</a></span>
+<span class="normal"><a href="#__codelineno-13-74"> 74</a></span>
+<span class="normal"><a href="#__codelineno-13-75"> 75</a></span>
+<span class="normal"><a href="#__codelineno-13-76"> 76</a></span>
+<span class="normal"><a href="#__codelineno-13-77"> 77</a></span>
+<span class="normal"><a href="#__codelineno-13-78"> 78</a></span>
+<span class="normal"><a href="#__codelineno-13-79"> 79</a></span>
+<span class="normal"><a href="#__codelineno-13-80"> 80</a></span>
+<span class="normal"><a href="#__codelineno-13-81"> 81</a></span>
+<span class="normal"><a href="#__codelineno-13-82"> 82</a></span>
+<span class="normal"><a href="#__codelineno-13-83"> 83</a></span>
+<span class="normal"><a href="#__codelineno-13-84"> 84</a></span>
+<span class="normal"><a href="#__codelineno-13-85"> 85</a></span>
+<span class="normal"><a href="#__codelineno-13-86"> 86</a></span>
+<span class="normal"><a href="#__codelineno-13-87"> 87</a></span>
+<span class="normal"><a href="#__codelineno-13-88"> 88</a></span>
+<span class="normal"><a href="#__codelineno-13-89"> 89</a></span>
+<span class="normal"><a href="#__codelineno-13-90"> 90</a></span>
+<span class="normal"><a href="#__codelineno-13-91"> 91</a></span>
+<span class="normal"><a href="#__codelineno-13-92"> 92</a></span>
+<span class="normal"><a href="#__codelineno-13-93"> 93</a></span>
+<span class="normal"><a href="#__codelineno-13-94"> 94</a></span>
+<span class="normal"><a href="#__codelineno-13-95"> 95</a></span>
+<span class="normal"><a href="#__codelineno-13-96"> 96</a></span>
+<span class="normal"><a href="#__codelineno-13-97"> 97</a></span>
+<span class="normal"><a href="#__codelineno-13-98"> 98</a></span>
+<span class="normal"><a href="#__codelineno-13-99"> 99</a></span>
+<span class="normal"><a href="#__codelineno-13-100">100</a></span>
+<span class="normal"><a href="#__codelineno-13-101">101</a></span>
+<span class="normal"><a href="#__codelineno-13-102">102</a></span>
+<span class="normal"><a href="#__codelineno-13-103">103</a></span>
+<span class="normal"><a href="#__codelineno-13-104">104</a></span>
+<span class="normal"><a href="#__codelineno-13-105">105</a></span>
+<span class="normal"><a href="#__codelineno-13-106">106</a></span>
+<span class="normal"><a href="#__codelineno-13-107">107</a></span>
+<span class="normal"><a href="#__codelineno-13-108">108</a></span>
+<span class="normal"><a href="#__codelineno-13-109">109</a></span>
+<span class="normal"><a href="#__codelineno-13-110">110</a></span>
+<span class="normal"><a href="#__codelineno-13-111">111</a></span>
+<span class="normal"><a href="#__codelineno-13-112">112</a></span>
+<span class="normal"><a href="#__codelineno-13-113">113</a></span>
+<span class="normal"><a href="#__codelineno-13-114">114</a></span>
+<span class="normal"><a href="#__codelineno-13-115">115</a></span>
+<span class="normal"><a href="#__codelineno-13-116">116</a></span>
+<span class="normal"><a href="#__codelineno-13-117">117</a></span>
+<span class="normal"><a href="#__codelineno-13-118">118</a></span>
+<span class="normal"><a href="#__codelineno-13-119">119</a></span>
+<span class="normal"><a href="#__codelineno-13-120">120</a></span>
+<span class="normal"><a href="#__codelineno-13-121">121</a></span>
+<span class="normal"><a href="#__codelineno-13-122">122</a></span>
+<span class="normal"><a href="#__codelineno-13-123">123</a></span>
+<span class="normal"><a href="#__codelineno-13-124">124</a></span>
+<span class="normal"><a href="#__codelineno-13-125">125</a></span>
+<span class="normal"><a href="#__codelineno-13-126">126</a></span>
+<span class="normal"><a href="#__codelineno-13-127">127</a></span>
+<span class="normal"><a href="#__codelineno-13-128">128</a></span>
+<span class="normal"><a href="#__codelineno-13-129">129</a></span>
+<span class="normal"><a href="#__codelineno-13-130">130</a></span>
+<span class="normal"><a href="#__codelineno-13-131">131</a></span>
+<span class="normal"><a href="#__codelineno-13-132">132</a></span>
+<span class="normal"><a href="#__codelineno-13-133">133</a></span>
+<span class="normal"><a href="#__codelineno-13-134">134</a></span>
+<span class="normal"><a href="#__codelineno-13-135">135</a></span>
+<span class="normal"><a href="#__codelineno-13-136">136</a></span>
+<span class="normal"><a href="#__codelineno-13-137">137</a></span>
+<span class="normal"><a href="#__codelineno-13-138">138</a></span>
+<span class="normal"><a href="#__codelineno-13-139">139</a></span>
+<span class="normal"><a href="#__codelineno-13-140">140</a></span>
+<span class="normal"><a href="#__codelineno-13-141">141</a></span>
+<span class="normal"><a href="#__codelineno-13-142">142</a></span>
+<span class="normal"><a href="#__codelineno-13-143">143</a></span>
+<span class="normal"><a href="#__codelineno-13-144">144</a></span>
+<span class="normal"><a href="#__codelineno-13-145">145</a></span>
+<span class="normal"><a href="#__codelineno-13-146">146</a></span>
+<span class="normal"><a href="#__codelineno-13-147">147</a></span>
+<span class="normal"><a href="#__codelineno-13-148">148</a></span>
+<span class="normal"><a href="#__codelineno-13-149">149</a></span>
+<span class="normal"><a href="#__codelineno-13-150">150</a></span>
+<span class="normal"><a href="#__codelineno-13-151">151</a></span>
+<span class="normal"><a href="#__codelineno-13-152">152</a></span>
+<span class="normal"><a href="#__codelineno-13-153">153</a></span>
+<span class="normal"><a href="#__codelineno-13-154">154</a></span>
+<span class="normal"><a href="#__codelineno-13-155">155</a></span>
+<span class="normal"><a href="#__codelineno-13-156">156</a></span>
+<span class="normal"><a href="#__codelineno-13-157">157</a></span>
+<span class="normal"><a href="#__codelineno-13-158">158</a></span>
+<span class="normal"><a href="#__codelineno-13-159">159</a></span>
+<span class="normal"><a href="#__codelineno-13-160">160</a></span>
+<span class="normal"><a href="#__codelineno-13-161">161</a></span>
+<span class="normal"><a href="#__codelineno-13-162">162</a></span>
+<span class="normal"><a href="#__codelineno-13-163">163</a></span>
+<span class="normal"><a href="#__codelineno-13-164">164</a></span>
+<span class="normal"><a href="#__codelineno-13-165">165</a></span>
+<span class="normal"><a href="#__codelineno-13-166">166</a></span>
+<span class="normal"><a href="#__codelineno-13-167">167</a></span>
+<span class="normal"><a href="#__codelineno-13-168">168</a></span>
+<span class="normal"><a href="#__codelineno-13-169">169</a></span>
+<span class="normal"><a href="#__codelineno-13-170">170</a></span>
+<span class="normal"><a href="#__codelineno-13-171">171</a></span>
+<span class="normal"><a href="#__codelineno-13-172">172</a></span>
+<span class="normal"><a href="#__codelineno-13-173">173</a></span>
+<span class="normal"><a href="#__codelineno-13-174">174</a></span>
+<span class="normal"><a href="#__codelineno-13-175">175</a></span>
+<span class="normal"><a href="#__codelineno-13-176">176</a></span>
+<span class="normal"><a href="#__codelineno-13-177">177</a></span>
+<span class="normal"><a href="#__codelineno-13-178">178</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>using System;
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a>using HalconDotNet;
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a>public sealed class CoaxpressLineCamera : IDisposable
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a>{
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a>    private HTuple? _acqHandle;
+<a id="__codelineno-13-7" name="__codelineno-13-7"></a>
+<a id="__codelineno-13-8" name="__codelineno-13-8"></a>    public void Open(string deviceName)
+<a id="__codelineno-13-9" name="__codelineno-13-9"></a>    {
+<a id="__codelineno-13-10" name="__codelineno-13-10"></a>        try
+<a id="__codelineno-13-11" name="__codelineno-13-11"></a>        {
+<a id="__codelineno-13-12" name="__codelineno-13-12"></a>            // GenICamTLデバイスをオープン
+<a id="__codelineno-13-13" name="__codelineno-13-13"></a>            HOperatorSet.OpenFramegrabber(
+<a id="__codelineno-13-14" name="__codelineno-13-14"></a>                &quot;GenICamTL&quot;,       // Name
+<a id="__codelineno-13-15" name="__codelineno-13-15"></a>                0,                 // HorizontalResolution
+<a id="__codelineno-13-16" name="__codelineno-13-16"></a>                0,                 // VerticalResolution
+<a id="__codelineno-13-17" name="__codelineno-13-17"></a>                0,                 // ImageWidth
+<a id="__codelineno-13-18" name="__codelineno-13-18"></a>                0,                 // ImageHeight
+<a id="__codelineno-13-19" name="__codelineno-13-19"></a>                0,                 // StartRow
+<a id="__codelineno-13-20" name="__codelineno-13-20"></a>                0,                 // StartColumn
+<a id="__codelineno-13-21" name="__codelineno-13-21"></a>                &quot;progressive&quot;,     // Field
+<a id="__codelineno-13-22" name="__codelineno-13-22"></a>                -1,                // BitsPerChannel
+<a id="__codelineno-13-23" name="__codelineno-13-23"></a>                &quot;default&quot;,         // ColorSpace
+<a id="__codelineno-13-24" name="__codelineno-13-24"></a>                -1,                // Generic
+<a id="__codelineno-13-25" name="__codelineno-13-25"></a>                &quot;false&quot;,           // ExternalTrigger
+<a id="__codelineno-13-26" name="__codelineno-13-26"></a>                &quot;default&quot;,         // CameraType
+<a id="__codelineno-13-27" name="__codelineno-13-27"></a>                deviceName,        // Device
+<a id="__codelineno-13-28" name="__codelineno-13-28"></a>                0,                 // Port
+<a id="__codelineno-13-29" name="__codelineno-13-29"></a>                -1,                // LineIn
+<a id="__codelineno-13-30" name="__codelineno-13-30"></a>                out HTuple handle);
+<a id="__codelineno-13-31" name="__codelineno-13-31"></a>
+<a id="__codelineno-13-32" name="__codelineno-13-32"></a>            _acqHandle = handle;
+<a id="__codelineno-13-33" name="__codelineno-13-33"></a>
+<a id="__codelineno-13-34" name="__codelineno-13-34"></a>            // 撮像開始前にROI・バッファサイズを設定
+<a id="__codelineno-13-35" name="__codelineno-13-35"></a>            ConfigureImageSize(width: 100, height: 100);
+<a id="__codelineno-13-36" name="__codelineno-13-36"></a>        }
+<a id="__codelineno-13-37" name="__codelineno-13-37"></a>        catch
+<a id="__codelineno-13-38" name="__codelineno-13-38"></a>        {
+<a id="__codelineno-13-39" name="__codelineno-13-39"></a>            Close();
+<a id="__codelineno-13-40" name="__codelineno-13-40"></a>            throw;
+<a id="__codelineno-13-41" name="__codelineno-13-41"></a>        }
+<a id="__codelineno-13-42" name="__codelineno-13-42"></a>    }
+<a id="__codelineno-13-43" name="__codelineno-13-43"></a>
+<a id="__codelineno-13-44" name="__codelineno-13-44"></a>    private void ConfigureImageSize(int width, int height)
+<a id="__codelineno-13-45" name="__codelineno-13-45"></a>    {
+<a id="__codelineno-13-46" name="__codelineno-13-46"></a>        EnsureOpened();
+<a id="__codelineno-13-47" name="__codelineno-13-47"></a>
+<a id="__codelineno-13-48" name="__codelineno-13-48"></a>        // 撮像中の場合に備えて停止を試みる
+<a id="__codelineno-13-49" name="__codelineno-13-49"></a>        TrySetParameter(&quot;do_abort_grab&quot;, 1);
+<a id="__codelineno-13-50" name="__codelineno-13-50"></a>
+<a id="__codelineno-13-51" name="__codelineno-13-51"></a>        /*
+<a id="__codelineno-13-52" name="__codelineno-13-52"></a>         * ラインカメラ本体側
+<a id="__codelineno-13-53" name="__codelineno-13-53"></a>         *
+<a id="__codelineno-13-54" name="__codelineno-13-54"></a>         * Width  = 1ライン当たりの画素数
+<a id="__codelineno-13-55" name="__codelineno-13-55"></a>         * Height = 通常1固定なので変更しない
+<a id="__codelineno-13-56" name="__codelineno-13-56"></a>         */
+<a id="__codelineno-13-57" name="__codelineno-13-57"></a>        HOperatorSet.SetFramegrabberParam(
+<a id="__codelineno-13-58" name="__codelineno-13-58"></a>            _acqHandle!,
+<a id="__codelineno-13-59" name="__codelineno-13-59"></a>            &quot;Width&quot;,
+<a id="__codelineno-13-60" name="__codelineno-13-60"></a>            width);
+<a id="__codelineno-13-61" name="__codelineno-13-61"></a>
+<a id="__codelineno-13-62" name="__codelineno-13-62"></a>        /*
+<a id="__codelineno-13-63" name="__codelineno-13-63"></a>         * Euresys Data Stream側
+<a id="__codelineno-13-64" name="__codelineno-13-64"></a>         *
+<a id="__codelineno-13-65" name="__codelineno-13-65"></a>         * BufferHeight = 1枚の画像としてまとめるライン数
+<a id="__codelineno-13-66" name="__codelineno-13-66"></a>         */
+<a id="__codelineno-13-67" name="__codelineno-13-67"></a>        HOperatorSet.SetFramegrabberParam(
+<a id="__codelineno-13-68" name="__codelineno-13-68"></a>            _acqHandle!,
+<a id="__codelineno-13-69" name="__codelineno-13-69"></a>            &quot;[Stream]BufferHeight&quot;,
+<a id="__codelineno-13-70" name="__codelineno-13-70"></a>            height);
+<a id="__codelineno-13-71" name="__codelineno-13-71"></a>
+<a id="__codelineno-13-72" name="__codelineno-13-72"></a>        // 設定された実値を確認
+<a id="__codelineno-13-73" name="__codelineno-13-73"></a>        PrintParameter(&quot;Width&quot;);
+<a id="__codelineno-13-74" name="__codelineno-13-74"></a>        PrintParameter(&quot;Height&quot;);
+<a id="__codelineno-13-75" name="__codelineno-13-75"></a>        PrintParameter(&quot;[Stream]BufferHeight&quot;);
+<a id="__codelineno-13-76" name="__codelineno-13-76"></a>        PrintParameter(&quot;image_width&quot;);
+<a id="__codelineno-13-77" name="__codelineno-13-77"></a>        PrintParameter(&quot;image_height&quot;);
+<a id="__codelineno-13-78" name="__codelineno-13-78"></a>    }
+<a id="__codelineno-13-79" name="__codelineno-13-79"></a>
+<a id="__codelineno-13-80" name="__codelineno-13-80"></a>    public HObject GrabOneImage()
+<a id="__codelineno-13-81" name="__codelineno-13-81"></a>    {
+<a id="__codelineno-13-82" name="__codelineno-13-82"></a>        EnsureOpened();
+<a id="__codelineno-13-83" name="__codelineno-13-83"></a>
+<a id="__codelineno-13-84" name="__codelineno-13-84"></a>        // 非同期取得の準備
+<a id="__codelineno-13-85" name="__codelineno-13-85"></a>        HOperatorSet.GrabImageStart(_acqHandle!, -1);
+<a id="__codelineno-13-86" name="__codelineno-13-86"></a>
+<a id="__codelineno-13-87" name="__codelineno-13-87"></a>        // 100ラインが蓄積されると、100×100画像として返る想定
+<a id="__codelineno-13-88" name="__codelineno-13-88"></a>        HOperatorSet.GrabImageAsync(
+<a id="__codelineno-13-89" name="__codelineno-13-89"></a>            out HObject image,
+<a id="__codelineno-13-90" name="__codelineno-13-90"></a>            _acqHandle!,
+<a id="__codelineno-13-91" name="__codelineno-13-91"></a>            -1);
+<a id="__codelineno-13-92" name="__codelineno-13-92"></a>
+<a id="__codelineno-13-93" name="__codelineno-13-93"></a>        // 実際に返されたHALCON画像のサイズを確認
+<a id="__codelineno-13-94" name="__codelineno-13-94"></a>        HOperatorSet.GetImageSize(
+<a id="__codelineno-13-95" name="__codelineno-13-95"></a>            image,
+<a id="__codelineno-13-96" name="__codelineno-13-96"></a>            out HTuple actualWidth,
+<a id="__codelineno-13-97" name="__codelineno-13-97"></a>            out HTuple actualHeight);
+<a id="__codelineno-13-98" name="__codelineno-13-98"></a>
+<a id="__codelineno-13-99" name="__codelineno-13-99"></a>        Console.WriteLine(
+<a id="__codelineno-13-100" name="__codelineno-13-100"></a>            $&quot;取得画像サイズ: {actualWidth.I} × {actualHeight.I}&quot;);
+<a id="__codelineno-13-101" name="__codelineno-13-101"></a>
+<a id="__codelineno-13-102" name="__codelineno-13-102"></a>        if (actualWidth.I != 100 || actualHeight.I != 100)
+<a id="__codelineno-13-103" name="__codelineno-13-103"></a>        {
+<a id="__codelineno-13-104" name="__codelineno-13-104"></a>            image.Dispose();
+<a id="__codelineno-13-105" name="__codelineno-13-105"></a>
+<a id="__codelineno-13-106" name="__codelineno-13-106"></a>            throw new InvalidOperationException(
+<a id="__codelineno-13-107" name="__codelineno-13-107"></a>                $&quot;期待サイズは100×100ですが、&quot; +
+<a id="__codelineno-13-108" name="__codelineno-13-108"></a>                $&quot;{actualWidth.I}×{actualHeight.I}が返されました。&quot;);
+<a id="__codelineno-13-109" name="__codelineno-13-109"></a>        }
+<a id="__codelineno-13-110" name="__codelineno-13-110"></a>
+<a id="__codelineno-13-111" name="__codelineno-13-111"></a>        return image;
+<a id="__codelineno-13-112" name="__codelineno-13-112"></a>    }
+<a id="__codelineno-13-113" name="__codelineno-13-113"></a>
+<a id="__codelineno-13-114" name="__codelineno-13-114"></a>    private void PrintParameter(string parameterName)
+<a id="__codelineno-13-115" name="__codelineno-13-115"></a>    {
+<a id="__codelineno-13-116" name="__codelineno-13-116"></a>        try
+<a id="__codelineno-13-117" name="__codelineno-13-117"></a>        {
+<a id="__codelineno-13-118" name="__codelineno-13-118"></a>            HOperatorSet.GetFramegrabberParam(
+<a id="__codelineno-13-119" name="__codelineno-13-119"></a>                _acqHandle!,
+<a id="__codelineno-13-120" name="__codelineno-13-120"></a>                parameterName,
+<a id="__codelineno-13-121" name="__codelineno-13-121"></a>                out HTuple value);
+<a id="__codelineno-13-122" name="__codelineno-13-122"></a>
+<a id="__codelineno-13-123" name="__codelineno-13-123"></a>            Console.WriteLine($&quot;{parameterName} = {value}&quot;);
+<a id="__codelineno-13-124" name="__codelineno-13-124"></a>        }
+<a id="__codelineno-13-125" name="__codelineno-13-125"></a>        catch (HOperatorException ex)
+<a id="__codelineno-13-126" name="__codelineno-13-126"></a>        {
+<a id="__codelineno-13-127" name="__codelineno-13-127"></a>            Console.WriteLine(
+<a id="__codelineno-13-128" name="__codelineno-13-128"></a>                $&quot;{parameterName}: 取得不可 &quot; +
+<a id="__codelineno-13-129" name="__codelineno-13-129"></a>                $&quot;HALCON Error={ex.GetErrorCode()}, {ex.Message}&quot;);
+<a id="__codelineno-13-130" name="__codelineno-13-130"></a>        }
+<a id="__codelineno-13-131" name="__codelineno-13-131"></a>    }
+<a id="__codelineno-13-132" name="__codelineno-13-132"></a>
+<a id="__codelineno-13-133" name="__codelineno-13-133"></a>    private void TrySetParameter(string parameterName, HTuple value)
+<a id="__codelineno-13-134" name="__codelineno-13-134"></a>    {
+<a id="__codelineno-13-135" name="__codelineno-13-135"></a>        try
+<a id="__codelineno-13-136" name="__codelineno-13-136"></a>        {
+<a id="__codelineno-13-137" name="__codelineno-13-137"></a>            HOperatorSet.SetFramegrabberParam(
+<a id="__codelineno-13-138" name="__codelineno-13-138"></a>                _acqHandle!,
+<a id="__codelineno-13-139" name="__codelineno-13-139"></a>                parameterName,
+<a id="__codelineno-13-140" name="__codelineno-13-140"></a>                value);
+<a id="__codelineno-13-141" name="__codelineno-13-141"></a>        }
+<a id="__codelineno-13-142" name="__codelineno-13-142"></a>        catch (HOperatorException)
+<a id="__codelineno-13-143" name="__codelineno-13-143"></a>        {
+<a id="__codelineno-13-144" name="__codelineno-13-144"></a>            // 現在Grab中でない場合などは失敗しても問題ないため無視
+<a id="__codelineno-13-145" name="__codelineno-13-145"></a>        }
+<a id="__codelineno-13-146" name="__codelineno-13-146"></a>    }
+<a id="__codelineno-13-147" name="__codelineno-13-147"></a>
+<a id="__codelineno-13-148" name="__codelineno-13-148"></a>    private void EnsureOpened()
+<a id="__codelineno-13-149" name="__codelineno-13-149"></a>    {
+<a id="__codelineno-13-150" name="__codelineno-13-150"></a>        if (_acqHandle is null || _acqHandle.Length == 0)
+<a id="__codelineno-13-151" name="__codelineno-13-151"></a>        {
+<a id="__codelineno-13-152" name="__codelineno-13-152"></a>            throw new InvalidOperationException(
+<a id="__codelineno-13-153" name="__codelineno-13-153"></a>                &quot;カメラがOpenされていません。&quot;);
+<a id="__codelineno-13-154" name="__codelineno-13-154"></a>        }
+<a id="__codelineno-13-155" name="__codelineno-13-155"></a>    }
+<a id="__codelineno-13-156" name="__codelineno-13-156"></a>
+<a id="__codelineno-13-157" name="__codelineno-13-157"></a>    public void Close()
+<a id="__codelineno-13-158" name="__codelineno-13-158"></a>    {
+<a id="__codelineno-13-159" name="__codelineno-13-159"></a>        if (_acqHandle is null || _acqHandle.Length == 0)
+<a id="__codelineno-13-160" name="__codelineno-13-160"></a>            return;
+<a id="__codelineno-13-161" name="__codelineno-13-161"></a>
+<a id="__codelineno-13-162" name="__codelineno-13-162"></a>        try
+<a id="__codelineno-13-163" name="__codelineno-13-163"></a>        {
+<a id="__codelineno-13-164" name="__codelineno-13-164"></a>            TrySetParameter(&quot;do_abort_grab&quot;, 1);
+<a id="__codelineno-13-165" name="__codelineno-13-165"></a>            HOperatorSet.CloseFramegrabber(_acqHandle);
+<a id="__codelineno-13-166" name="__codelineno-13-166"></a>        }
+<a id="__codelineno-13-167" name="__codelineno-13-167"></a>        finally
+<a id="__codelineno-13-168" name="__codelineno-13-168"></a>        {
+<a id="__codelineno-13-169" name="__codelineno-13-169"></a>            _acqHandle.Dispose();
+<a id="__codelineno-13-170" name="__codelineno-13-170"></a>            _acqHandle = null;
+<a id="__codelineno-13-171" name="__codelineno-13-171"></a>        }
+<a id="__codelineno-13-172" name="__codelineno-13-172"></a>    }
+<a id="__codelineno-13-173" name="__codelineno-13-173"></a>
+<a id="__codelineno-13-174" name="__codelineno-13-174"></a>    public void Dispose()
+<a id="__codelineno-13-175" name="__codelineno-13-175"></a>    {
+<a id="__codelineno-13-176" name="__codelineno-13-176"></a>        Close();
+<a id="__codelineno-13-177" name="__codelineno-13-177"></a>    }
+<a id="__codelineno-13-178" name="__codelineno-13-178"></a>}
+</code></pre></div></td></tr></table></div></p>
+<p>設定順序  <br />
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-14-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-14-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-14-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-14-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-14-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-14-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-14-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-14-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-14-10">10</a></span>
+<span class="normal"><a href="#__codelineno-14-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>OpenFramegrabber
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a>    ↓
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a>Width = 100
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a>    ↓
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a>[Stream]BufferHeight = 100
+<a id="__codelineno-14-6" name="__codelineno-14-6"></a>    ↓
+<a id="__codelineno-14-7" name="__codelineno-14-7"></a>GrabImageStart
+<a id="__codelineno-14-8" name="__codelineno-14-8"></a>    ↓
+<a id="__codelineno-14-9" name="__codelineno-14-9"></a>GrabImageAsync
+<a id="__codelineno-14-10" name="__codelineno-14-10"></a>    ↓
+<a id="__codelineno-14-11" name="__codelineno-14-11"></a>GetImageSizeで100×100を確認
+</code></pre></div></td></tr></table></div></p>
+<p>実際に使える名前はコードで確認
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-15-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-15-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-15-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-15-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-15-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-15-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-15-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-15-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-15-10">10</a></span>
+<span class="normal"><a href="#__codelineno-15-11">11</a></span>
+<span class="normal"><a href="#__codelineno-15-12">12</a></span>
+<span class="normal"><a href="#__codelineno-15-13">13</a></span>
+<span class="normal"><a href="#__codelineno-15-14">14</a></span>
+<span class="normal"><a href="#__codelineno-15-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>HOperatorSet.GetFramegrabberParam(
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a>    acqHandle,
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a>    &quot;available_param_names&quot;,
+<a id="__codelineno-15-4" name="__codelineno-15-4"></a>    out HTuple names);
+<a id="__codelineno-15-5" name="__codelineno-15-5"></a>
+<a id="__codelineno-15-6" name="__codelineno-15-6"></a>for (int i = 0; i &lt; names.Length; i++)
+<a id="__codelineno-15-7" name="__codelineno-15-7"></a>{
+<a id="__codelineno-15-8" name="__codelineno-15-8"></a>    string name = names[i].S;
+<a id="__codelineno-15-9" name="__codelineno-15-9"></a>
+<a id="__codelineno-15-10" name="__codelineno-15-10"></a>    if (name.Contains(&quot;Width&quot;, StringComparison.OrdinalIgnoreCase) ||
+<a id="__codelineno-15-11" name="__codelineno-15-11"></a>        name.Contains(&quot;Height&quot;, StringComparison.OrdinalIgnoreCase))
+<a id="__codelineno-15-12" name="__codelineno-15-12"></a>    {
+<a id="__codelineno-15-13" name="__codelineno-15-13"></a>        Console.WriteLine(name);
+<a id="__codelineno-15-14" name="__codelineno-15-14"></a>    }
+<a id="__codelineno-15-15" name="__codelineno-15-15"></a>}
 </code></pre></div></td></tr></table></div></p>
 
 
