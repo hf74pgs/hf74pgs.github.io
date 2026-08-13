@@ -8,9 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://www.codesnippet.blog/csharp-2/">
+        <link rel="canonical" href="https://www.codesnippets.blog/csharp-2/">
       
       
+        <link rel="prev" href="../csharp-1/">
+      
+      
+        <link rel="next" href="../csharp-3/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -18,7 +22,7 @@
     
     
       
-        <title>Csharp 2 - Programming Guide</title>
+        <title>ONNX - Programming Guide</title>
       
     
     
@@ -71,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#onnx-runtime-1280" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -103,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Csharp 2
+              ONNX
             
           </span>
         </div>
@@ -258,8 +267,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -270,11 +281,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -290,7 +301,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Guide
@@ -310,6 +321,103 @@
   
   <span class="md-ellipsis">
     C#
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    ONNX
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    ONNX
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      目的
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csharp-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Redistributable
     
   </span>
   
@@ -343,200 +451,179 @@
 
 
 
-  <h1>Csharp 2</h1>
-
-<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-0-10">10</a></span>
-<span class="normal"><a href="#__codelineno-0-11">11</a></span>
-<span class="normal"><a href="#__codelineno-0-12">12</a></span>
-<span class="normal"><a href="#__codelineno-0-13">13</a></span>
-<span class="normal"><a href="#__codelineno-0-14">14</a></span>
-<span class="normal"><a href="#__codelineno-0-15">15</a></span>
-<span class="normal"><a href="#__codelineno-0-16">16</a></span>
-<span class="normal"><a href="#__codelineno-0-17">17</a></span>
-<span class="normal"><a href="#__codelineno-0-18">18</a></span>
-<span class="normal"><a href="#__codelineno-0-19">19</a></span>
-<span class="normal"><a href="#__codelineno-0-20">20</a></span>
-<span class="normal"><a href="#__codelineno-0-21">21</a></span>
-<span class="normal"><a href="#__codelineno-0-22">22</a></span>
-<span class="normal"><a href="#__codelineno-0-23">23</a></span>
-<span class="normal"><a href="#__codelineno-0-24">24</a></span>
-<span class="normal"><a href="#__codelineno-0-25">25</a></span>
-<span class="normal"><a href="#__codelineno-0-26">26</a></span>
-<span class="normal"><a href="#__codelineno-0-27">27</a></span>
-<span class="normal"><a href="#__codelineno-0-28">28</a></span>
-<span class="normal"><a href="#__codelineno-0-29">29</a></span>
-<span class="normal"><a href="#__codelineno-0-30">30</a></span>
-<span class="normal"><a href="#__codelineno-0-31">31</a></span>
-<span class="normal"><a href="#__codelineno-0-32">32</a></span>
-<span class="normal"><a href="#__codelineno-0-33">33</a></span>
-<span class="normal"><a href="#__codelineno-0-34">34</a></span>
-<span class="normal"><a href="#__codelineno-0-35">35</a></span>
-<span class="normal"><a href="#__codelineno-0-36">36</a></span>
-<span class="normal"><a href="#__codelineno-0-37">37</a></span>
-<span class="normal"><a href="#__codelineno-0-38">38</a></span>
-<span class="normal"><a href="#__codelineno-0-39">39</a></span>
-<span class="normal"><a href="#__codelineno-0-40">40</a></span>
-<span class="normal"><a href="#__codelineno-0-41">41</a></span>
-<span class="normal"><a href="#__codelineno-0-42">42</a></span>
-<span class="normal"><a href="#__codelineno-0-43">43</a></span>
-<span class="normal"><a href="#__codelineno-0-44">44</a></span>
-<span class="normal"><a href="#__codelineno-0-45">45</a></span>
-<span class="normal"><a href="#__codelineno-0-46">46</a></span>
-<span class="normal"><a href="#__codelineno-0-47">47</a></span>
-<span class="normal"><a href="#__codelineno-0-48">48</a></span>
-<span class="normal"><a href="#__codelineno-0-49">49</a></span>
-<span class="normal"><a href="#__codelineno-0-50">50</a></span>
-<span class="normal"><a href="#__codelineno-0-51">51</a></span>
-<span class="normal"><a href="#__codelineno-0-52">52</a></span>
-<span class="normal"><a href="#__codelineno-0-53">53</a></span>
-<span class="normal"><a href="#__codelineno-0-54">54</a></span>
-<span class="normal"><a href="#__codelineno-0-55">55</a></span>
-<span class="normal"><a href="#__codelineno-0-56">56</a></span>
-<span class="normal"><a href="#__codelineno-0-57">57</a></span>
-<span class="normal"><a href="#__codelineno-0-58">58</a></span>
-<span class="normal"><a href="#__codelineno-0-59">59</a></span>
-<span class="normal"><a href="#__codelineno-0-60">60</a></span>
-<span class="normal"><a href="#__codelineno-0-61">61</a></span>
-<span class="normal"><a href="#__codelineno-0-62">62</a></span>
-<span class="normal"><a href="#__codelineno-0-63">63</a></span>
-<span class="normal"><a href="#__codelineno-0-64">64</a></span>
-<span class="normal"><a href="#__codelineno-0-65">65</a></span>
-<span class="normal"><a href="#__codelineno-0-66">66</a></span>
-<span class="normal"><a href="#__codelineno-0-67">67</a></span>
-<span class="normal"><a href="#__codelineno-0-68">68</a></span>
-<span class="normal"><a href="#__codelineno-0-69">69</a></span>
-<span class="normal"><a href="#__codelineno-0-70">70</a></span>
-<span class="normal"><a href="#__codelineno-0-71">71</a></span>
-<span class="normal"><a href="#__codelineno-0-72">72</a></span>
-<span class="normal"><a href="#__codelineno-0-73">73</a></span>
-<span class="normal"><a href="#__codelineno-0-74">74</a></span>
-<span class="normal"><a href="#__codelineno-0-75">75</a></span>
-<span class="normal"><a href="#__codelineno-0-76">76</a></span>
-<span class="normal"><a href="#__codelineno-0-77">77</a></span>
-<span class="normal"><a href="#__codelineno-0-78">78</a></span>
-<span class="normal"><a href="#__codelineno-0-79">79</a></span>
-<span class="normal"><a href="#__codelineno-0-80">80</a></span>
-<span class="normal"><a href="#__codelineno-0-81">81</a></span>
-<span class="normal"><a href="#__codelineno-0-82">82</a></span>
-<span class="normal"><a href="#__codelineno-0-83">83</a></span>
-<span class="normal"><a href="#__codelineno-0-84">84</a></span>
-<span class="normal"><a href="#__codelineno-0-85">85</a></span>
-<span class="normal"><a href="#__codelineno-0-86">86</a></span>
-<span class="normal"><a href="#__codelineno-0-87">87</a></span>
-<span class="normal"><a href="#__codelineno-0-88">88</a></span>
-<span class="normal"><a href="#__codelineno-0-89">89</a></span>
-<span class="normal"><a href="#__codelineno-0-90">90</a></span>
-<span class="normal"><a href="#__codelineno-0-91">91</a></span>
-<span class="normal"><a href="#__codelineno-0-92">92</a></span>
-<span class="normal"><a href="#__codelineno-0-93">93</a></span>
-<span class="normal"><a href="#__codelineno-0-94">94</a></span>
-<span class="normal"><a href="#__codelineno-0-95">95</a></span>
-<span class="normal"><a href="#__codelineno-0-96">96</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PythonRunner</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">PythonResult</span><span class="w"> </span><span class="nf">Run</span><span class="p">(</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">            </span><span class="kt">string</span><span class="w"> </span><span class="n">pythonExePath</span><span class="p">,</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">            </span><span class="kt">string</span><span class="w"> </span><span class="n">scriptPath</span><span class="p">,</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">timeoutMilliseconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5000</span><span class="p">)</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">        </span><span class="p">{</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">startInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProcessStartInfo</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">            </span><span class="p">{</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">                </span><span class="n">FileName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pythonExePath</span><span class="p">,</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">                </span><span class="n">UseShellExecute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">,</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">                </span><span class="n">CreateNoWindow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">                </span><span class="n">RedirectStandardOutput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">                </span><span class="n">RedirectStandardError</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">            </span><span class="p">};</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16"></a>
-<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">            </span><span class="c1">// 引数を安全に渡す</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18"></a>
-<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="w">            </span><span class="k">using</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Process</span><span class="p">())</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">            </span><span class="p">{</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="w">                </span><span class="n">process</span><span class="p">.</span><span class="n">StartInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">startInfo</span><span class="p">;</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22"></a>
-<a id="__codelineno-0-23" name="__codelineno-0-23"></a>
-<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">standardOutput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StringBuilder</span><span class="p">();</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">standardError</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StringBuilder</span><span class="p">();</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26"></a>
-<a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="w">                </span><span class="n">process</span><span class="p">.</span><span class="n">OutputDataReceived</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">(</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="w">                </span><span class="p">{</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">Data</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="w">                    </span><span class="p">{</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="w">                        </span><span class="n">standardOutput</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">Data</span><span class="p">);</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="w">                    </span><span class="p">}</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="w">                </span><span class="p">};</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34"></a>
-<a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="w">                </span><span class="n">process</span><span class="p">.</span><span class="n">ErrorDataReceived</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">(</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="w">                </span><span class="p">{</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">Data</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="w">                    </span><span class="p">{</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="w">                        </span><span class="n">standardError</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">Data</span><span class="p">);</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="w">                    </span><span class="p">}</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="w">                </span><span class="p">};</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42"></a>
-<a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">process</span><span class="p">.</span><span class="n">Start</span><span class="p">())</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="w">                </span><span class="p">{</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="w">                    </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">InvalidOperationException</span><span class="p">(</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46"></a><span class="w">                        </span><span class="s">&quot;Pythonプロセスを開始できませんでした。&quot;</span><span class="p">);</span>
-<a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="w">                </span><span class="p">}</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48"></a>
-<a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="w">                </span><span class="n">process</span><span class="p">.</span><span class="n">BeginOutputReadLine</span><span class="p">();</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="w">                </span><span class="n">process</span><span class="p">.</span><span class="n">BeginErrorReadLine</span><span class="p">();</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51"></a>
-<a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="w">                </span><span class="kt">bool</span><span class="w"> </span><span class="n">exited</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">process</span><span class="p">.</span><span class="n">WaitForExit</span><span class="p">(</span><span class="n">timeoutMilliseconds</span><span class="p">);</span>
-<a id="__codelineno-0-53" name="__codelineno-0-53"></a>
-<a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">exited</span><span class="p">)</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="w">                </span><span class="p">{</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="w">                    </span><span class="k">try</span>
-<a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="w">                    </span><span class="p">{</span>
-<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="w">                        </span><span class="c1">//Pythonプロセスを強制終了</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="w">                        </span><span class="n">process</span><span class="p">.</span><span class="n">Kill</span><span class="p">();</span>
-<a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="w">                    </span><span class="p">}</span>
-<a id="__codelineno-0-61" name="__codelineno-0-61"></a><span class="w">                    </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InvalidOperationException</span><span class="p">)</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="w">                    </span><span class="p">{</span>
-<a id="__codelineno-0-63" name="__codelineno-0-63"></a><span class="w">                        </span><span class="c1">// Kill直前にプロセスが終了した場合</span>
-<a id="__codelineno-0-64" name="__codelineno-0-64"></a><span class="w">                    </span><span class="p">}</span>
-<a id="__codelineno-0-65" name="__codelineno-0-65"></a><span class="w">                    </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span>
-<a id="__codelineno-0-66" name="__codelineno-0-66"></a><span class="w">                    </span><span class="p">{</span>
-<a id="__codelineno-0-67" name="__codelineno-0-67"></a>
-<a id="__codelineno-0-68" name="__codelineno-0-68"></a><span class="w">                    </span><span class="p">}</span>
-<a id="__codelineno-0-69" name="__codelineno-0-69"></a>
-<a id="__codelineno-0-70" name="__codelineno-0-70"></a><span class="w">                    </span><span class="c1">// Kill完了と、OutputDataReceived,ErrorDataReceivedの残りの受信を待つ。</span>
-<a id="__codelineno-0-71" name="__codelineno-0-71"></a><span class="w">                    </span><span class="n">process</span><span class="p">.</span><span class="n">WaitForExit</span><span class="p">();</span>
-<a id="__codelineno-0-72" name="__codelineno-0-72"></a>
-<a id="__codelineno-0-73" name="__codelineno-0-73"></a>
-<a id="__codelineno-0-74" name="__codelineno-0-74"></a><span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">PythonResult</span><span class="p">(</span>
-<a id="__codelineno-0-75" name="__codelineno-0-75"></a><span class="w">                        </span><span class="n">IsSuccess</span><span class="p">:</span><span class="w"> </span><span class="k">false</span><span class="p">,</span>
-<a id="__codelineno-0-76" name="__codelineno-0-76"></a><span class="w">                        </span><span class="n">IsTimedOut</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-0-77" name="__codelineno-0-77"></a><span class="w">                        </span><span class="n">ExitCode</span><span class="p">:</span><span class="w"> </span><span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-0-78" name="__codelineno-0-78"></a><span class="w">                        </span><span class="n">StandardOutput</span><span class="p">:</span><span class="w"> </span><span class="n">standardOutput</span><span class="p">.</span><span class="n">ToString</span><span class="p">(),</span>
-<a id="__codelineno-0-79" name="__codelineno-0-79"></a><span class="w">                        </span><span class="n">StandardError</span><span class="p">:</span><span class="w"> </span><span class="n">standardError</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
-<a id="__codelineno-0-80" name="__codelineno-0-80"></a><span class="w">                </span><span class="p">}</span>
-<a id="__codelineno-0-81" name="__codelineno-0-81"></a><span class="w">                </span><span class="cm">/*</span>
-<a id="__codelineno-0-82" name="__codelineno-0-82"></a><span class="cm">                * WaitForExit(int)がtrueでも、</span>
-<a id="__codelineno-0-83" name="__codelineno-0-83"></a><span class="cm">                * 非同期の標準出力・標準エラー受信が</span>
-<a id="__codelineno-0-84" name="__codelineno-0-84"></a><span class="cm">                * 完了していない可能性があるため再度待つ。</span>
-<a id="__codelineno-0-85" name="__codelineno-0-85"></a><span class="cm">                */</span>
-<a id="__codelineno-0-86" name="__codelineno-0-86"></a><span class="w">                </span><span class="n">process</span><span class="p">.</span><span class="n">WaitForExit</span><span class="p">();</span>
-<a id="__codelineno-0-87" name="__codelineno-0-87"></a>
-<a id="__codelineno-0-88" name="__codelineno-0-88"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">PythonResult</span><span class="p">(</span>
-<a id="__codelineno-0-89" name="__codelineno-0-89"></a><span class="w">                    </span><span class="n">IsSuccess</span><span class="p">:</span><span class="w"> </span><span class="n">process</span><span class="p">.</span><span class="n">ExitCode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<a id="__codelineno-0-90" name="__codelineno-0-90"></a><span class="w">                    </span><span class="n">IsTimedOut</span><span class="p">:</span><span class="w"> </span><span class="k">false</span><span class="p">,</span>
-<a id="__codelineno-0-91" name="__codelineno-0-91"></a><span class="w">                    </span><span class="n">ExitCode</span><span class="p">:</span><span class="w"> </span><span class="n">process</span><span class="p">.</span><span class="n">ExitCode</span><span class="p">,</span>
-<a id="__codelineno-0-92" name="__codelineno-0-92"></a><span class="w">                    </span><span class="n">StandardOutput</span><span class="p">:</span><span class="w"> </span><span class="n">standardOutput</span><span class="p">.</span><span class="n">ToString</span><span class="p">(),</span>
-<a id="__codelineno-0-93" name="__codelineno-0-93"></a><span class="w">                    </span><span class="n">StandardError</span><span class="p">:</span><span class="w"> </span><span class="n">standardError</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
-<a id="__codelineno-0-94" name="__codelineno-0-94"></a><span class="w">            </span><span class="p">}</span>
-<a id="__codelineno-0-95" name="__codelineno-0-95"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-0-96" name="__codelineno-0-96"></a><span class="w">    </span><span class="p">}</span>
+<h1 id="onnx-runtime-1280">ONNX Runtime 1.28.0 オフライン導入手順<a class="headerlink" href="#onnx-runtime-1280" title="Permanent link">&para;</a></h1>
+<h2 id="_1">目的<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>既存のPython環境やアプリケーション環境への影響を可能な限り避けながら、WindowsオフラインPCへONNX Runtime 1.28.0 CPU版を導入し、正常にimportできることを確認する。</p>
+<hr />
+<h1 id="1">1. 前提<a class="headerlink" href="#1" title="Permanent link">&para;</a></h1>
+<p>使用Python：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>Python 3.11.9 x64
 </code></pre></div></td></tr></table></div>
+<p>検証用構成：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>C:\ort_test
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>├─ wheels
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>└─ venv
+</code></pre></div></td></tr></table></div>
+<p>既存環境への影響を避けるため、ONNX Runtimeは既存Python環境へ直接インストールせず、新規venvへインストールする。</p>
+<hr />
+<h1 id="2-pcwheel">2. オンラインPC：wheel取得<a class="headerlink" href="#2-pcwheel" title="Permanent link">&para;</a></h1>
+<p>PowerShellで保存先を作成する。</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nb">New-Item</span> <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Force</span> <span class="n">C</span><span class="p">:\</span><span class="n">ort_test</span><span class="p">\</span><span class="n">wheels</span>
+</code></pre></div></td></tr></table></div>
+<p>ONNX Runtime 1.28.0と必要な依存wheelを取得する。</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">python</span> <span class="n">-m</span> <span class="n">pip</span> <span class="n">download</span> <span class="n">onnxruntime</span><span class="p">==</span><span class="n">1</span><span class="p">.</span><span class="n">28</span><span class="p">.</span><span class="n">0</span> <span class="p">-</span><span class="n">-only-binary</span><span class="p">=:</span><span class="n">all</span><span class="p">:</span> <span class="n">-d</span> <span class="n">C</span><span class="p">:\</span><span class="n">ort_test</span><span class="p">\</span><span class="n">wheels</span>
+</code></pre></div></td></tr></table></div>
+<p>取得内容を確認する。</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nb">Get-ChildItem</span> <span class="n">C</span><span class="p">:\</span><span class="n">ort_test</span><span class="p">\</span><span class="n">wheels</span>
+</code></pre></div></td></tr></table></div>
+<p>以下の5ファイルを取得。</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span>
+<span class="normal"><a href="#__codelineno-5-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>flatbuffers-25.12.19-py2.py3-none-any.whl
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>numpy-2.4.6-cp311-cp311-win_amd64.whl
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a>onnxruntime-1.28.0-cp311-cp311-win_amd64.whl
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>packaging-26.3-py3-none-any.whl
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a>protobuf-7.35.1-cp310-abi3-win_amd64.whl
+</code></pre></div></td></tr></table></div>
+<p><code>C:\ort_test\wheels</code> フォルダをオフラインPCへコピーする。</p>
+<p>コピー先：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>C:\ort_test\wheels
+</code></pre></div></td></tr></table></div>
+<hr />
+<h1 id="3-pcvenv">3. オフラインPC：検証用venv作成<a class="headerlink" href="#3-pcvenv" title="Permanent link">&para;</a></h1>
+<ol>
+<li>Python 3.11.9の実行ファイルを使用してvenvを作成する場合。</li>
+</ol>
+<p>Pythonの場所が通常のPATH上にある場合：</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="n">python</span> <span class="n">-m</span> <span class="n">venv</span> <span class="n">C</span><span class="p">:\</span><span class="n">ort_test</span><span class="p">\</span><span class="n">venv</span>
+</code></pre></div></td></tr></table></div>
+<p>Pythonを専用フォルダへ入れている場合は、Pythonをフルパス指定する。</p>
+<p>例：</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="n">C</span><span class="p">:\</span><span class="n">ort_test</span><span class="p">\</span><span class="n">Python3119</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">-m</span> <span class="n">venv</span> <span class="n">C</span><span class="p">:\</span><span class="n">ort_test</span><span class="p">\</span><span class="n">venv</span>
+</code></pre></div></td></tr></table></div>
+<p>作成されたPythonを確認する。</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="n">C</span><span class="p">:\</span><span class="n">ort_test</span><span class="p">\</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">-V</span>
+</code></pre></div></td></tr></table></div>
+<p>期待結果：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>Python 3.11.9
+</code></pre></div></td></tr></table></div>
+<p>実際に使用されるPythonを確認する。</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="n">C</span><span class="p">:\</span><span class="n">ort_test</span><span class="p">\</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">-c</span> <span class="s2">&quot;import sys; print(sys.executable)&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p>期待結果：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>C:\ort_test\venv\Scripts\python.exe
+</code></pre></div></td></tr></table></div>
+<p>venvをActivateする必要はない。</p>
+<p>以後は常に、</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>C:\ort_test\venv\Scripts\python.exe
+</code></pre></div></td></tr></table></div>
+<p>をフルパス指定する。</p>
+<hr />
+<ol>
+<li>既存Pythonから検証用venvを作成する場合。
+既存Pythonが3.11.9の確認
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
+<span class="normal"><a href="#__codelineno-14-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>python -V
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a>where.exe python
+</code></pre></div></td></tr></table></div></li>
+</ol>
+<p>検証用venvを作成
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>python -m venv C:\ort_test\venv
+</code></pre></div></td></tr></table></div></p>
+<p>有効化してinstall。
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span>
+<span class="normal"><a href="#__codelineno-16-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a>C:\ort_test\venv\Scripts\Activate.ps1
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a>python -m pip install --no-index --find-links=C:\ort_test\wheels onnxruntime==1.28.0
+</code></pre></div></td></tr></table></div></p>
+<p>確認
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>C:\ort_test\venv\Scripts\python.exe -c &quot;import onnxruntime as ort; print(ort.__version__)&quot;
+</code></pre></div></td></tr></table></div></p>
+<h1 id="4-onnx-runtime-1280">4. ONNX Runtime 1.28.0をオフラインインストール<a class="headerlink" href="#4-onnx-runtime-1280" title="Permanent link">&para;</a></h1>
+<p>以下を実行する。</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="n">C</span><span class="p">:\</span><span class="n">ort_test</span><span class="p">\</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">-m</span> <span class="n">pip</span> <span class="n">install</span> <span class="p">-</span><span class="n">-no-index</span> <span class="p">-</span><span class="n">-find-links</span><span class="p">=</span><span class="n">C</span><span class="p">:\</span><span class="n">ort_test</span><span class="p">\</span><span class="n">wheels</span> <span class="n">onnxruntime</span><span class="p">==</span><span class="n">1</span><span class="p">.</span><span class="n">28</span><span class="p">.</span><span class="n">0</span>
+</code></pre></div></td></tr></table></div>
+<p><code>--no-index</code> によりPyPI等のオンラインリポジトリを使用しない。</p>
+<p><code>--find-links=C:\ort_test\wheels</code> により、指定フォルダ内のwheelだけを使用する。</p>
+<hr />
+<h1 id="5">5. インストール確認<a class="headerlink" href="#5" title="Permanent link">&para;</a></h1>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="n">C</span><span class="p">:\</span><span class="n">ort_test</span><span class="p">\</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">-m</span> <span class="n">pip</span> <span class="n">list</span>
+</code></pre></div></td></tr></table></div>
+<p>ONNX Runtimeのバージョンを確認する。</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="n">C</span><span class="p">:\</span><span class="n">ort_test</span><span class="p">\</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">-c</span> <span class="s2">&quot;import onnxruntime as ort; print(ort.__version__)&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p>正常な場合：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a>1.28.0
+</code></pre></div></td></tr></table></div>
+<p>と表示される。</p>
+<hr />
+<h1 id="6-dll">6. DLLエラーが発生した場合の記録<a class="headerlink" href="#6-dll" title="Permanent link">&para;</a></h1>
+<p>以下のエラーが発生した場合：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1">1</a></span>
+<span class="normal"><a href="#__codelineno-22-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a>ImportError: DLL load failed while importing onnxruntime_pybind11_state:
+<a id="__codelineno-22-2" name="__codelineno-22-2"></a>A dynamic link library (DLL) initialization routine failed.
+</code></pre></div></td></tr></table></div>
+<p>まずVisual C++ Runtime DLLのバージョンを記録する。</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="p">(</span><span class="nb">Get-Item</span> <span class="s2">&quot;C:\Windows\System32\MSVCP140.dll&quot;</span><span class="p">).</span><span class="n">VersionInfo</span><span class="p">.</span><span class="n">FileVersion</span>
+</code></pre></div></td></tr></table></div>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="p">(</span><span class="nb">Get-Item</span> <span class="s2">&quot;C:\Windows\System32\VCRUNTIME140.dll&quot;</span><span class="p">).</span><span class="n">VersionInfo</span><span class="p">.</span><span class="n">FileVersion</span>
+</code></pre></div></td></tr></table></div>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="p">(</span><span class="nb">Get-Item</span> <span class="s2">&quot;C:\Windows\System32\VCRUNTIME140_1.dll&quot;</span><span class="p">).</span><span class="n">VersionInfo</span><span class="p">.</span><span class="n">FileVersion</span>
+</code></pre></div></td></tr></table></div>
+<p>さらにイベントビューアーで以下を確認する。</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1">1</a></span>
+<span class="normal"><a href="#__codelineno-26-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a>Windowsログ
+<a id="__codelineno-26-2" name="__codelineno-26-2"></a> → アプリケーション
+</code></pre></div></td></tr></table></div>
+<p>確認項目：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1">1</a></span>
+<span class="normal"><a href="#__codelineno-27-2">2</a></span>
+<span class="normal"><a href="#__codelineno-27-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a>障害が発生したアプリケーション
+<a id="__codelineno-27-2" name="__codelineno-27-2"></a>障害が発生したモジュール
+<a id="__codelineno-27-3" name="__codelineno-27-3"></a>例外コード
+</code></pre></div></td></tr></table></div>
+<hr />
+<h1 id="7-vc-runtime">7. VC++ Runtime原因切り分け<a class="headerlink" href="#7-vc-runtime" title="Permanent link">&para;</a></h1>
+<p>最初からVC++ Runtimeを更新しない。</p>
+<p>まず現在のPC環境のまま、</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1"></a><span class="n">C</span><span class="p">:\</span><span class="n">ort_test</span><span class="p">\</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">-c</span> <span class="s2">&quot;import onnxruntime as ort; print(ort.__version__)&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p>を実行する。</p>
+<p>エラーが再現した場合のみ、Visual C++ Redistributable x64を更新して再起動する。</p>
+<p>その後、同じvenv・同じwheelのまま再度実行する。</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-29-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1"></a><span class="n">C</span><span class="p">:\</span><span class="n">ort_test</span><span class="p">\</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">-c</span> <span class="s2">&quot;import onnxruntime as ort; print(ort.__version__)&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p>結果：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1">1</a></span>
+<span class="normal"><a href="#__codelineno-30-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1"></a>更新前：NG
+<a id="__codelineno-30-2" name="__codelineno-30-2"></a>更新後：OK
+</code></pre></div></td></tr></table></div>
+<p>となれば、Visual C++ Runtime環境が原因だった可能性が非常に高い。</p>
+<hr />
+<h1 id="8-requirementstxt">8. requirements.txtを使用した本来の環境との比較<a class="headerlink" href="#8-requirementstxt" title="Permanent link">&para;</a></h1>
+<p>ONNX Runtime単体で正常動作を確認した後に、別のvenvを作成する。</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-31-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1"></a><span class="n">python</span> <span class="n">-m</span> <span class="n">venv</span> <span class="n">C</span><span class="p">:\</span><span class="n">ort_test</span><span class="p">\</span><span class="n">venv_full</span>
+</code></pre></div></td></tr></table></div>
+<p>元アプリケーションのrequirements.txt用wheelをオンラインPCで取得する。</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-32-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1"></a><span class="n">python</span> <span class="n">-m</span> <span class="n">pip</span> <span class="n">download</span> <span class="n">-r</span> <span class="n">requirements</span><span class="p">.</span><span class="n">txt</span> <span class="n">-d</span> <span class="n">C</span><span class="p">:\</span><span class="n">ort_test</span><span class="p">\</span><span class="n">wheels_full</span>
+</code></pre></div></td></tr></table></div>
+<p>オフラインPCへコピーした後、</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-33-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1"></a><span class="n">C</span><span class="p">:\</span><span class="n">ort_test</span><span class="p">\</span><span class="n">venv_full</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">-m</span> <span class="n">pip</span> <span class="n">install</span> <span class="p">-</span><span class="n">-no-index</span> <span class="p">-</span><span class="n">-find-links</span><span class="p">=</span><span class="n">C</span><span class="p">:\</span><span class="n">ort_test</span><span class="p">\</span><span class="n">wheels_full</span> <span class="n">-r</span> <span class="n">requirements</span><span class="p">.</span><span class="n">txt</span>
+</code></pre></div></td></tr></table></div>
+<p>でインストールする。</p>
+<p>その後、</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-34-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1"></a><span class="n">C</span><span class="p">:\</span><span class="n">ort_test</span><span class="p">\</span><span class="n">venv_full</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">-c</span> <span class="s2">&quot;import onnxruntime as ort; print(ort.__version__)&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p>を実行する。</p>
+<p>結果を比較する。</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-35-1">1</a></span>
+<span class="normal"><a href="#__codelineno-35-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1"></a>ONNX Runtimeだけのvenv       → OK
+<a id="__codelineno-35-2" name="__codelineno-35-2"></a>requirements全体のvenv       → NG
+</code></pre></div></td></tr></table></div>
+<p>となった場合、requirementsに含まれる別パッケージまたはパッケージバージョンとの競合を疑う。</p>
 
 
 

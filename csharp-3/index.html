@@ -8,8 +8,10 @@
       
       
       
-        <link rel="canonical" href="https://www.codesnippet.blog/csharp-3/">
+        <link rel="canonical" href="https://www.codesnippets.blog/csharp-3/">
       
+      
+        <link rel="prev" href="../csharp-2/">
       
       
       
@@ -18,7 +20,7 @@
     
     
       
-        <title>Csharp 3 - Programming Guide</title>
+        <title>Redistributable - Programming Guide</title>
       
     
     
@@ -71,6 +73,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#visual-c-runtime-x64" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -103,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Csharp 3
+              Redistributable
             
           </span>
         </div>
@@ -258,8 +265,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -270,11 +279,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -290,7 +299,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Guide
@@ -320,6 +329,103 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csharp-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ONNX
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Redistributable
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Redistributable
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 目的
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -343,9 +449,433 @@
 
 
 
-  <h1>Csharp 3</h1>
-
-
+<h1 id="visual-c-runtime-x64">Visual C++ Runtime x64 オフライン更新手順書<a class="headerlink" href="#visual-c-runtime-x64" title="Permanent link">&para;</a></h1>
+<h2 id="1">1. 目的<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>WindowsのオフラインPCで使用している Microsoft Visual C++ Runtime を、オンラインPCで取得した公式インストーラを用いて更新する。</p>
+<p>今回の主目的は、ONNX Runtime実行時に発生している以下のエラーについて、Visual C++ Runtimeが原因か切り分けることである。</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>ImportError: DLL load failed while importing onnxruntime_pybind11_state:
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>A dynamic link library (DLL) initialization routine failed.
+</code></pre></div></td></tr></table></div>
+<p>イベントビューアーでは、旧問題環境で以下が確認されている。</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>障害モジュール:
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>MSVCP140.dll
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>例外コード:
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>0xc0000005
+</code></pre></div></td></tr></table></div>
+<hr />
+<h1 id="2">2. 重要事項<a class="headerlink" href="#2" title="Permanent link">&para;</a></h1>
+<p>Visual C++ RuntimeはPythonのvenvとは異なり、<strong>Windows全体にインストールされるシステム側コンポーネント</strong>である。</p>
+<p>そのため、</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>C:\ort_test
+</code></pre></div></td></tr></table></div>
+<p>の中だけで更新を完結させることはできない。</p>
+<p>既存環境への影響を最小限にするため、</p>
+<ol>
+<li>更新前のバージョンを記録する</li>
+<li>既存Runtimeをアンインストールしない</li>
+<li>Microsoft公式の最新版x64をそのまま上書き更新する</li>
+<li>更新後に再起動する</li>
+<li>ONNX Runtimeの挙動を比較する</li>
+</ol>
+<p>という手順で実施する。</p>
+<p>Microsoftによると、Visual Studio 2017以降のMSVC v14系は共通のVisual C++ v14 Redistributableを使用し、最新v14 Runtimeへの更新が推奨されている。</p>
+<hr />
+<h1 id="3">3. 使用するパッケージ<a class="headerlink" href="#3" title="Permanent link">&para;</a></h1>
+<p>今回使用するのは、</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>Visual C++ v14 Redistributable
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>X64版
+</code></pre></div></td></tr></table></div>
+<p>である。</p>
+<p>ONNX Runtime CPU版およびPython 3.11 x64を使用しているため、今回の切り分けでは <strong>x64版を使用する</strong>。</p>
+<p>Microsoft公式の最新版ページでは、x64版として</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>vc_redist.x64.exe
+</code></pre></div></td></tr></table></div>
+<p>が提供されている。Microsoftは、アプリの対象アーキテクチャとRedistributableのアーキテクチャを合わせるよう案内している。</p>
+<p>既存PCにx86版Visual C++ Runtimeが入っていても、今回の作業では削除しない。</p>
+<p>また、Visual C++ 2013以前のRedistributableも削除しない。これらはv14系とは別にside-by-sideで保持される。</p>
+<hr />
+<h1 id="4-pc">4. オンラインPC：インストーラ取得<a class="headerlink" href="#4-pc" title="Permanent link">&para;</a></h1>
+<h2 id="41-microsoft">4.1 Microsoft公式ページを開く<a class="headerlink" href="#41-microsoft" title="Permanent link">&para;</a></h2>
+<p>Microsoft Learnの</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>Microsoft Visual C++ Redistributable latest supported downloads
+</code></pre></div></td></tr></table></div>
+<p>ページを開く。</p>
+<p>ページ内の</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>Visual C++ v14 Redistributable
+</code></pre></div></td></tr></table></div>
+<p>→</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>Latest supported redistributable version
+</code></pre></div></td></tr></table></div>
+<p>を確認する。</p>
+<p>Architecture一覧から</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>X64
+</code></pre></div></td></tr></table></div>
+<p>を選択してダウンロードする。</p>
+<p>ファイル名：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>vc_redist.x64.exe
+</code></pre></div></td></tr></table></div>
+<p>Microsoft公式では、このX64リンクは最新版へ向く固定リンクとして提供されている。</p>
+<hr />
+<h1 id="5-pc">5. オンラインPC：取得したファイルを保存<a class="headerlink" href="#5-pc" title="Permanent link">&para;</a></h1>
+<p>今回の検証用フォルダを使用する場合は、</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>C:\ort_test\installers
+</code></pre></div></td></tr></table></div>
+<p>へ保存する。</p>
+<p>例：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span>
+<span class="normal"><a href="#__codelineno-11-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>C:\ort_test
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a>└─ installers
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a>   └─ vc_redist.x64.exe
+</code></pre></div></td></tr></table></div>
+<hr />
+<h1 id="6-pc">6. オンラインPC：インストーラの署名確認<a class="headerlink" href="#6-pc" title="Permanent link">&para;</a></h1>
+<p>オフラインPCへ持ち込む前に、Microsoft署名の正規ファイルであることを確認する。</p>
+<p>PowerShellで実行する。</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="nb">Get-AuthenticodeSignature</span> <span class="n">C</span><span class="p">:\</span><span class="n">ort_test</span><span class="p">\</span><span class="n">installers</span><span class="p">\</span><span class="n">vc_redist</span><span class="p">.</span><span class="n">x64</span><span class="p">.</span><span class="n">exe</span>
+</code></pre></div></td></tr></table></div>
+<p>確認する項目：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>Status
+</code></pre></div></td></tr></table></div>
+<p>が</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>Valid
+</code></pre></div></td></tr></table></div>
+<p>であること。</p>
+<p>さらに署名者にMicrosoftが表示されていることを確認する。</p>
+<p>Microsoftも、Visual C++ RedistributableはMicrosoftサイトから取得し、Microsoft署名済みのものだけを使用するよう案内している。</p>
+<hr />
+<h1 id="7-pc">7. オンラインPC：インストーラ自体のバージョン確認<a class="headerlink" href="#7-pc" title="Permanent link">&para;</a></h1>
+<p>PowerShellで確認する。</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="p">(</span><span class="nb">Get-Item</span> <span class="s2">&quot;C:\ort_test\installers\vc_redist.x64.exe&quot;</span><span class="p">).</span><span class="n">VersionInfo</span><span class="p">.</span><span class="n">FileVersion</span>
+</code></pre></div></td></tr></table></div>
+<p>この値を記録しておく。</p>
+<p>例：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a>14.xx.xxxxx.x
+</code></pre></div></td></tr></table></div>
+<p>Microsoftは最新版のバージョン番号を固定掲載しておらず、最新版インストーラのファイルプロパティから確認する方法を案内している。</p>
+<hr />
+<h1 id="8-pc">8. オフラインPCへコピー<a class="headerlink" href="#8-pc" title="Permanent link">&para;</a></h1>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>vc_redist.x64.exe
+</code></pre></div></td></tr></table></div>
+<p>をオフラインPCへコピーする。</p>
+<p>コピー先例：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a>C:\ort_test\installers\vc_redist.x64.exe
+</code></pre></div></td></tr></table></div>
+<hr />
+<h1 id="9-pc">9. オフラインPC：更新前の状態を記録<a class="headerlink" href="#9-pc" title="Permanent link">&para;</a></h1>
+<p>更新前に必ず現在のRuntimeバージョンを記録する。</p>
+<p>PowerShellで以下を実行する。</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="p">(</span><span class="nb">Get-Item</span> <span class="s2">&quot;C:\Windows\System32\MSVCP140.dll&quot;</span><span class="p">).</span><span class="n">VersionInfo</span><span class="p">.</span><span class="n">FileVersion</span>
+</code></pre></div></td></tr></table></div>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="p">(</span><span class="nb">Get-Item</span> <span class="s2">&quot;C:\Windows\System32\VCRUNTIME140.dll&quot;</span><span class="p">).</span><span class="n">VersionInfo</span><span class="p">.</span><span class="n">FileVersion</span>
+</code></pre></div></td></tr></table></div>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="p">(</span><span class="nb">Get-Item</span> <span class="s2">&quot;C:\Windows\System32\VCRUNTIME140_1.dll&quot;</span><span class="p">).</span><span class="n">VersionInfo</span><span class="p">.</span><span class="n">FileVersion</span>
+</code></pre></div></td></tr></table></div>
+<p>正常動作した時の値</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a>14.38.33135.0
+</code></pre></div></td></tr></table></div>
+<p>この差は今回の原因切り分け上重要なので、更新前の値を必ず残す。</p>
+<hr />
+<h1 id="10-onnx-runtime">10. ONNX Runtimeの更新前テスト<a class="headerlink" href="#10-onnx-runtime" title="Permanent link">&para;</a></h1>
+<p>Visual C++ Runtimeを変更する前に、検証用venvで現在の挙動を確認する。</p>
+<p>例：</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="n">C</span><span class="p">:\</span><span class="n">ort_test</span><span class="p">\</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">-c</span> <span class="s2">&quot;import onnxruntime as ort; print(ort.__version__)&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p>正常なら、</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a>1.28.0
+</code></pre></div></td></tr></table></div>
+<p>と表示される。</p>
+<p>問題PCで、</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a>DLL load failed while importing onnxruntime_pybind11_state
+</code></pre></div></td></tr></table></div>
+<p>が発生することを再確認する。</p>
+<p>この結果を</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a>VC++ Runtime更新前：NG
+</code></pre></div></td></tr></table></div>
+<p>として記録する。</p>
+<hr />
+<h1 id="11">11. 実行中アプリケーションを終了<a class="headerlink" href="#11" title="Permanent link">&para;</a></h1>
+<p>Visual C++ RuntimeのDLLを使用しているアプリケーションが起動していると更新に失敗する場合がある。</p>
+<p>更新前に可能な限り以下を終了する。</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1">1</a></span>
+<span class="normal"><a href="#__codelineno-27-2">2</a></span>
+<span class="normal"><a href="#__codelineno-27-3">3</a></span>
+<span class="normal"><a href="#__codelineno-27-4">4</a></span>
+<span class="normal"><a href="#__codelineno-27-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a>Python
+<a id="__codelineno-27-2" name="__codelineno-27-2"></a>Visual Studio
+<a id="__codelineno-27-3" name="__codelineno-27-3"></a>VS Code
+<a id="__codelineno-27-4" name="__codelineno-27-4"></a>対象アプリケーション
+<a id="__codelineno-27-5" name="__codelineno-27-5"></a>その他開発ツール
+</code></pre></div></td></tr></table></div>
+<p>Microsoftも、ファイルが使用中の場合はインストール失敗の原因になり得るとして、実行中ソフトを閉じるよう案内している。</p>
+<hr />
+<h1 id="12-visual-c-runtime">12. Visual C++ Runtimeを更新<a class="headerlink" href="#12-visual-c-runtime" title="Permanent link">&para;</a></h1>
+<h2 id="agui">方法A：GUIで更新する<a class="headerlink" href="#agui" title="Permanent link">&para;</a></h2>
+<p>今回はこちらを推奨する。</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1"></a>C:\ort_test\installers\vc_redist.x64.exe
+</code></pre></div></td></tr></table></div>
+<p>を右クリックし、</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-29-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1"></a>管理者として実行
+</code></pre></div></td></tr></table></div>
+<p>を選択する。</p>
+<p>MicrosoftもVC Redistインストール時には管理者実行を推奨している。</p>
+<p>既存のVisual C++ v14 Runtimeが古い場合、通常は新しいRuntimeへの更新として処理される。</p>
+<p>画面の指示に従ってインストールする。</p>
+<hr />
+<h1 id="13">13. コマンドラインで更新する場合<a class="headerlink" href="#13" title="Permanent link">&para;</a></h1>
+<p>GUIを使用しない場合は、管理者PowerShellから以下でも実行できる。</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1"></a><span class="n">C</span><span class="p">:\</span><span class="n">ort_test</span><span class="p">\</span><span class="n">installers</span><span class="p">\</span><span class="n">vc_redist</span><span class="p">.</span><span class="n">x64</span><span class="p">.</span><span class="n">exe</span> <span class="p">/</span><span class="n">install</span> <span class="p">/</span><span class="n">passive</span> <span class="p">/</span><span class="n">norestart</span>
+</code></pre></div></td></tr></table></div>
+<p>意味：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-31-1">1</a></span>
+<span class="normal"><a href="#__codelineno-31-2">2</a></span>
+<span class="normal"><a href="#__codelineno-31-3">3</a></span>
+<span class="normal"><a href="#__codelineno-31-4">4</a></span>
+<span class="normal"><a href="#__codelineno-31-5">5</a></span>
+<span class="normal"><a href="#__codelineno-31-6">6</a></span>
+<span class="normal"><a href="#__codelineno-31-7">7</a></span>
+<span class="normal"><a href="#__codelineno-31-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1"></a>/install
+<a id="__codelineno-31-2" name="__codelineno-31-2"></a>    インストール
+<a id="__codelineno-31-3" name="__codelineno-31-3"></a>
+<a id="__codelineno-31-4" name="__codelineno-31-4"></a>/passive
+<a id="__codelineno-31-5" name="__codelineno-31-5"></a>    進行状況だけ表示
+<a id="__codelineno-31-6" name="__codelineno-31-6"></a>
+<a id="__codelineno-31-7" name="__codelineno-31-7"></a>/norestart
+<a id="__codelineno-31-8" name="__codelineno-31-8"></a>    自動再起動を抑止
+</code></pre></div></td></tr></table></div>
+<p>Visual C++ Redistributableは <code>/install</code>、<code>/repair</code>、<code>/uninstall</code>、<code>/passive</code>、<code>/quiet</code>、<code>/norestart</code>、<code>/log</code> などのコマンドラインオプションを公式にサポートしている。</p>
+<p>ログを明示的に残す場合は、</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-32-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1"></a><span class="n">C</span><span class="p">:\</span><span class="n">ort_test</span><span class="p">\</span><span class="n">installers</span><span class="p">\</span><span class="n">vc_redist</span><span class="p">.</span><span class="n">x64</span><span class="p">.</span><span class="n">exe</span> <span class="p">/</span><span class="n">install</span> <span class="p">/</span><span class="n">passive</span> <span class="p">/</span><span class="n">norestart</span> <span class="p">/</span><span class="n">log</span> <span class="n">C</span><span class="p">:\</span><span class="n">ort_test</span><span class="p">\</span><span class="n">vc_redist_install</span><span class="p">.</span><span class="n">log</span>
+</code></pre></div></td></tr></table></div>
+<p>とする。</p>
+<p>今回の原因調査ではログを残しておくと後で比較しやすい。</p>
+<hr />
+<h1 id="14-repair">14. 「Repair」が表示された場合<a class="headerlink" href="#14-repair" title="Permanent link">&para;</a></h1>
+<p>インストーラ起動時に、</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-33-1">1</a></span>
+<span class="normal"><a href="#__codelineno-33-2">2</a></span>
+<span class="normal"><a href="#__codelineno-33-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1"></a>Repair
+<a id="__codelineno-33-2" name="__codelineno-33-2"></a>Uninstall
+<a id="__codelineno-33-3" name="__codelineno-33-3"></a>Close
+</code></pre></div></td></tr></table></div>
+<p>等が表示される場合がある。</p>
+<p>この場合、まずインストーラ自体のバージョンと現在インストール済みRuntimeのバージョンを確認する。</p>
+<p>すでに同じ最新版が入っている場合は、</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-34-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1"></a>Repair
+</code></pre></div></td></tr></table></div>
+<p>を実行してRuntimeファイルを修復する。</p>
+<p>ただし、今回の目的が</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-35-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1"></a>14.34 → 最新版
+</code></pre></div></td></tr></table></div>
+<p>への更新であれば、古いRuntimeを先にアンインストールする必要はない。</p>
+<hr />
+<h1 id="15-pc">15. PCを再起動<a class="headerlink" href="#15-pc" title="Permanent link">&para;</a></h1>
+<p>インストール完了後は、Windowsを再起動する。</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-36-1">1</a></span>
+<span class="normal"><a href="#__codelineno-36-2">2</a></span>
+<span class="normal"><a href="#__codelineno-36-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1"></a>スタート
+<a id="__codelineno-36-2" name="__codelineno-36-2"></a>→ 電源
+<a id="__codelineno-36-3" name="__codelineno-36-3"></a>→ 再起動
+</code></pre></div></td></tr></table></div>
+<p>MicrosoftもVisual C++ Redistributableを個別インストールした場合、再起動を求められることがあるとしている。</p>
+<p>今回のDLL初期化問題では、古いDLLがプロセスにロードされたままになることを避けるため、<strong>再起動は実施する</strong>。</p>
+<hr />
+<h1 id="16-runtime">16. 更新後のRuntimeバージョン確認<a class="headerlink" href="#16-runtime" title="Permanent link">&para;</a></h1>
+<p>再起動後、PowerShellを開き以下を実行する。</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-37-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1"></a><span class="p">(</span><span class="nb">Get-Item</span> <span class="s2">&quot;C:\Windows\System32\MSVCP140.dll&quot;</span><span class="p">).</span><span class="n">VersionInfo</span><span class="p">.</span><span class="n">FileVersion</span>
+</code></pre></div></td></tr></table></div>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-38-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1"></a><span class="p">(</span><span class="nb">Get-Item</span> <span class="s2">&quot;C:\Windows\System32\VCRUNTIME140.dll&quot;</span><span class="p">).</span><span class="n">VersionInfo</span><span class="p">.</span><span class="n">FileVersion</span>
+</code></pre></div></td></tr></table></div>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-39-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1"></a><span class="p">(</span><span class="nb">Get-Item</span> <span class="s2">&quot;C:\Windows\System32\VCRUNTIME140_1.dll&quot;</span><span class="p">).</span><span class="n">VersionInfo</span><span class="p">.</span><span class="n">FileVersion</span>
+</code></pre></div></td></tr></table></div>
+<p>更新前：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-40-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1"></a>14.34.31938.0
+</code></pre></div></td></tr></table></div>
+<p>更新後：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-41-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1"></a>14.xx.xxxxx.x
+</code></pre></div></td></tr></table></div>
+<p>のように、新しい値へ変更されていることを確認する。</p>
+<p>3つが同じ系列のバージョンになっていることも確認する。</p>
+<hr />
+<h1 id="17-onnx-runtime">17. ONNX Runtime再テスト<a class="headerlink" href="#17-onnx-runtime" title="Permanent link">&para;</a></h1>
+<p>Visual C++ Runtime更新以外は変更せず、更新前と同じvenvで再度実行する。</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-42-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1"></a><span class="n">C</span><span class="p">:\</span><span class="n">ort_test</span><span class="p">\</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">-c</span> <span class="s2">&quot;import onnxruntime as ort; print(ort.__version__)&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p>結果を記録する。</p>
+<h2 id="a">パターンA<a class="headerlink" href="#a" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-43-1">1</a></span>
+<span class="normal"><a href="#__codelineno-43-2">2</a></span>
+<span class="normal"><a href="#__codelineno-43-3">3</a></span>
+<span class="normal"><a href="#__codelineno-43-4">4</a></span>
+<span class="normal"><a href="#__codelineno-43-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1"></a>更新前：
+<a id="__codelineno-43-2" name="__codelineno-43-2"></a>DLL load failed
+<a id="__codelineno-43-3" name="__codelineno-43-3"></a>
+<a id="__codelineno-43-4" name="__codelineno-43-4"></a>更新後：
+<a id="__codelineno-43-5" name="__codelineno-43-5"></a>1.28.0
+</code></pre></div></td></tr></table></div>
+<p>この場合、</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-44-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1"></a>Visual C++ Runtime環境が原因だった可能性が非常に高い
+</code></pre></div></td></tr></table></div>
+<p>と判断できる。</p>
+<hr />
+<h2 id="b">パターンB<a class="headerlink" href="#b" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-45-1">1</a></span>
+<span class="normal"><a href="#__codelineno-45-2">2</a></span>
+<span class="normal"><a href="#__codelineno-45-3">3</a></span>
+<span class="normal"><a href="#__codelineno-45-4">4</a></span>
+<span class="normal"><a href="#__codelineno-45-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1"></a>更新前：
+<a id="__codelineno-45-2" name="__codelineno-45-2"></a>DLL load failed
+<a id="__codelineno-45-3" name="__codelineno-45-3"></a>
+<a id="__codelineno-45-4" name="__codelineno-45-4"></a>更新後：
+<a id="__codelineno-45-5" name="__codelineno-45-5"></a>DLL load failed
+</code></pre></div></td></tr></table></div>
+<p>この場合、</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-46-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1"></a>Visual C++ Runtimeのバージョンだけが原因ではない
+</code></pre></div></td></tr></table></div>
+<p>と判断する。</p>
+<p>requirementsの違い、他のネイティブDLL、Windows環境差などを引き続き調査する。</p>
+<hr />
+<h1 id="18">18. イベントビューアーも再確認する<a class="headerlink" href="#18" title="Permanent link">&para;</a></h1>
+<p>まだエラーになる場合は、</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-47-1">1</a></span>
+<span class="normal"><a href="#__codelineno-47-2">2</a></span>
+<span class="normal"><a href="#__codelineno-47-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1"></a>イベントビューアー
+<a id="__codelineno-47-2" name="__codelineno-47-2"></a>→ Windowsログ
+<a id="__codelineno-47-3" name="__codelineno-47-3"></a>→ アプリケーション
+</code></pre></div></td></tr></table></div>
+<p>を確認する。</p>
+<p>特に、</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-48-1">1</a></span>
+<span class="normal"><a href="#__codelineno-48-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1"></a>障害モジュール
+<a id="__codelineno-48-2" name="__codelineno-48-2"></a>例外コード
+</code></pre></div></td></tr></table></div>
+<p>を見る。</p>
+<p>更新前と同じ、</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-49-1">1</a></span>
+<span class="normal"><a href="#__codelineno-49-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1"></a>MSVCP140.dll
+<a id="__codelineno-49-2" name="__codelineno-49-2"></a>0xc0000005
+</code></pre></div></td></tr></table></div>
+<p>なのか確認する。</p>
+<hr />
+<h1 id="19">19. インストール自体が失敗した場合<a class="headerlink" href="#19" title="Permanent link">&para;</a></h1>
+<p>Visual C++ Runtimeのインストールに失敗した場合は、まず以下を確認する。</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-50-1">1</a></span>
+<span class="normal"><a href="#__codelineno-50-2">2</a></span>
+<span class="normal"><a href="#__codelineno-50-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1"></a>管理者として実行したか
+<a id="__codelineno-50-2" name="__codelineno-50-2"></a>実行中アプリを終了したか
+<a id="__codelineno-50-3" name="__codelineno-50-3"></a>Windows再起動後に再試行したか
+</code></pre></div></td></tr></table></div>
+<p>Microsoftは、VC Redistインストール失敗時の代表的な原因として、</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-51-1">1</a></span>
+<span class="normal"><a href="#__codelineno-51-2">2</a></span>
+<span class="normal"><a href="#__codelineno-51-3">3</a></span>
+<span class="normal"><a href="#__codelineno-51-4">4</a></span>
+<span class="normal"><a href="#__codelineno-51-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1"></a>権限不足
+<a id="__codelineno-51-2" name="__codelineno-51-2"></a>ファイル使用中
+<a id="__codelineno-51-3" name="__codelineno-51-3"></a>セキュリティソフト
+<a id="__codelineno-51-4" name="__codelineno-51-4"></a>古いWindowsコンポーネント
+<a id="__codelineno-51-5" name="__codelineno-51-5"></a>Windows Installerキャッシュ破損
+</code></pre></div></td></tr></table></div>
+<p>などを挙げている。</p>
+<hr />
+<h1 id="20">20. インストールログ<a class="headerlink" href="#20" title="Permanent link">&para;</a></h1>
+<p>VC Redistは通常、</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-52-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1"></a>%TEMP%
+</code></pre></div></td></tr></table></div>
+<p>配下へログを作成する。</p>
+<p>ログ名例：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-53-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1"></a>dd_vcredist_x64_YYYYMMDDHHMMSS...
+</code></pre></div></td></tr></table></div>
+<p>Microsoftも、VC Redistの診断時にはこのログを確認するよう案内している。</p>
+<p>今回の手順で明示ログを指定した場合は、</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-54-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1"></a>C:\ort_test\vc_redist_install.log
+</code></pre></div></td></tr></table></div>
+<p>を確認する。</p>
+<hr />
+<h1 id="21-runtime">21. 既存Runtimeを先に削除しない<a class="headerlink" href="#21-runtime" title="Permanent link">&para;</a></h1>
+<p>今回の切り分けでは、</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-55-1">1</a></span>
+<span class="normal"><a href="#__codelineno-55-2">2</a></span>
+<span class="normal"><a href="#__codelineno-55-3">3</a></span>
+<span class="normal"><a href="#__codelineno-55-4">4</a></span>
+<span class="normal"><a href="#__codelineno-55-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1"></a>古いVC++ Runtime
+<a id="__codelineno-55-2" name="__codelineno-55-2"></a>↓
+<a id="__codelineno-55-3" name="__codelineno-55-3"></a>アンインストール
+<a id="__codelineno-55-4" name="__codelineno-55-4"></a>↓
+<a id="__codelineno-55-5" name="__codelineno-55-5"></a>最新版を新規インストール
+</code></pre></div></td></tr></table></div>
+<p>とはしない。</p>
+<p>まず、</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-56-1">1</a></span>
+<span class="normal"><a href="#__codelineno-56-2">2</a></span>
+<span class="normal"><a href="#__codelineno-56-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1"></a>古いVC++ Runtime
+<a id="__codelineno-56-2" name="__codelineno-56-2"></a>↓
+<a id="__codelineno-56-3" name="__codelineno-56-3"></a>最新版をそのまま上書き
+</code></pre></div></td></tr></table></div>
+<p>とする。</p>
+<p>これにより、既存アプリケーションへの影響を最小限にしつつ比較できる。</p>
+<p>Microsoftもv14系について、最新v14 Runtimeへのin-place upgradeを案内している。</p>
+<hr />
+<h1 id="22-x86">22. x86版について<a class="headerlink" href="#22-x86" title="Permanent link">&para;</a></h1>
+<p>今回のONNX Runtimeは、</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-57-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1"></a>onnxruntime-1.28.0-cp311-cp311-win_amd64.whl
+</code></pre></div></td></tr></table></div>
+<p>なのでx64アプリケーションである。</p>
+<p>そのため今回更新対象は、</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-58-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1"></a>vc_redist.x64.exe
+</code></pre></div></td></tr></table></div>
+<p>とする。</p>
+<p>既存の</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-59-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1"></a>Microsoft Visual C++ Redistributable (x86)
+</code></pre></div></td></tr></table></div>
+<p>は削除しない。</p>
+<p>32bitアプリケーションが使用している可能性があるためである。</p>
+<hr />
+<h1 id="23">23. 今回の推奨検証順<a class="headerlink" href="#23" title="Permanent link">&para;</a></h1>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-60-1">1</a></span>
+<span class="normal"><a href="#__codelineno-60-2">2</a></span>
+<span class="normal"><a href="#__codelineno-60-3">3</a></span>
+<span class="normal"><a href="#__codelineno-60-4">4</a></span>
+<span class="normal"><a href="#__codelineno-60-5">5</a></span>
+<span class="normal"><a href="#__codelineno-60-6">6</a></span>
+<span class="normal"><a href="#__codelineno-60-7">7</a></span>
+<span class="normal"><a href="#__codelineno-60-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1"></a>① VC++ Runtime 14.34のまま
+<a id="__codelineno-60-2" name="__codelineno-60-2"></a>       ↓
+<a id="__codelineno-60-3" name="__codelineno-60-3"></a>② 新しい C:\ort_test\venv を作成
+<a id="__codelineno-60-4" name="__codelineno-60-4"></a>       ↓
+<a id="__codelineno-60-5" name="__codelineno-60-5"></a>③ 今回成功した5個のwheelから
+<a id="__codelineno-60-6" name="__codelineno-60-6"></a>   onnxruntime 1.28.0をインストール
+<a id="__codelineno-60-7" name="__codelineno-60-7"></a>       ↓
+<a id="__codelineno-60-8" name="__codelineno-60-8"></a>④ import確認
+</code></pre></div></td></tr></table></div>
+<p>ここでエラーが再現したら、</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-61-1">1</a></span>
+<span class="normal"><a href="#__codelineno-61-2">2</a></span>
+<span class="normal"><a href="#__codelineno-61-3">3</a></span>
+<span class="normal"><a href="#__codelineno-61-4">4</a></span>
+<span class="normal"><a href="#__codelineno-61-5">5</a></span>
+<span class="normal"><a href="#__codelineno-61-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1"></a>⑤ 他の環境は一切変更せず
+<a id="__codelineno-61-2" name="__codelineno-61-2"></a>   VC++ Runtime x64だけ最新版へ更新
+<a id="__codelineno-61-3" name="__codelineno-61-3"></a>       ↓
+<a id="__codelineno-61-4" name="__codelineno-61-4"></a>⑥ Windows再起動
+<a id="__codelineno-61-5" name="__codelineno-61-5"></a>       ↓
+<a id="__codelineno-61-6" name="__codelineno-61-6"></a>⑦ 同じvenvで再度import
+</code></pre></div></td></tr></table></div>
+<p>とする。</p>
+<p>この方法なら、</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-62-1">1</a></span>
+<span class="normal"><a href="#__codelineno-62-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1"></a>VC++ Runtime更新前 → NG
+<a id="__codelineno-62-2" name="__codelineno-62-2"></a>VC++ Runtime更新後 → OK
+</code></pre></div></td></tr></table></div>
+<p>という比較ができ、原因の切り分けとして非常に強い結果になる。</p>
+<hr />
 
 
 
