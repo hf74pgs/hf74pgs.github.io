@@ -3,6 +3,14 @@ header.md-header {
   display: none;
 } */
 
+
+/* PCのみヘッダーを非表示 */
+@media screen and (min-width: 76.25em) {
+  header.md-header {
+    display: none;
+  }
+}
+
 /* ヘッダーを消した分、コンテンツが上に詰まりすぎるのを防ぐ調整（必要に応じて） */
 .md-main__inner {
   margin-top: 0;
