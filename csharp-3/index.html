@@ -688,6 +688,23 @@ Baslerはこの環境変数からCLPライブラリを探す
 <a id="__codelineno-17-3" name="__codelineno-17-3"></a>&quot;[Interface]ClpSharedLibraryPath&quot;,
 <a id="__codelineno-17-4" name="__codelineno-17-4"></a>@&quot;C:\Program Files\Basler\pylon\Runtime\CLProtocol\Win64_x64\BaslerCLProtocol.dll&quot;);
 </code></pre></div></td></tr></table></div></p>
+<p>再起動後、まずPowerShellでこれを確認。</p>
+<p>$env:GENICAM_CLPROTOCOL</p>
+<p>期待値：</p>
+<p>C:\Program Files\Basler\FramegrabberSDK\bin</p>
+<p>続けて、</p>
+<p>Test-Path "$env:GENICAM_CLPROTOCOL\BaslerCLProtocol.dll"</p>
+<p>を実行。</p>
+<p>Trueになれば、少なくとも環境変数からDLLファイルまでは到達。</p>
+<p><div class="language-PowerShell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span>
+<span class="normal"><a href="#__codelineno-18-2">2</a></span>
+<span class="normal"><a href="#__codelineno-18-3">3</a></span>
+<span class="normal"><a href="#__codelineno-18-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="p">//</span><span class="n">DLLのファイルバージョンを比較</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="p">(</span><span class="nb">Get-Item</span> <span class="s2">&quot;C:\Program Files\Basler\FramegrabberSDK\bin\BaslerCLProtocol.dll&quot;</span><span class="p">).</span><span class="n">VersionInfo</span> <span class="p">|</span> <span class="nb">Format-List</span> <span class="n">FileVersion</span><span class="p">,</span><span class="n">ProductVersion</span><span class="p">,</span><span class="n">FileName</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="p">//</span><span class="n">Producer側</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="p">(</span><span class="nb">Get-Item</span> <span class="s2">&quot;C:\Program Files\Basler\FramegrabberSDK\bin\ProducerCL.cti&quot;</span><span class="p">).</span><span class="n">VersionInfo</span> <span class="p">|</span> <span class="nb">Format-List</span> <span class="n">FileVersion</span><span class="p">,</span><span class="n">ProductVersion</span><span class="p">,</span><span class="n">FileName</span>
+</code></pre></div></td></tr></table></div>
+SDKバージョン確認</p>
 
 
 
