@@ -397,9 +397,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#flash" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Flash
+      判定例
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#info_boards" class="md-nav__link">
+    <span class="md-ellipsis">
+      info_boardsパース例
     </span>
   </a>
   
@@ -586,7 +595,6 @@
 </code></pre></div></td></tr></table></div>
 です。</p>
 <p>さらに便利なのが、Basler Producerでは読み込んだMCFに現在とは別のAppletが記録されている場合、ProducerがInterfaceAppletをそのAppletへ変更しようとする仕様があります。その場合も、Device Close＋device list更新が必要です。</p>
-<p>なので実際には、
 <div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-10-3"> 3</a></span>
@@ -597,21 +605,25 @@
 <span class="normal"><a href="#__codelineno-10-8"> 8</a></span>
 <span class="normal"><a href="#__codelineno-10-9"> 9</a></span>
 <span class="normal"><a href="#__codelineno-10-10">10</a></span>
-<span class="normal"><a href="#__codelineno-10-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>MCFをロード
+<span class="normal"><a href="#__codelineno-10-11">11</a></span>
+<span class="normal"><a href="#__codelineno-10-12">12</a></span>
+<span class="normal"><a href="#__codelineno-10-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>OpenFramegrabber
 <a id="__codelineno-10-2" name="__codelineno-10-2"></a>↓
-<a id="__codelineno-10-3" name="__codelineno-10-3"></a>MCF内のAppletと現在Appletが違う
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a>[Interface]UserSetFile にMCFパスを設定
 <a id="__codelineno-10-4" name="__codelineno-10-4"></a>↓
-<a id="__codelineno-10-5" name="__codelineno-10-5"></a>ProducerがApplet変更
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a>[Interface]UserSetLoad 実行
 <a id="__codelineno-10-6" name="__codelineno-10-6"></a>↓
-<a id="__codelineno-10-7" name="__codelineno-10-7"></a>Deviceを閉じる
+<a id="__codelineno-10-7" name="__codelineno-10-7"></a>MCF内でApplet変更が要求される
 <a id="__codelineno-10-8" name="__codelineno-10-8"></a>↓
-<a id="__codelineno-10-9" name="__codelineno-10-9"></a>再列挙
+<a id="__codelineno-10-9" name="__codelineno-10-9"></a>CloseFramegrabber
 <a id="__codelineno-10-10" name="__codelineno-10-10"></a>↓
-<a id="__codelineno-10-11" name="__codelineno-10-11"></a>設定反映
+<a id="__codelineno-10-11" name="__codelineno-10-11"></a>Device list再列挙
+<a id="__codelineno-10-12" name="__codelineno-10-12"></a>↓
+<a id="__codelineno-10-13" name="__codelineno-10-13"></a>OpenFramegrabberし直す
 </code></pre></div></td></tr></table></div>
-という動きも可能です。</p>
-<p>このため、Applet名とMCFパスをセットでカメラプロファイルとして管理する設計はかなり相性がよいです。</p>
-<p>例えば、
+<hr />
+<p>確認用に実際に作るなら、Applet本体を自作する必要はまずありません。Marathon-ACL向けの標準Acquisition AppletはFramegrabber SDKに最初から入っています。まずはその標準AppletをmicroDisplay Xでロードし、必要なパラメータを設定して、その設定を.mcfとして保存するのが一番簡単です。</p>
+<p>まず関係だけ短く整理すると、
 <div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
@@ -621,72 +633,40 @@
 <span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
 <span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
 <span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-11-10">10</a></span>
-<span class="normal"><a href="#__codelineno-11-11">11</a></span>
-<span class="normal"><a href="#__codelineno-11-12">12</a></span>
-<span class="normal"><a href="#__codelineno-11-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>public class CameraProfile
-<a id="__codelineno-11-2" name="__codelineno-11-2"></a>{
-<a id="__codelineno-11-3" name="__codelineno-11-3"></a>    public string Name { get; set; }
+<span class="normal"><a href="#__codelineno-11-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>Applet
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a>  = 取得機能そのもの
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a>  例: Acq_SingleBaseAreaBayer
 <a id="__codelineno-11-4" name="__codelineno-11-4"></a>
-<a id="__codelineno-11-5" name="__codelineno-11-5"></a>    public string InterfaceName { get; set; }
-<a id="__codelineno-11-6" name="__codelineno-11-6"></a>    public string DeviceName { get; set; }
-<a id="__codelineno-11-7" name="__codelineno-11-7"></a>
-<a id="__codelineno-11-8" name="__codelineno-11-8"></a>    // Camera Link / Marathon用
-<a id="__codelineno-11-9" name="__codelineno-11-9"></a>    public string? AppletName { get; set; }
-<a id="__codelineno-11-10" name="__codelineno-11-10"></a>    public string? McfPath { get; set; }
-<a id="__codelineno-11-11" name="__codelineno-11-11"></a>
-<a id="__codelineno-11-12" name="__codelineno-11-12"></a>    public string CameraType { get; set; } = &quot;default&quot;;
-<a id="__codelineno-11-13" name="__codelineno-11-13"></a>}
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a>HAP
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a>  = Hardware Appletのファイル
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a>  VisualApplets等で自作したAppletの実体
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a>
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a>MCF
+<a id="__codelineno-11-10" name="__codelineno-11-10"></a>  = Appletに設定したパラメータ値の保存ファイル
 </code></pre></div></td></tr></table></div>
-そして、
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-12-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-12-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-12-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-12-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-12-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-12-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-12-10">10</a></span>
-<span class="normal"><a href="#__codelineno-12-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>GigE
-<a id="__codelineno-12-2" name="__codelineno-12-2"></a>  AppletName = null
-<a id="__codelineno-12-3" name="__codelineno-12-3"></a>  McfPath    = null
-<a id="__codelineno-12-4" name="__codelineno-12-4"></a>
-<a id="__codelineno-12-5" name="__codelineno-12-5"></a>CXP
-<a id="__codelineno-12-6" name="__codelineno-12-6"></a>  AppletName = null
-<a id="__codelineno-12-7" name="__codelineno-12-7"></a>  McfPath    = null
-<a id="__codelineno-12-8" name="__codelineno-12-8"></a>
-<a id="__codelineno-12-9" name="__codelineno-12-9"></a>Camera Link / Marathon
-<a id="__codelineno-12-10" name="__codelineno-12-10"></a>  AppletName = Acq_SingleBaseAreaBayer
-<a id="__codelineno-12-11" name="__codelineno-12-11"></a>  McfPath    = C:\Config\aca2040.mcf
+です。</p>
+<h3 id="hap">HAPを「作る」場合<a class="headerlink" href="#hap" title="Permanent link">&para;</a></h3>
+<p>これは別段階です。</p>
+<p>標準Appletでは機能が足りず、自分でFPGA処理を作りたい場合は VisualApplets という専用ツールを使います。そこで画像取得・処理回路をGUIで構成し、Hardware Appletとして.hapを生成します。生成した.hapはフレームグラバへロードできます。VisualAppletsの資料でも、.hapをLoadしてフレームグラバへ入れる手順が説明されています。</p>
+<p>ただし「確認用」であれば、HAP自作は不要です。</p>
+<p>まずは、
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>標準Applet
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a>Acq_SingleBaseAreaBayer
 </code></pre></div></td></tr></table></div>
-という形にできます。</p>
-<p>1点だけ注意があって、「Appletを選択する」と「AppletをFlashする」は別処理です。</p>
-<p>通常運用では、毎回Flashはしません。</p>
-<p>むしろ、
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+を使えば十分です。</p>
+<hr />
+<p><div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
 <span class="normal"><a href="#__codelineno-13-2">2</a></span>
 <span class="normal"><a href="#__codelineno-13-3">3</a></span>
-<span class="normal"><a href="#__codelineno-13-4">4</a></span>
-<span class="normal"><a href="#__codelineno-13-5">5</a></span>
-<span class="normal"><a href="#__codelineno-13-6">6</a></span>
-<span class="normal"><a href="#__codelineno-13-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>導入・保守時：
-<a id="__codelineno-13-2" name="__codelineno-13-2"></a>必要AppletをFlashしておく
-<a id="__codelineno-13-3" name="__codelineno-13-3"></a>
-<a id="__codelineno-13-4" name="__codelineno-13-4"></a>通常運用：
-<a id="__codelineno-13-5" name="__codelineno-13-5"></a>Flash済みAppletを選択
-<a id="__codelineno-13-6" name="__codelineno-13-6"></a>MCFをロード
-<a id="__codelineno-13-7" name="__codelineno-13-7"></a>撮像
+<span class="normal"><a href="#__codelineno-13-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>InfoFramegrabber(
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a>    &quot;SiliconSoftware&quot;,
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a>    &quot;camera_type&quot;,
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a>    ...)
 </code></pre></div></td></tr></table></div>
-という分担が普通です。</p>
-<p>BaslerもmarathonではAppletを事前Flashして利用可能にし、その後アプリやGenTL経由で選択する設計になっています。</p>
-<p>つまり、今回の理解は、</p>
-<p>複数Appletを先にFlash → ソフト側で使用Appletを選択 → 必要なら対応MCFロード</p>
-<p>でOKです</p>
+の結果で、ccf または <path> 等が明示されている場合だけ CameraType にパスを渡す設計にした方が安全</p>
 <hr />
-<p>確認用に実際に作るなら、Applet本体を自作する必要はまずありません。Marathon-ACL向けの標準Acquisition AppletはFramegrabber SDKに最初から入っています。まずはその標準AppletをmicroDisplay Xでロードし、必要なパラメータを設定して、その設定を.mcfとして保存するのが一番簡単です。</p>
-<p>まず関係だけ短く整理すると、
+<h2 id="_1">判定例<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-14-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-14-3"> 3</a></span>
@@ -696,25 +676,103 @@
 <span class="normal"><a href="#__codelineno-14-7"> 7</a></span>
 <span class="normal"><a href="#__codelineno-14-8"> 8</a></span>
 <span class="normal"><a href="#__codelineno-14-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-14-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>Applet
-<a id="__codelineno-14-2" name="__codelineno-14-2"></a>  = 取得機能そのもの
-<a id="__codelineno-14-3" name="__codelineno-14-3"></a>  例: Acq_SingleBaseAreaBayer
-<a id="__codelineno-14-4" name="__codelineno-14-4"></a>
-<a id="__codelineno-14-5" name="__codelineno-14-5"></a>HAP
-<a id="__codelineno-14-6" name="__codelineno-14-6"></a>  = Hardware Appletのファイル
-<a id="__codelineno-14-7" name="__codelineno-14-7"></a>  VisualApplets等で自作したAppletの実体
+<span class="normal"><a href="#__codelineno-14-10">10</a></span>
+<span class="normal"><a href="#__codelineno-14-11">11</a></span>
+<span class="normal"><a href="#__codelineno-14-12">12</a></span>
+<span class="normal"><a href="#__codelineno-14-13">13</a></span>
+<span class="normal"><a href="#__codelineno-14-14">14</a></span>
+<span class="normal"><a href="#__codelineno-14-15">15</a></span>
+<span class="normal"><a href="#__codelineno-14-16">16</a></span>
+<span class="normal"><a href="#__codelineno-14-17">17</a></span>
+<span class="normal"><a href="#__codelineno-14-18">18</a></span>
+<span class="normal"><a href="#__codelineno-14-19">19</a></span>
+<span class="normal"><a href="#__codelineno-14-20">20</a></span>
+<span class="normal"><a href="#__codelineno-14-21">21</a></span>
+<span class="normal"><a href="#__codelineno-14-22">22</a></span>
+<span class="normal"><a href="#__codelineno-14-23">23</a></span>
+<span class="normal"><a href="#__codelineno-14-24">24</a></span>
+<span class="normal"><a href="#__codelineno-14-25">25</a></span>
+<span class="normal"><a href="#__codelineno-14-26">26</a></span>
+<span class="normal"><a href="#__codelineno-14-27">27</a></span>
+<span class="normal"><a href="#__codelineno-14-28">28</a></span>
+<span class="normal"><a href="#__codelineno-14-29">29</a></span>
+<span class="normal"><a href="#__codelineno-14-30">30</a></span>
+<span class="normal"><a href="#__codelineno-14-31">31</a></span>
+<span class="normal"><a href="#__codelineno-14-32">32</a></span>
+<span class="normal"><a href="#__codelineno-14-33">33</a></span>
+<span class="normal"><a href="#__codelineno-14-34">34</a></span>
+<span class="normal"><a href="#__codelineno-14-35">35</a></span>
+<span class="normal"><a href="#__codelineno-14-36">36</a></span>
+<span class="normal"><a href="#__codelineno-14-37">37</a></span>
+<span class="normal"><a href="#__codelineno-14-38">38</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>1. HALCON interface名を見る
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a>
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a>GigEVision2
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a>    → GigE確定
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a>
+<a id="__codelineno-14-6" name="__codelineno-14-6"></a>GenICamTL
+<a id="__codelineno-14-7" name="__codelineno-14-7"></a>    ↓
 <a id="__codelineno-14-8" name="__codelineno-14-8"></a>
-<a id="__codelineno-14-9" name="__codelineno-14-9"></a>MCF
-<a id="__codelineno-14-10" name="__codelineno-14-10"></a>  = Appletに設定したパラメータ値の保存ファイル
+<a id="__codelineno-14-9" name="__codelineno-14-9"></a>2. InfoFramegrabber(&quot;GenICamTL&quot;,&quot;info_boards&quot;)
+<a id="__codelineno-14-10" name="__codelineno-14-10"></a>   のtl_typeを見る
+<a id="__codelineno-14-11" name="__codelineno-14-11"></a>
+<a id="__codelineno-14-12" name="__codelineno-14-12"></a>GEV
+<a id="__codelineno-14-13" name="__codelineno-14-13"></a>    → GigE
+<a id="__codelineno-14-14" name="__codelineno-14-14"></a>
+<a id="__codelineno-14-15" name="__codelineno-14-15"></a>CXP系
+<a id="__codelineno-14-16" name="__codelineno-14-16"></a>    → CoaXPress
+<a id="__codelineno-14-17" name="__codelineno-14-17"></a>
+<a id="__codelineno-14-18" name="__codelineno-14-18"></a>CL系
+<a id="__codelineno-14-19" name="__codelineno-14-19"></a>    → Camera Link
+<a id="__codelineno-14-20" name="__codelineno-14-20"></a>
+<a id="__codelineno-14-21" name="__codelineno-14-21"></a>不明
+<a id="__codelineno-14-22" name="__codelineno-14-22"></a>    ↓
+<a id="__codelineno-14-23" name="__codelineno-14-23"></a>
+<a id="__codelineno-14-24" name="__codelineno-14-24"></a>3. producerを見る
+<a id="__codelineno-14-25" name="__codelineno-14-25"></a>
+<a id="__codelineno-14-26" name="__codelineno-14-26"></a>ProducerCL.cti
+<a id="__codelineno-14-27" name="__codelineno-14-27"></a>    → Camera Link
+<a id="__codelineno-14-28" name="__codelineno-14-28"></a>
+<a id="__codelineno-14-29" name="__codelineno-14-29"></a>Euresys CXP Producer
+<a id="__codelineno-14-30" name="__codelineno-14-30"></a>    → CXP
+<a id="__codelineno-14-31" name="__codelineno-14-31"></a>
+<a id="__codelineno-14-32" name="__codelineno-14-32"></a>不明
+<a id="__codelineno-14-33" name="__codelineno-14-33"></a>    ↓
+<a id="__codelineno-14-34" name="__codelineno-14-34"></a>
+<a id="__codelineno-14-35" name="__codelineno-14-35"></a>4. vendor / model / interface を補助判定に使う
+<a id="__codelineno-14-36" name="__codelineno-14-36"></a>
+<a id="__codelineno-14-37" name="__codelineno-14-37"></a>それでも不明
+<a id="__codelineno-14-38" name="__codelineno-14-38"></a>    → Unknown
 </code></pre></div></td></tr></table></div>
-です。</p>
-<p>Appletを確認・選択する方法</p>
-<p>microDisplay Xを起動すると、左上付近でフレームグラバを選べます。その後、一覧に表示されているAppletをダブルクリックするとロードされます。Basler公式でも、この操作でフレームグラバFPGAがApplet構成に切り替わるとされています。</p>
-<p>今回のacA2040-180kcをBase構成で試すなら、候補は例えば
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>Acq_SingleBaseAreaBayer
-</code></pre></div></td></tr></table></div>
-です。</p>
-<p>操作イメージは、
+<p>producerでの判定例
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-15-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-15-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-15-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-15-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-15-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-15-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-15-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-15-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-15-10">10</a></span>
+<span class="normal"><a href="#__codelineno-15-11">11</a></span>
+<span class="normal"><a href="#__codelineno-15-12">12</a></span>
+<span class="normal"><a href="#__codelineno-15-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>  if (producer.Contains(
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a>          &quot;ProducerCL.cti&quot;,
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a>          StringComparison.OrdinalIgnoreCase))
+<a id="__codelineno-15-4" name="__codelineno-15-4"></a>  {
+<a id="__codelineno-15-5" name="__codelineno-15-5"></a>      return CameraTransportType.CameraLink;
+<a id="__codelineno-15-6" name="__codelineno-15-6"></a>  }
+<a id="__codelineno-15-7" name="__codelineno-15-7"></a>
+<a id="__codelineno-15-8" name="__codelineno-15-8"></a>  if (producer.Contains(
+<a id="__codelineno-15-9" name="__codelineno-15-9"></a>          &quot;Euresys&quot;,
+<a id="__codelineno-15-10" name="__codelineno-15-10"></a>          StringComparison.OrdinalIgnoreCase))
+<a id="__codelineno-15-11" name="__codelineno-15-11"></a>  {
+<a id="__codelineno-15-12" name="__codelineno-15-12"></a>      // CXPかどうかはtl_typeも併用
+<a id="__codelineno-15-13" name="__codelineno-15-13"></a>  }
+</code></pre></div></td></tr></table></div></p>
+<hr />
+<h2 id="info_boards">info_boardsパース例<a class="headerlink" href="#info_boards" title="Permanent link">&para;</a></h2>
+<p>Dictionary化
 <div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-16-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-16-3"> 3</a></span>
@@ -725,127 +783,97 @@
 <span class="normal"><a href="#__codelineno-16-8"> 8</a></span>
 <span class="normal"><a href="#__codelineno-16-9"> 9</a></span>
 <span class="normal"><a href="#__codelineno-16-10">10</a></span>
-<span class="normal"><a href="#__codelineno-16-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a>microDisplay X起動
-<a id="__codelineno-16-2" name="__codelineno-16-2"></a>  ↓
-<a id="__codelineno-16-3" name="__codelineno-16-3"></a>Marathon-ACLを選択
-<a id="__codelineno-16-4" name="__codelineno-16-4"></a>  ↓
-<a id="__codelineno-16-5" name="__codelineno-16-5"></a>Acq_SingleBaseAreaBayerをダブルクリック
-<a id="__codelineno-16-6" name="__codelineno-16-6"></a>  ↓
-<a id="__codelineno-16-7" name="__codelineno-16-7"></a>Appletロード
-<a id="__codelineno-16-8" name="__codelineno-16-8"></a>  ↓
-<a id="__codelineno-16-9" name="__codelineno-16-9"></a>DMA / CamのFeatureを設定
-<a id="__codelineno-16-10" name="__codelineno-16-10"></a>  ↓
-<a id="__codelineno-16-11" name="__codelineno-16-11"></a>Grab開始
+<span class="normal"><a href="#__codelineno-16-11">11</a></span>
+<span class="normal"><a href="#__codelineno-16-12">12</a></span>
+<span class="normal"><a href="#__codelineno-16-13">13</a></span>
+<span class="normal"><a href="#__codelineno-16-14">14</a></span>
+<span class="normal"><a href="#__codelineno-16-15">15</a></span>
+<span class="normal"><a href="#__codelineno-16-16">16</a></span>
+<span class="normal"><a href="#__codelineno-16-17">17</a></span>
+<span class="normal"><a href="#__codelineno-16-18">18</a></span>
+<span class="normal"><a href="#__codelineno-16-19">19</a></span>
+<span class="normal"><a href="#__codelineno-16-20">20</a></span>
+<span class="normal"><a href="#__codelineno-16-21">21</a></span>
+<span class="normal"><a href="#__codelineno-16-22">22</a></span>
+<span class="normal"><a href="#__codelineno-16-23">23</a></span>
+<span class="normal"><a href="#__codelineno-16-24">24</a></span>
+<span class="normal"><a href="#__codelineno-16-25">25</a></span>
+<span class="normal"><a href="#__codelineno-16-26">26</a></span>
+<span class="normal"><a href="#__codelineno-16-27">27</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a>static Dictionary&lt;string, string&gt; ParseInfoBoard(string text)
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a>{
+<a id="__codelineno-16-3" name="__codelineno-16-3"></a>    var result = new Dictionary&lt;string, string&gt;(
+<a id="__codelineno-16-4" name="__codelineno-16-4"></a>        StringComparer.OrdinalIgnoreCase);
+<a id="__codelineno-16-5" name="__codelineno-16-5"></a>
+<a id="__codelineno-16-6" name="__codelineno-16-6"></a>    string[] parts = text.Split(&#39;|&#39;);
+<a id="__codelineno-16-7" name="__codelineno-16-7"></a>
+<a id="__codelineno-16-8" name="__codelineno-16-8"></a>    foreach (string rawPart in parts)
+<a id="__codelineno-16-9" name="__codelineno-16-9"></a>    {
+<a id="__codelineno-16-10" name="__codelineno-16-10"></a>        string part = rawPart.Trim();
+<a id="__codelineno-16-11" name="__codelineno-16-11"></a>
+<a id="__codelineno-16-12" name="__codelineno-16-12"></a>        if (string.IsNullOrEmpty(part))
+<a id="__codelineno-16-13" name="__codelineno-16-13"></a>            continue;
+<a id="__codelineno-16-14" name="__codelineno-16-14"></a>
+<a id="__codelineno-16-15" name="__codelineno-16-15"></a>        int separator = part.IndexOf(&#39;:&#39;);
+<a id="__codelineno-16-16" name="__codelineno-16-16"></a>
+<a id="__codelineno-16-17" name="__codelineno-16-17"></a>        if (separator &lt;= 0)
+<a id="__codelineno-16-18" name="__codelineno-16-18"></a>            continue;
+<a id="__codelineno-16-19" name="__codelineno-16-19"></a>
+<a id="__codelineno-16-20" name="__codelineno-16-20"></a>        string key = part.Substring(0, separator).Trim();
+<a id="__codelineno-16-21" name="__codelineno-16-21"></a>        string value = part.Substring(separator + 1).Trim();
+<a id="__codelineno-16-22" name="__codelineno-16-22"></a>
+<a id="__codelineno-16-23" name="__codelineno-16-23"></a>        result[key] = value;
+<a id="__codelineno-16-24" name="__codelineno-16-24"></a>    }
+<a id="__codelineno-16-25" name="__codelineno-16-25"></a>
+<a id="__codelineno-16-26" name="__codelineno-16-26"></a>    return result;
+<a id="__codelineno-16-27" name="__codelineno-16-27"></a>}
 </code></pre></div></td></tr></table></div>
-です。</p>
-<p>MCFを作る方法</p>
-<p>Appletをロードしたあと、microDisplay X上で例えば、
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span>
-<span class="normal"><a href="#__codelineno-17-2">2</a></span>
-<span class="normal"><a href="#__codelineno-17-3">3</a></span>
-<span class="normal"><a href="#__codelineno-17-4">4</a></span>
-<span class="normal"><a href="#__codelineno-17-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>Width
-<a id="__codelineno-17-2" name="__codelineno-17-2"></a>Height
-<a id="__codelineno-17-3" name="__codelineno-17-3"></a>PixelFormat
-<a id="__codelineno-17-4" name="__codelineno-17-4"></a>Trigger
-<a id="__codelineno-17-5" name="__codelineno-17-5"></a>DMA関連
-</code></pre></div></td></tr></table></div>
-などを設定します。</p>
-<p>その状態を.mcfとして保存できます。Baslerでは、.mcfは現在選択中Appletのconfigurationを保存するファイルです。</p>
-<p>保存操作はmicroDisplay XのメニューにあるApplet configurationの保存機能を使います。バージョンによって表記が多少違いますが、概念的には、
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span>
-<span class="normal"><a href="#__codelineno-18-2">2</a></span>
-<span class="normal"><a href="#__codelineno-18-3">3</a></span>
-<span class="normal"><a href="#__codelineno-18-4">4</a></span>
-<span class="normal"><a href="#__codelineno-18-5">5</a></span>
-<span class="normal"><a href="#__codelineno-18-6">6</a></span>
-<span class="normal"><a href="#__codelineno-18-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a>File
-<a id="__codelineno-18-2" name="__codelineno-18-2"></a>または
-<a id="__codelineno-18-3" name="__codelineno-18-3"></a>Applet / Configuration
-<a id="__codelineno-18-4" name="__codelineno-18-4"></a>  ↓
-<a id="__codelineno-18-5" name="__codelineno-18-5"></a>Save Applet Configuration
-<a id="__codelineno-18-6" name="__codelineno-18-6"></a>  ↓
-<a id="__codelineno-18-7" name="__codelineno-18-7"></a>xxx.mcf
-</code></pre></div></td></tr></table></div>
-です。</p>
-<p>例えば、
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a>C:\CameraConfig\aca2040_base.mcf
-</code></pre></div></td></tr></table></div>
-として保存できます。</p>
-<p>その後、同じAppletに戻したときにその.mcfをロードすれば、設定値を復元できます。</p>
-<p>microDisplay XでAPIコードも確認できる</p>
-<p>かなり便利なのが、microDisplay Xでパラメータを選び、Detailsを押すと、そのパラメータをFramegrabber APIからGet/Setするコード例を表示できます。Basler公式でも、各パラメータのgetter/setterコード例をmicroDisplay Xからコピーできるとされています。</p>
-<p>つまり、将来C#実装へ持っていきたいなら、
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span>
-<span class="normal"><a href="#__codelineno-20-2">2</a></span>
-<span class="normal"><a href="#__codelineno-20-3">3</a></span>
-<span class="normal"><a href="#__codelineno-20-4">4</a></span>
-<span class="normal"><a href="#__codelineno-20-5">5</a></span>
-<span class="normal"><a href="#__codelineno-20-6">6</a></span>
-<span class="normal"><a href="#__codelineno-20-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a>microDisplay Xで設定確認
-<a id="__codelineno-20-2" name="__codelineno-20-2"></a>  ↓
-<a id="__codelineno-20-3" name="__codelineno-20-3"></a>対象パラメータを選択
-<a id="__codelineno-20-4" name="__codelineno-20-4"></a>  ↓
-<a id="__codelineno-20-5" name="__codelineno-20-5"></a>Details
-<a id="__codelineno-20-6" name="__codelineno-20-6"></a>  ↓
-<a id="__codelineno-20-7" name="__codelineno-20-7"></a>APIコード例をCopy
-</code></pre></div></td></tr></table></div>
-という流れが使えます。</p>
-<h3 id="hap">HAPを「作る」場合<a class="headerlink" href="#hap" title="Permanent link">&para;</a></h3>
-<p>これは別段階です。</p>
-<p>標準Appletでは機能が足りず、自分でFPGA処理を作りたい場合は VisualApplets という専用ツールを使います。そこで画像取得・処理回路をGUIで構成し、Hardware Appletとして.hapを生成します。生成した.hapはフレームグラバへロードできます。VisualAppletsの資料でも、.hapをLoadしてフレームグラバへ入れる手順が説明されています。</p>
-<p>ただし「確認用」であれば、HAP自作は不要です。</p>
-<p>まずは、
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span>
-<span class="normal"><a href="#__codelineno-21-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a>標準Applet
-<a id="__codelineno-21-2" name="__codelineno-21-2"></a>Acq_SingleBaseAreaBayer
-</code></pre></div></td></tr></table></div>
-を使えば十分です。</p>
-<h3 id="flash">Flash<a class="headerlink" href="#flash" title="Permanent link">&para;</a></h3>
-<p>Marathon-ACLではFlashも関係する
-Marathonでは、AppletはボードへFlashされていると利用可能になります。標準AppletはSDKに含まれており、必要ならmicroDiagnosticsのFlash Applet機能からボードへ書き込めます。Baslerも、Marathon ACL/VCLではmicroDiagnosticsからAppletをFlashする手順を案内しています。</p>
-<p>なので実際には、
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1">1</a></span>
-<span class="normal"><a href="#__codelineno-22-2">2</a></span>
-<span class="normal"><a href="#__codelineno-22-3">3</a></span>
-<span class="normal"><a href="#__codelineno-22-4">4</a></span>
-<span class="normal"><a href="#__codelineno-22-5">5</a></span>
-<span class="normal"><a href="#__codelineno-22-6">6</a></span>
-<span class="normal"><a href="#__codelineno-22-7">7</a></span>
-<span class="normal"><a href="#__codelineno-22-8">8</a></span>
-<span class="normal"><a href="#__codelineno-22-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a>SDKに標準Appletあり
-<a id="__codelineno-22-2" name="__codelineno-22-2"></a>  ↓
-<a id="__codelineno-22-3" name="__codelineno-22-3"></a>必要ならmicroDiagnosticsでFlash
-<a id="__codelineno-22-4" name="__codelineno-22-4"></a>  ↓
-<a id="__codelineno-22-5" name="__codelineno-22-5"></a>microDisplay XでApplet選択
-<a id="__codelineno-22-6" name="__codelineno-22-6"></a>  ↓
-<a id="__codelineno-22-7" name="__codelineno-22-7"></a>パラメータ設定
-<a id="__codelineno-22-8" name="__codelineno-22-8"></a>  ↓
-<a id="__codelineno-22-9" name="__codelineno-22-9"></a>MCF保存
-</code></pre></div></td></tr></table></div>
-という順です。</p>
-<p>今回、確認用に一番おすすめなのは次の流れです。
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-23-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-23-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-23-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-23-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-23-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-23-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-23-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-23-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-23-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a>microDiagnosticsを開いて、Acq_SingleBaseAreaBayerが利用可能か確認
-<a id="__codelineno-23-2" name="__codelineno-23-2"></a>必要ならFlash
-<a id="__codelineno-23-3" name="__codelineno-23-3"></a>microDisplay Xを起動
-<a id="__codelineno-23-4" name="__codelineno-23-4"></a>Marathon-ACLを選択
-<a id="__codelineno-23-5" name="__codelineno-23-5"></a>Acq_SingleBaseAreaBayerをダブルクリック
-<a id="__codelineno-23-6" name="__codelineno-23-6"></a>DMA/Camのパラメータを適当に変更
-<a id="__codelineno-23-7" name="__codelineno-23-7"></a>画像取得確認
-<a id="__codelineno-23-8" name="__codelineno-23-8"></a>設定をtest.mcfとして保存
-<a id="__codelineno-23-9" name="__codelineno-23-9"></a>値を別の値に変更
-<a id="__codelineno-23-10" name="__codelineno-23-10"></a>test.mcfをロードして元の値に戻ることを確認
-</code></pre></div></td></tr></table></div>
-これをやれば、AppletとMCFの役割の違いを実機でかなり分かりやすく確認できます</p>
+使用例
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-17-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-17-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-17-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-17-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-17-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-17-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-17-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-17-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-17-10">10</a></span>
+<span class="normal"><a href="#__codelineno-17-11">11</a></span>
+<span class="normal"><a href="#__codelineno-17-12">12</a></span>
+<span class="normal"><a href="#__codelineno-17-13">13</a></span>
+<span class="normal"><a href="#__codelineno-17-14">14</a></span>
+<span class="normal"><a href="#__codelineno-17-15">15</a></span>
+<span class="normal"><a href="#__codelineno-17-16">16</a></span>
+<span class="normal"><a href="#__codelineno-17-17">17</a></span>
+<span class="normal"><a href="#__codelineno-17-18">18</a></span>
+<span class="normal"><a href="#__codelineno-17-19">19</a></span>
+<span class="normal"><a href="#__codelineno-17-20">20</a></span>
+<span class="normal"><a href="#__codelineno-17-21">21</a></span>
+<span class="normal"><a href="#__codelineno-17-22">22</a></span>
+<span class="normal"><a href="#__codelineno-17-23">23</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>HOperatorSet.InfoFramegrabber(
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a>    &quot;GenICamTL&quot;,
+<a id="__codelineno-17-3" name="__codelineno-17-3"></a>    &quot;info_boards&quot;,
+<a id="__codelineno-17-4" name="__codelineno-17-4"></a>    out HTuple boards);
+<a id="__codelineno-17-5" name="__codelineno-17-5"></a>
+<a id="__codelineno-17-6" name="__codelineno-17-6"></a>for (int i = 0; i &lt; boards.Length; i++)
+<a id="__codelineno-17-7" name="__codelineno-17-7"></a>{
+<a id="__codelineno-17-8" name="__codelineno-17-8"></a>    string text = boards[i].S;
+<a id="__codelineno-17-9" name="__codelineno-17-9"></a>
+<a id="__codelineno-17-10" name="__codelineno-17-10"></a>    var info = ParseInfoBoard(text);
+<a id="__codelineno-17-11" name="__codelineno-17-11"></a>
+<a id="__codelineno-17-12" name="__codelineno-17-12"></a>    info.TryGetValue(&quot;device&quot;, out string device);
+<a id="__codelineno-17-13" name="__codelineno-17-13"></a>    info.TryGetValue(&quot;producer&quot;, out string producer);
+<a id="__codelineno-17-14" name="__codelineno-17-14"></a>    info.TryGetValue(&quot;tl_type&quot;, out string tlType);
+<a id="__codelineno-17-15" name="__codelineno-17-15"></a>    info.TryGetValue(&quot;vendor&quot;, out string vendor);
+<a id="__codelineno-17-16" name="__codelineno-17-16"></a>    info.TryGetValue(&quot;model&quot;, out string model);
+<a id="__codelineno-17-17" name="__codelineno-17-17"></a>
+<a id="__codelineno-17-18" name="__codelineno-17-18"></a>    Console.WriteLine($&quot;Device   = {device}&quot;);
+<a id="__codelineno-17-19" name="__codelineno-17-19"></a>    Console.WriteLine($&quot;TL Type  = {tlType}&quot;);
+<a id="__codelineno-17-20" name="__codelineno-17-20"></a>    Console.WriteLine($&quot;Producer = {producer}&quot;);
+<a id="__codelineno-17-21" name="__codelineno-17-21"></a>    Console.WriteLine($&quot;Vendor   = {vendor}&quot;);
+<a id="__codelineno-17-22" name="__codelineno-17-22"></a>    Console.WriteLine($&quot;Model    = {model}&quot;);
+<a id="__codelineno-17-23" name="__codelineno-17-23"></a>}
+</code></pre></div></td></tr></table></div></p>
 
 
 
