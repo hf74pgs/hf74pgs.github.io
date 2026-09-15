@@ -386,27 +386,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#hap" class="md-nav__link">
-    <span class="md-ellipsis">
-      HAPを「作る」場合
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       判定例
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#info_boards" class="md-nav__link">
-    <span class="md-ellipsis">
-      info_boardsパース例
     </span>
   </a>
   
@@ -445,409 +427,241 @@
 
 
 <h1 id="camera-settings">Camera Settings<a class="headerlink" href="#camera-settings" title="Permanent link">&para;</a></h1>
-<p>Marathon系では、使いたいAppletをあらかじめボードへFlashして「利用可能なApplet」にしておき、その後、撮像ソフト側で使用するAppletを選択する、という構成にできます。Basler公式でも、marathonではAppletはボードへFlashされた時点で利用可能になり、GenTLのInterfaceAppletノードから現在ロードするAppletを切り替えられるとされています。</p>
-<p>例えば、
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span>
-<span class="normal"><a href="#__codelineno-0-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>Marathon-ACLに事前Flash
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a>  ├─ Acq_SingleBaseAreaBayer
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a>  ├─ Acq_SingleBaseAreaGray
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a>  └─ Acq_SingleBaseLineGray
+<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#__codelineno-0-22">22</a></span>
+<span class="normal"><a href="#__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#__codelineno-0-24">24</a></span>
+<span class="normal"><a href="#__codelineno-0-25">25</a></span>
+<span class="normal"><a href="#__codelineno-0-26">26</a></span>
+<span class="normal"><a href="#__codelineno-0-27">27</a></span>
+<span class="normal"><a href="#__codelineno-0-28">28</a></span>
+<span class="normal"><a href="#__codelineno-0-29">29</a></span>
+<span class="normal"><a href="#__codelineno-0-30">30</a></span>
+<span class="normal"><a href="#__codelineno-0-31">31</a></span>
+<span class="normal"><a href="#__codelineno-0-32">32</a></span>
+<span class="normal"><a href="#__codelineno-0-33">33</a></span>
+<span class="normal"><a href="#__codelineno-0-34">34</a></span>
+<span class="normal"><a href="#__codelineno-0-35">35</a></span>
+<span class="normal"><a href="#__codelineno-0-36">36</a></span>
+<span class="normal"><a href="#__codelineno-0-37">37</a></span>
+<span class="normal"><a href="#__codelineno-0-38">38</a></span>
+<span class="normal"><a href="#__codelineno-0-39">39</a></span>
+<span class="normal"><a href="#__codelineno-0-40">40</a></span>
+<span class="normal"><a href="#__codelineno-0-41">41</a></span>
+<span class="normal"><a href="#__codelineno-0-42">42</a></span>
+<span class="normal"><a href="#__codelineno-0-43">43</a></span>
+<span class="normal"><a href="#__codelineno-0-44">44</a></span>
+<span class="normal"><a href="#__codelineno-0-45">45</a></span>
+<span class="normal"><a href="#__codelineno-0-46">46</a></span>
+<span class="normal"><a href="#__codelineno-0-47">47</a></span>
+<span class="normal"><a href="#__codelineno-0-48">48</a></span>
+<span class="normal"><a href="#__codelineno-0-49">49</a></span>
+<span class="normal"><a href="#__codelineno-0-50">50</a></span>
+<span class="normal"><a href="#__codelineno-0-51">51</a></span>
+<span class="normal"><a href="#__codelineno-0-52">52</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="w">    </span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">names</span><span class="w"> </span><span class="o">=</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">        </span><span class="s">&quot;Width&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">        </span><span class="s">&quot;Height&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">        </span><span class="s">&quot;image_width&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">        </span><span class="s">&quot;image_height&quot;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="p">};</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">    </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">names</span><span class="p">)</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;--- {name} ---&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">        </span><span class="k">try</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">            </span><span class="n">HOperatorSet</span><span class="p">.</span><span class="n">GetFramegrabberParam</span><span class="p">(</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">                </span><span class="n">handle</span><span class="p">,</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">                </span><span class="n">name</span><span class="p">,</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">                </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="k">value</span><span class="p">);</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;value  = {value}&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="w">        </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;value  = ERROR : {ex.Message}&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a>
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="w">        </span><span class="k">try</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="w">            </span><span class="n">HOperatorSet</span><span class="p">.</span><span class="n">GetFramegrabberParam</span><span class="p">(</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="w">                </span><span class="n">handle</span><span class="p">,</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="w">                </span><span class="n">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;_access&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="w">                </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">access</span><span class="p">);</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33"></a>
+<a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;access = {access}&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="w">        </span><span class="k">catch</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39"></a>
+<a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="w">        </span><span class="k">try</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="w">            </span><span class="n">HOperatorSet</span><span class="p">.</span><span class="n">GetFramegrabberParam</span><span class="p">(</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="w">                </span><span class="n">handle</span><span class="p">,</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="w">                </span><span class="n">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;_range&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="w">                </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">range</span><span class="p">);</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46"></a>
+<a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;range  = {range}&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="w">        </span><span class="k">catch</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="w">    </span><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-としておいて、カメラ構成に応じて、
+<p>実カメラがCLPで正常Discoveryされていれば、Remote Device側の
 <div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span>
-<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>acA2040-180kc
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a>    ↓
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a>Acq_SingleBaseAreaBayer を選択
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>Width
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>Height
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>OffsetX
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>OffsetY
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>PixelFormat
 </code></pre></div></td></tr></table></div>
-という運用が可能です。</p>
-<p>GenTL経由では、Basler Producerが公開するInterfaceノードに
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>[Interface]InterfaceApplet
+などがHALCONから見えるはずです。</p>
+<p>ところが、
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>[Device]Height = na
 </code></pre></div></td></tr></table></div>
-相当があり、ここで別Appletや.hapを選べます。ただしApplet変更はその瞬間に完全反映されるわけではなく、全DeviceをCloseしてdevice listを更新するか、Interface自体をClose→再Openする必要があります。その後InterfaceAppletStatusで正常ロードを確認します。</p>
-<p>HALCONから公開されているなら、概念的にはこんな流れです。
+なら、実カメラのRemote Device Featureへ到達できていない可能性が高い</p>
 <div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
 <span class="normal"><a href="#__codelineno-3-2">2</a></span>
 <span class="normal"><a href="#__codelineno-3-3">3</a></span>
-<span class="normal"><a href="#__codelineno-3-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>HOperatorSet.SetFramegrabberParam(
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a>    handle,
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a>    &quot;[Interface]InterfaceApplet&quot;,
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a>    &quot;Acq_SingleBaseAreaBayer&quot;);
+<span class="normal"><a href="#__codelineno-3-4">4</a></span>
+<span class="normal"><a href="#__codelineno-3-5">5</a></span>
+<span class="normal"><a href="#__codelineno-3-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>1. [Interface]DiscoveryMethod = MixedDiscovery
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>2. CloseFramegrabber
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>3. InfoFramegrabber(&quot;GenICamTL&quot;, &quot;device&quot;) で再列挙
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>4. 実カメラが出るか確認
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>5. LoadedClpSharedLibraryPath確認
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>6. Open後に [Device]Height_access を確認
 </code></pre></div></td></tr></table></div>
-その後、
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
-<span class="normal"><a href="#__codelineno-4-2">2</a></span>
-<span class="normal"><a href="#__codelineno-4-3">3</a></span>
-<span class="normal"><a href="#__codelineno-4-4">4</a></span>
-<span class="normal"><a href="#__codelineno-4-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>CloseFramegrabber
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a>↓
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a>InfoFramegrabber(&quot;GenICamTL&quot;, &quot;device&quot;, ...)
-<a id="__codelineno-4-4" name="__codelineno-4-4"></a>↓
-<a id="__codelineno-4-5" name="__codelineno-4-5"></a>再Open
-</code></pre></div></td></tr></table></div>
-という流れになります。</p>
-<p>ただし、実際のHALCON公開ノード名はavailable_param_namesで確認してください。</p>
-<p>MCFについても、かなり似た考え方で実装できます。</p>
-<p>Basler GenTL Producerでは、Interface moduleのUserSetControlから、
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
-<span class="normal"><a href="#__codelineno-5-2">2</a></span>
-<span class="normal"><a href="#__codelineno-5-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>UserSetFile
-<a id="__codelineno-5-2" name="__codelineno-5-2"></a>UserSetLoad
-<a id="__codelineno-5-3" name="__codelineno-5-3"></a>UserSetSave
-</code></pre></div></td></tr></table></div>
-を使って.mcfをロード・保存できます。Basler公式にも、この方法が明記されています。</p>
-<p>概念的には、
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
-<span class="normal"><a href="#__codelineno-6-2">2</a></span>
-<span class="normal"><a href="#__codelineno-6-3">3</a></span>
-<span class="normal"><a href="#__codelineno-6-4">4</a></span>
-<span class="normal"><a href="#__codelineno-6-5">5</a></span>
-<span class="normal"><a href="#__codelineno-6-6">6</a></span>
-<span class="normal"><a href="#__codelineno-6-7">7</a></span>
-<span class="normal"><a href="#__codelineno-6-8">8</a></span>
-<span class="normal"><a href="#__codelineno-6-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>HOperatorSet.SetFramegrabberParam(
-<a id="__codelineno-6-2" name="__codelineno-6-2"></a>    handle,
-<a id="__codelineno-6-3" name="__codelineno-6-3"></a>    &quot;[Interface]UserSetFile&quot;,
-<a id="__codelineno-6-4" name="__codelineno-6-4"></a>    @&quot;C:\CameraConfig\aca2040_base.mcf&quot;);
-<a id="__codelineno-6-5" name="__codelineno-6-5"></a>
-<a id="__codelineno-6-6" name="__codelineno-6-6"></a>HOperatorSet.SetFramegrabberParam(
-<a id="__codelineno-6-7" name="__codelineno-6-7"></a>    handle,
-<a id="__codelineno-6-8" name="__codelineno-6-8"></a>    &quot;[Interface]UserSetLoad&quot;,
-<a id="__codelineno-6-9" name="__codelineno-6-9"></a>    1);
-</code></pre></div></td></tr></table></div>
-のような実装になります。</p>
-<p>つまり、アプリ上では例えば、
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
-<span class="normal"><a href="#__codelineno-7-2">2</a></span>
-<span class="normal"><a href="#__codelineno-7-3">3</a></span>
-<span class="normal"><a href="#__codelineno-7-4">4</a></span>
-<span class="normal"><a href="#__codelineno-7-5">5</a></span>
-<span class="normal"><a href="#__codelineno-7-6">6</a></span>
-<span class="normal"><a href="#__codelineno-7-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>Camera A
-<a id="__codelineno-7-2" name="__codelineno-7-2"></a>  Applet = Acq_SingleBaseAreaBayer
-<a id="__codelineno-7-3" name="__codelineno-7-3"></a>  MCF    = aca2040_base.mcf
-<a id="__codelineno-7-4" name="__codelineno-7-4"></a>
-<a id="__codelineno-7-5" name="__codelineno-7-5"></a>Camera B
-<a id="__codelineno-7-6" name="__codelineno-7-6"></a>  Applet = Acq_SingleBaseLineGray
-<a id="__codelineno-7-7" name="__codelineno-7-7"></a>  MCF    = line_camera_base.mcf
-</code></pre></div></td></tr></table></div>
-という設定を持たせて、
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
-<span class="normal"><a href="#__codelineno-8-2">2</a></span>
-<span class="normal"><a href="#__codelineno-8-3">3</a></span>
-<span class="normal"><a href="#__codelineno-8-4">4</a></span>
-<span class="normal"><a href="#__codelineno-8-5">5</a></span>
-<span class="normal"><a href="#__codelineno-8-6">6</a></span>
-<span class="normal"><a href="#__codelineno-8-7">7</a></span>
-<span class="normal"><a href="#__codelineno-8-8">8</a></span>
-<span class="normal"><a href="#__codelineno-8-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>カメラ選択
-<a id="__codelineno-8-2" name="__codelineno-8-2"></a>↓
-<a id="__codelineno-8-3" name="__codelineno-8-3"></a>対応Applet選択
-<a id="__codelineno-8-4" name="__codelineno-8-4"></a>↓
-<a id="__codelineno-8-5" name="__codelineno-8-5"></a>Device再列挙
-<a id="__codelineno-8-6" name="__codelineno-8-6"></a>↓
-<a id="__codelineno-8-7" name="__codelineno-8-7"></a>対応MCFロード
-<a id="__codelineno-8-8" name="__codelineno-8-8"></a>↓
-<a id="__codelineno-8-9" name="__codelineno-8-9"></a>撮像開始
-</code></pre></div></td></tr></table></div>
-という自動化が可能です。</p>
-<p>ここでAppletとMCFには違いがあります。
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
-<span class="normal"><a href="#__codelineno-9-2">2</a></span>
-<span class="normal"><a href="#__codelineno-9-3">3</a></span>
-<span class="normal"><a href="#__codelineno-9-4">4</a></span>
-<span class="normal"><a href="#__codelineno-9-5">5</a></span>
-<span class="normal"><a href="#__codelineno-9-6">6</a></span>
-<span class="normal"><a href="#__codelineno-9-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>Applet
-<a id="__codelineno-9-2" name="__codelineno-9-2"></a>  ↓
-<a id="__codelineno-9-3" name="__codelineno-9-3"></a>「どんな取得回路にするか」
-<a id="__codelineno-9-4" name="__codelineno-9-4"></a>
-<a id="__codelineno-9-5" name="__codelineno-9-5"></a>MCF
-<a id="__codelineno-9-6" name="__codelineno-9-6"></a>  ↓
-<a id="__codelineno-9-7" name="__codelineno-9-7"></a>「その取得回路をどんなパラメータ値で使うか」
-</code></pre></div></td></tr></table></div>
-です。</p>
-<p>さらに便利なのが、Basler Producerでは読み込んだMCFに現在とは別のAppletが記録されている場合、ProducerがInterfaceAppletをそのAppletへ変更しようとする仕様があります。その場合も、Device Close＋device list更新が必要です。</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-10-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-10-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-10-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-10-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-10-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-10-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-10-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-10-10">10</a></span>
-<span class="normal"><a href="#__codelineno-10-11">11</a></span>
-<span class="normal"><a href="#__codelineno-10-12">12</a></span>
-<span class="normal"><a href="#__codelineno-10-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>OpenFramegrabber
-<a id="__codelineno-10-2" name="__codelineno-10-2"></a>↓
-<a id="__codelineno-10-3" name="__codelineno-10-3"></a>[Interface]UserSetFile にMCFパスを設定
-<a id="__codelineno-10-4" name="__codelineno-10-4"></a>↓
-<a id="__codelineno-10-5" name="__codelineno-10-5"></a>[Interface]UserSetLoad 実行
-<a id="__codelineno-10-6" name="__codelineno-10-6"></a>↓
-<a id="__codelineno-10-7" name="__codelineno-10-7"></a>MCF内でApplet変更が要求される
-<a id="__codelineno-10-8" name="__codelineno-10-8"></a>↓
-<a id="__codelineno-10-9" name="__codelineno-10-9"></a>CloseFramegrabber
-<a id="__codelineno-10-10" name="__codelineno-10-10"></a>↓
-<a id="__codelineno-10-11" name="__codelineno-10-11"></a>Device list再列挙
-<a id="__codelineno-10-12" name="__codelineno-10-12"></a>↓
-<a id="__codelineno-10-13" name="__codelineno-10-13"></a>OpenFramegrabberし直す
-</code></pre></div></td></tr></table></div>
-<hr />
-<p>確認用に実際に作るなら、Applet本体を自作する必要はまずありません。Marathon-ACL向けの標準Acquisition AppletはFramegrabber SDKに最初から入っています。まずはその標準AppletをmicroDisplay Xでロードし、必要なパラメータを設定して、その設定を.mcfとして保存するのが一番簡単です。</p>
-<p>まず関係だけ短く整理すると、
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-11-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>Applet
-<a id="__codelineno-11-2" name="__codelineno-11-2"></a>  = 取得機能そのもの
-<a id="__codelineno-11-3" name="__codelineno-11-3"></a>  例: Acq_SingleBaseAreaBayer
-<a id="__codelineno-11-4" name="__codelineno-11-4"></a>
-<a id="__codelineno-11-5" name="__codelineno-11-5"></a>HAP
-<a id="__codelineno-11-6" name="__codelineno-11-6"></a>  = Hardware Appletのファイル
-<a id="__codelineno-11-7" name="__codelineno-11-7"></a>  VisualApplets等で自作したAppletの実体
-<a id="__codelineno-11-8" name="__codelineno-11-8"></a>
-<a id="__codelineno-11-9" name="__codelineno-11-9"></a>MCF
-<a id="__codelineno-11-10" name="__codelineno-11-10"></a>  = Appletに設定したパラメータ値の保存ファイル
-</code></pre></div></td></tr></table></div>
-です。</p>
-<h3 id="hap">HAPを「作る」場合<a class="headerlink" href="#hap" title="Permanent link">&para;</a></h3>
-<p>これは別段階です。</p>
-<p>標準Appletでは機能が足りず、自分でFPGA処理を作りたい場合は VisualApplets という専用ツールを使います。そこで画像取得・処理回路をGUIで構成し、Hardware Appletとして.hapを生成します。生成した.hapはフレームグラバへロードできます。VisualAppletsの資料でも、.hapをLoadしてフレームグラバへ入れる手順が説明されています。</p>
-<p>ただし「確認用」であれば、HAP自作は不要です。</p>
-<p>まずは、
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
-<span class="normal"><a href="#__codelineno-12-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>標準Applet
-<a id="__codelineno-12-2" name="__codelineno-12-2"></a>Acq_SingleBaseAreaBayer
-</code></pre></div></td></tr></table></div>
-を使えば十分です。</p>
-<hr />
-<p><div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
-<span class="normal"><a href="#__codelineno-13-2">2</a></span>
-<span class="normal"><a href="#__codelineno-13-3">3</a></span>
-<span class="normal"><a href="#__codelineno-13-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>InfoFramegrabber(
-<a id="__codelineno-13-2" name="__codelineno-13-2"></a>    &quot;SiliconSoftware&quot;,
-<a id="__codelineno-13-3" name="__codelineno-13-3"></a>    &quot;camera_type&quot;,
-<a id="__codelineno-13-4" name="__codelineno-13-4"></a>    ...)
-</code></pre></div></td></tr></table></div>
-の結果で、ccf または <path> 等が明示されている場合だけ CameraType にパスを渡す設計にした方が安全</p>
-<hr />
 <h2 id="_1">判定例<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-14-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-14-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-14-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-14-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-14-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-14-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-14-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-14-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-14-10">10</a></span>
-<span class="normal"><a href="#__codelineno-14-11">11</a></span>
-<span class="normal"><a href="#__codelineno-14-12">12</a></span>
-<span class="normal"><a href="#__codelineno-14-13">13</a></span>
-<span class="normal"><a href="#__codelineno-14-14">14</a></span>
-<span class="normal"><a href="#__codelineno-14-15">15</a></span>
-<span class="normal"><a href="#__codelineno-14-16">16</a></span>
-<span class="normal"><a href="#__codelineno-14-17">17</a></span>
-<span class="normal"><a href="#__codelineno-14-18">18</a></span>
-<span class="normal"><a href="#__codelineno-14-19">19</a></span>
-<span class="normal"><a href="#__codelineno-14-20">20</a></span>
-<span class="normal"><a href="#__codelineno-14-21">21</a></span>
-<span class="normal"><a href="#__codelineno-14-22">22</a></span>
-<span class="normal"><a href="#__codelineno-14-23">23</a></span>
-<span class="normal"><a href="#__codelineno-14-24">24</a></span>
-<span class="normal"><a href="#__codelineno-14-25">25</a></span>
-<span class="normal"><a href="#__codelineno-14-26">26</a></span>
-<span class="normal"><a href="#__codelineno-14-27">27</a></span>
-<span class="normal"><a href="#__codelineno-14-28">28</a></span>
-<span class="normal"><a href="#__codelineno-14-29">29</a></span>
-<span class="normal"><a href="#__codelineno-14-30">30</a></span>
-<span class="normal"><a href="#__codelineno-14-31">31</a></span>
-<span class="normal"><a href="#__codelineno-14-32">32</a></span>
-<span class="normal"><a href="#__codelineno-14-33">33</a></span>
-<span class="normal"><a href="#__codelineno-14-34">34</a></span>
-<span class="normal"><a href="#__codelineno-14-35">35</a></span>
-<span class="normal"><a href="#__codelineno-14-36">36</a></span>
-<span class="normal"><a href="#__codelineno-14-37">37</a></span>
-<span class="normal"><a href="#__codelineno-14-38">38</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>1. HALCON interface名を見る
-<a id="__codelineno-14-2" name="__codelineno-14-2"></a>
-<a id="__codelineno-14-3" name="__codelineno-14-3"></a>GigEVision2
-<a id="__codelineno-14-4" name="__codelineno-14-4"></a>    → GigE確定
-<a id="__codelineno-14-5" name="__codelineno-14-5"></a>
-<a id="__codelineno-14-6" name="__codelineno-14-6"></a>GenICamTL
-<a id="__codelineno-14-7" name="__codelineno-14-7"></a>    ↓
-<a id="__codelineno-14-8" name="__codelineno-14-8"></a>
-<a id="__codelineno-14-9" name="__codelineno-14-9"></a>2. InfoFramegrabber(&quot;GenICamTL&quot;,&quot;info_boards&quot;)
-<a id="__codelineno-14-10" name="__codelineno-14-10"></a>   のtl_typeを見る
-<a id="__codelineno-14-11" name="__codelineno-14-11"></a>
-<a id="__codelineno-14-12" name="__codelineno-14-12"></a>GEV
-<a id="__codelineno-14-13" name="__codelineno-14-13"></a>    → GigE
-<a id="__codelineno-14-14" name="__codelineno-14-14"></a>
-<a id="__codelineno-14-15" name="__codelineno-14-15"></a>CXP系
-<a id="__codelineno-14-16" name="__codelineno-14-16"></a>    → CoaXPress
-<a id="__codelineno-14-17" name="__codelineno-14-17"></a>
-<a id="__codelineno-14-18" name="__codelineno-14-18"></a>CL系
-<a id="__codelineno-14-19" name="__codelineno-14-19"></a>    → Camera Link
-<a id="__codelineno-14-20" name="__codelineno-14-20"></a>
-<a id="__codelineno-14-21" name="__codelineno-14-21"></a>不明
-<a id="__codelineno-14-22" name="__codelineno-14-22"></a>    ↓
-<a id="__codelineno-14-23" name="__codelineno-14-23"></a>
-<a id="__codelineno-14-24" name="__codelineno-14-24"></a>3. producerを見る
-<a id="__codelineno-14-25" name="__codelineno-14-25"></a>
-<a id="__codelineno-14-26" name="__codelineno-14-26"></a>ProducerCL.cti
-<a id="__codelineno-14-27" name="__codelineno-14-27"></a>    → Camera Link
-<a id="__codelineno-14-28" name="__codelineno-14-28"></a>
-<a id="__codelineno-14-29" name="__codelineno-14-29"></a>Euresys CXP Producer
-<a id="__codelineno-14-30" name="__codelineno-14-30"></a>    → CXP
-<a id="__codelineno-14-31" name="__codelineno-14-31"></a>
-<a id="__codelineno-14-32" name="__codelineno-14-32"></a>不明
-<a id="__codelineno-14-33" name="__codelineno-14-33"></a>    ↓
-<a id="__codelineno-14-34" name="__codelineno-14-34"></a>
-<a id="__codelineno-14-35" name="__codelineno-14-35"></a>4. vendor / model / interface を補助判定に使う
-<a id="__codelineno-14-36" name="__codelineno-14-36"></a>
-<a id="__codelineno-14-37" name="__codelineno-14-37"></a>それでも不明
-<a id="__codelineno-14-38" name="__codelineno-14-38"></a>    → Unknown
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span>
+<span class="normal"><a href="#__codelineno-4-12">12</a></span>
+<span class="normal"><a href="#__codelineno-4-13">13</a></span>
+<span class="normal"><a href="#__codelineno-4-14">14</a></span>
+<span class="normal"><a href="#__codelineno-4-15">15</a></span>
+<span class="normal"><a href="#__codelineno-4-16">16</a></span>
+<span class="normal"><a href="#__codelineno-4-17">17</a></span>
+<span class="normal"><a href="#__codelineno-4-18">18</a></span>
+<span class="normal"><a href="#__codelineno-4-19">19</a></span>
+<span class="normal"><a href="#__codelineno-4-20">20</a></span>
+<span class="normal"><a href="#__codelineno-4-21">21</a></span>
+<span class="normal"><a href="#__codelineno-4-22">22</a></span>
+<span class="normal"><a href="#__codelineno-4-23">23</a></span>
+<span class="normal"><a href="#__codelineno-4-24">24</a></span>
+<span class="normal"><a href="#__codelineno-4-25">25</a></span>
+<span class="normal"><a href="#__codelineno-4-26">26</a></span>
+<span class="normal"><a href="#__codelineno-4-27">27</a></span>
+<span class="normal"><a href="#__codelineno-4-28">28</a></span>
+<span class="normal"><a href="#__codelineno-4-29">29</a></span>
+<span class="normal"><a href="#__codelineno-4-30">30</a></span>
+<span class="normal"><a href="#__codelineno-4-31">31</a></span>
+<span class="normal"><a href="#__codelineno-4-32">32</a></span>
+<span class="normal"><a href="#__codelineno-4-33">33</a></span>
+<span class="normal"><a href="#__codelineno-4-34">34</a></span>
+<span class="normal"><a href="#__codelineno-4-35">35</a></span>
+<span class="normal"><a href="#__codelineno-4-36">36</a></span>
+<span class="normal"><a href="#__codelineno-4-37">37</a></span>
+<span class="normal"><a href="#__codelineno-4-38">38</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>1. HALCON interface名を見る
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>GigEVision2
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>    → GigE確定
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>GenICamTL
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a>    ↓
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a>2. InfoFramegrabber(&quot;GenICamTL&quot;,&quot;info_boards&quot;)
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a>   のtl_typeを見る
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a>GEV
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a>    → GigE
+<a id="__codelineno-4-14" name="__codelineno-4-14"></a>
+<a id="__codelineno-4-15" name="__codelineno-4-15"></a>CXP系
+<a id="__codelineno-4-16" name="__codelineno-4-16"></a>    → CoaXPress
+<a id="__codelineno-4-17" name="__codelineno-4-17"></a>
+<a id="__codelineno-4-18" name="__codelineno-4-18"></a>CL系
+<a id="__codelineno-4-19" name="__codelineno-4-19"></a>    → Camera Link
+<a id="__codelineno-4-20" name="__codelineno-4-20"></a>
+<a id="__codelineno-4-21" name="__codelineno-4-21"></a>不明
+<a id="__codelineno-4-22" name="__codelineno-4-22"></a>    ↓
+<a id="__codelineno-4-23" name="__codelineno-4-23"></a>
+<a id="__codelineno-4-24" name="__codelineno-4-24"></a>3. producerを見る
+<a id="__codelineno-4-25" name="__codelineno-4-25"></a>
+<a id="__codelineno-4-26" name="__codelineno-4-26"></a>ProducerCL.cti
+<a id="__codelineno-4-27" name="__codelineno-4-27"></a>    → Camera Link
+<a id="__codelineno-4-28" name="__codelineno-4-28"></a>
+<a id="__codelineno-4-29" name="__codelineno-4-29"></a>Euresys CXP Producer
+<a id="__codelineno-4-30" name="__codelineno-4-30"></a>    → CXP
+<a id="__codelineno-4-31" name="__codelineno-4-31"></a>
+<a id="__codelineno-4-32" name="__codelineno-4-32"></a>不明
+<a id="__codelineno-4-33" name="__codelineno-4-33"></a>    ↓
+<a id="__codelineno-4-34" name="__codelineno-4-34"></a>
+<a id="__codelineno-4-35" name="__codelineno-4-35"></a>4. vendor / model / interface を補助判定に使う
+<a id="__codelineno-4-36" name="__codelineno-4-36"></a>
+<a id="__codelineno-4-37" name="__codelineno-4-37"></a>それでも不明
+<a id="__codelineno-4-38" name="__codelineno-4-38"></a>    → Unknown
 </code></pre></div></td></tr></table></div>
 <p>producerでの判定例
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-15-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-15-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-15-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-15-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-15-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-15-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-15-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-15-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-15-10">10</a></span>
-<span class="normal"><a href="#__codelineno-15-11">11</a></span>
-<span class="normal"><a href="#__codelineno-15-12">12</a></span>
-<span class="normal"><a href="#__codelineno-15-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>  if (producer.Contains(
-<a id="__codelineno-15-2" name="__codelineno-15-2"></a>          &quot;ProducerCL.cti&quot;,
-<a id="__codelineno-15-3" name="__codelineno-15-3"></a>          StringComparison.OrdinalIgnoreCase))
-<a id="__codelineno-15-4" name="__codelineno-15-4"></a>  {
-<a id="__codelineno-15-5" name="__codelineno-15-5"></a>      return CameraTransportType.CameraLink;
-<a id="__codelineno-15-6" name="__codelineno-15-6"></a>  }
-<a id="__codelineno-15-7" name="__codelineno-15-7"></a>
-<a id="__codelineno-15-8" name="__codelineno-15-8"></a>  if (producer.Contains(
-<a id="__codelineno-15-9" name="__codelineno-15-9"></a>          &quot;Euresys&quot;,
-<a id="__codelineno-15-10" name="__codelineno-15-10"></a>          StringComparison.OrdinalIgnoreCase))
-<a id="__codelineno-15-11" name="__codelineno-15-11"></a>  {
-<a id="__codelineno-15-12" name="__codelineno-15-12"></a>      // CXPかどうかはtl_typeも併用
-<a id="__codelineno-15-13" name="__codelineno-15-13"></a>  }
-</code></pre></div></td></tr></table></div></p>
-<hr />
-<h2 id="info_boards">info_boardsパース例<a class="headerlink" href="#info_boards" title="Permanent link">&para;</a></h2>
-<p>Dictionary化
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-16-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-16-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-16-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-16-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-16-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-16-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-16-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-16-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-16-10">10</a></span>
-<span class="normal"><a href="#__codelineno-16-11">11</a></span>
-<span class="normal"><a href="#__codelineno-16-12">12</a></span>
-<span class="normal"><a href="#__codelineno-16-13">13</a></span>
-<span class="normal"><a href="#__codelineno-16-14">14</a></span>
-<span class="normal"><a href="#__codelineno-16-15">15</a></span>
-<span class="normal"><a href="#__codelineno-16-16">16</a></span>
-<span class="normal"><a href="#__codelineno-16-17">17</a></span>
-<span class="normal"><a href="#__codelineno-16-18">18</a></span>
-<span class="normal"><a href="#__codelineno-16-19">19</a></span>
-<span class="normal"><a href="#__codelineno-16-20">20</a></span>
-<span class="normal"><a href="#__codelineno-16-21">21</a></span>
-<span class="normal"><a href="#__codelineno-16-22">22</a></span>
-<span class="normal"><a href="#__codelineno-16-23">23</a></span>
-<span class="normal"><a href="#__codelineno-16-24">24</a></span>
-<span class="normal"><a href="#__codelineno-16-25">25</a></span>
-<span class="normal"><a href="#__codelineno-16-26">26</a></span>
-<span class="normal"><a href="#__codelineno-16-27">27</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a>static Dictionary&lt;string, string&gt; ParseInfoBoard(string text)
-<a id="__codelineno-16-2" name="__codelineno-16-2"></a>{
-<a id="__codelineno-16-3" name="__codelineno-16-3"></a>    var result = new Dictionary&lt;string, string&gt;(
-<a id="__codelineno-16-4" name="__codelineno-16-4"></a>        StringComparer.OrdinalIgnoreCase);
-<a id="__codelineno-16-5" name="__codelineno-16-5"></a>
-<a id="__codelineno-16-6" name="__codelineno-16-6"></a>    string[] parts = text.Split(&#39;|&#39;);
-<a id="__codelineno-16-7" name="__codelineno-16-7"></a>
-<a id="__codelineno-16-8" name="__codelineno-16-8"></a>    foreach (string rawPart in parts)
-<a id="__codelineno-16-9" name="__codelineno-16-9"></a>    {
-<a id="__codelineno-16-10" name="__codelineno-16-10"></a>        string part = rawPart.Trim();
-<a id="__codelineno-16-11" name="__codelineno-16-11"></a>
-<a id="__codelineno-16-12" name="__codelineno-16-12"></a>        if (string.IsNullOrEmpty(part))
-<a id="__codelineno-16-13" name="__codelineno-16-13"></a>            continue;
-<a id="__codelineno-16-14" name="__codelineno-16-14"></a>
-<a id="__codelineno-16-15" name="__codelineno-16-15"></a>        int separator = part.IndexOf(&#39;:&#39;);
-<a id="__codelineno-16-16" name="__codelineno-16-16"></a>
-<a id="__codelineno-16-17" name="__codelineno-16-17"></a>        if (separator &lt;= 0)
-<a id="__codelineno-16-18" name="__codelineno-16-18"></a>            continue;
-<a id="__codelineno-16-19" name="__codelineno-16-19"></a>
-<a id="__codelineno-16-20" name="__codelineno-16-20"></a>        string key = part.Substring(0, separator).Trim();
-<a id="__codelineno-16-21" name="__codelineno-16-21"></a>        string value = part.Substring(separator + 1).Trim();
-<a id="__codelineno-16-22" name="__codelineno-16-22"></a>
-<a id="__codelineno-16-23" name="__codelineno-16-23"></a>        result[key] = value;
-<a id="__codelineno-16-24" name="__codelineno-16-24"></a>    }
-<a id="__codelineno-16-25" name="__codelineno-16-25"></a>
-<a id="__codelineno-16-26" name="__codelineno-16-26"></a>    return result;
-<a id="__codelineno-16-27" name="__codelineno-16-27"></a>}
-</code></pre></div></td></tr></table></div>
-使用例
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-17-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-17-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-17-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-17-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-17-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-17-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-17-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-17-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-17-10">10</a></span>
-<span class="normal"><a href="#__codelineno-17-11">11</a></span>
-<span class="normal"><a href="#__codelineno-17-12">12</a></span>
-<span class="normal"><a href="#__codelineno-17-13">13</a></span>
-<span class="normal"><a href="#__codelineno-17-14">14</a></span>
-<span class="normal"><a href="#__codelineno-17-15">15</a></span>
-<span class="normal"><a href="#__codelineno-17-16">16</a></span>
-<span class="normal"><a href="#__codelineno-17-17">17</a></span>
-<span class="normal"><a href="#__codelineno-17-18">18</a></span>
-<span class="normal"><a href="#__codelineno-17-19">19</a></span>
-<span class="normal"><a href="#__codelineno-17-20">20</a></span>
-<span class="normal"><a href="#__codelineno-17-21">21</a></span>
-<span class="normal"><a href="#__codelineno-17-22">22</a></span>
-<span class="normal"><a href="#__codelineno-17-23">23</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>HOperatorSet.InfoFramegrabber(
-<a id="__codelineno-17-2" name="__codelineno-17-2"></a>    &quot;GenICamTL&quot;,
-<a id="__codelineno-17-3" name="__codelineno-17-3"></a>    &quot;info_boards&quot;,
-<a id="__codelineno-17-4" name="__codelineno-17-4"></a>    out HTuple boards);
-<a id="__codelineno-17-5" name="__codelineno-17-5"></a>
-<a id="__codelineno-17-6" name="__codelineno-17-6"></a>for (int i = 0; i &lt; boards.Length; i++)
-<a id="__codelineno-17-7" name="__codelineno-17-7"></a>{
-<a id="__codelineno-17-8" name="__codelineno-17-8"></a>    string text = boards[i].S;
-<a id="__codelineno-17-9" name="__codelineno-17-9"></a>
-<a id="__codelineno-17-10" name="__codelineno-17-10"></a>    var info = ParseInfoBoard(text);
-<a id="__codelineno-17-11" name="__codelineno-17-11"></a>
-<a id="__codelineno-17-12" name="__codelineno-17-12"></a>    info.TryGetValue(&quot;device&quot;, out string device);
-<a id="__codelineno-17-13" name="__codelineno-17-13"></a>    info.TryGetValue(&quot;producer&quot;, out string producer);
-<a id="__codelineno-17-14" name="__codelineno-17-14"></a>    info.TryGetValue(&quot;tl_type&quot;, out string tlType);
-<a id="__codelineno-17-15" name="__codelineno-17-15"></a>    info.TryGetValue(&quot;vendor&quot;, out string vendor);
-<a id="__codelineno-17-16" name="__codelineno-17-16"></a>    info.TryGetValue(&quot;model&quot;, out string model);
-<a id="__codelineno-17-17" name="__codelineno-17-17"></a>
-<a id="__codelineno-17-18" name="__codelineno-17-18"></a>    Console.WriteLine($&quot;Device   = {device}&quot;);
-<a id="__codelineno-17-19" name="__codelineno-17-19"></a>    Console.WriteLine($&quot;TL Type  = {tlType}&quot;);
-<a id="__codelineno-17-20" name="__codelineno-17-20"></a>    Console.WriteLine($&quot;Producer = {producer}&quot;);
-<a id="__codelineno-17-21" name="__codelineno-17-21"></a>    Console.WriteLine($&quot;Vendor   = {vendor}&quot;);
-<a id="__codelineno-17-22" name="__codelineno-17-22"></a>    Console.WriteLine($&quot;Model    = {model}&quot;);
-<a id="__codelineno-17-23" name="__codelineno-17-23"></a>}
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span>
+<span class="normal"><a href="#__codelineno-5-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>  if (producer.Contains(
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>          &quot;ProducerCL.cti&quot;,
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a>          StringComparison.OrdinalIgnoreCase))
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>  {
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a>      return CameraTransportType.CameraLink;
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a>  }
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a>  if (producer.Contains(
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a>          &quot;Euresys&quot;,
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a>          StringComparison.OrdinalIgnoreCase))
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a>  {
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a>      // CXPかどうかはtl_typeも併用
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a>  }
 </code></pre></div></td></tr></table></div></p>
 
 
