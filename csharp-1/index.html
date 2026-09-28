@@ -427,8 +427,7 @@
   <h1>C#</h1>
 
 <h2 id="guide">Guide<a class="headerlink" href="#guide" title="Permanent link">&para;</a></h2>
-<p>Interface名　一覧確認</p>
-<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<p><div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
 <span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
@@ -437,381 +436,51 @@
 <span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
 <span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
 <span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-0-10">10</a></span>
-<span class="normal"><a href="#__codelineno-0-11">11</a></span>
-<span class="normal"><a href="#__codelineno-0-12">12</a></span>
-<span class="normal"><a href="#__codelineno-0-13">13</a></span>
-<span class="normal"><a href="#__codelineno-0-14">14</a></span>
-<span class="normal"><a href="#__codelineno-0-15">15</a></span>
-<span class="normal"><a href="#__codelineno-0-16">16</a></span>
-<span class="normal"><a href="#__codelineno-0-17">17</a></span>
-<span class="normal"><a href="#__codelineno-0-18">18</a></span>
-<span class="normal"><a href="#__codelineno-0-19">19</a></span>
-<span class="normal"><a href="#__codelineno-0-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">HOperatorSet</span><span class="p">.</span><span class="n">InfoFramegrabber</span><span class="p">(</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="s">&quot;SiliconSoftware&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="s">&quot;info_boards&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">info</span><span class="p">,</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">boards</span><span class="p">);</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="c1">//GenTL経由を確認したい場合</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">    </span><span class="n">HOperatorSet</span><span class="p">.</span><span class="n">InfoFramegrabber</span><span class="p">(</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">    </span><span class="s">&quot;GenICamTL&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">    </span><span class="s">&quot;device&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">    </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">info</span><span class="p">,</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">    </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">devices</span><span class="p">);</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13"></a>
-<a id="__codelineno-0-14" name="__codelineno-0-14"></a>
-<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">    </span><span class="c1">//GigE</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">    </span><span class="n">HOperatorSet</span><span class="p">.</span><span class="n">InfoFramegrabber</span><span class="p">(</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">    </span><span class="s">&quot;GigEVision2&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">    </span><span class="s">&quot;device&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="w">    </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">info</span><span class="p">,</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">    </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">devices</span><span class="p">);</span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="w">    </span><span class="n">Test</span><span class="o">-</span><span class="n">Path</span><span class="w"> </span><span class="s">&quot;C:\FramegrabberSDK\bin\BaslerCLProtocol.dll&quot;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="p">(</span><span class="n">Get</span><span class="o">-</span><span class="n">Item</span><span class="w"> </span><span class="s">&quot;C:\FramegrabberSDK\bin\BaslerCLProtocol.dll&quot;</span><span class="p">).</span><span class="n">VersionInfo</span><span class="w"> </span><span class="o">|</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">        </span><span class="n">Format</span><span class="o">-</span><span class="n">List</span><span class="w"> </span><span class="n">FileVersion</span><span class="p">,</span><span class="n">ProductVersion</span><span class="p">,</span><span class="n">FileName</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="n">Get</span><span class="o">-</span><span class="n">ChildItem</span><span class="w"> </span><span class="s">&quot;C:\FramegrabberSDK&quot;</span><span class="w"> </span><span class="o">-</span><span class="n">Recurse</span><span class="w"> </span><span class="o">-</span><span class="n">Filter</span><span class="w"> </span><span class="n">ProducerCL</span><span class="p">.</span><span class="n">cti</span><span class="w"> </span><span class="o">|</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">        </span><span class="n">ForEach</span><span class="o">-</span><span class="n">Object</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">            </span><span class="err">$</span><span class="n">_</span><span class="p">.</span><span class="n">FullName</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">            </span><span class="err">$</span><span class="n">_</span><span class="p">.</span><span class="n">VersionInfo</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Select</span><span class="o">-</span><span class="n">Object</span><span class="w"> </span><span class="n">FileVersion</span><span class="p">,</span><span class="n">ProductVersion</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">        </span><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<p>例
-<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-1-10">10</a></span>
-<span class="normal"><a href="#__codelineno-1-11">11</a></span>
-<span class="normal"><a href="#__codelineno-1-12">12</a></span>
-<span class="normal"><a href="#__codelineno-1-13">13</a></span>
-<span class="normal"><a href="#__codelineno-1-14">14</a></span>
-<span class="normal"><a href="#__codelineno-1-15">15</a></span>
-<span class="normal"><a href="#__codelineno-1-16">16</a></span>
-<span class="normal"><a href="#__codelineno-1-17">17</a></span>
-<span class="normal"><a href="#__codelineno-1-18">18</a></span>
-<span class="normal"><a href="#__codelineno-1-19">19</a></span>
-<span class="normal"><a href="#__codelineno-1-20">20</a></span>
-<span class="normal"><a href="#__codelineno-1-21">21</a></span>
-<span class="normal"><a href="#__codelineno-1-22">22</a></span>
-<span class="normal"><a href="#__codelineno-1-23">23</a></span>
-<span class="normal"><a href="#__codelineno-1-24">24</a></span>
-<span class="normal"><a href="#__codelineno-1-25">25</a></span>
-<span class="normal"><a href="#__codelineno-1-26">26</a></span>
-<span class="normal"><a href="#__codelineno-1-27">27</a></span>
-<span class="normal"><a href="#__codelineno-1-28">28</a></span>
-<span class="normal"><a href="#__codelineno-1-29">29</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="w">    </span><span class="n">HOperatorSet</span><span class="p">.</span><span class="n">InfoFramegrabber</span><span class="p">(</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">        </span><span class="s">&quot;SiliconSoftware&quot;</span><span class="p">,</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">        </span><span class="s">&quot;camera_type&quot;</span><span class="p">,</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">        </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">info</span><span class="p">,</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">        </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">cameraTypes</span><span class="p">);</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;info:&quot;</span><span class="p">);</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">info</span><span class="p">);</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9"></a>
-<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;cameraTypes:&quot;</span><span class="p">);</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">cameraTypes</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;[{i}] = {cameraTypes[i]}&quot;</span><span class="p">);</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15"></a>
-<a id="__codelineno-1-16" name="__codelineno-1-16"></a>
-<a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">    </span><span class="c1">// ① HALCONがCameraTypeとして何を要求しているか</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">    </span><span class="n">HOperatorSet</span><span class="p">.</span><span class="n">InfoFramegrabber</span><span class="p">(</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">        </span><span class="s">&quot;SiliconSoftware&quot;</span><span class="p">,</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="w">        </span><span class="s">&quot;camera_type&quot;</span><span class="p">,</span>
-<a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="w">        </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">info1</span><span class="p">,</span>
-<a id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="w">        </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">cameraTypes</span><span class="p">);</span>
-<a id="__codelineno-1-23" name="__codelineno-1-23"></a>
-<a id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="w">    </span><span class="c1">// ② SiliconSoftware interfaceが扱えるパラメータ一覧</span>
-<a id="__codelineno-1-25" name="__codelineno-1-25"></a><span class="w">    </span><span class="n">HOperatorSet</span><span class="p">.</span><span class="n">InfoFramegrabber</span><span class="p">(</span>
-<a id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="w">        </span><span class="s">&quot;SiliconSoftware&quot;</span><span class="p">,</span>
-<a id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="w">        </span><span class="s">&quot;parameters&quot;</span><span class="p">,</span>
-<a id="__codelineno-1-28" name="__codelineno-1-28"></a><span class="w">        </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">info2</span><span class="p">,</span>
-<a id="__codelineno-1-29" name="__codelineno-1-29"></a><span class="w">        </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">parameters</span><span class="p">);</span>
-</code></pre></div></td></tr></table></div></p>
-<p>Device名を確認<br />
-<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-2-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="w">    </span><span class="n">HOperatorSet</span><span class="p">.</span><span class="n">InfoFramegrabber</span><span class="p">(</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">        </span><span class="s">&quot;GigEVision2&quot;</span><span class="p">,</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">        </span><span class="s">&quot;device&quot;</span><span class="p">,</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">        </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">info</span><span class="p">,</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">        </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">devices</span><span class="p">);</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a>
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">devices</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">devices</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">S</span><span class="p">);</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">    </span><span class="p">}</span>
-</code></pre></div></td></tr></table></div></p>
-<p>CameraType候補確認<br />
-<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>BaslerCLProtocol.dll
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>ProducerCL.cti
+</code></pre></div></td></tr></table></div>
+が同じ C:\FramegrabberSDK インストール由来であることを確認する</p>
+<p>環境変数が
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>GENICAM_CLPROTOCOL=C:\FramegrabberSDK\bin
+</code></pre></div></td></tr></table></div>
+となっていることを確認</p>
+<p>bin 周辺にCLP関連DLLが何個あるか
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
 <span class="normal"><a href="#__codelineno-3-2">2</a></span>
 <span class="normal"><a href="#__codelineno-3-3">3</a></span>
 <span class="normal"><a href="#__codelineno-3-4">4</a></span>
-<span class="normal"><a href="#__codelineno-3-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="w">    </span><span class="n">HOperatorSet</span><span class="p">.</span><span class="n">InfoFramegrabber</span><span class="p">(</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">        </span><span class="s">&quot;SiliconSoftware&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">        </span><span class="s">&quot;camera_type&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">        </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">info</span><span class="p">,</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">        </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">cameraTypes</span><span class="p">);</span>
+<span class="normal"><a href="#__codelineno-3-5">5</a></span>
+<span class="normal"><a href="#__codelineno-3-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>    Get-ChildItem &quot;C:\FramegrabberSDK\bin&quot; |
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>        Where-Object {
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>            $_.Name -match &quot;CL|Protocol&quot;
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>        } |
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>        Select-Object Name, Length,
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>            @{N=&quot;FileVersion&quot;;E={$_.VersionInfo.FileVersion}}
 </code></pre></div></td></tr></table></div></p>
-<p>SetFramegrabberParam() で使えるキーを確認 <br />
-<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<p>PC全体のBasler CLP DLL重複も確認
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
 <span class="normal"><a href="#__codelineno-4-2">2</a></span>
 <span class="normal"><a href="#__codelineno-4-3">3</a></span>
 <span class="normal"><a href="#__codelineno-4-4">4</a></span>
-<span class="normal"><a href="#__codelineno-4-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="w">    </span><span class="n">HOperatorSet</span><span class="p">.</span><span class="n">InfoFramegrabber</span><span class="p">(</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="w">        </span><span class="s">&quot;GigEVision2&quot;</span><span class="p">,</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">        </span><span class="s">&quot;parameters&quot;</span><span class="p">,</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">        </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">info</span><span class="p">,</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">        </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">parameters</span><span class="p">);</span>
-</code></pre></div></td></tr></table></div></p>
-<p>実機・ボード情報確認
-<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
-<span class="normal"><a href="#__codelineno-5-2">2</a></span>
-<span class="normal"><a href="#__codelineno-5-3">3</a></span>
-<span class="normal"><a href="#__codelineno-5-4">4</a></span>
-<span class="normal"><a href="#__codelineno-5-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="w">    </span><span class="n">HOperatorSet</span><span class="p">.</span><span class="n">InfoFramegrabber</span><span class="p">(</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="w">        </span><span class="s">&quot;GigEVision2&quot;</span><span class="p">,</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">        </span><span class="s">&quot;info_boards&quot;</span><span class="p">,</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="w">        </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">info</span><span class="p">,</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="w">        </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">boards</span><span class="p">);</span>
-</code></pre></div></td></tr></table></div></p>
-<p>GrabImageAsync() の直後で状態を確認
-高さで、ここがどう変わるか
-<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-6-10">10</a></span>
-<span class="normal"><a href="#__codelineno-6-11">11</a></span>
-<span class="normal"><a href="#__codelineno-6-12">12</a></span>
-<span class="normal"><a href="#__codelineno-6-13">13</a></span>
-<span class="normal"><a href="#__codelineno-6-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="n">HOperatorSet</span><span class="p">.</span><span class="n">GrabImageAsync</span><span class="p">(</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="w">    </span><span class="k">out</span><span class="w"> </span><span class="n">HObject</span><span class="w"> </span><span class="n">fullImage</span><span class="p">,</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="w">    </span><span class="n">handle</span><span class="p">,</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="w">    </span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5"></a>
-<a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="kt">bool</span><span class="w"> </span><span class="n">initialized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fullImage</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="o">&amp;&amp;</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="w">                   </span><span class="n">fullImage</span><span class="p">.</span><span class="n">IsInitialized</span><span class="p">();</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8"></a>
-<a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="n">Debug</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span>
-<a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="w">    </span><span class="s">$&quot;fullImage null={fullImage == null}, initialized={initialized}&quot;</span><span class="p">);</span>
-<a id="__codelineno-6-11" name="__codelineno-6-11"></a>
-<a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="n">HOperatorSet</span><span class="p">.</span><span class="n">CopyImage</span><span class="p">(</span>
-<a id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="w">    </span><span class="n">fullImage</span><span class="p">,</span>
-<a id="__codelineno-6-14" name="__codelineno-6-14"></a><span class="w">    </span><span class="k">out</span><span class="w"> </span><span class="n">HObject</span><span class="w"> </span><span class="n">dupImage</span><span class="p">);</span>
-</code></pre></div></td></tr></table></div></p>
-<p>Grab成功直後
-<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-7-10">10</a></span>
-<span class="normal"><a href="#__codelineno-7-11">11</a></span>
-<span class="normal"><a href="#__codelineno-7-12">12</a></span>
-<span class="normal"><a href="#__codelineno-7-13">13</a></span>
-<span class="normal"><a href="#__codelineno-7-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="n">HOperatorSet</span><span class="p">.</span><span class="n">GetFramegrabberParam</span><span class="p">(</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="w">    </span><span class="n">handle</span><span class="p">,</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="w">    </span><span class="s">&quot;buffer_is_incomplete&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w">    </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">incomplete</span><span class="p">);</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5"></a>
-<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="n">HOperatorSet</span><span class="p">.</span><span class="n">GetFramegrabberParam</span><span class="p">(</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="w">    </span><span class="n">handle</span><span class="p">,</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="w">    </span><span class="s">&quot;num_buffers_underrun&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="w">    </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">underrun</span><span class="p">);</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10"></a>
-<a id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="n">HOperatorSet</span><span class="p">.</span><span class="n">GetFramegrabberParam</span><span class="p">(</span>
-<a id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="w">    </span><span class="n">handle</span><span class="p">,</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="w">    </span><span class="s">&quot;image_height&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-14" name="__codelineno-7-14"></a><span class="w">    </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">actualHeight</span><span class="p">);</span>
-</code></pre></div></td></tr></table></div>
-※num_buffers_underrun は、Producerが新しい画像データを持っているのに空きバッファがなかった回数</p>
-<p>CopyImage() 固有の問題なのか、そもそも画像が無効なのかを切り分け
-<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-8-10">10</a></span>
-<span class="normal"><a href="#__codelineno-8-11">11</a></span>
-<span class="normal"><a href="#__codelineno-8-12">12</a></span>
-<span class="normal"><a href="#__codelineno-8-13">13</a></span>
-<span class="normal"><a href="#__codelineno-8-14">14</a></span>
-<span class="normal"><a href="#__codelineno-8-15">15</a></span>
-<span class="normal"><a href="#__codelineno-8-16">16</a></span>
-<span class="normal"><a href="#__codelineno-8-17">17</a></span>
-<span class="normal"><a href="#__codelineno-8-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="n">HOperatorSet</span><span class="p">.</span><span class="n">GrabImageAsync</span><span class="p">(</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="w">    </span><span class="k">out</span><span class="w"> </span><span class="n">HObject</span><span class="w"> </span><span class="n">fullImage</span><span class="p">,</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="w">    </span><span class="n">handle</span><span class="p">,</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">    </span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5"></a>
-<a id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="n">Debug</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;Initialized = {fullImage?.IsInitialized()}&quot;</span><span class="p">);</span>
-<a id="__codelineno-8-7" name="__codelineno-8-7"></a>
-<a id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="n">HOperatorSet</span><span class="p">.</span><span class="n">GetImageSize</span><span class="p">(</span>
-<a id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="w">    </span><span class="n">fullImage</span><span class="p">,</span>
-<a id="__codelineno-8-10" name="__codelineno-8-10"></a><span class="w">    </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">width</span><span class="p">,</span>
-<a id="__codelineno-8-11" name="__codelineno-8-11"></a><span class="w">    </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">height</span><span class="p">);</span>
-<a id="__codelineno-8-12" name="__codelineno-8-12"></a>
-<a id="__codelineno-8-13" name="__codelineno-8-13"></a><span class="n">Debug</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span>
-<a id="__codelineno-8-14" name="__codelineno-8-14"></a><span class="w">    </span><span class="s">$&quot;Image = {width} x {height}&quot;</span><span class="p">);</span>
-<a id="__codelineno-8-15" name="__codelineno-8-15"></a>
-<a id="__codelineno-8-16" name="__codelineno-8-16"></a><span class="n">HOperatorSet</span><span class="p">.</span><span class="n">CopyImage</span><span class="p">(</span>
-<a id="__codelineno-8-17" name="__codelineno-8-17"></a><span class="w">    </span><span class="n">fullImage</span><span class="p">,</span>
-<a id="__codelineno-8-18" name="__codelineno-8-18"></a><span class="w">    </span><span class="k">out</span><span class="w"> </span><span class="n">HObject</span><span class="w"> </span><span class="n">dupImage</span><span class="p">);</span>
-</code></pre></div></td></tr></table></div>
-GetImageSize()もエラーになるなら、CopyImageは完全に無罪で、GrabImageAsyncから返ってきたHObject自体が無効と判断できる</p>
-<p>GrabImageAsync() の直後で以下テスト 
-Height=2000とHeight=3000の出力を比較
-<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
-<span class="normal"><a href="#__codelineno-9-2">2</a></span>
-<span class="normal"><a href="#__codelineno-9-3">3</a></span>
-<span class="normal"><a href="#__codelineno-9-4">4</a></span>
-<span class="normal"><a href="#__codelineno-9-5">5</a></span>
-<span class="normal"><a href="#__codelineno-9-6">6</a></span>
-<span class="normal"><a href="#__codelineno-9-7">7</a></span>
-<span class="normal"><a href="#__codelineno-9-8">8</a></span>
-<span class="normal"><a href="#__codelineno-9-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="n">Debug</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="w">    </span><span class="s">$&quot;IsInitialized={fullImage.IsInitialized()}&quot;</span><span class="p">);</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3"></a>
-<a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="n">HOperatorSet</span><span class="p">.</span><span class="n">GetImageSize</span><span class="p">(</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="w">    </span><span class="n">fullImage</span><span class="p">,</span>
-<a id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="w">    </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">w</span><span class="p">,</span>
-<a id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="w">    </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8"></a>
-<a id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="n">Debug</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;W={w}, H={h}&quot;</span><span class="p">);</span>
-</code></pre></div></td></tr></table></div></p>
-<p>GrabImage() でも3000を確認
-<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
-<span class="normal"><a href="#__codelineno-10-2">2</a></span>
-<span class="normal"><a href="#__codelineno-10-3">3</a></span>
-<span class="normal"><a href="#__codelineno-10-4">4</a></span>
-<span class="normal"><a href="#__codelineno-10-5">5</a></span>
-<span class="normal"><a href="#__codelineno-10-6">6</a></span>
-<span class="normal"><a href="#__codelineno-10-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="n">HOperatorSet</span><span class="p">.</span><span class="n">GrabImage</span><span class="p">(</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="w">    </span><span class="k">out</span><span class="w"> </span><span class="n">HObject</span><span class="w"> </span><span class="n">fullImage</span><span class="p">,</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="w">    </span><span class="n">handle</span><span class="p">);</span>
-<a id="__codelineno-10-4" name="__codelineno-10-4"></a>
-<a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="n">Debug</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span>
-<a id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="w">    </span><span class="s">$&quot;null={fullImage == null}, &quot;</span><span class="w"> </span><span class="o">+</span>
-<a id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="w">    </span><span class="s">$&quot;initialized={fullImage?.IsInitialized()}&quot;</span><span class="p">);</span>
-</code></pre></div></td></tr></table></div></p>
-<p><div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
-<span class="normal"><a href="#__codelineno-11-2">2</a></span>
-<span class="normal"><a href="#__codelineno-11-3">3</a></span>
-<span class="normal"><a href="#__codelineno-11-4">4</a></span>
-<span class="normal"><a href="#__codelineno-11-5">5</a></span>
-<span class="normal"><a href="#__codelineno-11-6">6</a></span>
-<span class="normal"><a href="#__codelineno-11-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>ScanLength=3000
-<a id="__codelineno-11-2" name="__codelineno-11-2"></a>
-<a id="__codelineno-11-3" name="__codelineno-11-3"></a>GrabImageAsync()
-<a id="__codelineno-11-4" name="__codelineno-11-4"></a>→ IsInitialized = false
-<a id="__codelineno-11-5" name="__codelineno-11-5"></a>
-<a id="__codelineno-11-6" name="__codelineno-11-6"></a>GrabImage()
-<a id="__codelineno-11-7" name="__codelineno-11-7"></a>→ IsInitialized = true
-</code></pre></div></td></tr></table></div>
-となるならGrabImageAsync特有の継続acquisitionと、Stream設定変更/バッファ再確保の関係</p>
-<p>バッファ枯渇確認例
-Height=2000
-Height=2500
-Height=3000
-で比較
-<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-12-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-12-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-12-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-12-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-12-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-12-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-12-10">10</a></span>
-<span class="normal"><a href="#__codelineno-12-11">11</a></span>
-<span class="normal"><a href="#__codelineno-12-12">12</a></span>
-<span class="normal"><a href="#__codelineno-12-13">13</a></span>
-<span class="normal"><a href="#__codelineno-12-14">14</a></span>
-<span class="normal"><a href="#__codelineno-12-15">15</a></span>
-<span class="normal"><a href="#__codelineno-12-16">16</a></span>
-<span class="normal"><a href="#__codelineno-12-17">17</a></span>
-<span class="normal"><a href="#__codelineno-12-18">18</a></span>
-<span class="normal"><a href="#__codelineno-12-19">19</a></span>
-<span class="normal"><a href="#__codelineno-12-20">20</a></span>
-<span class="normal"><a href="#__codelineno-12-21">21</a></span>
-<span class="normal"><a href="#__codelineno-12-22">22</a></span>
-<span class="normal"><a href="#__codelineno-12-23">23</a></span>
-<span class="normal"><a href="#__codelineno-12-24">24</a></span>
-<span class="normal"><a href="#__codelineno-12-25">25</a></span>
-<span class="normal"><a href="#__codelineno-12-26">26</a></span>
-<span class="normal"><a href="#__codelineno-12-27">27</a></span>
-<span class="normal"><a href="#__codelineno-12-28">28</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="n">HOperatorSet</span><span class="p">.</span><span class="n">GetFramegrabberParam</span><span class="p">(</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="w">    </span><span class="n">handle</span><span class="p">,</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="w">    </span><span class="s">&quot;num_buffers_underrun&quot;</span><span class="p">,</span>
-<a id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="w">    </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">beforeUnderrun</span><span class="p">);</span>
-<a id="__codelineno-12-5" name="__codelineno-12-5"></a>
-<a id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="n">HOperatorSet</span><span class="p">.</span><span class="n">GrabImageAsync</span><span class="p">(</span>
-<a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="w">    </span><span class="k">out</span><span class="w"> </span><span class="n">HObject</span><span class="w"> </span><span class="n">fullImage</span><span class="p">,</span>
-<a id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="w">    </span><span class="n">handle</span><span class="p">,</span>
-<a id="__codelineno-12-9" name="__codelineno-12-9"></a><span class="w">    </span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-<a id="__codelineno-12-10" name="__codelineno-12-10"></a>
-<a id="__codelineno-12-11" name="__codelineno-12-11"></a><span class="n">HOperatorSet</span><span class="p">.</span><span class="n">GetFramegrabberParam</span><span class="p">(</span>
-<a id="__codelineno-12-12" name="__codelineno-12-12"></a><span class="w">    </span><span class="n">handle</span><span class="p">,</span>
-<a id="__codelineno-12-13" name="__codelineno-12-13"></a><span class="w">    </span><span class="s">&quot;num_buffers_underrun&quot;</span><span class="p">,</span>
-<a id="__codelineno-12-14" name="__codelineno-12-14"></a><span class="w">    </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">afterUnderrun</span><span class="p">);</span>
-<a id="__codelineno-12-15" name="__codelineno-12-15"></a>
-<a id="__codelineno-12-16" name="__codelineno-12-16"></a><span class="n">HOperatorSet</span><span class="p">.</span><span class="n">GetFramegrabberParam</span><span class="p">(</span>
-<a id="__codelineno-12-17" name="__codelineno-12-17"></a><span class="w">    </span><span class="n">handle</span><span class="p">,</span>
-<a id="__codelineno-12-18" name="__codelineno-12-18"></a><span class="w">    </span><span class="s">&quot;num_buffers_await_delivery&quot;</span><span class="p">,</span>
-<a id="__codelineno-12-19" name="__codelineno-12-19"></a><span class="w">    </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">awaitDelivery</span><span class="p">);</span>
-<a id="__codelineno-12-20" name="__codelineno-12-20"></a>
-<a id="__codelineno-12-21" name="__codelineno-12-21"></a><span class="kt">bool</span><span class="w"> </span><span class="n">initialized</span><span class="w"> </span><span class="o">=</span>
-<a id="__codelineno-12-22" name="__codelineno-12-22"></a><span class="w">    </span><span class="n">fullImage</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="o">&amp;&amp;</span>
-<a id="__codelineno-12-23" name="__codelineno-12-23"></a><span class="w">    </span><span class="n">fullImage</span><span class="p">.</span><span class="n">IsInitialized</span><span class="p">();</span>
-<a id="__codelineno-12-24" name="__codelineno-12-24"></a>
-<a id="__codelineno-12-25" name="__codelineno-12-25"></a><span class="n">Debug</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span>
-<a id="__codelineno-12-26" name="__codelineno-12-26"></a><span class="w">    </span><span class="s">$&quot;Initialized={initialized}, &quot;</span><span class="w"> </span><span class="o">+</span>
-<a id="__codelineno-12-27" name="__codelineno-12-27"></a><span class="w">    </span><span class="s">$&quot;Underrun={beforeUnderrun}-&gt;{afterUnderrun}, &quot;</span><span class="w"> </span><span class="o">+</span>
-<a id="__codelineno-12-28" name="__codelineno-12-28"></a><span class="w">    </span><span class="s">$&quot;Await={awaitDelivery}&quot;</span><span class="p">);</span>
-</code></pre></div></td></tr></table></div>
-対処例
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
-<span class="normal"><a href="#__codelineno-13-2">2</a></span>
-<span class="normal"><a href="#__codelineno-13-3">3</a></span>
-<span class="normal"><a href="#__codelineno-13-4">4</a></span>
-<span class="normal"><a href="#__codelineno-13-5">5</a></span>
-<span class="normal"><a href="#__codelineno-13-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>HOperatorSet.OpenFramegrabber(
-<a id="__codelineno-13-2" name="__codelineno-13-2"></a>    &quot;GenICamTL&quot;,
-<a id="__codelineno-13-3" name="__codelineno-13-3"></a>    // ...
-<a id="__codelineno-13-4" name="__codelineno-13-4"></a>    &quot;num_buffers=8&quot;,
-<a id="__codelineno-13-5" name="__codelineno-13-5"></a>    // ...
-<a id="__codelineno-13-6" name="__codelineno-13-6"></a>    out handle);
-</code></pre></div></td></tr></table></div></p>
-<p>LineRate例
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
-<span class="normal"><a href="#__codelineno-14-2">2</a></span>
-<span class="normal"><a href="#__codelineno-14-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>Width = 100 px
-<a id="__codelineno-14-2" name="__codelineno-14-2"></a>BufferHeight = 100 lines
-<a id="__codelineno-14-3" name="__codelineno-14-3"></a>LineRate = 10 kHz
-</code></pre></div></td></tr></table></div>
-→1秒間に10,000ライン取得。10 msで100×100画像が1枚完成
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>100 lines ÷ 10,000 lines/s = 0.01 s
+<span class="normal"><a href="#__codelineno-4-5">5</a></span>
+<span class="normal"><a href="#__codelineno-4-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>Get-ChildItem &quot;C:\&quot; `
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>    -Recurse `
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>    -Filter BaslerCLProtocol.dll `
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>    -ErrorAction SilentlyContinue |
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a>    Select-Object FullName,
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>        @{N=&quot;FileVersion&quot;;E={$_.VersionInfo.FileVersion}}
 </code></pre></div></td></tr></table></div></p>
 
 
