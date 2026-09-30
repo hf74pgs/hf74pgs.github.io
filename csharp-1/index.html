@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#guide" class="md-skip">
+        <a href="#enumerableany" class="md-skip">
           Skip to content
         </a>
       
@@ -361,11 +361,26 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#guide" class="md-nav__link">
+  <a href="#enumerableany" class="md-nav__link">
     <span class="md-ellipsis">
-      Guide
+      Enumerable.Any学習用コード
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Enumerable.Any学習用コード">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ポイント解説
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -426,62 +441,325 @@
 
   <h1>C#</h1>
 
-<h2 id="guide">Guide<a class="headerlink" href="#guide" title="Permanent link">&para;</a></h2>
-<p><div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-0-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="w">    </span><span class="n">Test</span><span class="o">-</span><span class="n">Path</span><span class="w"> </span><span class="s">&quot;C:\FramegrabberSDK\bin\BaslerCLProtocol.dll&quot;</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="p">(</span><span class="n">Get</span><span class="o">-</span><span class="n">Item</span><span class="w"> </span><span class="s">&quot;C:\FramegrabberSDK\bin\BaslerCLProtocol.dll&quot;</span><span class="p">).</span><span class="n">VersionInfo</span><span class="w"> </span><span class="o">|</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">        </span><span class="n">Format</span><span class="o">-</span><span class="n">List</span><span class="w"> </span><span class="n">FileVersion</span><span class="p">,</span><span class="n">ProductVersion</span><span class="p">,</span><span class="n">FileName</span>
+<h2 id="enumerableany">Enumerable.Any学習用コード<a class="headerlink" href="#enumerableany" title="Permanent link">&para;</a></h2>
+<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">  1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">  2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">  3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">  4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">  5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">  6</a></span>
+<span class="normal"><a href="#__codelineno-0-7">  7</a></span>
+<span class="normal"><a href="#__codelineno-0-8">  8</a></span>
+<span class="normal"><a href="#__codelineno-0-9">  9</a></span>
+<span class="normal"><a href="#__codelineno-0-10"> 10</a></span>
+<span class="normal"><a href="#__codelineno-0-11"> 11</a></span>
+<span class="normal"><a href="#__codelineno-0-12"> 12</a></span>
+<span class="normal"><a href="#__codelineno-0-13"> 13</a></span>
+<span class="normal"><a href="#__codelineno-0-14"> 14</a></span>
+<span class="normal"><a href="#__codelineno-0-15"> 15</a></span>
+<span class="normal"><a href="#__codelineno-0-16"> 16</a></span>
+<span class="normal"><a href="#__codelineno-0-17"> 17</a></span>
+<span class="normal"><a href="#__codelineno-0-18"> 18</a></span>
+<span class="normal"><a href="#__codelineno-0-19"> 19</a></span>
+<span class="normal"><a href="#__codelineno-0-20"> 20</a></span>
+<span class="normal"><a href="#__codelineno-0-21"> 21</a></span>
+<span class="normal"><a href="#__codelineno-0-22"> 22</a></span>
+<span class="normal"><a href="#__codelineno-0-23"> 23</a></span>
+<span class="normal"><a href="#__codelineno-0-24"> 24</a></span>
+<span class="normal"><a href="#__codelineno-0-25"> 25</a></span>
+<span class="normal"><a href="#__codelineno-0-26"> 26</a></span>
+<span class="normal"><a href="#__codelineno-0-27"> 27</a></span>
+<span class="normal"><a href="#__codelineno-0-28"> 28</a></span>
+<span class="normal"><a href="#__codelineno-0-29"> 29</a></span>
+<span class="normal"><a href="#__codelineno-0-30"> 30</a></span>
+<span class="normal"><a href="#__codelineno-0-31"> 31</a></span>
+<span class="normal"><a href="#__codelineno-0-32"> 32</a></span>
+<span class="normal"><a href="#__codelineno-0-33"> 33</a></span>
+<span class="normal"><a href="#__codelineno-0-34"> 34</a></span>
+<span class="normal"><a href="#__codelineno-0-35"> 35</a></span>
+<span class="normal"><a href="#__codelineno-0-36"> 36</a></span>
+<span class="normal"><a href="#__codelineno-0-37"> 37</a></span>
+<span class="normal"><a href="#__codelineno-0-38"> 38</a></span>
+<span class="normal"><a href="#__codelineno-0-39"> 39</a></span>
+<span class="normal"><a href="#__codelineno-0-40"> 40</a></span>
+<span class="normal"><a href="#__codelineno-0-41"> 41</a></span>
+<span class="normal"><a href="#__codelineno-0-42"> 42</a></span>
+<span class="normal"><a href="#__codelineno-0-43"> 43</a></span>
+<span class="normal"><a href="#__codelineno-0-44"> 44</a></span>
+<span class="normal"><a href="#__codelineno-0-45"> 45</a></span>
+<span class="normal"><a href="#__codelineno-0-46"> 46</a></span>
+<span class="normal"><a href="#__codelineno-0-47"> 47</a></span>
+<span class="normal"><a href="#__codelineno-0-48"> 48</a></span>
+<span class="normal"><a href="#__codelineno-0-49"> 49</a></span>
+<span class="normal"><a href="#__codelineno-0-50"> 50</a></span>
+<span class="normal"><a href="#__codelineno-0-51"> 51</a></span>
+<span class="normal"><a href="#__codelineno-0-52"> 52</a></span>
+<span class="normal"><a href="#__codelineno-0-53"> 53</a></span>
+<span class="normal"><a href="#__codelineno-0-54"> 54</a></span>
+<span class="normal"><a href="#__codelineno-0-55"> 55</a></span>
+<span class="normal"><a href="#__codelineno-0-56"> 56</a></span>
+<span class="normal"><a href="#__codelineno-0-57"> 57</a></span>
+<span class="normal"><a href="#__codelineno-0-58"> 58</a></span>
+<span class="normal"><a href="#__codelineno-0-59"> 59</a></span>
+<span class="normal"><a href="#__codelineno-0-60"> 60</a></span>
+<span class="normal"><a href="#__codelineno-0-61"> 61</a></span>
+<span class="normal"><a href="#__codelineno-0-62"> 62</a></span>
+<span class="normal"><a href="#__codelineno-0-63"> 63</a></span>
+<span class="normal"><a href="#__codelineno-0-64"> 64</a></span>
+<span class="normal"><a href="#__codelineno-0-65"> 65</a></span>
+<span class="normal"><a href="#__codelineno-0-66"> 66</a></span>
+<span class="normal"><a href="#__codelineno-0-67"> 67</a></span>
+<span class="normal"><a href="#__codelineno-0-68"> 68</a></span>
+<span class="normal"><a href="#__codelineno-0-69"> 69</a></span>
+<span class="normal"><a href="#__codelineno-0-70"> 70</a></span>
+<span class="normal"><a href="#__codelineno-0-71"> 71</a></span>
+<span class="normal"><a href="#__codelineno-0-72"> 72</a></span>
+<span class="normal"><a href="#__codelineno-0-73"> 73</a></span>
+<span class="normal"><a href="#__codelineno-0-74"> 74</a></span>
+<span class="normal"><a href="#__codelineno-0-75"> 75</a></span>
+<span class="normal"><a href="#__codelineno-0-76"> 76</a></span>
+<span class="normal"><a href="#__codelineno-0-77"> 77</a></span>
+<span class="normal"><a href="#__codelineno-0-78"> 78</a></span>
+<span class="normal"><a href="#__codelineno-0-79"> 79</a></span>
+<span class="normal"><a href="#__codelineno-0-80"> 80</a></span>
+<span class="normal"><a href="#__codelineno-0-81"> 81</a></span>
+<span class="normal"><a href="#__codelineno-0-82"> 82</a></span>
+<span class="normal"><a href="#__codelineno-0-83"> 83</a></span>
+<span class="normal"><a href="#__codelineno-0-84"> 84</a></span>
+<span class="normal"><a href="#__codelineno-0-85"> 85</a></span>
+<span class="normal"><a href="#__codelineno-0-86"> 86</a></span>
+<span class="normal"><a href="#__codelineno-0-87"> 87</a></span>
+<span class="normal"><a href="#__codelineno-0-88"> 88</a></span>
+<span class="normal"><a href="#__codelineno-0-89"> 89</a></span>
+<span class="normal"><a href="#__codelineno-0-90"> 90</a></span>
+<span class="normal"><a href="#__codelineno-0-91"> 91</a></span>
+<span class="normal"><a href="#__codelineno-0-92"> 92</a></span>
+<span class="normal"><a href="#__codelineno-0-93"> 93</a></span>
+<span class="normal"><a href="#__codelineno-0-94"> 94</a></span>
+<span class="normal"><a href="#__codelineno-0-95"> 95</a></span>
+<span class="normal"><a href="#__codelineno-0-96"> 96</a></span>
+<span class="normal"><a href="#__codelineno-0-97"> 97</a></span>
+<span class="normal"><a href="#__codelineno-0-98"> 98</a></span>
+<span class="normal"><a href="#__codelineno-0-99"> 99</a></span>
+<span class="normal"><a href="#__codelineno-0-100">100</a></span>
+<span class="normal"><a href="#__codelineno-0-101">101</a></span>
+<span class="normal"><a href="#__codelineno-0-102">102</a></span>
+<span class="normal"><a href="#__codelineno-0-103">103</a></span>
+<span class="normal"><a href="#__codelineno-0-104">104</a></span>
+<span class="normal"><a href="#__codelineno-0-105">105</a></span>
+<span class="normal"><a href="#__codelineno-0-106">106</a></span>
+<span class="normal"><a href="#__codelineno-0-107">107</a></span>
+<span class="normal"><a href="#__codelineno-0-108">108</a></span>
+<span class="normal"><a href="#__codelineno-0-109">109</a></span>
+<span class="normal"><a href="#__codelineno-0-110">110</a></span>
+<span class="normal"><a href="#__codelineno-0-111">111</a></span>
+<span class="normal"><a href="#__codelineno-0-112">112</a></span>
+<span class="normal"><a href="#__codelineno-0-113">113</a></span>
+<span class="normal"><a href="#__codelineno-0-114">114</a></span>
+<span class="normal"><a href="#__codelineno-0-115">115</a></span>
+<span class="normal"><a href="#__codelineno-0-116">116</a></span>
+<span class="normal"><a href="#__codelineno-0-117">117</a></span>
+<span class="normal"><a href="#__codelineno-0-118">118</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">System.Linq</span><span class="p">;</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5"></a>
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="n">Get</span><span class="o">-</span><span class="n">ChildItem</span><span class="w"> </span><span class="s">&quot;C:\FramegrabberSDK&quot;</span><span class="w"> </span><span class="o">-</span><span class="n">Recurse</span><span class="w"> </span><span class="o">-</span><span class="n">Filter</span><span class="w"> </span><span class="n">ProducerCL</span><span class="p">.</span><span class="n">cti</span><span class="w"> </span><span class="o">|</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">        </span><span class="n">ForEach</span><span class="o">-</span><span class="n">Object</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">            </span><span class="err">$</span><span class="n">_</span><span class="p">.</span><span class="n">FullName</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">            </span><span class="err">$</span><span class="n">_</span><span class="p">.</span><span class="n">VersionInfo</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Select</span><span class="o">-</span><span class="n">Object</span><span class="w"> </span><span class="n">FileVersion</span><span class="p">,</span><span class="n">ProductVersion</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="k">namespace</span><span class="w"> </span><span class="nn">LinqAnyTutorial</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">        </span><span class="c1">// 学習用データモデル</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Product</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">            </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Id</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">            </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span><span class="p">.</span><span class="n">Empty</span><span class="p">;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">            </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Price</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">            </span><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">IsInStock</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">            </span><span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Tags</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">();</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">        </span><span class="k">class</span><span class="w"> </span><span class="nc">Program</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">            </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="w">            </span><span class="p">{</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;==============================================&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;          LINQ Any() 完全マスター講座        &quot;</span><span class="p">);</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;==============================================\n&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="w">                </span><span class="c1">// テストデータの準備</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">emptyList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">();</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="w"> </span><span class="p">};</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29"></a>
+<a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="w">                </span><span class="p">{</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="w">                    </span><span class="k">new</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ノートPC&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">120000</span><span class="p">,</span><span class="w"> </span><span class="n">IsInStock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w"> </span><span class="n">Tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;家電&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PC&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="w">                    </span><span class="k">new</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;マウス&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2500</span><span class="p">,</span><span class="w"> </span><span class="n">IsInStock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">,</span><span class="w"> </span><span class="n">Tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;家電&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;アクセサリ&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="w">                    </span><span class="k">new</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;キーボード&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8000</span><span class="p">,</span><span class="w"> </span><span class="n">IsInStock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w"> </span><span class="n">Tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;PC&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;アクセサリ&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="w">                    </span><span class="k">new</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;USBメモリ&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w"> </span><span class="n">IsInStock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">,</span><span class="w"> </span><span class="n">Tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="w">                </span><span class="p">};</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37"></a>
+<a id="__codelineno-0-38" name="__codelineno-0-38"></a>
+<a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="w">                </span><span class="c1">// ---------------------------------------------------------</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="w">                </span><span class="c1">// 1. 引数なし Any() : コレクションが空でないか確認する</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="w">                </span><span class="c1">// ---------------------------------------------------------</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;--- 1. 引数なし Any() ---&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43"></a>
+<a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="w">                </span><span class="kt">bool</span><span class="w"> </span><span class="n">hasElements1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">emptyList</span><span class="p">.</span><span class="n">Any</span><span class="p">();</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;空のリストに要素はあるか？: {hasElements1}&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// False</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46"></a>
+<a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="w">                </span><span class="kt">bool</span><span class="w"> </span><span class="n">hasElements2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numbers</span><span class="p">.</span><span class="n">Any</span><span class="p">();</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;numbersに要素はあるか？    : {hasElements2}&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// True</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">();</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50"></a>
+<a id="__codelineno-0-51" name="__codelineno-0-51"></a>
+<a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="w">                </span><span class="c1">// ---------------------------------------------------------</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="w">                </span><span class="c1">// 2. 条件指定 Any(predicate) : 条件に合う要素が存在するか</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="w">                </span><span class="c1">// ---------------------------------------------------------</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;--- 2. 条件指定 Any(predicate) ---&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56"></a>
+<a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="w">                </span><span class="c1">// 偶数が1つでもあるか？</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="w">                </span><span class="kt">bool</span><span class="w"> </span><span class="n">hasEvenNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numbers</span><span class="p">.</span><span class="n">Any</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;偶数は含まれるか？        : {hasEvenNumber}&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// True (8が含まれる)</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a>
+<a id="__codelineno-0-61" name="__codelineno-0-61"></a><span class="w">                </span><span class="c1">// 100以上のアドバンスな値があるか？</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="w">                </span><span class="kt">bool</span><span class="w"> </span><span class="n">hasLargeNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numbers</span><span class="p">.</span><span class="n">Any</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63"></a><span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;100以上の値はあるか？     : {hasLargeNumber}&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// False</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64"></a><span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">();</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65"></a>
+<a id="__codelineno-0-66" name="__codelineno-0-66"></a>
+<a id="__codelineno-0-67" name="__codelineno-0-67"></a><span class="w">                </span><span class="c1">// ---------------------------------------------------------</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68"></a><span class="w">                </span><span class="c1">// 3. 実践編: オブジェクトのリストに対する条件判定</span>
+<a id="__codelineno-0-69" name="__codelineno-0-69"></a><span class="w">                </span><span class="c1">// ---------------------------------------------------------</span>
+<a id="__codelineno-0-70" name="__codelineno-0-70"></a><span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;--- 3. 実践: 商品データの判定 ---&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-71" name="__codelineno-0-71"></a>
+<a id="__codelineno-0-72" name="__codelineno-0-72"></a><span class="w">                </span><span class="c1">// 在庫切れの商品が1つでも存在するか？</span>
+<a id="__codelineno-0-73" name="__codelineno-0-73"></a><span class="w">                </span><span class="kt">bool</span><span class="w"> </span><span class="n">hasOutOfStock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">products</span><span class="p">.</span><span class="n">Any</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">!</span><span class="n">p</span><span class="p">.</span><span class="n">IsInStock</span><span class="p">);</span>
+<a id="__codelineno-0-74" name="__codelineno-0-74"></a><span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;在庫切れ商品はあるか？    : {hasOutOfStock}&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// True</span>
+<a id="__codelineno-0-75" name="__codelineno-0-75"></a>
+<a id="__codelineno-0-76" name="__codelineno-0-76"></a><span class="w">                </span><span class="c1">// 200,000円を超える高額商品があるか？</span>
+<a id="__codelineno-0-77" name="__codelineno-0-77"></a><span class="w">                </span><span class="kt">bool</span><span class="w"> </span><span class="n">hasExpensive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">products</span><span class="p">.</span><span class="n">Any</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">Price</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">200000</span><span class="p">);</span>
+<a id="__codelineno-0-78" name="__codelineno-0-78"></a><span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;20万超えの商品はあるか？  : {hasExpensive}&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// False</span>
+<a id="__codelineno-0-79" name="__codelineno-0-79"></a><span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">();</span>
+<a id="__codelineno-0-80" name="__codelineno-0-80"></a>
+<a id="__codelineno-0-81" name="__codelineno-0-81"></a>
+<a id="__codelineno-0-82" name="__codelineno-0-82"></a><span class="w">                </span><span class="c1">// ---------------------------------------------------------</span>
+<a id="__codelineno-0-83" name="__codelineno-0-83"></a><span class="w">                </span><span class="c1">// 4. 応用編: 入れ子のコレクション（ネスト構造）の検索</span>
+<a id="__codelineno-0-84" name="__codelineno-0-84"></a><span class="w">                </span><span class="c1">// ---------------------------------------------------------</span>
+<a id="__codelineno-0-85" name="__codelineno-0-85"></a><span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;--- 4. 応用: ネストしたリストの検索 ---&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-86" name="__codelineno-0-86"></a>
+<a id="__codelineno-0-87" name="__codelineno-0-87"></a><span class="w">                </span><span class="c1">// 「家電」タグが設定されている商品が存在するか？</span>
+<a id="__codelineno-0-88" name="__codelineno-0-88"></a><span class="w">                </span><span class="kt">bool</span><span class="w"> </span><span class="n">hasAppliance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">products</span><span class="p">.</span><span class="n">Any</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">Tags</span><span class="p">.</span><span class="n">Any</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;家電&quot;</span><span class="p">));</span>
+<a id="__codelineno-0-89" name="__codelineno-0-89"></a><span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;「家電」タグ付き商品はあるか？: {hasAppliance}&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// True</span>
+<a id="__codelineno-0-90" name="__codelineno-0-90"></a><span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">();</span>
+<a id="__codelineno-0-91" name="__codelineno-0-91"></a>
+<a id="__codelineno-0-92" name="__codelineno-0-92"></a>
+<a id="__codelineno-0-93" name="__codelineno-0-93"></a><span class="w">                </span><span class="c1">// ---------------------------------------------------------</span>
+<a id="__codelineno-0-94" name="__codelineno-0-94"></a><span class="w">                </span><span class="c1">// 5. 性能・パフォーマンス比較（Any vs Count）</span>
+<a id="__codelineno-0-95" name="__codelineno-0-95"></a><span class="w">                </span><span class="c1">// ---------------------------------------------------------</span>
+<a id="__codelineno-0-96" name="__codelineno-0-96"></a><span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;--- 5. パフォーマンスの視点 (即時評価と遅延評価) ---&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-97" name="__codelineno-0-97"></a>
+<a id="__codelineno-0-98" name="__codelineno-0-98"></a><span class="w">                </span><span class="c1">// 判定用の述語関数（実行タイミング確認用）</span>
+<a id="__codelineno-0-99" name="__codelineno-0-99"></a><span class="w">                </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsEvenWithLog</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<a id="__codelineno-0-100" name="__codelineno-0-100"></a><span class="w">                </span><span class="p">{</span>
+<a id="__codelineno-0-101" name="__codelineno-0-101"></a><span class="w">                    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;  [ログ] 要素 {n} を評価中...&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-102" name="__codelineno-0-102"></a><span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-0-103" name="__codelineno-0-103"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-0-104" name="__codelineno-0-104"></a>
+<a id="__codelineno-0-105" name="__codelineno-0-105"></a><span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Any() の評価挙動（最初に条件を満たした時点で終了）:&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-106" name="__codelineno-0-106"></a><span class="w">                </span><span class="c1">// 8（3番目の要素）が偶数なので、11まで評価されずに即座に true を返して終了する（ショートサーキット）</span>
+<a id="__codelineno-0-107" name="__codelineno-0-107"></a><span class="w">                </span><span class="kt">bool</span><span class="w"> </span><span class="n">resultAny</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numbers</span><span class="p">.</span><span class="n">Any</span><span class="p">(</span><span class="n">IsEvenWithLog</span><span class="p">);</span>
+<a id="__codelineno-0-108" name="__codelineno-0-108"></a><span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;結果: {resultAny}\n&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-109" name="__codelineno-0-109"></a>
+<a id="__codelineno-0-110" name="__codelineno-0-110"></a><span class="w">                </span><span class="c1">// アンチパターン注意喚起:</span>
+<a id="__codelineno-0-111" name="__codelineno-0-111"></a><span class="w">                </span><span class="c1">// ✕ list.Count() &gt; 0 や list.Where(...).Count() &gt; 0</span>
+<a id="__codelineno-0-112" name="__codelineno-0-112"></a><span class="w">                </span><span class="c1">// 〇 list.Any() や list.Any(...)</span>
+<a id="__codelineno-0-113" name="__codelineno-0-113"></a><span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;※解説: Count() &gt; 0 は全要素を走査するため重くなりますが、&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-114" name="__codelineno-0-114"></a><span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;  Any() は1つ見つかった時点で処理を中断（ショートサーキット）するため高速です。&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-115" name="__codelineno-0-115"></a><span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;==============================================&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-116" name="__codelineno-0-116"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-0-117" name="__codelineno-0-117"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-0-118" name="__codelineno-0-118"></a><span class="w">    </span><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
-<span class="normal"><a href="#__codelineno-1-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>BaslerCLProtocol.dll
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a>ProducerCL.cti
-</code></pre></div></td></tr></table></div>
-が同じ C:\FramegrabberSDK インストール由来であることを確認する</p>
-<p>環境変数が
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>GENICAM_CLPROTOCOL=C:\FramegrabberSDK\bin
-</code></pre></div></td></tr></table></div>
-となっていることを確認</p>
-<p>bin 周辺にCLP関連DLLが何個あるか
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
-<span class="normal"><a href="#__codelineno-3-2">2</a></span>
-<span class="normal"><a href="#__codelineno-3-3">3</a></span>
-<span class="normal"><a href="#__codelineno-3-4">4</a></span>
-<span class="normal"><a href="#__codelineno-3-5">5</a></span>
-<span class="normal"><a href="#__codelineno-3-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>    Get-ChildItem &quot;C:\FramegrabberSDK\bin&quot; |
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a>        Where-Object {
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a>            $_.Name -match &quot;CL|Protocol&quot;
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a>        } |
-<a id="__codelineno-3-5" name="__codelineno-3-5"></a>        Select-Object Name, Length,
-<a id="__codelineno-3-6" name="__codelineno-3-6"></a>            @{N=&quot;FileVersion&quot;;E={$_.VersionInfo.FileVersion}}
+<p>プログラムを実行すると、コンソールには次のように出力されます
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span>
+<span class="normal"><a href="#__codelineno-1-20">20</a></span>
+<span class="normal"><a href="#__codelineno-1-21">21</a></span>
+<span class="normal"><a href="#__codelineno-1-22">22</a></span>
+<span class="normal"><a href="#__codelineno-1-23">23</a></span>
+<span class="normal"><a href="#__codelineno-1-24">24</a></span>
+<span class="normal"><a href="#__codelineno-1-25">25</a></span>
+<span class="normal"><a href="#__codelineno-1-26">26</a></span>
+<span class="normal"><a href="#__codelineno-1-27">27</a></span>
+<span class="normal"><a href="#__codelineno-1-28">28</a></span>
+<span class="normal"><a href="#__codelineno-1-29">29</a></span>
+<span class="normal"><a href="#__codelineno-1-30">30</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>    ==============================================
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>            LINQ Any() 完全マスター講座        
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>    ==============================================
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>    --- 1. 引数なし Any() ---
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>    空のリストに要素はあるか？: False
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>    numbersに要素はあるか？    : True
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a>    --- 2. 条件指定 Any(predicate) ---
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a>    偶数は含まれるか？        : True
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a>    100以上の値はあるか？     : False
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a>    --- 3. 実践: 商品データの判定 ---
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a>    在庫切れ商品はあるか？    : True
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a>    20万超えの商品はあるか？  : False
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a>    --- 4. 応用: ネストしたリストの検索 ---
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a>    「家電」タグ付き商品はあるか？: True
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a>
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a>    --- 5. パフォーマンスの視点 (即時評価と遅延評価) ---
+<a id="__codelineno-1-21" name="__codelineno-1-21"></a>    Any() の評価挙動（最初に条件を満たした時点で終了）:
+<a id="__codelineno-1-22" name="__codelineno-1-22"></a>    [ログ] 要素 1 を評価中...
+<a id="__codelineno-1-23" name="__codelineno-1-23"></a>    [ログ] 要素 3 を評価中...
+<a id="__codelineno-1-24" name="__codelineno-1-24"></a>    [ログ] 要素 5 を評価中...
+<a id="__codelineno-1-25" name="__codelineno-1-25"></a>    [ログ] 要素 8 を評価中...
+<a id="__codelineno-1-26" name="__codelineno-1-26"></a>    結果: True
+<a id="__codelineno-1-27" name="__codelineno-1-27"></a>
+<a id="__codelineno-1-28" name="__codelineno-1-28"></a>    ※解説: Count() &gt; 0 は全要素を走査するため重くなりますが、
+<a id="__codelineno-1-29" name="__codelineno-1-29"></a>    Any() は1つ見つかった時点で処理を中断（ショートサーキット）するため高速です。
+<a id="__codelineno-1-30" name="__codelineno-1-30"></a>    ==============================================
 </code></pre></div></td></tr></table></div></p>
-<p>PC全体のBasler CLP DLL重複も確認
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
-<span class="normal"><a href="#__codelineno-4-2">2</a></span>
-<span class="normal"><a href="#__codelineno-4-3">3</a></span>
-<span class="normal"><a href="#__codelineno-4-4">4</a></span>
-<span class="normal"><a href="#__codelineno-4-5">5</a></span>
-<span class="normal"><a href="#__codelineno-4-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>Get-ChildItem &quot;C:\&quot; `
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a>    -Recurse `
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a>    -Filter BaslerCLProtocol.dll `
-<a id="__codelineno-4-4" name="__codelineno-4-4"></a>    -ErrorAction SilentlyContinue |
-<a id="__codelineno-4-5" name="__codelineno-4-5"></a>    Select-Object FullName,
-<a id="__codelineno-4-6" name="__codelineno-4-6"></a>        @{N=&quot;FileVersion&quot;;E={$_.VersionInfo.FileVersion}}
-</code></pre></div></td></tr></table></div></p>
+<h3 id="_1">ポイント解説<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>引数なしの Any()
+    役割: シーケンスに 1つでも要素が含まれているか を判定します。</p>
+<p>対比: list.Count &gt; 0 や IEnumerable.Count() &gt; 0 と同等ですが、Count() メソッドのように最後まで要素を数え上げないため効率的です。</p>
+</li>
+<li>
+<p>引数ありの Any(predicate)
+    役割: 指定した条件（ラムダ式）を満たす要素が 少なくとも1つ以上 存在するか判定します。</p>
+<p>特徴: 全要素が条件を満たしているか確認する All() メソッドや、条件に合う要素を抽出する Where() メソッドと組み合わせてよく使われます。</p>
+</li>
+<li>
+<p>パフォーマンス（ショートサーキット評価）
+    サンプルコードの「5」で確認できるように、Any() は 条件に一致する要素を1つ見つけた時点で処理を打ち切ります（ショートサーキット）。</p>
+<p>アンチパターン（遅い）:
+products.Where(p =&gt; p.Price &gt; 10000).Count() &gt; 0 （全データを最後まで確認・カウントする）</p>
+<p>推奨（速い）:
+products.Any(p =&gt; p.Price &gt; 10000) （1つ見つかった瞬間に true を返して終了する）</p>
+</li>
+</ol>
 
 
 
