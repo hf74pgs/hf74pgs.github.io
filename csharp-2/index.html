@@ -349,116 +349,39 @@
 
 
 <h1 id="camera-settings">Camera Settings<a class="headerlink" href="#camera-settings" title="Permanent link">&para;</a></h1>
-<h3 id="pylon-cl-configurator">pylon CL Configuratorの設定を保存<a class="headerlink" href="#pylon-cl-configurator" title="Permanent link">&para;</a></h3>
-<p>GENICAM_CLPROTOCOLを設定したPowerShellから直接起動
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span>
-<span class="normal"><a href="#__codelineno-0-4">4</a></span>
-<span class="normal"><a href="#__codelineno-0-5">5</a></span>
-<span class="normal"><a href="#__codelineno-0-6">6</a></span>
-<span class="normal"><a href="#__codelineno-0-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>$env:GENICAM_CLPROTOCOL = &#39;C:\Program Files\Basler\pylon\Runtime\CLProtocol;C:\FramegrbberSDK\bin&#39;
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a>$exe = Get-ChildItem &#39;C:\Program Files\Basler\pylon\Applications\x64\bin&#39; `
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a>    -Filter &#39;clconfig*.exe&#39; -File |
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a>    Select-Object -First 1
+<p>各NICを別サブネットにする</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>NIC 1
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>192.168.10.1 /24
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>      │
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>      └── Camera 1
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>          192.168.10.101 /24
 <a id="__codelineno-0-6" name="__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a>&amp; $exe.FullName
-</code></pre></div></td></tr></table></div></p>
-<p>その後は、次の順番  </p>
-<ol>
-<li>pylon CL ConfiguratorでBaslerAG port0を有効にする。</li>
-<li>Probe Enabled PortsでBasler...が表示されることを確認する。</li>
-<li>Saveで設定を保存する。</li>
-<li>Configuratorを閉じる。</li>
-<li>同じPowerShellからpylon Viewerを起動し、カメラが認識されるか確認する。</li>
-<li>正常に認識されたら、環境変数を恒久化する。</li>
-</ol>
-<p>pylon Viewerで確認
-環境変数を設定した同じPowerShellからpylon Viewerを起動</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-1-10">10</a></span>
-<span class="normal"><a href="#__codelineno-1-11">11</a></span>
-<span class="normal"><a href="#__codelineno-1-12">12</a></span>
-<span class="normal"><a href="#__codelineno-1-13">13</a></span>
-<span class="normal"><a href="#__codelineno-1-14">14</a></span>
-<span class="normal"><a href="#__codelineno-1-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a># Camera Link用の環境変数を確認
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a>$env:GENICAM_CLPROTOCOL
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a># もし新しいPowerShellを開いていた場合は、最初に以下を実行
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a>$env:GENICAM_CLPROTOCOL = &#39;C:\Program Files\Basler\pylon\Runtime\CLProtocol;C:\FramegrbberSDK\bin&#39;
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a>
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a># pylon Viewerを検索
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a>$exe = Get-ChildItem &#39;C:\Program Files\Basler\pylon\Applications\x64\bin&#39; `
-<a id="__codelineno-1-8" name="__codelineno-1-8"></a>    -Filter &#39;*viewer*.exe&#39; -File |
-<a id="__codelineno-1-9" name="__codelineno-1-9"></a>    Select-Object -First 1
-<a id="__codelineno-1-10" name="__codelineno-1-10"></a>
-<a id="__codelineno-1-11" name="__codelineno-1-11"></a># 実行ファイルを確認
-<a id="__codelineno-1-12" name="__codelineno-1-12"></a>$exe.FullName
-<a id="__codelineno-1-13" name="__codelineno-1-13"></a>
-<a id="__codelineno-1-14" name="__codelineno-1-14"></a># pylon Viewerを起動
-<a id="__codelineno-1-15" name="__codelineno-1-15"></a>&amp; $exe.FullName
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>NIC 2
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>192.168.20.1 /24
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>      │
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>      └── Camera 2
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>          192.168.20.101 /24
 </code></pre></div></td></tr></table></div>
-<p>環境変数が次の値になっていればOK
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>C:\Program Files\Basler\pylon\Runtime\CLProtocol;C:\FramegrbberSDK\bin
-</code></pre></div></td></tr></table></div></p>
-<hr />
-<h2 id="_1">環境変数に登録する<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>現在の設定を確認
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
-<span class="normal"><a href="#__codelineno-3-2">2</a></span>
-<span class="normal"><a href="#__codelineno-3-3">3</a></span>
-<span class="normal"><a href="#__codelineno-3-4">4</a></span>
-<span class="normal"><a href="#__codelineno-3-5">5</a></span>
-<span class="normal"><a href="#__codelineno-3-6">6</a></span>
-<span class="normal"><a href="#__codelineno-3-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>[Environment]::GetEnvironmentVariable(
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a>    &#39;GENICAM_CLPROTOCOL&#39;, &#39;Machine&#39;
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a>)
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a>
-<a id="__codelineno-3-5" name="__codelineno-3-5"></a>[Environment]::GetEnvironmentVariable(
-<a id="__codelineno-3-6" name="__codelineno-3-6"></a>    &#39;GENICAM_CLPROTOCOL&#39;, &#39;User&#39;
-<a id="__codelineno-3-7" name="__codelineno-3-7"></a>)
-</code></pre></div></td></tr></table></div></p>
-<p>「システムの詳細設定」→「環境変数」を開く
-既存の設定を残したまま、以下のフォルダを追加
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>C:\Program Files\Basler\pylon\Runtime\CLProtocol
+<p>スイッチ1台
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>Camera1 ─┐
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>         ├── Gigabit Switch ─── NIC1 ─ PC
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>Camera2 ─┘
 </code></pre></div></td></tr></table></div>
-既存の変数がシステム環境変数にあるなら、基本的にはそちらを編集
-ユーザー環境変数にも同名の設定がある場合は、値が競合しないよう確認が必要</p>
-<p>設定後、PCを再起動して確認
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>$env:GENICAM_CLPROTOCOL
-</code></pre></div></td></tr></table></div></p>
-<p>出力例<br />
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>C:\FramegrbberSDK\bin;C:\Program Files\Basler\pylon\Runtime\CLProtocol
-</code></pre></div></td></tr></table></div></p>
-<h3 id="pylon-viewermicrodisplay-x">pylon ViewerとmicroDisplay Xで最終確認<a class="headerlink" href="#pylon-viewermicrodisplay-x" title="Permanent link">&para;</a></h3>
-<p>pylon CL Configuratorで、Basler カメラ...が検出できました。
-その状態でSaveを実行して設定を保存
-続いてpylon Viewerを起動</p>
-<h5 id="pylon-viewer">pylon Viewer<a class="headerlink" href="#pylon-viewer" title="Permanent link">&para;</a></h5>
-<p>以下が参照できるか確認
-- カメラのモデル名
-- シリアル番号
-- 露光時間
-- Gain
-- Camera Linkの出力構成</p>
-<h5 id="microdisplay-x">microDisplay X<a class="headerlink" href="#microdisplay-x" title="Permanent link">&para;</a></h5>
-<ol>
-<li>pylon Viewerを閉じる</li>
-<li>microDisplay Xを起動</li>
-<li>marathon ACLを選択</li>
-<li>Acq_SingleBaseAreaGrayをダブルクリック</li>
-<li>CamerasタブにacA2040-180kmが表示されるか確認</li>
-<li>Acquisition ChannelでGrabを実行
-正常に動作すれば、カメラ画像が表示</li>
-</ol>
+192.168.10.xxx</p>
 
 
 
