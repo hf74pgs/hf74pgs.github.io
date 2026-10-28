@@ -386,39 +386,25 @@
 
 
 <h1 id="camera-settings">Camera Settings<a class="headerlink" href="#camera-settings" title="Permanent link">&para;</a></h1>
-<p>各NICを別サブネットにする</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-0-10">10</a></span>
-<span class="normal"><a href="#__codelineno-0-11">11</a></span>
-<span class="normal"><a href="#__codelineno-0-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>NIC 1
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a>192.168.10.1 /24
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a>      │
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a>      └── Camera 1
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a>          192.168.10.101 /24
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a>
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a>NIC 2
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a>192.168.20.1 /24
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a>      │
-<a id="__codelineno-0-11" name="__codelineno-0-11"></a>      └── Camera 2
-<a id="__codelineno-0-12" name="__codelineno-0-12"></a>          192.168.20.101 /24
+<p>HDevelop単体で開けるか確認</p>
+<p>HDevelopを起動し、メニューから「ファイル → 新規プログラム」を選択
+プログラムウィンドウにコードを入力
+main プロシージャのプログラムウィンドウに、以下の2行を入力
+F5キーで実行</p>
+<p><div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>info_framegrabber (&#39;GenICamTL&#39;, &#39;info_boards&#39;, BoardInfo, Boards)
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>info_framegrabber (&#39;GenICamTL&#39;, &#39;device&#39;, DeviceInfo, Devices)
 </code></pre></div></td></tr></table></div>
-<p>スイッチ1台
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
-<span class="normal"><a href="#__codelineno-1-2">2</a></span>
-<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>Camera1 ─┐
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a>         ├── Gigabit Switch ─── NIC1 ─ PC
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a>Camera2 ─┘
-</code></pre></div></td></tr></table></div>
-192.168.10.xxx</p>
+変数ウィンドウでそれぞれの値をダブルクリックすると、内容を詳しく確認出来る</p>
+<p>Boardsには表示されるが、Devicesには表示されない → 検出されていてもオープンできない状態である可能性<br />
+両方に表示される → 次に完全なデバイス識別文字列でオープンを試す<br />
+両方とも空 → ProducerCL.cti の読み込みやGenTLのデバイス探索設定を優先して確認する  </p>
+<hr />
+<p>DevicesにCamera Linkのデバイスが存在した場合
+Devices に ProducerCL.cti を含む項目が存在すれば、その項目を使って接続を試行
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>open_framegrabber (&#39;GenICamTL&#39;, 0, 0, 0, 0, 0, 0, &#39;progressive&#39;, -1, &#39;default&#39;, -1, &#39;default&#39;, &#39;false&#39;, DeviceCL, 0, -1, AcqHandle)
+</code></pre></div></td></tr></table></div></p>
+<p>取得した Devices の文字列をそのまま使用すること</p>
 
 
 
