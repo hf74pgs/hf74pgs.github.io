@@ -395,16 +395,11 @@ F5キーで実行</p>
 <span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>info_framegrabber (&#39;GenICamTL&#39;, &#39;info_boards&#39;, BoardInfo, Boards)
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a>info_framegrabber (&#39;GenICamTL&#39;, &#39;device&#39;, DeviceInfo, Devices)
 </code></pre></div></td></tr></table></div>
-変数ウィンドウでそれぞれの値をダブルクリックすると、内容を詳しく確認出来る</p>
-<p>Boardsには表示されるが、Devicesには表示されない → 検出されていてもオープンできない状態である可能性<br />
-両方に表示される → 次に完全なデバイス識別文字列でオープンを試す<br />
-両方とも空 → ProducerCL.cti の読み込みやGenTLのデバイス探索設定を優先して確認する  </p>
-<hr />
-<p>DevicesにCamera Linkのデバイスが存在した場合
-Devices に ProducerCL.cti を含む項目が存在すれば、その項目を使って接続を試行
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>open_framegrabber (&#39;GenICamTL&#39;, 0, 0, 0, 0, 0, 0, &#39;progressive&#39;, -1, &#39;default&#39;, -1, &#39;default&#39;, &#39;false&#39;, DeviceCL, 0, -1, AcqHandle)
-</code></pre></div></td></tr></table></div></p>
-<p>取得した Devices の文字列をそのまま使用すること</p>
+AutomaticROIControl
+AutomaticFormatControl
+AutomaticTapGeometryControl
+```</p>
+<p>取得開始時に自動同期でApplet値が上書きされる可能性</p>
 
 
 
