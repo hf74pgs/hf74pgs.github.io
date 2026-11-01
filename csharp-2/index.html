@@ -386,20 +386,58 @@
 
 
 <h1 id="camera-settings">Camera Settings<a class="headerlink" href="#camera-settings" title="Permanent link">&para;</a></h1>
-<p>HDevelop単体で開けるか確認</p>
-<p>HDevelopを起動し、メニューから「ファイル → 新規プログラム」を選択
-プログラムウィンドウにコードを入力
-main プロシージャのプログラムウィンドウに、以下の2行を入力
-F5キーで実行</p>
-<p><div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>info_framegrabber (&#39;GenICamTL&#39;, &#39;info_boards&#39;, BoardInfo, Boards)
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a>info_framegrabber (&#39;GenICamTL&#39;, &#39;device&#39;, DeviceInfo, Devices)
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#__codelineno-0-22">22</a></span>
+<span class="normal"><a href="#__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#__codelineno-0-24">24</a></span>
+<span class="normal"><a href="#__codelineno-0-25">25</a></span>
+<span class="normal"><a href="#__codelineno-0-26">26</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>HTuple information;
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>HTuple deviceList;
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>HOperatorSet.InfoFramegrabber(
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>    &quot;GenICamTL&quot;,
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>    &quot;info_boards&quot;,
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>    out information,
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>    out deviceList);
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>for (int i = 0; i &lt; deviceList.Length; i++)
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>{
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>    string deviceInfo = deviceList[i].S;
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>    Debug.WriteLine(
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>        &quot;Device[&quot; + i + &quot;] = &quot; + deviceInfo);
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a>}
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a># 候補Open例
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a>string deviceInfo = deviceList[i].S;
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a>HOperatorSet.OpenFramegrabber(
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a>    &quot;GenICamTL&quot;,
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a>    ...
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a>    deviceInfo,
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a>    ...
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a>    out acqHandle);
 </code></pre></div></td></tr></table></div>
-AutomaticROIControl
-AutomaticFormatControl
-AutomaticTapGeometryControl
-```</p>
-<p>取得開始時に自動同期でApplet値が上書きされる可能性</p>
 
 
 
