@@ -380,9 +380,152 @@
 
   <h1>C#</h1>
 
-<p>C#側で画像ファイルを読み込んだオブジェクトが未Dispose<br />
-常駐プロセスが画像ファイルを開いたまま<br />
-別Workerが同じファイルを処理中  </p>
+<p>Log確認
+<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#__codelineno-0-22">22</a></span>
+<span class="normal"><a href="#__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#__codelineno-0-24">24</a></span>
+<span class="normal"><a href="#__codelineno-0-25">25</a></span>
+<span class="normal"><a href="#__codelineno-0-26">26</a></span>
+<span class="normal"><a href="#__codelineno-0-27">27</a></span>
+<span class="normal"><a href="#__codelineno-0-28">28</a></span>
+<span class="normal"><a href="#__codelineno-0-29">29</a></span>
+<span class="normal"><a href="#__codelineno-0-30">30</a></span>
+<span class="normal"><a href="#__codelineno-0-31">31</a></span>
+<span class="normal"><a href="#__codelineno-0-32">32</a></span>
+<span class="normal"><a href="#__codelineno-0-33">33</a></span>
+<span class="normal"><a href="#__codelineno-0-34">34</a></span>
+<span class="normal"><a href="#__codelineno-0-35">35</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">GetFramegrabberParam</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="s">&quot;num_buffers&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="n">numBuffers</span><span class="p">);</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="n">GetFramegrabberParam</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="s">&quot;num_buffers_await_delivery&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="n">awaitDelivery</span><span class="p">);</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="n">GetFramegrabberParam</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="s">&quot;num_buffers_underrun&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="n">underrun</span><span class="p">);</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="n">GetFramegrabberParam</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="s">&quot;[Stream]GevStreamLostPacketCount&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="n">lost</span><span class="p">);</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="n">GetFramegrabberParam</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="s">&quot;[Stream]GevStreamIncompleteBlockCount&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="n">incomplete</span><span class="p">);</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="n">GetFramegrabberParam</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="s">&quot;[Stream]GevStreamResendPacketCount&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="n">resend</span><span class="p">);</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="c1">//ログが</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="c1">// num_buffers_underrun       ↑</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="c1">// LostPacketCount            0</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="c1">// IncompleteBlockCount       0</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="c1">// ResendPacketCount          0</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="c1">// なら、ネットワークは正常で、受信後のバッファ管理側が追いついていない</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="c1">// Awaitが3～4付近へ増える</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="c1">// ＋</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="c1">// Underrun増加</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="c1">//         ↓</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="c1">// アプリがBufferを消費できていない</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a>
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="c1">// Awaitは低い</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="c1">// ＋</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="c1">// Resend/Lost/Incomplete増加</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="c1">//         ↓</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="c1">// GigE通信/NIC/Driver側を疑う</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28"></a>
+<a id="__codelineno-0-29" name="__codelineno-0-29"></a>
+<a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="c1">// Awaitは低い</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="c1">// Lost等も0</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="c1">// なのにUnderrun増加</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="c1">//         ↓</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="c1">// GenTL Streaming Engineの</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="c1">// スケジューリング/Buffer供給側を調査</span>
+</code></pre></div></td></tr></table></div></p>
+<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">Stopwatch</span><span class="w"> </span><span class="n">sw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stopwatch</span><span class="p">.</span><span class="n">StartNew</span><span class="p">();</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">_run</span><span class="p">)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="p">{</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="n">beforeGrab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sw</span><span class="p">.</span><span class="n">ElapsedTicks</span><span class="p">;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="n">HOperatorSet</span><span class="p">.</span><span class="n">GrabImageAsync</span><span class="p">(</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">        </span><span class="k">out</span><span class="w"> </span><span class="n">HObject</span><span class="w"> </span><span class="n">image</span><span class="p">,</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">        </span><span class="n">acqHandle</span><span class="p">,</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">        </span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="n">afterGrab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sw</span><span class="p">.</span><span class="n">ElapsedTicks</span><span class="p">;</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">    </span><span class="n">queue</span><span class="p">.</span><span class="n">Enqueue</span><span class="p">(</span><span class="n">image</span><span class="p">);</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="n">beforeNextLoop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sw</span><span class="p">.</span><span class="n">ElapsedTicks</span><span class="p">;</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">    </span><span class="c1">// この3値をログ</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Dispose確認
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>GrabImageAsync()
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>↓
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>CopyObj()
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>↓
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>Queue.Add()
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>↓
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a>ログ出力
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>↓
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a>イベント
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>↓
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a>Dispose
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a>↓
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a>GrabImageAsync()
+</code></pre></div></td></tr></table></div></p>
+<p>volatile = disable となっているか確認
+<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">HOperatorSet</span><span class="p">.</span><span class="n">GetFramegrabberParam</span><span class="p">(</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">    </span><span class="n">acqHandle</span><span class="p">,</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">    </span><span class="s">&quot;volatile&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">    </span><span class="k">out</span><span class="w"> </span><span class="n">HTuple</span><span class="w"> </span><span class="n">volatileMode</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div></p>
+<p>num_buffers=8　等に増やす</p>
 
 
 
